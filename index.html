@@ -11,23 +11,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0a0b12;
-    --bg-deep:#050509;
-    --glow-a:#2f6fed;
-    --glow-b:#4fd8ff;
-    --ink:#f2f4fb;
-    --ink-soft:#a7acc4;
-    --line:rgba(255,255,255,.12);
+    /* sampled directly from the v2 logo's own background/ink so the page and
+       the logo read as one continuous surface, with no edge/box around it */
+    --bg:#fcf6e7;
+    --ink:#1f3350;
+    --ink-soft:#5b6b85;
+    --accent:#2f6fed;
+    --accent-warm:#e8793a;
   }
   *{ box-sizing:border-box; }
   img{ max-width:100%; }
   html,body{ height:100%; }
   body{
     margin:0;
-    background:
-      radial-gradient(60% 50% at 50% 38%, color-mix(in srgb, var(--glow-a) 30%, transparent), transparent 70%),
-      radial-gradient(45% 40% at 50% 42%, color-mix(in srgb, var(--glow-b) 22%, transparent), transparent 70%),
-      linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+    /* flat, not a gradient — the logo's own fill is a single flat color, so the
+       page has to be exactly flat too or a seam reappears wherever the two
+       colors drift apart under a gradient */
+    background:var(--bg);
     color:var(--ink);
     font-family:'Manrope',sans-serif;
     min-height:100%;
@@ -46,7 +46,7 @@
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:clamp(18px,3vw,28px);
+    gap:clamp(14px,2.6vw,22px);
   }
 
   .eyebrow{
@@ -54,47 +54,40 @@
     font-size:clamp(11px,2.2vw,13px);
     letter-spacing:.22em;
     text-transform:uppercase;
-    color:var(--glow-b);
+    color:var(--accent);
     font-weight:600;
     margin:0;
   }
 
-  /* NOTE: the source logo file is a JPEG with no alpha channel — its "transparent"
-     background is actually a checkerboard baked in as opaque pixels. This light
-     card is a stopgap so that checkerboard reads as an intentional paper-like
-     backing instead of a glaring mismatch against the dark page; it is not a fix
-     for the source file, which needs a true-alpha PNG re-export for other uses. */
-  .logo-card{
-    width:min(78vw, 480px);
+  .logo{
+    width:min(86vw, 560px);
     min-width:0;
-    padding:clamp(14px,3vw,22px);
-    border-radius:22px;
-    /* averages the checkerboard's two baked-in tones (~204 and ~246) rather than
-       matching either one, which minimizes how much either tone stands out */
-    background:#e1e1e2;
-    box-shadow:0 18px 46px rgba(47,111,237,.35), 0 2px 6px rgba(0,0,0,.25);
     animation:float 6s ease-in-out infinite;
   }
-  .logo-card img{
+  .logo img{
     width:100%;
     height:auto;
     display:block;
-    border-radius:8px;
   }
+
   @keyframes float{
     0%,100%{ transform:translateY(0); }
-    50%{ transform:translateY(-10px); }
+    50%{ transform:translateY(-8px); }
   }
 
   h1{
     font-family:'Baloo 2',sans-serif;
     font-weight:800;
     font-style:italic;
-    font-size:clamp(34px,7vw,56px);
+    font-size:clamp(32px,6.5vw,52px);
     line-height:1.05;
     margin:0;
     text-wrap:balance;
-    background:linear-gradient(120deg, var(--ink) 40%, var(--glow-b));
+    color:var(--ink);
+  }
+  h1 em{
+    font-style:italic;
+    background:linear-gradient(120deg, var(--accent) 30%, var(--accent-warm));
     -webkit-background-clip:text;
     background-clip:text;
     -webkit-text-fill-color:transparent;
@@ -110,32 +103,31 @@
 
   .divider{
     width:64px;
-    height:2px;
+    height:3px;
     border-radius:2px;
-    background:linear-gradient(90deg, transparent, var(--glow-b), transparent);
-    margin:2px 0;
+    background:linear-gradient(90deg, var(--accent), var(--accent-warm));
   }
 
   footer{
-    margin-top:clamp(8px,2vw,16px);
+    margin-top:clamp(6px,2vw,14px);
     font-family:'JetBrains Mono',monospace;
     font-size:12px;
     letter-spacing:.05em;
-    color:rgba(167,172,196,.55);
+    color:color-mix(in srgb, var(--ink-soft) 70%, transparent);
   }
 
   @media (prefers-reduced-motion: reduce){
-    .logo-card{ animation:none; }
+    .logo{ animation:none; }
   }
 </style>
 </head>
 <body>
   <div class="stage">
     <p class="eyebrow">AI Literacy · Trading Card Game</p>
-    <div class="logo-card">
-      <img src="assets/tokens-logo.jpg" alt="Tokens — the unplugged collectible card game for middle grades AI literacy">
+    <div class="logo">
+      <img src="assets/tokens_logov2.jpg" alt="Tokens — the unplugged collectible card game for middle grades AI literacy">
     </div>
-    <h1>Coming Soon</h1>
+    <h1>Coming <em>Soon</em></h1>
     <div class="divider"></div>
     <p class="tagline">The unplugged collectible card game for middle grades AI literacy. No screens, no logins — just real cards, real conversations.</p>
     <footer>tokenstcg</footer>

@@ -15,7 +15,7 @@ Other references may get added as the project continues — this section exists 
 ## Brand assets
 
 - **Logo**: both v1 and v2 have been deleted — not happy with either, a redesign is in progress. The landing page currently has no logo at all: just the "Tokens" title and tagline in large centered type, on the same cream/navy/blue palette the v2 logo had introduced. Once a new logo exists, the page can bring it back in.
-- **Card back**: `design/tokens_card_back.png` — a blue network-sphere-on-black image, for the eventual back of every physical card once printing begins. Visually close to the Representation & Reasoning suit's own full-art background (same network-sphere family) — treated as a deliberate shared visual signature across the game rather than a conflict, since front and back are never seen at the same time on a physical card.
+- **Card back**: `assets/tokens_card_back.png` — a blue network-sphere-on-black image, for the eventual back of every physical card once printing begins. Visually close to the Representation & Reasoning suit's own full-art background (same network-sphere family) — treated as a deliberate shared visual signature across the game rather than a conflict, since front and back are never seen at the same time on a physical card. Doubling as the landing page's background image (with a vignette overlay for text contrast) until the new logo is ready.
 
 ## Elevator pitch
 

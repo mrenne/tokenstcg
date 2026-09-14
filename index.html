@@ -11,17 +11,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#fcf6e7;
-    --ink:#1f3350;
-    --ink-soft:#5b6b85;
-    --accent:#2f6fed;
-    --accent-warm:#e8793a;
+    --bg:#050710;
+    --ink:#f3f6fc;
+    --ink-soft:#aebbd6;
+    --accent:#5ec8ff;
+    --accent-warm:#f0913f;
   }
   *{ box-sizing:border-box; }
   html,body{ height:100%; }
   body{
     margin:0;
-    background:var(--bg);
+    /* the card-back photo is brightest and busiest at dead center — exactly
+       where this centered layout puts the text — so the overlay is a vignette
+       that's darkest in the middle and eases off toward the edges, instead of
+       a flat scrim, to counter the image's own brightness where it matters */
+    background-image:
+      radial-gradient(60% 60% at 50% 50%, rgba(4,6,12,.88), rgba(4,6,12,.58) 60%, rgba(4,6,12,.32) 100%),
+      url('assets/tokens_card_back.png');
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+    background-color: var(--bg);
     color:var(--ink);
     font-family:'Manrope',sans-serif;
     min-height:100%;
@@ -49,7 +59,8 @@
     gap:.5em;
     padding:.5em 1.1em;
     border-radius:999px;
-    background:color-mix(in srgb, var(--accent) 12%, transparent);
+    background:rgba(255,255,255,.1);
+    backdrop-filter:blur(2px);
     font-family:'JetBrains Mono',monospace;
     font-size:clamp(11px,2vw,13px);
     letter-spacing:.18em;
@@ -72,10 +83,8 @@
     letter-spacing:.01em;
     margin:0;
     text-wrap:balance;
-    background:linear-gradient(120deg, var(--ink) 55%, var(--accent));
-    -webkit-background-clip:text;
-    background-clip:text;
-    -webkit-text-fill-color:transparent;
+    color:var(--ink);
+    text-shadow:0 4px 32px rgba(0,0,0,.55);
   }
 
   .divider{
@@ -93,6 +102,7 @@
     line-height:1.4;
     color:var(--ink-soft);
     text-wrap:balance;
+    text-shadow:0 2px 18px rgba(0,0,0,.5);
   }
 
 </style>

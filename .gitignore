@@ -1,0 +1,10 @@
+# Raw background source library (254 stock images, ~130MB) is too large for
+# the repo and stays local-only on this machine. The small processed set that
+# the print sheet and mockups actually reference is kept.
+design/backgrounds/*
+!design/backgrounds/selected/
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
+*.log

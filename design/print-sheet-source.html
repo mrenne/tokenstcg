@@ -1,0 +1,1048 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Tokens — Print Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+  :root{
+    --surface:#ffffff; --frame:#181425; --ink:#181425; --ink-soft:#4b4763;
+    --green:#2f7d4f;  --green-deep:#163d27;
+    --blue:#1f5fa8;   --blue-deep:#0d2c50;
+    --black:#57535e;  --black-deep:#332f38;
+    --white:#ede6d6;  --white-deep:#c9bfa2;
+    --red:#b23a2c;    --red-deep:#571a12;
+    --any:#3a3244;    --any-deep:#17141f;
+    --chase-a:#ffd76a; --chase-b:#ff7ad1; --chase-c:#7ad9ff;
+    --gold:#b9862c; --gold-deep:#7a5518;
+  }
+  *{box-sizing:border-box;}
+  html,body{ margin:0; padding:0; background:#f2f2f2; }
+  /* Authored at true final pixel size (no CSS zoom) so the auto-fit script's
+     measurements are taken in the same coordinate space that actually prints. */
+  .page{ padding:85px; background:#f2f2f2; }
+  .row{ display:flex; gap:70px; margin-bottom:70px; }
+  .row:last-child{ margin-bottom:0; }
+
+  .cutwrap{ padding:17px; border:2px dashed #999; border-radius:46px; }
+
+  .card{
+    position:relative; width:750px; aspect-ratio:5/7; border-radius:58px;
+    padding:12px; box-shadow:0 6px 12px rgba(20,10,40,.12);
+    display:flex; flex-direction:column;
+  }
+  .humans{ background:linear-gradient(165deg,var(--green),var(--green-deep)); }
+  .repres{ background:linear-gradient(165deg,var(--blue),var(--blue-deep)); }
+  .ml{ background:linear-gradient(165deg,var(--black),var(--black-deep)); }
+  .ethics{ background:linear-gradient(165deg,var(--white),var(--white-deep)); }
+  .impacts{ background:linear-gradient(165deg,var(--red),var(--red-deep)); }
+  .any{ background:linear-gradient(165deg,var(--any),var(--any-deep)); }
+
+  /* default tier (Common/Uncommon): solid suit gradient body */
+  .inner{ position:relative; flex:1; border-radius:50px; overflow:hidden; display:flex; flex-direction:column; }
+  .humans .inner{ background:linear-gradient(160deg,var(--green),var(--green-deep)); }
+  .repres .inner{ background:linear-gradient(160deg,var(--blue),var(--blue-deep)); }
+  .ml .inner{ background:linear-gradient(160deg,var(--black),var(--black-deep)); }
+  .ethics .inner{ background:linear-gradient(160deg,var(--white),var(--white-deep)); }
+  .impacts .inner{ background:linear-gradient(160deg,var(--red),var(--red-deep)); }
+  .any .inner{ background:linear-gradient(160deg,var(--any),var(--any-deep)); }
+
+  /* Common/Uncommon: a small windowed art box instead of full-bleed art */
+  .art-box{ flex:none; height:200px; background-size:cover; background-position:center; }
+  .humans .art-box{ background-image:url('backgrounds/selected/humans.jpg'); }
+  .repres .art-box{ background-image:url('backgrounds/selected/repres.jpg'); }
+  .ml .art-box{ background-image:url('backgrounds/selected/ml.jpg'); }
+  .ethics .art-box{ background-image:url('backgrounds/selected/ethics.jpg'); }
+  .impacts .art-box{ background-image:url('backgrounds/selected/impacts.jpg'); }
+  .any .art-box{ background-image:url('backgrounds/selected/any.jpg'); }
+
+  /* Rare/Chase: full-art — the whole card becomes the background photo */
+  .full-art .inner{ background-size:cover; background-position:center; }
+  .full-art.humans .inner{ background-image:url('backgrounds/selected/humans.jpg'); }
+  .full-art.repres .inner{ background-image:url('backgrounds/selected/repres.jpg'); }
+  .full-art.ml .inner{ background-image:url('backgrounds/selected/ml.jpg'); }
+  .full-art.ethics .inner{ background-image:url('backgrounds/selected/ethics.jpg'); }
+  .full-art.impacts .inner{ background-image:url('backgrounds/selected/impacts.jpg'); }
+  .full-art.any .inner{ background-image:url('backgrounds/selected/any.jpg'); }
+
+  .cost{
+    position:absolute; top:0; left:0; z-index:5; width:110px; height:110px;
+    background:var(--frame); color:#fff; display:flex; align-items:center; justify-content:center;
+    font-family:'Baloo 2',sans-serif; font-weight:800; font-size:55px;
+    clip-path:polygon(0 0, 100% 0, 100% 55%, 55% 100%, 0 100%);
+  }
+  /* Trainable marker — a diamond drawn around the Cost number itself, exactly
+     where Lorcana draws a hexagon around an inkable card's ink cost.
+     No diamond = can't be Trained. */
+  .cost.trainable::before{
+    content:""; position:absolute; top:50%; left:50%;
+    width:60px; height:60px; transform:translate(-50%,-50%) rotate(45deg);
+    border:6.5px solid #fff; box-shadow:0 0 0 3px rgba(0,0,0,.5);
+    pointer-events:none;
+  }
+  /* tokens flap: gold, a count of pips instead of a numeral — deliberately unlike Cost */
+  .tokens{
+    position:absolute; top:0; right:0; z-index:5; width:110px; height:110px;
+    background:linear-gradient(160deg,var(--gold),var(--gold-deep)); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    clip-path:polygon(100% 0, 0 0, 0 55%, 45% 100%, 100% 100%);
+  }
+  .pips{
+    display:flex; flex-wrap:wrap; justify-content:center; align-content:center;
+    gap:6px; width:44px; margin:6px 9px 0 0;
+  }
+  .pips .dot{
+    width:16px; height:16px; border-radius:50%;
+    background:#fff; box-shadow:0 0 0 2px rgba(0,0,0,.3);
+  }
+  .namebar{ position:relative; z-index:2; padding:26px 127px; min-height:98px; display:flex; align-items:center; justify-content:center; }
+  .namebar h2{ margin:0; color:#fff; font-family:'Baloo 2',sans-serif; font-weight:700; font-style:italic; font-size:58px; letter-spacing:.01em; line-height:1.15; text-align:center;
+    text-shadow:0 3px 12px rgba(0,0,0,.6), 0 0 4px rgba(0,0,0,.4); }
+  .ethics .namebar h2{ text-shadow:0 1px 3px rgba(255,255,255,.7), 0 0 14px rgba(255,255,255,.5); }
+
+  .statrow{ position:relative; z-index:2; display:flex; justify-content:center; gap:26px; padding:16px 0 6px; }
+  .pip{ width:104px; height:104px; transform:rotate(45deg); display:flex; align-items:center; justify-content:center;
+    border:6px solid rgba(255,255,255,.85); box-shadow:0 6px 14px rgba(0,0,0,.3); }
+  .pip .in{ transform:rotate(-45deg); text-align:center; line-height:1; }
+  .pip .in .n{ font-family:'JetBrains Mono',monospace; font-weight:700; font-size:38px; color:#fff; }
+  .pip .in .l{ font-family:'JetBrains Mono',monospace; font-size:17px; letter-spacing:.04em; color:rgba(255,255,255,.85); }
+  .humans .pip{ background:var(--green-deep); }
+  .repres .pip{ background:var(--blue-deep); }
+  .ml .pip{ background:var(--black-deep); }
+  .ethics .pip{ background:var(--white-deep); }
+  .ethics .pip .n{ color:#2b2418; }
+  .ethics .pip .l{ color:#4a3f28; }
+  .impacts .pip{ background:var(--red-deep); }
+
+  /* type bar — a frosted-looking dark strip over the art. Same treatment on every
+     suit now, including White: a dark translucent panel needs no per-suit
+     light/dark tuning the way a solid light band used to. (No backdrop-filter —
+     it clipped badly against the rounded panel corners in testing.) */
+  .typebar{ position:relative; z-index:2; display:flex; align-items:center; gap:20px; padding:17px 35px; color:#fff;
+    font-family:'JetBrains Mono',monospace; font-size:26px; letter-spacing:.08em; text-transform:uppercase; font-weight:700;
+    background:rgba(10,8,16,.62); }
+  .typebar .gem{ width:26px;height:26px;border-radius:8px; background:rgba(255,255,255,.4); border:2px solid rgba(255,255,255,.65); flex:none; }
+  .typebar .gem.uncommon{ background:rgba(255,255,255,.65); }
+  .typebar .gem.rare{ background:#fff; box-shadow:0 0 0 5px rgba(255,255,255,.3); }
+  .typebar .gem.chase{ background:conic-gradient(from 90deg,var(--chase-a),var(--chase-b),var(--chase-c),var(--chase-a)); box-shadow:0 0 0 5px rgba(255,255,255,.6); }
+
+  /* text lines — a frosted panel floating on the art, not a solid strip */
+  .textlines{ position:relative; z-index:2; flex:none; margin:0 22px 16px; padding:23px 32px; display:flex; flex-direction:column; gap:17px;
+    border-radius:26px; background:rgba(10,8,16,.64); }
+  .tline{ font-size:32px; line-height:1.36; color:#f4f2fa; }
+  .tline b{ font-family:'JetBrains Mono',monospace; font-size:25px; letter-spacing:.08em; text-transform:uppercase; color:rgba(244,242,250,.7); display:block; margin-bottom:4px; }
+  .tline .kw{ font-family:'Baloo 2',sans-serif; font-weight:700; font-style:italic; color:#fff; }
+
+  .discuss{ position:relative; flex:1; padding:40px 52px; color:#fff; overflow:hidden; display:flex; flex-direction:column; justify-content:center; }
+  .discuss .tag{ font-family:'JetBrains Mono',monospace; font-size:27px; letter-spacing:.12em; text-transform:uppercase; opacity:.85; margin-bottom:20px; display:flex; align-items:center; gap:17px; }
+  .discuss .tag::before, .discuss .tag::after{ content:"◈"; font-size:23px; opacity:.7; }
+  .discuss p{ margin:0; font-family:'Baloo 2',sans-serif; font-weight:700; font-size:46px; line-height:1.28; }
+  .humans .discuss{ background:linear-gradient(120deg,var(--green),var(--green-deep)); }
+  .repres .discuss{ background:linear-gradient(120deg,var(--blue),var(--blue-deep)); }
+  .ml .discuss{ background:linear-gradient(120deg,var(--black),var(--black-deep)); }
+  .ethics .discuss{ background:linear-gradient(120deg,var(--white),var(--white-deep)); color:#2b2418; }
+  .impacts .discuss{ background:linear-gradient(120deg,var(--red),var(--red-deep)); }
+  .any .discuss{ background:linear-gradient(120deg,var(--any),var(--any-deep)); }
+
+  /* Rare/Chase full-art: even the Discuss banner turns translucent so the
+     background photo shows through it too */
+  .full-art.humans .discuss{ background:linear-gradient(120deg, color-mix(in srgb, var(--green) 60%, transparent), color-mix(in srgb, var(--green-deep) 78%, transparent)); }
+  .full-art.repres .discuss{ background:linear-gradient(120deg, color-mix(in srgb, var(--blue) 60%, transparent), color-mix(in srgb, var(--blue-deep) 78%, transparent)); }
+  .full-art.ml .discuss{ background:linear-gradient(120deg, color-mix(in srgb, var(--black) 60%, transparent), color-mix(in srgb, var(--black-deep) 78%, transparent)); }
+  .full-art.ethics .discuss{ background:linear-gradient(120deg, color-mix(in srgb, var(--white) 65%, transparent), color-mix(in srgb, var(--white-deep) 80%, transparent)); color:#2b2418; }
+  .full-art.impacts .discuss{ background:linear-gradient(120deg, color-mix(in srgb, var(--red) 60%, transparent), color-mix(in srgb, var(--red-deep) 78%, transparent)); }
+  .full-art.any .discuss{ background:linear-gradient(120deg, color-mix(in srgb, var(--any) 60%, transparent), color-mix(in srgb, var(--any-deep) 78%, transparent)); }
+</style></head>
+<body>
+<div class="page" id="page">
+
+  <div class="row">
+    <div class="cutwrap"><div class="card humans"><div class="inner">
+      <div class="cost trainable">1</div>
+      <div class="tokens" title="1 Tokens"><div class="pips"><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Nature of Humans vs. AI</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">1</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">3</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem "></span>System · Humans and AI</div>
+      <div class="textlines">
+        <div class="tline"><b>Definition</b>AI systems can perform human-like tasks but aren't alive or conscious.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>What's one thing a human can do that no card in this deck can?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card humans"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>The Human Trainer</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">1</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">3</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem "></span>System · Humans and AI</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b>Whenever this System Runs a Task, you may put the top card of your deck into your Training Set face-down.</div>
+        <div class="tline"><b>Definition</b>Humans label data and curate examples that shape how an AI model behaves.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>If a labeler makes a mistake, what happens to everything the model learns from it?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card humans"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="namebar"><h2>Human-in-the-Loop</h2></div>
+      <div class="art-box"></div>
+      <div class="typebar"><span class="gem "></span>Tool · Humans and AI</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b>{E} — Remove up to 2 Flags from target System.</div>
+        <div class="tline"><b>Definition</b>A design where a human reviews or overrides an automated decision before it takes effect.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Name a task where you'd always want a human to double-check the AI.</p></div>
+    </div></div></div>
+  </div>
+
+  <div class="row">
+    <div class="cutwrap"><div class="card humans"><div class="inner">
+      <div class="cost trainable">1</div>
+      <div class="tokens" title="1 Tokens"><div class="pips"><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Chatbot</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">1</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem "></span>System · Humans and AI</div>
+      <div class="textlines">
+        <div class="tline"><b>Definition</b>A conversational agent that talks with people via text or voice.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>How can you tell whether you're talking to a chatbot or a real person?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card humans"><div class="inner">
+      <div class="cost trainable">3</div>
+      <div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Agent</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem uncommon"></span>System · Humans and AI</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b><span class="kw">Fast-Tracked.</span></div>
+        <div class="tline"><b>Definition</b>An AI program that senses its environment, decides, and acts — physical (robot) or software.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>What’s the difference between an "agent" and a simple chatbot?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card humans"><div class="inner">
+      <div class="cost trainable">1</div>
+      <div class="namebar"><h2>AI Career Path</h2></div>
+      <div class="art-box"></div>
+      <div class="typebar"><span class="gem uncommon"></span>Action · Humans and AI</div>
+      <div class="textlines">
+        <div class="tline"><b>Effect</b>Draw a card.</div>
+        <div class="tline"><b>Definition</b>People work on AI as data labelers, model trainers, ethicists, and more — not just "programmers."</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Which AI-related job sounds most interesting to you, and why?</p></div>
+    </div></div></div>
+  </div>
+
+  <div class="row">
+    <div class="cutwrap"><div class="card humans"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="namebar"><h2>Manual Override</h2></div>
+      <div class="art-box"></div>
+      <div class="typebar"><span class="gem "></span>Action · Humans and AI</div>
+      <div class="textlines">
+        <div class="tline"><b>Effect</b>Target opponent's System can't Run a Task next turn.</div>
+        <div class="tline"><b>Definition</b>A person steps in to pause an automated process before it can act again.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>When should a person be allowed to override an AI's decision?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card any chase-frame full-art"><div class="inner">
+      <div class="cost">2</div>
+      <div class="namebar"><h2>AI Isn't Magic</h2></div>
+      <div class="typebar"><span class="gem chase"></span>Action · Any Data Type</div>
+      <div class="textlines">
+        <div class="tline"><b>Effect</b>Choose target System. It can't use abilities until its controller's next turn.</div>
+        <div class="tline"><b>Definition</b>AI isn't sentient or magical — it's a tool built by people.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>What's something people assume AI can do that it actually can't?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card humans"><div class="inner">
+      <div class="cost trainable">1</div>
+      <div class="namebar"><h2>Python</h2></div>
+      <div class="art-box"></div>
+      <div class="typebar"><span class="gem "></span>Tool · Humans and AI</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b>{E} — Draw a card.</div>
+        <div class="tline"><b>Definition</b>A programming language popular for building AI models because it's readable and has huge community support.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Why might a beginner-friendly language end up being what experts use too?</p></div>
+    </div></div></div>
+  </div>
+
+  <div class="row">
+    <div class="cutwrap"><div class="card humans full-art"><div class="inner">
+      <div class="cost">3</div>
+      <div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>OpenAI</h2></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">3</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem rare"></span>System · Humans and AI</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b><span class="kw">Fast-Tracked.</span></div>
+        <div class="tline"><b>Definition</b>An AI research company known for developing widely used chatbots and pushing rapid public releases.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>What's a tradeoff of a company releasing powerful AI tools quickly?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card humans full-art"><div class="inner">
+      <div class="cost">3</div>
+      <div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Anthropic</h2></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">4</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem rare"></span>System · Humans and AI</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b><span class="kw">Audited.</span></div>
+        <div class="tline"><b>Definition</b>An AI company that frames its mission around AI safety research alongside building AI systems.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Should a company that builds AI also be the one checking it's safe?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card humans"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Claude</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">3</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem uncommon"></span>System · Humans and AI</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b><span class="kw">Audited.</span></div>
+        <div class="tline"><b>Definition</b>An AI chatbot assistant, made by Anthropic, built for conversation, writing, and analysis.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>What would you want to double-check before trusting a chatbot's answer?</p></div>
+    </div></div></div>
+  </div>
+
+  <div class="row">
+    <div class="cutwrap"><div class="card humans"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>ChatGPT</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">3</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem "></span>System · Humans and AI</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b><span class="kw">Fast-Tracked.</span></div>
+        <div class="tline"><b>Definition</b>An AI chatbot made by OpenAI — one of the fastest-adopted consumer apps in history.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Why might a chatbot become popular faster than almost any app before it?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card humans"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Gemini</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem "></span>System · Humans and AI</div>
+      <div class="textlines">
+        <div class="tline"><b>Definition</b>Google's AI chatbot, built to work directly alongside Search and other Google apps.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>What's different about an AI built into apps you already use daily?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card repres"><div class="inner">
+      <div class="cost trainable">1</div>
+      <div class="tokens" title="1 Tokens"><div class="pips"><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Abstraction</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">1</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem "></span>System · Rep. &amp; Reasoning</div>
+      <div class="textlines">
+        <div class="tline"><b>Definition</b>A representation that keeps some features and leaves others out.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>If you drew a map of your school, what would you leave out?</p></div>
+    </div></div></div>
+  </div>
+
+  <div class="row">
+    <div class="cutwrap"><div class="card repres"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="namebar"><h2>Feature Vector</h2></div>
+      <div class="art-box"></div>
+      <div class="typebar"><span class="gem "></span>Tool · Rep. &amp; Reasoning</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b>{E} — Look at the top 2 cards of your deck. Put one into your hand, the other on the bottom.</div>
+        <div class="tline"><b>Definition</b>A list of numbers encoding an object’s key traits so an algorithm can use them.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>What 3 "features" would you use to describe your favorite animal to a computer?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card repres"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Classifier</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem "></span>System · Rep. &amp; Reasoning</div>
+      <div class="textlines">
+        <div class="tline"><b>Definition</b>A model that sorts input into categories, like spam vs. not-spam.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>What's something in your life that gets automatically "classified" for you?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card repres"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Predictor</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">3</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">1</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem "></span>System · Rep. &amp; Reasoning</div>
+      <div class="textlines">
+        <div class="tline"><b>Definition</b>A model that outputs a continuous value, like estimating a house’s price.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>What would you want an AI to predict for you, if it could?</p></div>
+    </div></div></div>
+  </div>
+
+  <div class="row">
+    <div class="cutwrap"><div class="card repres"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Recommender</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">3</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">1</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem "></span>System · Rep. &amp; Reasoning</div>
+      <div class="textlines">
+        <div class="tline"><b>Definition</b>A model that suggests items based on what similar users liked.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Has a recommendation ever felt "too accurate"? Why might that happen?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card repres"><div class="inner">
+      <div class="cost trainable">3</div>
+      <div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Decision Tree</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">4</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem uncommon"></span>System · Rep. &amp; Reasoning</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b><span class="kw">Audited.</span></div>
+        <div class="tline"><b>Definition</b>A series of yes/no tests that leads to a decision — explainable step by step.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Sketch a 3-question decision tree for what to eat for lunch.</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card repres full-art"><div class="inner">
+      <div class="cost">4</div>
+      <div class="tokens" title="3 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Search Tree</h2></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">3</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">3</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem rare"></span>System · Rep. &amp; Reasoning</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b>Whenever this System Runs a Task, look at the top 3 cards of your deck; put one into your hand.</div>
+        <div class="tline"><b>Definition</b>A branching map of possible moves an AI explores to find the best one, like in tic-tac-toe.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Why might exploring every possible move become impossible for a more complex game?</p></div>
+    </div></div></div>
+  </div>
+
+  <div class="row">
+    <div class="cutwrap"><div class="card repres"><div class="inner">
+      <div class="cost trainable">1</div>
+      <div class="namebar"><h2>Ambiguous Input</h2></div>
+      <div class="art-box"></div>
+      <div class="typebar"><span class="gem "></span>Action · Rep. &amp; Reasoning</div>
+      <div class="textlines">
+        <div class="tline"><b>Effect</b>Target opponent's System can't Run a Task next turn.</div>
+        <div class="tline"><b>Definition</b>Poorly represented or unclear data makes it hard for an AI system to act reliably.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Why might unclear instructions make an AI "freeze up" or give a bad answer?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card ml"><div class="inner">
+      <div class="cost trainable">1</div>
+      <div class="tokens" title="1 Tokens"><div class="pips"><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Sensor</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">1</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem "></span>System · Machine Learning</div>
+      <div class="textlines">
+        <div class="tline"><b>Definition</b>Hardware that turns a physical signal (light, sound) into data a computer can use.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>What sensors does your phone have, and what does each one "sense"?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card ml"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="namebar"><h2>Training Data</h2></div>
+      <div class="art-box"></div>
+      <div class="typebar"><span class="gem "></span>Dataset · Machine Learning</div>
+      <div class="textlines">
+        <div class="tline"><b>Effect</b>Put the top 2 cards of your deck into your Training Set face-down.</div>
+        <div class="tline"><b>Definition</b>The examples a model learns from before it's used.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Why would a model trained only on cat photos fail to recognize dogs?</p></div>
+    </div></div></div>
+  </div>
+
+  <div class="row">
+    <div class="cutwrap"><div class="card ml"><div class="inner">
+      <div class="cost trainable">1</div>
+      <div class="namebar"><h2>Bias in Data</h2></div>
+      <div class="art-box"></div>
+      <div class="typebar"><span class="gem "></span>Action · Machine Learning</div>
+      <div class="textlines">
+        <div class="tline"><b>Effect</b>Target opponent's System gets +1 Flag.</div>
+        <div class="tline"><b>Definition</b>A systematic skew in a dataset that leads to unfair or inaccurate outputs.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Can you think of a dataset that might accidentally leave a group out?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card ml"><div class="inner">
+      <div class="cost trainable">3</div>
+      <div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Supervised Learning</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">3</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">3</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem "></span>System · Machine Learning</div>
+      <div class="textlines">
+        <div class="tline"><b>Definition</b>Training a model on labeled examples so it learns to match inputs to known answers.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Why does supervised learning need humans to label the answers first?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card ml"><div class="inner">
+      <div class="cost trainable">3</div>
+      <div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Neural Network</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">4</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem uncommon"></span>System · Machine Learning</div>
+      <div class="textlines">
+        <div class="tline"><b>Definition</b>Many simple processing units organized to jointly solve a complex problem.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Neural networks are inspired by brains — how are they different from real ones?</p></div>
+    </div></div></div>
+  </div>
+
+  <div class="row">
+    <div class="cutwrap"><div class="card ml full-art"><div class="inner">
+      <div class="cost">5</div>
+      <div class="tokens" title="4 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Large Language Model</h2></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">5</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem rare"></span>System · Machine Learning</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b><span class="kw">Fast-Tracked.</span></div>
+        <div class="tline"><b>Definition</b>A neural network trained on massive text data, used for chat, writing, and more.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Why might an LLM sound confident even when it's wrong?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card ml"><div class="inner">
+      <div class="cost trainable">4</div>
+      <div class="tokens" title="3 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Reinforcement Learning</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">3</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem uncommon"></span>System · Machine Learning</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b>Whenever this System is Deprecated, gain 1 Token.</div>
+        <div class="tline"><b>Definition</b>A model learns by trial and error, guided by a reward signal instead of labeled answers.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>What's a game where trial-and-error is exactly how you'd learn to play well?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card ml"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="namebar"><h2>Retraining Pause</h2></div>
+      <div class="art-box"></div>
+      <div class="typebar"><span class="gem "></span>Action · Machine Learning</div>
+      <div class="textlines">
+        <div class="tline"><b>Effect</b>Target opponent's System can't Run a Task next turn.</div>
+        <div class="tline"><b>Definition</b>A model taken offline for retraining can’t be used again until the update finishes.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Why do AI companies periodically retrain or update their models?</p></div>
+    </div></div></div>
+  </div>
+
+  <div class="row">
+    <div class="cutwrap"><div class="card ml"><div class="inner">
+      <div class="cost trainable">1</div>
+      <div class="tokens" title="1 Tokens"><div class="pips"><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Neuron</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">1</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem "></span>System · Machine Learning</div>
+      <div class="textlines">
+        <div class="tline"><b>Definition</b>The smallest processing unit in a neural network — many of them together form the whole model.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>How is one neuron different from the whole Neural Network card?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card ml"><div class="inner">
+      <div class="cost trainable">1</div>
+      <div class="namebar"><h2>Tensor</h2></div>
+      <div class="art-box"></div>
+      <div class="typebar"><span class="gem "></span>Tool · Machine Learning</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b>{E} — Look at the top card of your deck. You may put it on the bottom.</div>
+        <div class="tline"><b>Definition</b>A multi-dimensional grid of numbers — the basic data structure nearly every AI model computes with.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Why might a model need numbers arranged in a grid instead of a list?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card ml"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="namebar"><h2>CUDA</h2></div>
+      <div class="art-box"></div>
+      <div class="typebar"><span class="gem "></span>Tool · Machine Learning</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b>{E} — Target System gets +1 Capability until end of turn.</div>
+        <div class="tline"><b>Definition</b>A platform that lets AI models run on graphics chips (GPUs), training far faster than on a regular computer.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Why would training a huge model need special, faster hardware?</p></div>
+    </div></div></div>
+  </div>
+
+  <div class="row">
+    <div class="cutwrap"><div class="card ml"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="namebar"><h2>ImageNet</h2></div>
+      <div class="art-box"></div>
+      <div class="typebar"><span class="gem uncommon"></span>Dataset · Machine Learning</div>
+      <div class="textlines">
+        <div class="tline"><b>Effect</b>Put the top 3 cards of your deck into your Training Set face-down.</div>
+        <div class="tline"><b>Definition</b>A massive labeled image dataset that helped launch the modern boom in computer vision.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Why did one giant, carefully labeled dataset change what AI could do?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card ml"><div class="inner">
+      <div class="cost trainable">3</div>
+      <div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>GAN</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">3</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">1</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem uncommon"></span>System · Machine Learning</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b><span class="kw">Adversarial.</span> Whenever this System is Audited, deal 1 Flag back to the Auditing System.</div>
+        <div class="tline"><b>Definition</b>Two networks compete — one creates fakes, the other tries to catch them — until the fakes are convincing.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Why might training two AIs against each other make both of them better?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card ml"><div class="inner">
+      <div class="cost trainable">3</div>
+      <div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Diffusion Model</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">3</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem uncommon"></span>System · Machine Learning</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b>Whenever this System Runs a Task, remove 1 Flag from it.</div>
+        <div class="tline"><b>Definition</b>A model that generates images by starting with noise and gradually refining it into a picture.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>How is starting from random noise different from drawing from scratch?</p></div>
+    </div></div></div>
+  </div>
+
+  <div class="row">
+    <div class="cutwrap"><div class="card ml"><div class="inner">
+      <div class="cost trainable">3</div>
+      <div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Unsupervised Learning</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">3</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem uncommon"></span>System · Machine Learning</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b>Whenever this System Runs a Task, look at the top 2 cards of your deck; you may rearrange them.</div>
+        <div class="tline"><b>Definition</b>Training a model to find patterns or groupings in data that was never labeled.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>How could a computer group similar things without being told the categories?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card ml full-art"><div class="inner">
+      <div class="cost">4</div>
+      <div class="tokens" title="3 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Transformer</h2></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">4</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem rare"></span>System · Machine Learning</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b><span class="kw">Attention.</span> Whenever this System Runs a Task, look at the top 2 cards of your deck; put one into your hand.</div>
+        <div class="tline"><b>Definition</b>A neural network design that weighs which parts of the input matter most — the architecture behind most modern LLMs.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Why might "paying attention" to the right words matter for a good answer?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card ethics"><div class="inner">
+      <div class="cost trainable">1</div>
+      <div class="namebar"><h2 style="color:#2b2418">Fairness Check</h2></div>
+      <div class="art-box"></div>
+      <div class="typebar"><span class="gem "></span>Tool · Ethical AI Design</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b>{E} — Look at target System's Capability and Trust.</div>
+        <div class="tline"><b>Definition</b>Evaluating whether an AI system's decisions are fair to everyone affected.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Whose idea of "fair" should count when people disagree?</p></div>
+    </div></div></div>
+  </div>
+
+  <div class="row">
+    <div class="cutwrap"><div class="card ethics"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="tokens" title="1 Tokens"><div class="pips"><div class="dot"></div></div></div>
+      <div class="namebar"><h2 style="color:#2b2418">Bias Audit</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">1</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">4</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem "></span>System · Ethical AI Design</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b><span class="kw">Audited.</span></div>
+        <div class="tline"><b>Definition</b>A deliberate review of a dataset or model to find and reduce unfair skew.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>If you found bias in a model, what's the first thing you'd check?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card ethics"><div class="inner">
+      <div class="cost trainable">1</div>
+      <div class="namebar"><h2 style="color:#2b2418">Model Card</h2></div>
+      <div class="art-box"></div>
+      <div class="typebar"><span class="gem "></span>Tool · Ethical AI Design</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b>Once per turn, you may remove all Flags from a System you control instead of it being Deprecated.</div>
+        <div class="tline"><b>Definition</b>A document describing an AI model's training, performance, and limitations — like a nutrition label.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Why might a company be reluctant to publish a model card?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card ethics"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2 style="color:#2b2418">Explainability</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">1</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">3</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem "></span>System · Ethical AI Design</div>
+      <div class="textlines">
+        <div class="tline"><b>Definition</b>An AI's ability to justify its decision by pointing to the features that led to it.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Should self-driving cars be required to explain every decision? Why?</p></div>
+    </div></div></div>
+  </div>
+
+  <div class="row">
+    <div class="cutwrap"><div class="card ethics"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="namebar"><h2 style="color:#2b2418">Privacy Shield</h2></div>
+      <div class="art-box"></div>
+      <div class="typebar"><span class="gem uncommon"></span>Tool · Ethical AI Design</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b>Systems you control can't be targeted by opponents' Action cards.</div>
+        <div class="tline"><b>Definition</b>Design practices that protect personal data used to train or run an AI system.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>What personal data would you not want used to train an AI, even anonymized?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card ethics"><div class="inner">
+      <div class="cost trainable">3</div>
+      <div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2 style="color:#2b2418">Accountability</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">4</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem uncommon"></span>System · Ethical AI Design</div>
+      <div class="textlines">
+        <div class="tline"><b>Definition</b>Who is responsible when an AI system causes harm — the designer, the user, or the company.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>If a self-driving car crashes, who should be held responsible?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card ethics full-art"><div class="inner">
+      <div class="cost">4</div>
+      <div class="tokens" title="3 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2 style="color:#2b2418">Ethical Framework</h2></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">5</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem rare"></span>System · Ethical AI Design</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b><span class="kw">Audited.</span></div>
+        <div class="tline"><b>Definition</b>A structured set of criteria (fairness, safety, transparency...) used to evaluate an AI system.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Pick one value (fairness, privacy, safety) — which matters most to you, and why?</p></div>
+    </div></div></div>
+  </div>
+
+  <div class="row">
+    <div class="cutwrap"><div class="card ethics"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="namebar"><h2 style="color:#2b2418">Compliance Review</h2></div>
+      <div class="art-box"></div>
+      <div class="typebar"><span class="gem "></span>Action · Ethical AI Design</div>
+      <div class="textlines">
+        <div class="tline"><b>Effect</b>Target opponent's System can't Run a Task next turn.</div>
+        <div class="tline"><b>Definition</b>A formal check to confirm an AI system meets required standards before it keeps operating.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Should a company have to pause an AI system while it's being investigated for bias?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card ethics full-art"><div class="inner">
+      <div class="cost">4</div>
+      <div class="namebar"><h2 style="color:#2b2418">Mandatory Recall</h2></div>
+      <div class="typebar"><span class="gem rare"></span>Action · Ethical AI Design</div>
+      <div class="textlines">
+        <div class="tline"><b>Effect</b>None of your opponent's Systems can Run a Task next turn (including ones they deploy that turn).</div>
+        <div class="tline"><b>Definition</b>When an AI system is found unsafe, regulators can require it be pulled from use until it’s fixed.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Should the government be able to shut down an unsafe AI product?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card impacts"><div class="inner">
+      <div class="cost trainable">1</div>
+      <div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>AI in Daily Life</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">1</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem "></span>System · Societal Impacts</div>
+      <div class="textlines">
+        <div class="tline"><b>Definition</b>AI already shapes recommendations, searches, and filters in everyday products.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>List 3 places AI touched your day today, before this game.</p></div>
+    </div></div></div>
+  </div>
+
+  <div class="row">
+    <div class="cutwrap"><div class="card impacts"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="tokens" title="1 Tokens"><div class="pips"><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Deepfake</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">3</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">1</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem "></span>System · Societal Impacts</div>
+      <div class="textlines">
+        <div class="tline"><b>Definition</b>Synthetic media generated to convincingly show something that didn't happen.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>How could you check whether a video is real before sharing it?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card impacts"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="namebar"><h2>Job Disruption</h2></div>
+      <div class="art-box"></div>
+      <div class="typebar"><span class="gem "></span>Action · Societal Impacts</div>
+      <div class="textlines">
+        <div class="tline"><b>Effect</b>Target opponent's System can't Run a Task next turn.</div>
+        <div class="tline"><b>Definition</b>AI can automate some tasks, changing which jobs exist or what skills they require.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Name a job you think AI can't replace, and explain why.</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card impacts"><div class="inner">
+      <div class="cost trainable">1</div>
+      <div class="namebar"><h2>Environmental Footprint</h2></div>
+      <div class="art-box"></div>
+      <div class="typebar"><span class="gem "></span>Action · Societal Impacts</div>
+      <div class="textlines">
+        <div class="tline"><b>Effect</b>Each player discards the top card of their Training Set.</div>
+        <div class="tline"><b>Definition</b>Training and running large AI models consumes significant energy and water.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Would knowing an AI's energy cost change how often you'd use it?</p></div>
+    </div></div></div>
+  </div>
+
+  <div class="row">
+    <div class="cutwrap"><div class="card impacts"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Data Privacy Trade-off</h2></div>
+      <div class="art-box"></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">2</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">1</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem "></span>System · Societal Impacts</div>
+      <div class="textlines">
+        <div class="tline"><b>Definition</b>Using a "free" AI tool often means trading personal data for convenience.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>What’s a "free" app you use that’s probably paid for with your data?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card impacts"><div class="inner">
+      <div class="cost trainable">2</div>
+      <div class="namebar"><h2>Regulation Debate</h2></div>
+      <div class="art-box"></div>
+      <div class="typebar"><span class="gem uncommon"></span>Action · Societal Impacts</div>
+      <div class="textlines">
+        <div class="tline"><b>Effect</b>Choose one: each player may Train an extra card this turn; or target System can’t be Audited this turn.</div>
+        <div class="tline"><b>Definition</b>Ongoing public debate over what laws should govern how AI is built and used.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>Should there be an age limit on using generative AI tools? Why or why not?</p></div>
+    </div></div></div>
+
+    <div class="cutwrap"><div class="card impacts full-art"><div class="inner">
+      <div class="cost">3</div>
+      <div class="tokens" title="3 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="namebar"><h2>Digital Divide</h2></div>
+      <div class="statrow">
+        <div class="pip"><div class="in"><div class="n">1</div><div class="l">CAP</div></div></div>
+        <div class="pip"><div class="in"><div class="n">3</div><div class="l">TRU</div></div></div>
+      </div>
+      <div class="typebar"><span class="gem rare"></span>System · Societal Impacts</div>
+      <div class="textlines">
+        <div class="tline"><b>Ability</b>This System's Tokens can't be reduced by opponents' abilities.</div>
+        <div class="tline"><b>Definition</b>Unequal access to AI tools and AI education across different communities.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>If AI tools cost money, who might get left behind?</p></div>
+    </div></div></div>
+  </div>
+
+  <div class="row">
+    <div class="cutwrap"><div class="card impacts"><div class="inner">
+      <div class="cost trainable">1</div>
+      <div class="namebar"><h2>Cognitive Offload</h2></div>
+      <div class="art-box"></div>
+      <div class="typebar"><span class="gem "></span>Action · Societal Impacts</div>
+      <div class="textlines">
+        <div class="tline"><b>Effect</b>Draw a card, then discard a card.</div>
+        <div class="tline"><b>Definition</b>Relying on AI to think, remember, or decide for you — convenient, but a skill you may stop practicing.</div>
+      </div>
+      <div class="discuss"><div class="tag">Discuss</div><p>What's something you'd lose if you let AI always do it for you?</p></div>
+    </div></div></div>
+  </div>
+</div>
+<script>
+  // Names shrink-to-fit on one line (never wrap) — short names get to actually
+  // use the larger size; the longest name falls back toward the old size
+  // instead of wrapping and cascading into a discuss-box overflow below it.
+  function fitNameText(){
+    document.querySelectorAll('.namebar h2').forEach(function(h2){
+      var maxSize = 58, minSize = 38, size = maxSize;
+      h2.style.whiteSpace = 'nowrap';
+      var bar = h2.parentElement;
+      var cs = getComputedStyle(bar);
+      var available = bar.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      h2.style.fontSize = size + 'px';
+      var guard = 0;
+      var buffer = 12;
+      while(h2.scrollWidth + buffer > available && size > minSize && guard < 60){
+        size -= 0.5; h2.style.fontSize = size + 'px'; guard++;
+      }
+    });
+  }
+  function fitDiscussionText(){
+    document.querySelectorAll('.discuss').forEach(function(box){
+      var p = box.querySelector('p');
+      if(!p) return;
+      var maxSize = 46, minSize = 26, size = maxSize;
+      p.style.fontSize = size + 'px';
+      var guard = 0;
+      var buffer = 24; // safety margin — a bare "fits" measurement isn't enough insurance
+      while(p.scrollHeight + buffer > box.clientHeight && size > minSize && guard < 60){
+        size -= 0.5; p.style.fontSize = size + 'px'; guard++;
+      }
+    });
+  }
+  // Run only after web fonts have actually finished loading — measuring
+  // against a fallback font's metrics is what caused the Decision Tree
+  // card's question to under-shrink and overflow past the card edge.
+  function fitAll(){
+    fitNameText();       // must run first — its result changes namebar height
+    fitDiscussionText();
+  }
+  function runWhenFontsReady(){
+    if(document.fonts && document.fonts.ready){
+      document.fonts.ready.then(function(){
+        fitAll();
+        // one extra pass shortly after, in case of a late layout/font swap
+        setTimeout(fitAll, 250);
+      });
+    } else {
+      window.addEventListener('load', fitAll);
+    }
+  }
+  runWhenFontsReady();
+</script>
+</body></html>

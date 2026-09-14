@@ -1,2 +1,2 @@
 # tokenstcg
-A collectable card game to teach "unplugged' AI literacy to middle and high school students.
+Tokens: the unplugged collectible card game for middle grades AI literacy.

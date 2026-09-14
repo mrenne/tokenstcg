@@ -8,11 +8,9 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%83%8F%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* sampled directly from the v2 logo's own background/ink so the page and
-       the logo read as one continuous surface, with no edge/box around it */
     --bg:#fcf6e7;
     --ink:#1f3350;
     --ink-soft:#5b6b85;
@@ -20,13 +18,9 @@
     --accent-warm:#e8793a;
   }
   *{ box-sizing:border-box; }
-  img{ max-width:100%; }
   html,body{ height:100%; }
   body{
     margin:0;
-    /* flat, not a gradient — the logo's own fill is a single flat color, so the
-       page has to be exactly flat too or a seam reappears wherever the two
-       colors drift apart under a gradient */
     background:var(--bg);
     color:var(--ink);
     font-family:'Manrope',sans-serif;
@@ -40,96 +34,82 @@
 
   .stage{
     width:100%;
-    max-width:640px;
+    max-width:800px;
     min-width:0;
     text-align:center;
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:clamp(14px,2.6vw,22px);
+    gap:clamp(16px,3vw,28px);
   }
 
-  .eyebrow{
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:.5em;
+    padding:.5em 1.1em;
+    border-radius:999px;
+    background:color-mix(in srgb, var(--accent) 12%, transparent);
     font-family:'JetBrains Mono',monospace;
-    font-size:clamp(11px,2.2vw,13px);
-    letter-spacing:.22em;
+    font-size:clamp(11px,2vw,13px);
+    letter-spacing:.18em;
     text-transform:uppercase;
     color:var(--accent);
     font-weight:600;
-    margin:0;
   }
-
-  .logo{
-    width:min(86vw, 560px);
-    min-width:0;
-    animation:float 6s ease-in-out infinite;
-  }
-  .logo img{
-    width:100%;
-    height:auto;
-    display:block;
-  }
-
-  @keyframes float{
-    0%,100%{ transform:translateY(0); }
-    50%{ transform:translateY(-8px); }
+  .badge::before{
+    content:"";
+    width:7px; height:7px;
+    border-radius:50%;
+    background:var(--accent-warm);
   }
 
   h1{
     font-family:'Baloo 2',sans-serif;
     font-weight:800;
-    font-style:italic;
-    font-size:clamp(32px,6.5vw,52px);
-    line-height:1.05;
+    font-size:clamp(64px,16vw,168px);
+    line-height:.95;
+    letter-spacing:.01em;
     margin:0;
     text-wrap:balance;
-    color:var(--ink);
-  }
-  h1 em{
-    font-style:italic;
-    background:linear-gradient(120deg, var(--accent) 30%, var(--accent-warm));
+    background:linear-gradient(120deg, var(--ink) 55%, var(--accent));
     -webkit-background-clip:text;
     background-clip:text;
     -webkit-text-fill-color:transparent;
   }
 
-  p.tagline{
-    margin:0;
-    max-width:46ch;
-    font-size:clamp(15px,2.6vw,18px);
-    line-height:1.5;
-    color:var(--ink-soft);
-  }
-
   .divider{
-    width:64px;
+    width:72px;
     height:3px;
     border-radius:2px;
     background:linear-gradient(90deg, var(--accent), var(--accent-warm));
   }
 
+  p.tagline{
+    margin:0;
+    max-width:34ch;
+    font-size:clamp(19px,3.4vw,28px);
+    font-weight:500;
+    line-height:1.4;
+    color:var(--ink-soft);
+    text-wrap:balance;
+  }
+
   footer{
-    margin-top:clamp(6px,2vw,14px);
+    margin-top:clamp(8px,2vw,16px);
     font-family:'JetBrains Mono',monospace;
     font-size:12px;
     letter-spacing:.05em;
-    color:color-mix(in srgb, var(--ink-soft) 70%, transparent);
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    .logo{ animation:none; }
+    color:color-mix(in srgb, var(--ink-soft) 60%, transparent);
   }
 </style>
 </head>
 <body>
   <div class="stage">
-    <p class="eyebrow">AI Literacy · Trading Card Game</p>
-    <div class="logo">
-      <img src="assets/tokens_logov2.jpg" alt="Tokens — the unplugged collectible card game for middle grades AI literacy">
-    </div>
-    <h1>Coming <em>Soon</em></h1>
+    <span class="badge">Coming Soon</span>
+    <h1>Tokens</h1>
     <div class="divider"></div>
-    <p class="tagline">The unplugged collectible card game for middle grades AI literacy. No screens, no logins — physical cards with real conversations.</p>
+    <p class="tagline">The unplugged collectible card game for middle grades AI literacy — physical cards with real conversations.</p>
     <footer>tokenstcg</footer>
   </div>
 </body>

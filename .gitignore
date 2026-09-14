@@ -4,6 +4,10 @@
 design/backgrounds/*
 !design/backgrounds/selected/
 
+# Third-party reference PDFs (Disney Lorcana rules, Into Film GAMERS docs,
+# CSTA/AI4K12 report) — copyrighted material kept local-only, not redistributed.
+/*.pdf
+
 # OS/editor junk
 .DS_Store
 Thumbs.db

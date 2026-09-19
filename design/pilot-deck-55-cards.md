@@ -10,7 +10,7 @@ No source citations here on the student-facing content — see the **Teacher ref
 
 | Card | Type | Rarity | Cost \| Cap/Trust/Tokens | Ability | Definition | Discussion question |
 |---|---|---|---|---|---|---|
-| Nature of Humans vs. AI | System | C | 1 \| 1/3/1 | — | AI systems can perform human-like tasks but aren't alive or conscious. | What's one thing a human can do that no card in this deck can? |
+| Not Alive | System | C | 1 \| 1/3/1 | — | AI systems can perform human-like tasks but aren't alive or conscious. | What's one thing a human can do that no card in this deck can? |
 | The Human Trainer | System | C | 2 \| 1/3/2 | Whenever this System Runs a Task, you may put the top card of your deck into your Training Set face-down. | Humans label data and curate examples that shape how an AI model behaves. | If a labeler makes a mistake, what happens to everything the model learns from it? |
 | Human-in-the-Loop | Tool | C | 2 | {E} — Remove up to 2 Flags from target System. | A design where a human reviews or overrides an automated decision before it takes effect. | Name a task where you'd always want a human to double-check the AI. |
 | Chatbot | System | C | 1 \| 1/2/1 | — | A conversational agent that talks with people via text or voice. | How can you tell whether you're talking to a chatbot or a real person? |
@@ -101,7 +101,7 @@ No source citations here on the student-facing content — see the **Teacher ref
 
 | Card | Report source |
 |---|---|
-| Nature of Humans vs. AI | Table 2 |
+| Not Alive | Table 2 |
 | The Human Trainer | Table 2 |
 | Human-in-the-Loop | Table 2 |
 | Chatbot | Appendix E |

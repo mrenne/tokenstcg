@@ -140,9 +140,57 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
 
 ## Classroom use modes
 
-1. **Quick match** (10-20 min): the full mechanic above, playable in one class period once a few turns are demoed.
-2. **Discussion mode** (GAMERS-style, 15-30 min): teacher pulls cards by suit, reads the definition and discussion question aloud, no deck or match involved at all.
-3. **Build-a-system mode** (stretch goal, not in pilot): lay out one System from each suit to "build" a coherent AI pipeline and defend the choice — a cooperative extension for later.
+1. **Quick Play** (10-20 min): the full mechanic above, playable in one class period once a few turns are demoed.
+2. **Discussion Mode** (GAMERS-style, 15-30 min): teacher pulls cards by suit, reads the definition and discussion question aloud, no deck or match involved at all.
+3. **Launch Day** (co-op, teaches AI alignment, 2 players or 2 teams, ~25-30 min): the players are the safety team at an AI company that's launching new AI as fast as it can. They win together by making AI **useful to people** (earning Tokens) before it **drifts out of control** or the launch happens without them. Students feel the AI alignment problem — capability racing ahead of oversight — instead of hearing it explained.
+
+   **Setup**
+   - **AI deck:** shuffle every Black (Machine Learning) and Red (Societal Impacts) card together, then deal **8 cards face-down** as the **Launch pile**. The rest go back in the box. The game plays this pile by itself.
+   - **Player decks:** each player builds a deck from White, Green, and Blue cards (1-2 suits, normal deckbuilding rules), draws 5, and may take the usual free mulligan.
+   - **Drift meter:** a d6 starting at 1. If Drift would push it past 6, the team loses.
+   - **Team Tokens:** each player tracks their own Tokens as usual. The team wins when the two totals **add up to 40**.
+   - **Groups of 3-4:** play as 2 pairs, each pair sharing one deck and deciding its moves together. The numbers were tuned for 2 players; larger teams made the game an "always Audit" puzzle with no real dilemma.
+
+   **Each round**
+   1. **Players' phase.** Each player takes a normal turn: Reboot, Fetch, train, deploy, Run a Task, Run an Audit. Players go first; the AI doesn't flip anything until the players have had a turn. Changes from a normal turn:
+      - **You can Audit any AI System at any time**, because AI Systems always count as exerted. Damage works as usual: the AI System hits back with its Capability. A Deprecated AI System stops drifting.
+      - **Your own Systems drift too.** If a player's System with **Capability higher than its Trust** (ChatGPT, OpenAI, Predictor, Recommender...) Runs a Task, the meter goes up 1. Taking shortcuts with powerful tools costs the whole team.
+      - **Cards that targeted an opponent now target the AI:**
+        - Manual Override, Compliance Review, Ambiguous Input: one AI System doesn't drift in the next AI phase.
+        - Mandatory Recall: no AI System drifts in the next AI phase.
+        - Human-in-the-Loop: exert to lower the meter by 2.
+        - Model Card: once per round, lower the meter by 1.
+   2. **AI phase.** Flip the top card of the Launch pile.
+      - **If it's a System**, it joins the AI zone and stays. Then **every AI System with Capability higher than its Trust drifts: +1 on the meter.** Aligned AI Systems (Sensor, Neuron, Supervised Learning, AI in Daily Life, Digital Divide) never drift. AI Systems ignore their ability text, except GAN (hits back +1 when Audited) and Reinforcement Learning (+1 on the meter when it's Deprecated — even shutting it down has a cost, a ready-made example of reward hacking).
+      - **If it's an Action or Tool**, it happens right away, aimed at the team:
+
+        | AI card | What it does to the team |
+        |---|---|
+        | Bias in Data | +1 Flag on the team's highest-Token System |
+        | Retraining Pause, Job Disruption | The team's highest-Token System can't Run a Task next turn |
+        | Environmental Footprint | Each player discards 1 card from their Training Set |
+        | Cognitive Offload | Each player discards 1 card from hand |
+        | Training Data, ImageNet | The AI speeds up: flip another card now (which also brings launch closer) |
+        | CUDA | All AI Systems get +1 Capability for the rest of the game |
+        | Regulation Debate | Good news: each player may train an extra card next turn |
+        | Tensor | Nothing |
+   3. **Check.** Team Tokens reach 40 → everyone wins. The meter goes past 6 → everyone loses. **The Launch pile is empty at the start of an AI phase → launch day arrived and the team wasn't ready: everyone loses.**
+
+   **Why it's interesting to play:** every turn is a choice between scoring and safety. Should your Claude Run a Task for 2 Tokens, or Audit the Neural Network that's adding +1 to the meter every round? The launch deadline makes over-caution lose too, so "just Audit everything" isn't safe either. Students argue about it out loud — that argument is the lesson.
+
+   **Teacher debrief (2-3 min):** "When did you choose safety over scoring? Was it worth it?" / "Which AI card was the hardest to handle, and why?" / "Did anyone take a shortcut that hurt the team?"
+
+   **Optional card tweak:** a small warning triangle beside the stats on any System where Capability > Trust, so students spot drifting Systems at a glance. Ignored in the other modes.
+
+   **Playtest (Round 9, simulated):** a scripted co-op simulator compared three team strategies — **greedy** (always score, ignore the AI), **safety-first** (Audit whenever possible), and **balanced** (score, but deal with the AI when the meter gets dangerous). A good tuning makes balanced clearly beat both extremes.
+   - First draft (meter 10, targets 20-30, no deadline) was far too easy: balanced won 92-96%, and safety-first won just as often, so caution had no cost.
+   - Adding a deadline fixed the dilemma. A fixed round limit worked, but the **Launch pile** does the same job with no extra counter, and Datasets flipping an extra card makes training data literally speed up the launch.
+   - 9% of games were lost by round 4, before players could really act. Letting **players go first** cut that to 1%.
+   - **Final numbers (8-card pile, d6 meter, target 40), 5,000 games per strategy:** balanced wins **68%**, safety-first **59%**, greedy **23%**; about 7.5 rounds.
+   - **3-4 players as individuals didn't work:** the AI had to flip 2 cards a round to keep up, and at that pressure always Auditing was best (safety ≈ balanced) — hence the "play as 2 pairs" rule.
+   - **Caveats:** bot players, not students; the balanced bot is simple, so a thoughtful team may beat 68%. That's about right for a classroom co-op (winnable, not guaranteed), but the gap between balanced and safety-first (9 points) is smaller than ideal and worth watching in a real playtest.
+
+   *History:* before Launch Day, an alignment mode was tried as a competitive Quick Play game with a Drift rule (Round 8, simulated): Systems with Capability > Trust gained a Flag each Task. It worked mechanically but didn't bring in the human side of alignment, so it was replaced by this co-op version. The Drift idea carries over. Round 8 also found that Black decks were the weakest in the *base* game in simulation (31-36%), unlike Round 7's hand-played result — still worth a closer look. *(Build-a-System mode, the earlier cooperative stretch-goal idea, was dropped in favor of Launch Day.)*
 
 ## Pilot scope (this phase)
 

@@ -30,7 +30,7 @@ Card fronts no longer show a source citation — that mapping back to the report
 
 ## Standards alignment
 
-Most cards trace to a specific row in the report's Grades 6-8 tables (or, for a few "reach" cards, 9-12) — see the Teacher reference appendix in pilot-deck-35-cards.md for the mapping, including the handful of cards (real companies and products) that are grounded in general accuracy rather than the report itself. The five suits *are* the AI4K12 categories. The palette, though, no longer follows the report's own color wheel — it's now a classic five-color TCG identity (à la Magic: The Gathering), with each color picked for what it *means*, not just to look distinct:
+Most cards trace to a specific row in the report's Grades 6-8 tables (or, for a few "reach" cards, 9-12) — see the Teacher reference appendix in pilot-deck-55-cards.md for the mapping, including the handful of cards (real companies and products) that are grounded in general accuracy rather than the report itself. The five suits *are* the AI4K12 categories. The palette, though, no longer follows the report's own color wheel — it's now a classic five-color TCG identity (à la Magic: The Gathering), with each color picked for what it *means*, not just to look distinct:
 
 | Suit ("Data Type") | Color | Why this color | What it covers | Report source |
 |---|---|---|---|---|
@@ -194,7 +194,7 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
 
 ## Pilot scope (this phase)
 
-- 55 cards across the 5 suits (1 of which is the Chase card), mostly Systems with a handful of Tools/Actions/a Dataset woven in (see pilot-deck-35-cards.md for the full, type-tagged list — filename kept for now despite the updated count).
+- 55 cards across the 5 suits (1 of which is the Chase card), mostly Systems with a handful of Tools/Actions/a Dataset woven in (see pilot-deck-55-cards.md for the full, type-tagged list).
 - Print-and-play: card fronts only, standard poker-card size, designed for a home/office color printer.
 - One class, one unit, playtested and iterated before any larger print run.
 
@@ -220,4 +220,4 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
 4. Teacher playtest partner and available class time.
 5. Teacher's guide (future phase): a parallel document restoring the source citation for each card (report or otherwise, per the Sources section above), for the educator's own reference — not shown to students.
 
-See [pilot-deck-35-cards.md](pilot-deck-35-cards.md) for the full card list with types, stats, and abilities.
+See [pilot-deck-55-cards.md](pilot-deck-55-cards.md) for the full card list with types, stats, and abilities.

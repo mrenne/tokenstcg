@@ -37,7 +37,8 @@ A vocabulary guide for teachers to use with students. It covers the words used t
 | **Reboot** | The first step of your turn: ready all your exerted cards. | To **reboot** is to restart a computer. |
 | **Sync** | The second step of your turn: handle anything that happens "at the start of your turn." | To **sync** is to bring devices or data up to date with each other. |
 | **Fetch** | The third step of your turn: draw a card. | Computers **fetch** data when they go get it from memory or the internet. |
-| **Mulligan** | Before the game, you may shuffle your opening hand back and draw 5 new cards, one time. | — |
+| **Opening hand** | The cards you start with. The player going first draws 5; the player going second draws 6, to make up for going second. | — |
+| **Mulligan** | Before the game, you may shuffle your opening hand back into your deck and draw a new hand of the same size, one time. | — |
 | **Data Type** | A card's color group. Your deck uses 1 or 2 Data Types. Each one is one of the five big ideas of AI. | — |
 | **Rarity** | How hard a card is to get, shown by the letter in the small square on the type bar: **C** Common, **U** Uncommon, **R** Rare, **★** Chase. | — |
 | **Chase card** | The rarest kind of card. Your teacher decides how you can earn one. | — |

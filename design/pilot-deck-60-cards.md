@@ -1,8 +1,8 @@
-# Tokens — Pilot Deck, 55 Cards (v0.6)
+# Tokens — Pilot Deck, 60 Cards (v0.7)
 
 Stats shown as `Cost | Capability / Trust / Tokens` for Systems. Tools, Actions, and Datasets show `Cost` and their effect only — they have no combat stats. Rarity: C = Common, U = Uncommon, R = Rare, **Ch = Chase** (see GAME_CONCEPT.md's classroom distribution note — Chase cards aren't part of the base set every student receives).
 
-No source citations here on the student-facing content — see the **Teacher reference appendix** at the bottom of this file for where each card's content is grounded: most trace back to the AI Priorities report, a few (real companies/products) to general accuracy instead, since the report is a content-accuracy grounding document, not the sole source for this project (see GAME_CONCEPT.md's Sources section). That mapping migrates into its own teacher's guide in a later phase.
+No source citations here on the student-facing content — see the **Teacher reference appendix** at the bottom of this file for where each card's content is grounded: most trace back to the AI Priorities report, a few (company/product types and computing hardware) to general accuracy instead, since the report is a content-accuracy grounding document, not the sole source for this project (see GAME_CONCEPT.md's Sources section). That mapping migrates into its own teacher's guide in a later phase.
 
 **House style — discussion questions:** one short sentence, aim for **under ~85 characters**. The card face has a fixed physical size; the mockup auto-shrinks text that runs long, but that's a safety net, not a substitute for writing tight in the first place — a question that needs shrinking to fit is a sign to rewrite it, not just an acceptable outcome.
 
@@ -19,11 +19,11 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Manual Override | Action | C | 2 | Target opponent's System can't Run a Task next turn. | A person steps in to pause an automated process before it can act again. | When should a person be allowed to override an AI's decision? |
 | **AI Isn't Magic** | Action | **Ch** | 2 (any Data Type) | Choose target System. It can't use abilities until its controller's next turn. | *Wildcard.* Ties to the report's most-repeated refrain: AI isn't sentient or magical — it's a tool built by people. | What's something people assume AI can do that it actually can't? |
 | Python | Tool | C | 1 | {E} — Draw a card. | A programming language popular for building AI models because it's readable and has huge community support. | Why might a beginner-friendly language end up being what experts use too? |
-| OpenAI | System | R | 3 \| 3/2/2 | **Fast-Tracked.** | An AI research company known for developing widely used chatbots and pushing rapid public releases. | What's a tradeoff of a company releasing powerful AI tools quickly? |
-| Anthropic | System | R | 3 \| 2/4/2 | **Highly Trusted.** | An AI company that frames its mission around AI safety research alongside building AI systems. | Should a company that builds AI also be the one checking it's safe? |
-| Claude | System | U | 2 \| 2/3/2 | **Highly Trusted.** | An AI chatbot assistant, made by Anthropic, built for conversation, writing, and analysis. | What would you want to double-check before trusting a chatbot's answer? |
-| ChatGPT | System | C | 3 \| 3/2/2 | **Fast-Tracked.** | An AI chatbot made by OpenAI — one of the fastest-adopted consumer apps in history. | Why might a chatbot become popular faster than almost any app before it? |
-| Gemini | System | C | 2 \| 2/2/2 | — | Google's AI chatbot, built to work directly alongside Search and other Google apps. | What's different about an AI built into apps you already use daily? |
+| Fast-Moving Lab | System | R | 3 \| 3/2/2 | **Fast-Tracked.** | An AI research company that races to release powerful new tools to the public quickly. | What's a tradeoff of a company releasing powerful AI tools quickly? |
+| Safety Lab | System | R | 3 \| 2/4/2 | **Highly Trusted.** | An AI company that makes safety research a core part of how it builds AI systems. | Should a company that builds AI also be the one checking it's safe? |
+| AI Assistant | System | U | 2 \| 2/3/2 | **Highly Trusted.** | A conversational AI built to help people with writing, questions, and analysis. | What would you want to double-check before trusting a chatbot's answer? |
+| Viral App | System | C | 3 \| 3/2/2 | **Fast-Tracked.** | An AI chatbot app that spread to millions of people faster than almost any app before it. | Why might a chatbot become popular faster than almost any app before it? |
+| Built-in AI | System | C | 2 \| 2/2/2 | — | An AI assistant built right into search, email, and other apps people already use every day. | What's different about an AI built into apps you already use daily? |
 
 ## Representation and Reasoning (blue) — 8 cards
 
@@ -38,7 +38,7 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Search Tree | System | R | 4 \| 3/3/3 | Whenever this System Runs a Task, look at the top 3 cards of your deck; put one into your hand. | A branching map of possible moves an AI explores to find the best one, like in tic-tac-toe. | Why might exploring every possible move become impossible for a more complex game? |
 | Ambiguous Input | Action | C | 1 | Target opponent's System can't Run a Task next turn. | Poorly represented or unclear data makes it hard for an AI system to act reliably. | Why might unclear instructions make an AI "freeze up" or give a bad answer? |
 
-## Machine Learning (black) — 16 cards
+## Machine Learning (black) — 20 cards
 
 | Card | Type | Rarity | Cost \| Cap/Trust/Tokens | Ability | Definition | Discussion question |
 |---|---|---|---|---|---|---|
@@ -58,6 +58,10 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Diffusion Model | System | U | 2 \| 3/2/2 | Whenever this System Runs a Task, remove 1 Flag from it. | A model that generates images by starting with noise and gradually refining it into a picture. | How is starting from random noise different from drawing from scratch? |
 | Unsupervised Learning | System | U | 2 \| 3/2/2 | Whenever this System Runs a Task, look at the top 2 cards of your deck; you may rearrange them. | Training a model to find patterns or groupings in data that was never labeled. | How could a computer group similar things without being told the categories? |
 | Transformer | System | R | 4 \| 4/2/3 | **Attention.** Whenever this System Runs a Task, look at the top 2 cards of your deck; put one into your hand. | A neural network design that weighs which parts of the input matter most — the architecture behind most modern LLMs. | Why might "paying attention" to the right words matter for a good answer? |
+| GPT | System | U | 3 \| 3/2/2 | Whenever this System Runs a Task, draw a card, then discard a card. | Generative Pre-trained Transformer: a large language model trained on huge amounts of text. | Why train a model on huge amounts of text before anyone uses it? |
+| GPU | Tool | U | 3 | {E} — A System you deployed this turn can Run a Task or Run an Audit this turn. | A graphics processing unit: a chip that does thousands of calculations at once, which makes training AI much faster. | Why would a chip built for video games end up powering AI? |
+| CPU | Tool | C | 1 | {E} — Draw a card, then discard a card. | A computer's central processing unit: the general-purpose chip that runs a program's steps one after another. | Why might a general-purpose chip be slower for AI than a specialized one? |
+| RAM | Tool | C | 2 | {E} — Put an Action card from your discard pile on top of your deck. | A computer's short-term memory, holding the data a program is working with right now. | What happens to what's in a computer's memory when the power goes off? |
 
 ## Ethical AI System Design and Programming (white) — 9 cards
 
@@ -73,7 +77,7 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Compliance Review | Action | C | 2 | Target opponent's System can't Run a Task next turn. | A formal check to confirm an AI system meets required standards before it keeps operating. | Should a company have to pause an AI system while it's being investigated for bias? |
 | Mandatory Recall | Action | R | 4 | None of your opponent's Systems can Run a Task next turn (including ones they deploy that turn). | When an AI system is found unsafe, regulators can require it be pulled from use until it's fixed. | Should the government be able to shut down an unsafe AI product? |
 
-## Societal Impacts of AI (red) — 8 cards
+## Societal Impacts of AI (red) — 9 cards
 
 | Card | Type | Rarity | Cost \| Cap/Trust/Tokens | Ability | Definition | Discussion question |
 |---|---|---|---|---|---|---|
@@ -85,15 +89,17 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Regulation Debate | Action | U | 2 | Choose one: each player may Train an extra card this turn; or target System can't be Audited this turn. | Ongoing public debate over what laws should govern how AI is built and used. | Should there be an age limit on using generative AI tools? Why or why not? |
 | Digital Divide | System | R | 3 \| 1/3/3 | This System's Tokens can't be reduced by opponents' abilities. | Unequal access to AI tools and AI education across different communities. | If AI tools cost money, who might get left behind? |
 | Cognitive Offload | Action | C | 1 | Draw a card, then discard a card. | Relying on AI to think, remember, or decide for you — convenient, but a skill you may stop practicing. | What's something you'd lose if you let AI always do it for you? |
+| Data Center | System | U | 3 \| 2/3/3 | Whenever this System Runs a Task, discard the top card of your Training Set. | A huge building of computers that runs AI, using lots of power and water. | Should a town welcome a data center that uses a lot of its water? |
 
 ## Deck totals
 
-- Humans and AI (14, including the Chase card) + Representation & Reasoning (8) + Machine Learning (16) + Ethical AI Design (9) + Societal Impacts (8) = **55 cards total**. (Corrected a miscount here: this file previously claimed 41 when the suits actually summed to 40 — fixed as part of this pass.)
+- Humans and AI (14, including the Chase card) + Representation & Reasoning (8) + Machine Learning (20) + Ethical AI Design (9) + Societal Impacts (9) = **60 cards total**.
 - The 4 tempo-denial Actions (Manual Override, Ambiguous Input, Retraining Pause, Compliance Review) give every suit a single-target answer; **Mandatory Recall** (White, Rare) is the board-wide version — see the playtest log in GAME_CONCEPT.md for why single-target denial alone wasn't enough.
-- By type: 27 Systems, 9 Tools, 19 Actions/Datasets (approximate — retune during playtesting).
-- By rarity: 31 Common, 13 Uncommon, 10 Rare, 1 Chase.
+- By type: 35 Systems, 11 Tools, 12 Actions, 2 Datasets (counted from the cards themselves).
+- By rarity: 33 Common, 16 Uncommon, 10 Rare, 1 Chase.
+- **v0.7 changes**: the five real-company cards got generic names (OpenAI → Fast-Moving Lab, Anthropic → Safety Lab, Claude → AI Assistant, ChatGPT → Viral App, Gemini → Built-in AI), since brand names date quickly and can read as endorsements; real examples live in the appendix below. Five new cards added: GPT, GPU, CPU, RAM (Machine Learning) and Data Center (Societal Impacts).
 - **Duplicates avoided**: Supervised Learning and Reinforcement Learning were both already in the deck before this pass — flagging rather than re-adding them as a second copy under a new name.
-- **Trainable status**: set for all 55 cards using the simplest version of the Lorcana-style default — every Common and Uncommon card is Trainable, every Rare and the Chase card are not. This was needed to actually render the full print sheet; it's a first pass; a real pass would vary it card-by-card (e.g. a few Uncommons held back, a couple of weak Commons excluded) rather than a blanket rarity cutoff, but this gets the pilot playable.
+- **Trainable status**: set for all 60 cards using the simplest version of the Lorcana-style default — every Common and Uncommon card is Trainable, every Rare and the Chase card are not. This was needed to actually render the full print sheet; it's a first pass; a real pass would vary it card-by-card (e.g. a few Uncommons held back, a couple of weak Commons excluded) rather than a blanket rarity cutoff, but this gets the pilot playable.
 
 ---
 
@@ -109,11 +115,11 @@ No source citations here on the student-facing content — see the **Teacher ref
 | AI Career Path | Appendix C (Career Exploration) |
 | AI Isn't Magic | p.7, p.36 (key refrain) |
 | Python | Table 2 (Human Role in Creating AI) — general tool reference, not report-specific |
-| OpenAI | *No direct report citation — vendor-neutral standards document doesn't name companies. Added for real-world relevance.* |
-| Anthropic | *No direct report citation — same as OpenAI.* |
-| Claude | *No direct report citation — same as OpenAI.* |
-| ChatGPT | *No direct report citation — same as OpenAI.* |
-| Gemini | *No direct report citation — same as OpenAI.* |
+| Fast-Moving Lab | *No direct report citation — vendor-neutral standards document doesn't name companies. Generic stand-in for real AI labs that release quickly (e.g. OpenAI); bring real examples into discussion.* |
+| Safety Lab | *No direct report citation — same as Fast-Moving Lab. Real-world example: Anthropic.* |
+| AI Assistant | *No direct report citation — same as Fast-Moving Lab. Real-world example: Anthropic's Claude.* |
+| Viral App | *No direct report citation — same as Fast-Moving Lab. Real-world example: OpenAI's ChatGPT.* |
+| Built-in AI | *No direct report citation — same as Fast-Moving Lab. Real-world example: Google's Gemini.* |
 | Manual Override | Table 2 (The Choice to Use AI) |
 | Abstraction | Table 3 |
 | Feature Vector | Table 3 / Appendix C |
@@ -139,6 +145,10 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Diffusion Model | Appendix E |
 | Unsupervised Learning | Appendix E |
 | Transformer | Table 3 / Appendix E |
+| GPT | Table 3 / Appendix E (large language models) |
+| GPU | *General computing reference, not report-specific.* |
+| CPU | *General computing reference, not report-specific.* |
+| RAM | *General computing reference, not report-specific.* |
 | Fairness Check | Table 5 |
 | Bias Audit | Table 5 |
 | Model Card | Appendix B (Dungan) / Appendix E |
@@ -156,3 +166,4 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Regulation Debate | p.31 (Big Idea #5) |
 | Digital Divide | p.33 (Equity Issues) |
 | Cognitive Offload | Table 2 (Choice to Use AI) / Table 6 (Individual Impacts) |
+| Data Center | Table 6 (environmental effects) |

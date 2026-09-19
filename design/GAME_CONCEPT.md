@@ -6,7 +6,7 @@
 
 This project draws on more than one reference document, each doing a different job. Worth keeping straight, since it's easy to conflate "the report" with "the whole design":
 
-- **CSTA/AI4K12 "AI Learning Priorities for All K-12 Students" report** — grounds the *learning content*: the five categories, the grade-band outcomes, the vocabulary. This is what keeps the card set research-based rather than just "AI trivia we thought was neat." It is **not** expected to cover everything on every card — real-world companies and products (OpenAI, Claude, ChatGPT...) are grounded in general accuracy instead, since a vendor-neutral standards document doesn't name them.
+- **CSTA/AI4K12 "AI Learning Priorities for All K-12 Students" report** — grounds the *learning content*: the five categories, the grade-band outcomes, the vocabulary. This is what keeps the card set research-based rather than just "AI trivia we thought was neat." It is **not** expected to cover everything on every card — cards about the kinds of companies and products that build AI (Fast-Moving Lab, Safety Lab, AI Assistant, Viral App, Built-in AI) and about computing hardware (GPU, CPU, RAM) are grounded in general accuracy instead, since a vendor-neutral standards document doesn't cover them. The company and product cards deliberately use generic names rather than real brands (they began as OpenAI, Anthropic, Claude, ChatGPT, and Gemini): brand names date quickly and can read as endorsements, so real examples belong in the teacher's guide instead.
 - **Disney Lorcana Quickstart Rules** — grounds the *game mechanics*: the ink/Training-Set resource system, turn structure, combat, the Trainable marker convention. Purely a mechanical reference, unrelated to AI content.
 - **Into Film's GAMERS resource** — grounded the early *card format* thinking (core card + expansion cards, a discussion question printed on every card) before the design settled into its current shape.
 - **[AI Pedagogy Project](https://aipedagogy.org/)** (Harvard metaLAB / Berkman Klein Center) — a second *learning content* grounding source, alongside the AI4K12 report. Its **Key Terms glossary** (`aipedagogy.org/guide/key-terms/`) will matter most as new cards get designed: it's a clean, citable, plain-language definition source for exactly the kind of vocabulary this game turns into cards. Cross-checked against the current 55-card pool already — the glossary's 12 terms are Algorithm, Artificial Intelligence, Chatbot, Foundation Model, Generative AI, Hallucination, Large Language Model, Machine Learning, Neural Network, Prompt, Reinforcement Learning from Human Feedback (RLHF), and Training Data. Chatbot, LLM, Neural Network, and Training Data are already cards; Machine Learning and Reinforcement Learning are already covered (as a suit name and an existing card, respectively — RLHF is a more specific technique than our current Reinforcement Learning card and could become its own card later). **Not yet cards, and good candidates**: Algorithm, Foundation Model, Generative AI, Hallucination, Prompt.
@@ -30,7 +30,7 @@ Card fronts no longer show a source citation — that mapping back to the report
 
 ## Standards alignment
 
-Most cards trace to a specific row in the report's Grades 6-8 tables (or, for a few "reach" cards, 9-12) — see the Teacher reference appendix in pilot-deck-55-cards.md for the mapping, including the handful of cards (real companies and products) that are grounded in general accuracy rather than the report itself. The five suits *are* the AI4K12 categories. The palette, though, no longer follows the report's own color wheel — it's now a classic five-color TCG identity (à la Magic: The Gathering), with each color picked for what it *means*, not just to look distinct:
+Most cards trace to a specific row in the report's Grades 6-8 tables (or, for a few "reach" cards, 9-12) — see the Teacher reference appendix in pilot-deck-60-cards.md for the mapping, including the handful of cards (company/product types and computing hardware) that are grounded in general accuracy rather than the report itself. The five suits *are* the AI4K12 categories. The palette, though, no longer follows the report's own color wheel — it's now a classic five-color TCG identity (à la Magic: The Gathering), with each color picked for what it *means*, not just to look distinct:
 
 | Suit ("Data Type") | Color | Why this color | What it covers | Report source |
 |---|---|---|---|---|
@@ -131,7 +131,7 @@ Every student gets the same **base set** — every Common, Uncommon, and Rare in
 
 ## Deckbuilding (scaled down for the pilot)
 
-Lorcana requires 60+ cards, max 4 copies of any card, from 1-2 inks. With only 55 unique cards in the pilot pool, that ratio doesn't work yet — so for now:
+Lorcana requires 60+ cards, max 4 copies of any card, from 1-2 inks. With only 60 unique cards in the pilot pool, that ratio doesn't work yet — so for now:
 - **Deck size:** 20 cards minimum, built from your own collection plus trades.
 - **Copy limit:** max 2 copies of any single card.
 - **Data Types:** cards from 1-2 suits only.
@@ -154,14 +154,14 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
    **Each round**
    1. **Players' phase.** Each player takes a normal turn: Reboot, Fetch, train, deploy, Run a Task, Run an Audit. Players go first; the AI doesn't flip anything until the players have had a turn. Changes from a normal turn:
       - **You can Audit any AI System at any time**, because AI Systems always count as exerted. Damage works as usual: the AI System hits back with its Capability. A Deprecated AI System stops drifting.
-      - **Your own Systems drift too.** If a player's System with **Capability higher than its Trust** (ChatGPT, OpenAI, Predictor, Recommender...) Runs a Task, the meter goes up 1. Taking shortcuts with powerful tools costs the whole team.
+      - **Your own Systems drift too.** If a player's System with **Capability higher than its Trust** (Viral App, Fast-Moving Lab, Predictor, Recommender...) Runs a Task, the meter goes up 1. Taking shortcuts with powerful tools costs the whole team.
       - **Cards that targeted an opponent now target the AI:**
         - Manual Override, Compliance Review, Ambiguous Input: one AI System doesn't drift in the next AI phase.
         - Mandatory Recall: no AI System drifts in the next AI phase.
         - Human-in-the-Loop: exert to lower the meter by 2.
         - Model Card: once per round, lower the meter by 1.
    2. **AI phase.** Flip the top card of the Launch pile.
-      - **If it's a System**, it joins the AI zone and stays. Then **every AI System with Capability higher than its Trust drifts: +1 on the meter.** Aligned AI Systems (Sensor, Neuron, Supervised Learning, AI in Daily Life, Digital Divide) never drift. AI Systems ignore their ability text, except GAN (hits back +1 when Audited) and Reinforcement Learning (+1 on the meter when it's Deprecated — even shutting it down has a cost, a ready-made example of reward hacking).
+      - **If it's a System**, it joins the AI zone and stays. Then **every AI System with Capability higher than its Trust drifts: +1 on the meter.** Aligned AI Systems (Sensor, Neuron, Supervised Learning, AI in Daily Life, Digital Divide, Data Center) never drift. AI Systems ignore their ability text, except GAN (hits back +1 when Audited) and Reinforcement Learning (+1 on the meter when it's Deprecated — even shutting it down has a cost, a ready-made example of reward hacking).
       - **If it's an Action or Tool**, it happens right away, aimed at the team:
 
         | AI card | What it does to the team |
@@ -170,13 +170,13 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
         | Retraining Pause, Job Disruption | The team's highest-Token System can't Run a Task next turn |
         | Environmental Footprint | Each player discards 1 card from their Training Set |
         | Cognitive Offload | Each player discards 1 card from hand |
-        | Training Data, ImageNet | The AI speeds up: flip another card now (which also brings launch closer) |
-        | CUDA | All AI Systems get +1 Capability for the rest of the game |
+        | Training Data, ImageNet, CPU, RAM | The AI speeds up: flip another card now (which also brings launch closer) |
+        | CUDA, GPU | All AI Systems get +1 Capability for the rest of the game |
         | Regulation Debate | Good news: each player may train an extra card next turn |
         | Tensor | Nothing |
    3. **Check.** Team Tokens reach 40 → everyone wins. The meter goes past 6 → everyone loses. **The Launch pile is empty at the start of an AI phase → launch day arrived and the team wasn't ready: everyone loses.**
 
-   **Why it's interesting to play:** every turn is a choice between scoring and safety. Should your Claude Run a Task for 2 Tokens, or Audit the Neural Network that's adding +1 to the meter every round? The launch deadline makes over-caution lose too, so "just Audit everything" isn't safe either. Students argue about it out loud — that argument is the lesson.
+   **Why it's interesting to play:** every turn is a choice between scoring and safety. Should your AI Assistant Run a Task for 2 Tokens, or Audit the Neural Network that's adding +1 to the meter every round? The launch deadline makes over-caution lose too, so "just Audit everything" isn't safe either. Students argue about it out loud — that argument is the lesson.
 
    **Teacher debrief (2-3 min):** "When did you choose safety over scoring? Was it worth it?" / "Which AI card was the hardest to handle, and why?" / "Did anyone take a shortcut that hurt the team?"
 
@@ -189,12 +189,13 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
    - **Final numbers (8-card pile, d6 meter, target 40), 5,000 games per strategy:** balanced wins **68%**, safety-first **59%**, greedy **23%**; about 7.5 rounds.
    - **3-4 players as individuals didn't work:** the AI had to flip 2 cards a round to keep up, and at that pressure always Auditing was best (safety ≈ balanced) — hence the "play as 2 pairs" rule.
    - **Caveats:** bot players, not students; the balanced bot is simple, so a thoughtful team may beat 68%. That's about right for a classroom co-op (winnable, not guaranteed), but the gap between balanced and safety-first (9 points) is smaller than ideal and worth watching in a real playtest.
+   - **Re-check after the v0.7 cards** (GPT, GPU, CPU, RAM, Data Center all join the AI deck, and the Round 10 cost changes apply): with no other change the game got easier (balanced 78%), because the new Tools did little and Data Center never drifts. Making CPU and RAM speed the AI up like Datasets (and GPU act like CUDA) restores the balance at the same 40-Token target: **balanced 63%, safety-first 53%, greedy 29%**, ~7.6 rounds.
 
    *History:* before Launch Day, an alignment mode was tried as a competitive Quick Play game with a Drift rule (Round 8, simulated): Systems with Capability > Trust gained a Flag each Task. It worked mechanically but didn't bring in the human side of alignment, so it was replaced by this co-op version. The Drift idea carries over. Round 8 also found that Black decks were the weakest in the *base* game in simulation (31-36%), unlike Round 7's hand-played result — still worth a closer look. *(Build-a-System mode, the earlier cooperative stretch-goal idea, was dropped in favor of Launch Day.)*
 
 ## Pilot scope (this phase)
 
-- 55 cards across the 5 suits (1 of which is the Chase card), mostly Systems with a handful of Tools/Actions/a Dataset woven in (see pilot-deck-55-cards.md for the full, type-tagged list).
+- 60 cards across the 5 suits (1 of which is the Chase card), mostly Systems with a handful of Tools/Actions/a Dataset woven in (see pilot-deck-60-cards.md for the full, type-tagged list).
 - Print-and-play: card fronts only, standard poker-card size, designed for a home/office color printer.
 - One class, one unit, playtested and iterated before any larger print run.
 
@@ -220,6 +221,7 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
      - **Tested fixes** (500 games per pairing each), worst-to-best deck spread in brackets: baseline 33-74% (42 pts) · ChatGPT cost 3: 36 pts · Black's 3-cost Systems cost 2: 36 pts · those Systems at 3 Tokens: 33 pts · **ChatGPT cost 3 + Black's 3-cost Systems (Supervised Learning, Unsupervised Learning, Diffusion Model, Neural Network, GAN) at cost 2: 30 pts**, the best result. Black decks average 39% → 49%, Green 66% → 61%, and Black+Red goes 36% → 49%. Adding Deepfake +1 Token on top changed nothing measurable.
      - **Applied** (card list, print source, and all 7 print pages updated): ChatGPT cost 2 → 3; Supervised Learning, Unsupervised Learning, Diffusion Model, Neural Network, and GAN cost 3 → 2. Deepfake is weak but thematically fine as a "cheap, flashy, fragile" card; leave it for now. Blue+White (36%) is still the weakest deck after the fix — a smaller follow-up.
      - **Side effect to watch:** Datasets (Training Data, ImageNet) can be processed for free by exerting a Cost-3+ System. After this change Black has only three such Systems left (Reinforcement Learning, Transformer, Large Language Model), so Black's own Datasets get the free option less often — while ChatGPT, now Cost 3, newly qualifies for Green. The simulator didn't model the free option, so check it in real play.
+     - **v0.7 card changes, checked the same way:** the five real-company cards were renamed to generic names (stats unchanged) and five new cards were added: GPT (Black System, 3 | 3/2/2, loots on Task), GPU (Black Tool, lets a just-deployed System act), CPU (Black Tool, loot), RAM (Black Tool, recycles an Action), and Data Center (Red System, 3 | 2/3/3, costs a Training Set card per Task). Re-running the Round 10 round-robin with them: deck spread 30 → 29 points, game length unchanged (~7 rounds), Red decks up slightly (Data Center), Black flat. No balance problem introduced; RAM and GPT were only approximated in the simulator, so watch them in real play.
      - **Caveat:** Round 7's hand-played Black+Red win and this simulation disagree. The simulation plays many more games but with simple bots that don't plan combos (like Round 7's double Fast-Tracked finish), so it may undervalue Black's burst turns. A real two-person game with the proposed costs is still the best check.
 2. ~~Art direction~~ — settled, now rarity-differentiated:
    - **Common/Uncommon**: a small windowed art box near the top (like a traditional trading card), the rest of the card a solid suit-colored body.
@@ -230,4 +232,4 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
 4. Teacher playtest partner and available class time.
 5. Teacher's guide (future phase): a parallel document restoring the source citation for each card (report or otherwise, per the Sources section above), for the educator's own reference — not shown to students.
 
-See [pilot-deck-55-cards.md](pilot-deck-55-cards.md) for the full card list with types, stats, and abilities.
+See [pilot-deck-60-cards.md](pilot-deck-60-cards.md) for the full card list with types, stats, and abilities.

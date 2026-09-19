@@ -27,6 +27,7 @@
 
   .card{
     position:relative; width:750px; aspect-ratio:5/7; border-radius:58px;
+    font-family:'Manrope',system-ui,sans-serif;
     padding:12px; box-shadow:0 6px 12px rgba(20,10,40,.12);
     display:flex; flex-direction:column;
   }
@@ -128,7 +129,7 @@
   /* text lines — a frosted panel floating on the art, not a solid strip */
   .textlines{ position:relative; z-index:2; flex:none; margin:0 22px 16px; padding:23px 32px; display:flex; flex-direction:column; gap:17px;
     border-radius:26px; background:rgba(10,8,16,.64); }
-  .tline{ font-size:32px; line-height:1.36; color:#f4f2fa; }
+  .tline{ font-size:28px; line-height:1.32; color:#f4f2fa; }
   .tline b{ font-family:'JetBrains Mono',monospace; font-size:25px; letter-spacing:.08em; text-transform:uppercase; color:rgba(244,242,250,.7); display:block; margin-bottom:4px; }
   .tline .kw{ font-family:'Baloo 2',sans-serif; font-weight:700; font-style:italic; color:#fff; }
 
@@ -159,8 +160,6 @@
   html{ background:var(--ground); }
   body{ margin:0; background:var(--ground); color:var(--text); font-family:'Manrope',system-ui,sans-serif; font-size:15px; line-height:1.5;
     padding-inline:clamp(16px,4vw,48px); padding-block:0 64px; }
-  /* card body copy renders in the browser serif, exactly as on the printed sheets */
-  .card{ font-family:'Times New Roman',Times,serif; }
   .wrap{ max-width:1320px; margin:0 auto; }
   header.top{ display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:12px 32px; padding-block:clamp(28px,5vw,56px) 20px; }
   .brand{ display:flex; flex-direction:column; gap:6px; min-width:0; }
@@ -316,7 +315,7 @@
       p.style.fontSize = size + 'px';
       var guard = 0;
       var buffer = 24; // safety margin — a bare "fits" measurement isn't enough insurance
-      while(p.scrollHeight + buffer > box.clientHeight && size > minSize && guard < 60){
+      while(discussNeeds(box) + 8 > box.clientHeight && size > minSize && guard < 60){
         size -= 0.5; p.style.fontSize = size + 'px'; guard++;
       }
     });
@@ -324,8 +323,40 @@
   // Run only after web fonts have actually finished loading — measuring
   // against a fallback font's metrics is what caused the Decision Tree
   // card's question to under-shrink and overflow past the card edge.
+  // When a card's question would have to shrink below a comfortable size,
+  // shrink its ability/definition text a little instead, just until it fits.
+  // Height the Discuss box's content needs: padding + "Discuss" tag + question.
+  function discussNeeds(box){
+    var cs = getComputedStyle(box), tag = box.querySelector('.tag'), p = box.querySelector('p');
+    var tagH = tag ? tag.offsetHeight + parseFloat(getComputedStyle(tag).marginBottom) : 0;
+    return parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom) + tagH + p.scrollHeight;
+  }
+  function questionSize(box){
+    var p = box.querySelector('p');
+    if(!p) return 46;
+    var size = 46, guard = 0;
+    p.style.fontSize = size + 'px';
+    while(discussNeeds(box) + 8 > box.clientHeight && size > 26 && guard < 60){
+      size -= 0.5; p.style.fontSize = size + 'px'; guard++;
+    }
+    return size;
+  }
+  function fitTextLines(){
+    document.querySelectorAll('.inner').forEach(function(inner){
+      var box = inner.querySelector('.discuss');
+      var lines = inner.querySelectorAll('.tline');
+      if(!box || !lines.length) return;
+      var size = 28, guard = 0;
+      lines.forEach(function(l){ l.style.fontSize = size + 'px'; });
+      while(questionSize(box) < 36 && size > 22 && guard < 30){
+        size -= 0.5; guard++;
+        lines.forEach(function(l){ l.style.fontSize = size + 'px'; });
+      }
+    });
+  }
   function fitAll(){
     fitNameText();       // must run first — its result changes namebar height
+    fitTextLines();      // then free up room for the Discuss box
     fitDiscussionText();
   }
   function runWhenFontsReady(){

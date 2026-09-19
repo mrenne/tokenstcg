@@ -121,10 +121,17 @@
   .typebar{ position:relative; z-index:2; display:flex; align-items:center; gap:20px; padding:17px 35px; color:#fff;
     font-family:'JetBrains Mono',monospace; font-size:26px; letter-spacing:.08em; text-transform:uppercase; font-weight:700;
     background:rgba(10,8,16,.62); }
-  .typebar .gem{ width:26px;height:26px;border-radius:8px; background:rgba(255,255,255,.4); border:2px solid rgba(255,255,255,.65); flex:none; }
-  .typebar .gem.uncommon{ background:rgba(255,255,255,.65); }
-  .typebar .gem.rare{ background:#fff; box-shadow:0 0 0 5px rgba(255,255,255,.3); }
-  .typebar .gem.chase{ background:conic-gradient(from 90deg,var(--chase-a),var(--chase-b),var(--chase-c),var(--chase-a)); box-shadow:0 0 0 5px rgba(255,255,255,.6); }
+  /* rarity gem carries a letter: C / U / R, and a star for Chase */
+  .typebar .gem{ width:36px;height:36px;border-radius:9px; flex:none; display:inline-flex; align-items:center; justify-content:center;
+    background:transparent; border:3px solid rgba(255,255,255,.85); color:#fff;
+    font-family:'JetBrains Mono',monospace; font-size:21px; font-weight:700; line-height:1; letter-spacing:0; }
+  .typebar .gem::after{ content:"C"; }
+  .typebar .gem.uncommon{ background:rgba(255,255,255,.3); border-color:#fff; }
+  .typebar .gem.uncommon::after{ content:"U"; }
+  .typebar .gem.rare{ background:#fff; border-color:#fff; color:#181425; box-shadow:0 0 0 5px rgba(255,255,255,.3); }
+  .typebar .gem.rare::after{ content:"R"; }
+  .typebar .gem.chase{ background:conic-gradient(from 90deg,var(--chase-a),var(--chase-b),var(--chase-c),var(--chase-a)); border-color:#fff; color:#181425; box-shadow:0 0 0 5px rgba(255,255,255,.6); }
+  .typebar .gem.chase::after{ content:"\2605"; font-size:22px; }
 
   /* text lines — a frosted panel floating on the art, not a solid strip */
   .textlines{ position:relative; z-index:2; flex:none; margin:0 22px 16px; padding:23px 32px; display:flex; flex-direction:column; gap:17px;

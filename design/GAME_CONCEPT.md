@@ -56,7 +56,7 @@ A deck draws from 1-2 Data Types, same as Lorcana restricts a deck to 1-2 inks �
 - **Tokens** (top-right flap, mirrored — Systems only; shown as a pip count — one dot per Token scored on a Task — rather than a numeral, so it never reads as a second Cost). **Hard rule: no System's Tokens stat may exceed 4** — this is what makes the pip display work at all, and it's a permanent card-design constraint, not just true of the current pilot pool. Keep it in mind for every future card.
 - **Name**, centered at the top between the two flaps, and **card type** (System / Tool / Action / Dataset)
 - **Classification tags** (small category words referenced by some abilities, e.g. "Model," "Human Role," "Consequence")
-- **Rarity gem**: Common / Uncommon / Rare / Chase
+- **Rarity gem**: a small square at the left of the type bar with a letter in it: **C** (Common, outlined), **U** (Uncommon, lightly filled), **R** (Rare, solid white with a glow), **★** (Chase, rainbow). The letter makes rarity readable even on a home printer, where brightness alone was hard to tell apart. Rare and Chase cards are also full-art.
 - **Stats** (Systems only): Capability and Trust sit in a stat row over the art; Tokens moved up to the top-right flap so it reads at a glance, the same way Cost does at top-left
 - **Art**: full-bleed per-suit watermark art fills the whole card (no separate illustration panel) — Ability/Definition and the card-type bar sit in frosted translucent panels over it so they stay legible
 - **Ability text** (keyword and/or plain-English rules text)

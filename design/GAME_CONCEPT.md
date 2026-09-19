@@ -113,7 +113,7 @@ First player to reach a target Token count wins. Suggested target for the pilot'
 ## Keyword abilities (starter set — more will emerge as we design more cards)
 
 - **Fast-Tracked** — this System can Run a Task or Run an Audit the same turn it's deployed. (Machine Learning flavor: an agent that acts autonomously from the start.)
-- **Audited** — this System can't be Audited by a System with lower Trust than its own. (Ethical AI Design flavor: a well-vetted system is hard to challenge unfairly.)
+- **Certified** — this System can't be Audited by a System with lower Trust than its own. (Renamed from "Audited" so the keyword isn't confused with the Run an Audit action.) (Ethical AI Design flavor: a well-vetted system is hard to challenge unfairly.)
 - **Transparent** — when this System would be Deprecated, its controller may first look at the top card of their deck and draw it if it's a Tool. (Societal Impacts flavor: openness about failure still has value.)
 
 ## Rarity & trading

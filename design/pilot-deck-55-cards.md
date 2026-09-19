@@ -20,8 +20,8 @@ No source citations here on the student-facing content — see the **Teacher ref
 | **AI Isn't Magic** | Action | **Ch** | 2 (any Data Type) | Choose target System. It can't use abilities until its controller's next turn. | *Wildcard.* Ties to the report's most-repeated refrain: AI isn't sentient or magical — it's a tool built by people. | What's something people assume AI can do that it actually can't? |
 | Python | Tool | C | 1 | {E} — Draw a card. | A programming language popular for building AI models because it's readable and has huge community support. | Why might a beginner-friendly language end up being what experts use too? |
 | OpenAI | System | R | 3 \| 3/2/2 | **Fast-Tracked.** | An AI research company known for developing widely used chatbots and pushing rapid public releases. | What's a tradeoff of a company releasing powerful AI tools quickly? |
-| Anthropic | System | R | 3 \| 2/4/2 | **Certified.** | An AI company that frames its mission around AI safety research alongside building AI systems. | Should a company that builds AI also be the one checking it's safe? |
-| Claude | System | U | 2 \| 2/3/2 | **Certified.** | An AI chatbot assistant, made by Anthropic, built for conversation, writing, and analysis. | What would you want to double-check before trusting a chatbot's answer? |
+| Anthropic | System | R | 3 \| 2/4/2 | **Protected.** | An AI company that frames its mission around AI safety research alongside building AI systems. | Should a company that builds AI also be the one checking it's safe? |
+| Claude | System | U | 2 \| 2/3/2 | **Protected.** | An AI chatbot assistant, made by Anthropic, built for conversation, writing, and analysis. | What would you want to double-check before trusting a chatbot's answer? |
 | ChatGPT | System | C | 3 \| 3/2/2 | **Fast-Tracked.** | An AI chatbot made by OpenAI — one of the fastest-adopted consumer apps in history. | Why might a chatbot become popular faster than almost any app before it? |
 | Gemini | System | C | 2 \| 2/2/2 | — | Google's AI chatbot, built to work directly alongside Search and other Google apps. | What's different about an AI built into apps you already use daily? |
 
@@ -34,7 +34,7 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Classifier | System | C | 2 \| 2/2/2 | — | A model that sorts input into categories, like spam vs. not-spam. | What's something in your life that gets automatically "classified" for you? |
 | Predictor | System | C | 2 \| 3/1/2 | — | A model that outputs a continuous value, like estimating a house's price. | What would you want an AI to predict for you, if it could? |
 | Recommender | System | C | 2 \| 3/1/2 | — | A model that suggests items based on what similar users liked. | Has a recommendation ever felt "too accurate"? Why might that happen? |
-| Decision Tree | System | U | 3 \| 2/4/2 | **Certified.** | A series of yes/no tests that leads to a decision — explainable step by step. | Sketch a 3-question decision tree for "what should I eat for lunch?" |
+| Decision Tree | System | U | 3 \| 2/4/2 | **Protected.** | A series of yes/no tests that leads to a decision — explainable step by step. | Sketch a 3-question decision tree for "what should I eat for lunch?" |
 | Search Tree | System | R | 4 \| 3/3/3 | Whenever this System Runs a Task, look at the top 3 cards of your deck; put one into your hand. | A branching map of possible moves an AI explores to find the best one, like in tic-tac-toe. | Why might exploring every possible move become impossible for a more complex game? |
 | Ambiguous Input | Action | C | 1 | Target opponent's System can't Run a Task next turn. | Poorly represented or unclear data makes it hard for an AI system to act reliably. | Why might unclear instructions make an AI "freeze up" or give a bad answer? |
 
@@ -64,12 +64,12 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Card | Type | Rarity | Cost \| Cap/Trust/Tokens | Ability | Definition | Discussion question |
 |---|---|---|---|---|---|---|
 | Fairness Check | Tool | C | 1 | {E} — Look at target System's Capability and Trust. | Evaluating whether an AI system's decisions are fair to everyone affected. | Whose idea of "fair" should count when people disagree? |
-| Bias Audit | System | C | 2 \| 1/4/1 | **Certified.** | A deliberate review of a dataset or model to find and reduce unfair skew. | If you found bias in a model, what's the first thing you'd check? |
+| Bias Audit | System | C | 2 \| 1/4/1 | **Protected.** | A deliberate review of a dataset or model to find and reduce unfair skew. | If you found bias in a model, what's the first thing you'd check? |
 | Model Card | Tool | C | 1 | Once per turn, you may remove all Flags from a System you control instead of it being Deprecated. | A document describing an AI model's training, performance, and limitations — like a nutrition label. | Why might a company be reluctant to publish a model card? |
 | Explainability | System | C | 2 \| 1/3/2 | — | An AI's ability to justify its decision by pointing to the features that led to it. | Should self-driving cars be required to explain every decision? Why? |
 | Privacy Shield | Tool | U | 2 | Systems you control can't be targeted by opponents' Action cards. | Design practices that protect personal data used to train or run an AI system. | What personal data would you not want used to train an AI, even anonymized? |
 | Accountability | System | U | 3 \| 2/4/2 | — | Who is responsible when an AI system causes harm — the designer, the user, or the company. | If a self-driving car crashes, who should be held responsible? |
-| Ethical Framework | System | R | 4 \| 2/5/3 | **Certified.** | A structured set of criteria (fairness, safety, transparency...) used to evaluate an AI system. | Pick one value (fairness, privacy, safety) — which matters most to you, and why? |
+| Ethical Framework | System | R | 4 \| 2/5/3 | **Protected.** | A structured set of criteria (fairness, safety, transparency...) used to evaluate an AI system. | Pick one value (fairness, privacy, safety) — which matters most to you, and why? |
 | Compliance Review | Action | C | 2 | Target opponent's System can't Run a Task next turn. | A formal check to confirm an AI system meets required standards before it keeps operating. | Should a company have to pause an AI system while it's being investigated for bias? |
 | Mandatory Recall | Action | R | 4 | None of your opponent's Systems can Run a Task next turn (including ones they deploy that turn). | When an AI system is found unsafe, regulators can require it be pulled from use until it's fixed. | Should the government be able to shut down an unsafe AI product? |
 

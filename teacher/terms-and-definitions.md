@@ -159,6 +159,32 @@ How AI changes people's lives, communities, and the planet.
 | **Job Disruption** | Action | AI can automate some tasks, changing which jobs exist or what skills they require. |
 | **Regulation Debate** | Action | Ongoing public debate over what laws should govern how AI is built and used. |
 
+## Teacher Resources
+
+Background for teachers, not student-facing. The first two sources are what the card content is checked against; the third is for framing *why* an unplugged game.
+
+| Resource | What it's for |
+|---|---|
+| [CSTA/AI4K12 "AI Learning Priorities for All K-12 Students"](https://ai4k12.org/) | The five big ideas this game's colors come from, plus grade-band outcomes. Most cards trace to a row in its Grades 6-8 tables. |
+| [AI Pedagogy Project — Key Terms](https://aipedagogy.org/guide/key-terms/) (Harvard metaLAB) | Plain-language definitions of AI vocabulary, and a source of candidates for new cards. |
+| [MIT: AI and Education](https://aiandeducation.mit.edu/report/) (August 2026) | Principles like "put humanity first" and "augmentation not automation." Note: it covers generative AI in *higher education*, with no K-12 classroom guidance, so use it for rationale rather than lesson content. |
+
+### Materials in this project
+
+| Material | Use it for |
+|---|---|
+| [How to Play](https://tokenstcg.com/how_to_play/) | A picture-first guide to hand a new player. |
+| [Sample cards](https://tokenstcg.com/sample_cards/) | All 60 cards on screen, filterable by color and type. |
+| `design/pilot-deck-60-cards.md` | Every card's stats, ability, definition, and question, plus the appendix mapping cards to report sources. |
+| `design/GAME_CONCEPT.md` | Full rules, the three classroom modes, and the playtest history. |
+| `design/tokens-print-page-*.png` | Print-and-play sheets, 7 pages at 300 DPI. Print at Actual Size / 100%. |
+
+### Three ways to run it
+
+- **Quick Play** (10-20 min): the two-player game. Best after students know a few terms.
+- **Discussion Mode** (15-30 min): read cards' definitions and questions aloud. No decks, no winner.
+- **Launch Day** (25-30 min): a co-op game about the AI alignment problem. Players keep AI useful before it drifts out of control.
+
 ## Acronyms
 
 | Short form | Stands for |

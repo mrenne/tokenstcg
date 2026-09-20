@@ -232,6 +232,17 @@
   .gemdemo.u{ background:rgba(255,255,255,.3); }
   .gemdemo.r{ background:#fff; color:#181425; }
   .gemdemo.ch{ background:conic-gradient(from 90deg,var(--chase-a),var(--chase-b),var(--chase-c),var(--chase-a)); color:#181425; }
+  /* easy to miss */
+  .missgrid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; }
+  .miss{ background:var(--panel); border:1px solid var(--rule); border-radius:18px; padding:18px; display:flex; gap:14px; align-items:flex-start; }
+  .miss svg{ flex:none; }
+  .miss b{ display:block; font-family:'Baloo 2',sans-serif; font-size:17px; margin-bottom:2px; }
+  .miss span{ color:var(--muted); font-size:14px; }
+  .taxladder{ display:flex; flex-wrap:wrap; gap:clamp(10px,2vw,22px); align-items:flex-end; justify-content:center; margin-bottom:22px; }
+  .taxstep{ display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .taxstep .which{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--muted); letter-spacing:.08em; }
+  .taxchip{ padding:5px 13px; border-radius:999px; font:700 15px 'Baloo 2',sans-serif; background:#15233d; border:1px solid var(--rule); color:var(--muted); }
+  .taxchip.up{ background:#3a2a12; border-color:#7a5a24; color:var(--warm); }
   footer{ margin-top:56px; padding-top:20px; border-top:1px solid var(--rule); color:var(--muted); font-size:14px; }
   footer a{ color:var(--accent); }
   @media (max-width:760px){
@@ -328,6 +339,24 @@
     <span class="rchip"><span class="gemdemo u">U</span> Uncommon</span>
     <span class="rchip"><span class="gemdemo r">R</span> Rare</span>
     <span class="rchip"><span class="gemdemo ch">★</span> Chase</span>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><div class="step">8</div><h2>Easy to miss</h2></div>
+  <div class="taxladder">
+    <div class="taxstep"><div class="which">1ST SYSTEM</div><div class="cardframe" style="--w:96px; --s:0.1280"><div class="scaler"><div class="card humans"><div class="inner"><div class="cost trainable">1</div><div class="tokens" title="1 Tokens"><div class="pips"><div class="dot"></div></div></div><div class="namebar"><h2>Chatbot</h2></div><div class="art-box"></div><div class="statrow"><div class="pip"><div class="in"><div class="n">1</div><div class="l">CAP</div></div></div><div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div></div><div class="typebar"><span class="gem "></span>System · Humans and AI</div><div class="textlines"><div class="tline"><b>Definition</b>A conversational agent that talks with people via text or voice.</div></div><div class="discuss"><div class="tag">Discuss</div><p>How can you tell whether you're talking to a chatbot or a real person?</p></div></div></div></div></div><div class="taxchip">+0</div></div>
+    <div class="taxstep"><div class="which">2ND</div><div class="cardframe" style="--w:96px; --s:0.1280"><div class="scaler"><div class="card repres"><div class="inner"><div class="cost trainable">2</div><div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div><div class="namebar"><h2>Classifier</h2></div><div class="art-box"></div><div class="statrow"><div class="pip"><div class="in"><div class="n">2</div><div class="l">CAP</div></div></div><div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div></div><div class="typebar"><span class="gem "></span>System · Rep. &amp; Reasoning</div><div class="textlines"><div class="tline"><b>Definition</b>A model that sorts input into categories, like spam vs. not-spam.</div></div><div class="discuss"><div class="tag">Discuss</div><p>What's something in your life that gets automatically "classified" for you?</p></div></div></div></div></div><div class="taxchip">+0</div></div>
+    <div class="taxstep"><div class="which">3RD</div><div class="cardframe" style="--w:96px; --s:0.1280"><div class="scaler"><div class="card ml"><div class="inner"><div class="cost trainable">3</div><div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div><div class="namebar"><h2>GPT</h2></div><div class="art-box"></div><div class="statrow"><div class="pip"><div class="in"><div class="n">3</div><div class="l">CAP</div></div></div><div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div></div><div class="typebar"><span class="gem uncommon"></span>System · Machine Learning</div><div class="textlines"><div class="tline"><b>Ability</b>Whenever this System Runs a Task, draw a card, then discard a card.</div><div class="tline"><b>Definition</b>An LLM pre-trained on huge amounts of text.</div></div><div class="discuss"><div class="tag">Discuss</div><p>GPT means Generative Pre-trained Transformer. Why pre-train?</p></div></div></div></div></div><div class="taxchip up">+1 Data</div></div>
+    <div class="taxstep"><div class="which">4TH</div><div class="cardframe" style="--w:96px; --s:0.1280"><div class="scaler"><div class="card ml full-art"><div class="inner"><div class="cost">4</div><div class="tokens" title="3 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div><div class="namebar"><h2>Transformer</h2></div><div class="statrow"><div class="pip"><div class="in"><div class="n">4</div><div class="l">CAP</div></div></div><div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div></div><div class="typebar"><span class="gem rare"></span>System · Machine Learning</div><div class="textlines"><div class="tline"><b>Ability</b><span class="kw">Attention.</span> Whenever this System Runs a Task, look at the top 2 cards of your deck; put one into your hand.</div><div class="tline"><b>Definition</b>A neural network design that weighs which parts of the input matter most — the architecture behind most modern LLMs.</div></div><div class="discuss"><div class="tag">Discuss</div><p>Why might "paying attention" to the right words matter for a good answer?</p></div></div></div></div></div><div class="taxchip up">+2 Data</div></div>
+  </div>
+  <p class="caption" style="margin:0 auto 26px">More Systems out = each new one costs more. Lose one and the price drops back.</p>
+  <div class="missgrid">
+    <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5ec8ff" stroke-width="2" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg><div><b>Data comes back</b><span>Your Training Set refreshes every turn. It is never used up.</span></div></div>
+    <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ff7a90" stroke-width="2"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.2"/></svg><div><b>Scoring exposes you</b><span>Only sideways Systems can be Audited. Tasking turns yours sideways.</span></div></div>
+    <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ff7a90" stroke-width="2" stroke-linecap="round"><path d="M6 21V4"/><path d="M6 5h11l-2.2 3.5L17 12H6" fill="#ff7a90" fill-opacity=".25"/></svg><div><b>Flags never heal</b><span>Damage stays all game unless a card removes it.</span></div></div>
+    <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5ec8ff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><div><b>Tools act right away</b><span>New Systems wait a turn. Tools don't.</span></div></div>
+    <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#e8b955" stroke-width="2" stroke-linejoin="round"><rect x="4" y="7.5" width="9" height="12" rx="2"/><path d="M15.5 5.5l3.5 3.5-3.5 3.5"/><path d="M19 9h-6"/></svg><div><b>Free Datasets cost a turn</b><span>Exerting a big System to pay means it can't Task, and it can be Audited.</span></div></div>
   </div>
 </section>
 

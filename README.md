@@ -7,6 +7,7 @@ Students collect and trade cards representing real AI concepts, organized into f
 - **Website**: [tokenstcg.com](https://tokenstcg.com/) — coming soon
 - **Game design**: [design/GAME_CONCEPT.md](design/GAME_CONCEPT.md)
 - **Full card list**: [design/pilot-deck-60-cards.md](design/pilot-deck-60-cards.md)
+- **How to play** (visual guide for new players): [how_to_play/index.html](how_to_play/index.html) — live at [tokenstcg.com/how_to_play](https://tokenstcg.com/how_to_play/)
 - **Terms and definitions** (for teachers to use with students): [teacher/terms-and-definitions.md](teacher/terms-and-definitions.md)
 - **Print-and-play sheets**: `design/tokens-print-page-*.png` (7 pages, all 60 cards, sized for home printing at true 300 DPI — print at Actual Size / 100%)
 

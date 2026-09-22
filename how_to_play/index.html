@@ -198,6 +198,22 @@
   .note b{ display:block; font-size:15px; }
   .note span{ color:var(--muted); font-size:13.5px; }
   .pin{ position:absolute; z-index:9; transform:translate(-50%,-50%); box-shadow:0 0 0 3px rgba(6,9,19,.85); }
+  /* anatomy v2: aligned labels with leader lines */
+  .anat2{ position:relative; height:var(--ah); max-width:760px; margin-inline:auto; }
+  .anat2 > .cardframe{ position:absolute; left:0; top:0; }
+  .anat2 .alines{ position:absolute; left:0; top:0; pointer-events:none; overflow:visible; }
+  .anat2 .alabels{ position:absolute; left:calc(var(--aw) + 44px); right:0; top:0; height:100%; }
+  .alabel{ position:absolute; left:0; right:0; transform:translateY(-50%); max-width:44ch; }
+  .alabel b{ display:block; font-family:'Baloo 2',sans-serif; font-size:19px; line-height:1.15; }
+  .alabel span{ display:block; color:var(--muted); font-size:14.5px; line-height:1.4; }
+  .alabel i{ font-style:normal; color:var(--text); font-weight:700; }
+  @media (max-width:700px){
+    .anat2{ height:auto; display:flex; flex-direction:column; align-items:center; gap:20px; }
+    .anat2 > .cardframe, .anat2 .alabels{ position:static; }
+    .anat2 .alines{ display:none; }
+    .anat2 .alabels{ display:flex; flex-direction:column; gap:14px; width:100%; }
+    .alabel{ position:static; transform:none; padding-left:14px; border-left:3px solid var(--accent); }
+  }
   /* face-down cards */
   .backcard{ width:var(--w,120px); aspect-ratio:5/7; border-radius:10px; background-size:cover; background-position:center;
     box-shadow:0 6px 14px rgba(0,0,0,.45); }
@@ -264,10 +280,10 @@
 
 <section>
   <div class="shead"><div class="step">1</div><h2>Read a card</h2></div>
-  <div class="anatomy">
-    <div class="col left"><div class="note"><div class="badge">1</div><div><b>Cost</b><span>Data to deploy it. A diamond means you can also train it.</span></div></div><div class="note"><div class="badge">4</div><div><b>Capability / Trust</b><span>Hits this hard · survives this much.</span></div></div><div class="note"><div class="badge">6</div><div><b>Ability</b><span>What it does in the game.</span></div></div><div class="note"><div class="badge">8</div><div><b>Discuss</b><span>A question to talk about.</span></div></div></div>
-    <div class="middle"><div class="cardframe" style="--w:300px; --s:0.4000"><div class="badge pin" style="left:-7%; top:5%">1</div><div class="badge pin" style="left:107%; top:5%">2</div><div class="badge pin" style="left:107%; top:13%">3</div><div class="badge pin" style="left:-7%; top:33%">4</div><div class="badge pin" style="left:107%; top:43%">5</div><div class="badge pin" style="left:-7%; top:52%">6</div><div class="badge pin" style="left:107%; top:62%">7</div><div class="badge pin" style="left:-7%; top:85%">8</div><div class="scaler"><div class="card ml"><div class="inner"><div class="cost trainable">2</div><div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div><div class="namebar"><h2>Diffusion Model</h2></div><div class="art-box"></div><div class="statrow"><div class="pip"><div class="in"><div class="n">3</div><div class="l">CAP</div></div></div><div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div></div><div class="typebar"><span class="gem uncommon"></span>System · Machine Learning</div><div class="textlines"><div class="tline"><b>Ability</b>Whenever this System Runs a Task, remove 1 Flag from it.</div><div class="tline"><b>Definition</b>A model that generates images by starting with noise and gradually refining it into a picture.</div></div><div class="discuss"><div class="tag">Discuss</div><p>How is starting from random noise different from drawing from scratch?</p></div></div></div></div></div></div>
-    <div class="col"><div class="note"><div class="badge">2</div><div><b>Tokens</b><span>Points you score each Task.</span></div></div><div class="note"><div class="badge">3</div><div><b>Name</b><span>The AI idea on the card.</span></div></div><div class="note"><div class="badge">5</div><div><b>Type & rarity</b><span>What it is, its color, and C / U / R.</span></div></div><div class="note"><div class="badge">7</div><div><b>Definition</b><span>What it means in real life.</span></div></div></div>
+  <div class="anat2" style="--aw:340px; --ah:476px">
+    <div class="cardframe" style="--w:340px; --s:0.4533"><div class="scaler"><div class="card ml"><div class="inner"><div class="cost trainable">2</div><div class="tokens" title="2 Tokens"><div class="pips"><div class="dot"></div><div class="dot"></div></div></div><div class="namebar"><h2>Diffusion Model</h2></div><div class="art-box"></div><div class="statrow"><div class="pip"><div class="in"><div class="n">3</div><div class="l">CAP</div></div></div><div class="pip"><div class="in"><div class="n">2</div><div class="l">TRU</div></div></div></div><div class="typebar"><span class="gem uncommon"></span>System · Machine Learning</div><div class="textlines"><div class="tline"><b>Ability</b>Whenever this System Runs a Task, remove 1 Flag from it.</div><div class="tline"><b>Definition</b>A model that generates images by starting with noise and gradually refining it into a picture.</div></div><div class="discuss"><div class="tag">Discuss</div><p>How is starting from random noise different from drawing from scratch?</p></div></div></div></div></div>
+    <svg class="alines" width="384" height="476" viewBox="0 0 384 476" aria-hidden="true"><path d="M330 28.6 L354 28.6 L376 34.0" fill="none" stroke="#5ec8ff" stroke-width="2"/><circle cx="330" cy="28.6" r="5.5" fill="#5ec8ff" stroke="#060913" stroke-width="2.5"/><path d="M330 166.6 L354 166.6 L376 166.6" fill="none" stroke="#5ec8ff" stroke-width="2"/><circle cx="330" cy="166.6" r="5.5" fill="#5ec8ff" stroke="#060913" stroke-width="2.5"/><path d="M330 204.7 L354 204.7 L376 244.6" fill="none" stroke="#5ec8ff" stroke-width="2"/><circle cx="330" cy="204.7" r="5.5" fill="#5ec8ff" stroke="#060913" stroke-width="2.5"/><path d="M330 266.6 L354 266.6 L376 322.6" fill="none" stroke="#5ec8ff" stroke-width="2"/><circle cx="330" cy="266.6" r="5.5" fill="#5ec8ff" stroke="#060913" stroke-width="2.5"/><path d="M330 395.1 L354 395.1 L376 400.6" fill="none" stroke="#5ec8ff" stroke-width="2"/><circle cx="330" cy="395.1" r="5.5" fill="#5ec8ff" stroke="#060913" stroke-width="2.5"/></svg>
+    <div class="alabels"><div class="alabel" style="top:34.0px"><b>Top of the card</b><span><i>Cost</i> (left): Data to play it. A diamond means you can train it.<br><i>Name</i> in the middle. <i>Tokens</i> (right): points each Task.</span></div><div class="alabel" style="top:166.6px"><b>Capability / Trust</b><span>How hard it hits · how many Flags it can take.</span></div><div class="alabel" style="top:244.6px"><b>Type bar</b><span>What kind of card, its color, and its rarity letter.</span></div><div class="alabel" style="top:322.6px"><b>Ability & Definition</b><span>What it does in the game · what it means in real life.</span></div><div class="alabel" style="top:400.6px"><b>Discuss</b><span>A question to talk about.</span></div></div>
   </div>
 </section>
 

@@ -177,7 +177,7 @@ Background for teachers, not student-facing. The first two sources are what the 
 | [Sample cards](https://tokenstcg.com/sample_cards/) | All 60 cards on screen, filterable by color and type. |
 | `design/pilot-deck-60-cards.md` | Every card's stats, ability, definition, and question, plus the appendix mapping cards to report sources. |
 | `design/GAME_CONCEPT.md` | Full rules, the three classroom modes, and the playtest history. |
-| `design/tokens-print-page-*.png` | Print-and-play sheets, 7 pages at 300 DPI. Print at Actual Size / 100%. |
+| `design/design-v1/tokens-print-page-*.png` | Print-and-play sheets, 7 pages at 300 DPI. Print at Actual Size / 100%. |
 
 ### Three ways to run it
 

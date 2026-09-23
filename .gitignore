@@ -12,3 +12,6 @@ design/backgrounds/*
 .DS_Store
 Thumbs.db
 *.log
+
+# v2 card frame: PNG renders stay local (regenerate from the committed HTML).
+design/frame-v2/*.png

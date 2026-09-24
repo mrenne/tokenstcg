@@ -15,3 +15,10 @@ Thumbs.db
 
 # v2 card frame: PNG renders stay local (regenerate from the committed HTML).
 design/frame-v2/*.png
+# icon previews made with build-card.js --icon=... are throwaway
+design/frame-v2/preview-*.html
+
+# Card artwork stays local; only the file-name checklist and optional name map are committed
+/design/icons/*
+!/design/icons/README.md
+!/design/icons/icons.json

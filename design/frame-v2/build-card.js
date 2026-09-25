@@ -43,9 +43,19 @@ function readCard(name) {
     rarity: pick(/<span class="gem ?([a-z]*)"><\/span>/) || 'common',
     typeText: pick(/<span class="gem[^"]*"><\/span>([^<]+)</).trim(),
     lines,
+    legacy: /class="legacy"/.test(h),
     question: pick(/<div class="tag">Discuss<\/div><p>([^<]+)<\/p>/),
   };
 }
+
+// Legacy marker: a 14x14 pixel-art floppy disk, drawn with crisp square pixels like the token coin.
+const floppy = cls => `<svg class="${cls}" viewBox="0 0 14 14" shape-rendering="crispEdges" role="img" aria-label="Legacy">` +
+  '<path fill="#141a3a" d="M0 0h12l2 2v12H0z"/>' +                          // outline, with the clipped top-right corner
+  '<path fill="#3f55c4" d="M1 1h10.6l1.4 1.4V13H1z"/>' +                    // blue body
+  '<rect x="4" y="1" width="6" height="4" fill="#c9cfdb"/><rect x="8" y="2" width="1" height="2" fill="#3f55c4"/>' + // metal shutter
+  '<rect x="3" y="7" width="8" height="6" fill="#f5f5f2"/><rect x="4" y="9" width="6" height="1" fill="#7f9be0"/><rect x="4" y="11" width="6" height="1" fill="#7f9be0"/>' + // label
+  '</svg>';
+const withFloppy = html => html.replace(/💾/g, floppy('floppy-inline'));
 
 const RARITY_LETTER = { common: 'C', uncommon: 'U', rare: 'R', chase: '★' };
 // Per-color palettes. Only green is tuned for this proof; the rest follow once the look is approved.
@@ -152,8 +162,8 @@ function cardHtml(c, suit = c.suit, icon = null, number = '') {
     ${isSystem ? `<div class="v2-ledge"></div><div class="v2-stats">
       <div class="v2-stat"><div class="in"><b>${c.cap}</b><i>CAP</i></div></div>
       <div class="v2-stat"><div class="in"><b>${c.trust}</b><i>TRU</i></div></div></div>` : kindBadge(kind)}
-    <div class="v2-type"><span class="chip">${RARITY_LETTER[c.rarity]}</span><span class="tt">${typeText}</span>${circuit}</div>
-    <div class="v2-panel v2-text brk">${c.lines.map(l => `<div class="ln"><b>${l.label}</b><p>${l.html}</p></div>`).join('')}</div>
+    <div class="v2-type"><span class="chip">${RARITY_LETTER[c.rarity]}</span>${c.legacy ? floppy('floppy-chip') : ''}<span class="tt">${typeText}</span>${circuit}</div>
+    <div class="v2-panel v2-text brk">${c.lines.map(l => `<div class="ln"><b>${l.label}</b><p>${withFloppy(l.html)}</p></div>`).join('')}</div>
     <div class="v2-panel v2-discuss brk"><div class="tag">◈ DISCUSS ◈</div><p class="q">${c.question}</p></div>
     ${number ? `<div class="v2-num">${number}</div>` : ''}
   </div>
@@ -233,6 +243,8 @@ const CSS = `
   .v2-type{ position:absolute; left:34px; right:30px; top:408px; height:46px; display:flex; align-items:center; gap:18px; color:var(--typeInk); }
   .v2-type .chip{ width:40px; height:40px; flex:none; border:3px solid currentColor; border-radius:9px; display:grid; place-items:center;
     font:700 22px/1 'JetBrains Mono',monospace; }
+  .v2-type .floppy-chip{ width:40px; height:40px; flex:none; margin-left:-6px; filter:drop-shadow(0 2px 2px rgba(0,0,0,.45)); }
+  .floppy-inline{ width:1.05em; height:1.05em; vertical-align:-.16em; }
   .v2-type .tt{ font:700 27px/1 'JetBrains Mono',monospace; letter-spacing:.09em; text-transform:uppercase; white-space:nowrap; }
   .v2-type .circuit{ margin-left:auto; color:var(--circuit); opacity:.75; flex:none; }
   /* panels with corner brackets */

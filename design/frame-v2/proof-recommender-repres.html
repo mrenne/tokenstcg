@@ -75,6 +75,8 @@
   .v2-type{ position:absolute; left:34px; right:30px; top:408px; height:46px; display:flex; align-items:center; gap:18px; color:var(--typeInk); }
   .v2-type .chip{ width:40px; height:40px; flex:none; border:3px solid currentColor; border-radius:9px; display:grid; place-items:center;
     font:700 22px/1 'JetBrains Mono',monospace; }
+  .v2-type .floppy-chip{ width:40px; height:40px; flex:none; margin-left:-6px; filter:drop-shadow(0 2px 2px rgba(0,0,0,.45)); }
+  .floppy-inline{ width:1.05em; height:1.05em; vertical-align:-.16em; }
   .v2-type .tt{ font:700 27px/1 'JetBrains Mono',monospace; letter-spacing:.09em; text-transform:uppercase; white-space:nowrap; }
   .v2-type .circuit{ margin-left:auto; color:var(--circuit); opacity:.75; flex:none; }
   /* panels with corner brackets */
@@ -125,7 +127,7 @@
 <body><div class="stage"><div class="v2" style="--edge:#5cb8ff;--outerA:#0b2448;--outerB:#061631;--body1:#17467f;--body2:#0b2448;--head:#0a2344;--panel1:rgba(110,170,240,.45);--panel2:rgba(24,66,132,.82);--label:#a6d4ff;--bracket:#8fcaff;--circuit:#5cb8ff;--statA:#1f559c;--statB:#0a2448;--statBorder:#dcecff;--ledgeA:#1f4f8f;--ledgeB:#0d2b55;--discussBg:linear-gradient(115deg,#8aa2ec 0%,#7fb8e8 32%,#a3a4ee 58%,#78c0e0 82%,#9a8ce0 100%);--discussBorder:rgba(228,240,255,.95);--discussBracket:#e6f1ff;--discussTag:#e6f4ff;--discussInk:#ffffff;--discussShadow:0 2px 3px rgba(18,28,70,.75), 0 0 14px rgba(18,28,70,.35);--ink:#ffffff;--typeInk:#ffffff;--headInk:#ffffff;--statInk:#ffffff;--art:url('../backgrounds/selected/repres.jpg')">
   <div class="v2-body">
     <div class="v2-art"></div>
-    
+    <div class="v2-icon photo"><img src="../icons/recommender.png" alt=""></div>
     <header class="v2-head"><h2>Recommender</h2></header>
     <div class="v2-gem diamond"><svg viewBox="0 0 140 140" width="140" height="140" aria-hidden="true"><defs>
     <linearGradient id="gArepres" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a9daff"/><stop offset=".5" stop-color="#2f72d4"/><stop offset="1" stop-color="#0c2a5a"/></linearGradient>
@@ -140,7 +142,7 @@
   <g fill="currentColor"><circle cx="8" cy="20" r="4"/><circle cx="130" cy="10" r="3.5"/><circle cx="166" cy="10" r="3.5"/><circle cx="188" cy="22" r="3.5"/></g></svg></div>
     <div class="v2-panel v2-text brk"><div class="ln"><b>Definition</b><p>A model that suggests items based on what similar users liked.</p></div></div>
     <div class="v2-panel v2-discuss brk"><div class="tag">◈ DISCUSS ◈</div><p class="q">Has a recommendation ever felt "too accurate"? Why might that happen?</p></div>
-    <div class="v2-num">19/60</div>
+    <div class="v2-num">19/61</div>
   </div>
 </div></div><script>
 // Measure the text itself (children + gaps + padding), not scrollHeight: the corner

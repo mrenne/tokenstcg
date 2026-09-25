@@ -46,7 +46,7 @@ A deck draws from 1-2 Data Types, same as Lorcana restricts a deck to 1-2 inks �
 ## Card types
 
 - **Systems** (≈ Characters): the AI concepts that do the work. Have Cost, Capability, Trust, and Tokens. Deployed face-up; can Run a Task or Run an Audit starting the turn *after* they're deployed (they need a turn to "finish training") unless they have the **Fast-Tracked** keyword.
-- **Tools** (≈ Items): stay in play once deployed and usable immediately. No combat stats — just an ability, often a repeatable one paid for by exerting the Tool itself. E.g., a Model Card tool, a Bias Audit tool.
+- **Tools** (≈ Items): stay in play once deployed (until an effect discards them — so far only the **Obsolete** Action can) and usable immediately. No combat stats — just an ability, often a repeatable one paid for by exerting the Tool itself. E.g., a Model Card tool, a Bias Audit tool.
 - **Actions**: a one-time effect, then discarded. Quick disruptive or helpful events — a regulation passing, a data breach, a viral deepfake.
 - **Datasets** (≈ Songs, a subtype of Action): can be paid for normally with Data, *or* "processed for free" by exerting an already-deployed System with Cost 3 or higher instead. This rewards having a big System in play — mechanically, only a sufficiently large model can ingest a big dataset without extra cost.
 
@@ -116,6 +116,7 @@ First player to reach a target Token count wins. Suggested target for the pilot'
 - **Fast-Tracked** — this System can Run a Task or Run an Audit the same turn it's deployed. (Machine Learning flavor: an agent that acts autonomously from the start.)
 - **Adversarial** — whenever this System is Audited, it deals 1 Flag back to the Auditing System, on top of the normal damage exchange. (Machine Learning flavor: a GAN is trained by fighting back.)
 - **Highly Trusted** — this System can't be Audited by a System with lower Trust than its own. (Renamed from "Audited" so the keyword isn't confused with the Run an Audit action. It's a keyword, not the same as having a Trust stat — every System has Trust, but only cards that say "Highly Trusted" get this rule.) (Ethical AI Design flavor: a well-vetted system is hard to challenge unfairly.)
+- **💾 Legacy** — marks an old-tech Tool with a floppy-disk icon in its type line. It does nothing by itself; the **Obsolete** Action (Discard target Tool) draws its player a card when it discards a Legacy Tool. Legacy Tools so far: Feature Vector, CPU, RAM. (Flavor: technology goes out of date fast, and old tech is the first thing replaced.)
 - **Transparent** — when this System would be Deprecated, its controller may first look at the top card of their deck and draw it if it's a Tool. (Societal Impacts flavor: openness about failure still has value.)
 
 ## Rarity & trading
@@ -175,6 +176,7 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
         | Training Data, ImageNet, CPU, RAM | The AI speeds up: flip another card now (which also brings launch closer) |
         | CUDA, GPU | All AI Systems get +1 Capability for the rest of the game |
         | Regulation Debate | Good news: each player may train an extra card next turn |
+        | Obsolete | The team discards 1 Tool of its choice (if it has any) |
         | Tensor | Nothing |
    3. **Check.** Team Tokens reach 40 → everyone wins. The meter goes past 6 → everyone loses. **The Launch pile is empty at the start of an AI phase → launch day arrived and the team wasn't ready: everyone loses.**
 
@@ -197,7 +199,7 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
 
 ## Pilot scope (this phase)
 
-- 60 cards across the 5 suits (1 of which is the Chase card), mostly Systems with a handful of Tools/Actions/a Dataset woven in (see pilot-deck-60-cards.md for the full, type-tagged list).
+- 61 cards across the 5 suits (1 of which is the Chase card), mostly Systems with a handful of Tools/Actions/a Dataset woven in (see pilot-deck-60-cards.md for the full, type-tagged list).
 - Print-and-play: card fronts only, standard poker-card size, designed for a home/office color printer.
 - One class, one unit, playtested and iterated before any larger print run.
 
@@ -230,6 +232,11 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
      - **Green was the strongest color and Blue/White the weakest** (Green+Red 64% down to Blue+White 36%, a 30-point spread). The drivers: Fast-Moving Lab and Viral App at ~3.4 Tokens per deploy and AI Assistant at 3.2 for only 2 Data, against Search Tree (1.53) and Accountability (1.48). **Fixed: Search Tree 4 → 3 Data, Accountability 3 → 2 Data, AI Assistant 2 → 3 Data**, which tested at a 15-point spread (Blue 47% → 52%, White 45% → 48%, Green 59% → 55%).
      - **First player won 58%.** **Fixed: the second player now draws a 6-card opening hand**, which tested at 46% for the first player — slightly overshooting even, but much closer than before.
      - Deepfake is the worst card on paper (0.46 Tokens per deploy, Audited out 89% of the time), but its record is tangled up with the Model Card loop; left unchanged, to be re-checked now that the loop is gone. The v0.7 cards landed mid-pack (Data Center 2.58 Tokens per deploy, GPT 2.34).
+   - **Round 12 — Obsolete and 💾 Legacy (v0.8)**: before this, nothing in the game could remove a Tool once it was deployed. Added **Obsolete** (Red Action, Uncommon, 2 Data: "Discard target Tool. If it's a 💾 Legacy Tool, draw a card.") and marked Feature Vector, CPU, and RAM as Legacy. Same 22,500-game Quick Play round-robin, before and after:
+     - **Balance barely moved**: the spread between the best and worst two-color deck went from 17 to 16 points, the first player still wins 45–46%, and games still last 6.9 rounds. Red decks moved between −2 and +1 points.
+     - **Obsolete is situational.** Only 0.05 plays per Red-deck game: Tools are on the table less often than Systems, and the simulated players usually train Obsolete for Data early, before the opponent has a Tool. Even a player who never trains it only plays it 0.07 times a game. When it is played, it most often hits Model Card or Python (about 37% each); it hits a Legacy Tool about 15% of the time.
+     - **Launch Day**: Obsolete joins the AI deck (the team discards 1 Tool of its choice). Balanced play won 69% → 71%, greedy 32% → 33%, safety-first 59% → 61% — within noise.
+     - Open question for a real playtest: whether students hold Obsolete as an answer to a Tool or train it early like the simulated players. If it turns out to be a dead card, a fallback like "if there's no Tool in play, draw a card instead" would make it always useful.
 2. ~~Art direction~~ — settled, now rarity-differentiated:
    - **Common/Uncommon**: a small windowed art box near the top (like a traditional trading card), the rest of the card a solid suit-colored body.
    - **Rare/Chase**: true full-art — the background photo fills the entire card edge to edge, and even the Discuss banner turns translucent so the art shows through it too. The rarity itself is part of what makes a card feel special, not just its stats.

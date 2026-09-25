@@ -75,6 +75,8 @@
   .v2-type{ position:absolute; left:34px; right:30px; top:408px; height:46px; display:flex; align-items:center; gap:18px; color:var(--typeInk); }
   .v2-type .chip{ width:40px; height:40px; flex:none; border:3px solid currentColor; border-radius:9px; display:grid; place-items:center;
     font:700 22px/1 'JetBrains Mono',monospace; }
+  .v2-type .floppy-chip{ width:40px; height:40px; flex:none; margin-left:-6px; filter:drop-shadow(0 2px 2px rgba(0,0,0,.45)); }
+  .floppy-inline{ width:1.05em; height:1.05em; vertical-align:-.16em; }
   .v2-type .tt{ font:700 27px/1 'JetBrains Mono',monospace; letter-spacing:.09em; text-transform:uppercase; white-space:nowrap; }
   .v2-type .circuit{ margin-left:auto; color:var(--circuit); opacity:.75; flex:none; }
   /* panels with corner brackets */
@@ -125,7 +127,7 @@
 <body><div class="stage"><div class="v2" style="--edge:#45e3cf;--outerA:#0c3a36;--outerB:#062624;--body1:#136157;--body2:#0a3d38;--head:#0b3a37;--panel1:rgba(104,200,188,.50);--panel2:rgba(33,104,98,.80);--label:#8ff2e3;--bracket:#7ef0df;--circuit:#45e3cf;--statA:#1d6f55;--statB:#0b3a2c;--statBorder:#d6fff4;--ledgeA:#1b6a4a;--ledgeB:#0e4332;--discussBg:linear-gradient(115deg,#93a6e6 0%,#7fc4d3 32%,#a9ade9 58%,#79cfc0 82%,#9c8fdb 100%);--discussBorder:rgba(228,244,255,.95);--discussBracket:#e6f6ff;--discussTag:#e3fbff;--discussInk:#ffffff;--discussShadow:0 2px 3px rgba(18,28,70,.75), 0 0 14px rgba(18,28,70,.35);--ink:#ffffff;--typeInk:#ffffff;--headInk:#ffffff;--statInk:#ffffff;--art:url('../backgrounds/selected/humans.jpg')">
   <div class="v2-body">
     <div class="v2-art"></div>
-    
+    <div class="v2-icon photo"><img src="../icons/built-in-ai.png" alt=""></div>
     <header class="v2-head"><h2>Built-in AI</h2></header>
     <div class="v2-gem diamond"><svg viewBox="0 0 140 140" width="140" height="140" aria-hidden="true"><defs>
     <linearGradient id="gAhumans" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8ff8ea"/><stop offset=".5" stop-color="#1f9a8e"/><stop offset="1" stop-color="#0b4a45"/></linearGradient>
@@ -140,7 +142,7 @@
   <g fill="currentColor"><circle cx="8" cy="20" r="4"/><circle cx="130" cy="10" r="3.5"/><circle cx="166" cy="10" r="3.5"/><circle cx="188" cy="22" r="3.5"/></g></svg></div>
     <div class="v2-panel v2-text brk"><div class="ln"><b>Definition</b><p>An AI assistant built right into search, email, and other apps people already use every day.</p></div></div>
     <div class="v2-panel v2-discuss brk"><div class="tag">◈ DISCUSS ◈</div><p class="q">What's different about an AI built into apps you already use daily?</p></div>
-    <div class="v2-num">14/60</div>
+    <div class="v2-num">14/61</div>
   </div>
 </div></div><script>
 // Measure the text itself (children + gaps + padding), not scrollHeight: the corner

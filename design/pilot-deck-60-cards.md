@@ -1,6 +1,6 @@
-# Tokens — Pilot Deck, 60 Cards (v0.7)
+# Tokens — Pilot Deck, 61 Cards (v0.8)
 
-Stats shown as `Cost | Capability / Trust / Tokens` for Systems. Tools, Actions, and Datasets show `Cost` and their effect only — they have no combat stats. Rarity: C = Common, U = Uncommon, R = Rare, **Ch = Chase** (see GAME_CONCEPT.md's classroom distribution note — Chase cards aren't part of the base set every student receives).
+Stats shown as `Cost | Capability / Trust / Tokens` for Systems. Tools, Actions, and Datasets show `Cost` and their effect only — they have no combat stats. Rarity: C = Common, U = Uncommon, R = Rare, **Ch = Chase** (see GAME_CONCEPT.md's classroom distribution note — Chase cards aren't part of the base set every student receives). **💾 Legacy** marks old-tech Tools: the card shows a floppy-disk icon in its type line, and the Obsolete Action rewards discarding one.
 
 No source citations here on the student-facing content — see the **Teacher reference appendix** at the bottom of this file for where each card's content is grounded: most trace back to the AI Priorities report, a few (company/product types and computing hardware) to general accuracy instead, since the report is a content-accuracy grounding document, not the sole source for this project (see GAME_CONCEPT.md's Sources section). That mapping migrates into its own teacher's guide in a later phase.
 
@@ -30,7 +30,7 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Card | Type | Rarity | Cost \| Cap/Trust/Tokens | Ability | Definition | Discussion question |
 |---|---|---|---|---|---|---|
 | Abstraction | System | C | 1 \| 1/2/1 | — | A representation that keeps some features and leaves others out. | If you drew a map of your school, what would you leave out? |
-| Feature Vector | Tool | C | 2 | {E} — Look at the top 2 cards of your deck. Put one into your hand, the other on the bottom. | A list of numbers encoding an object's key traits so an algorithm can use them. | What 3 "features" would you use to describe your favorite animal to a computer? |
+| Feature Vector | Tool | C | 2 | 💾 **Legacy.** {E} — Look at the top 2 cards of your deck. Put one into your hand, the other on the bottom. | A list of numbers encoding an object's key traits so an algorithm can use them. | What 3 "features" would you use to describe your favorite animal to a computer? |
 | Classifier | System | C | 2 \| 2/2/2 | — | A model that sorts input into categories, like spam vs. not-spam. | What's something in your life that gets automatically "classified" for you? |
 | Predictor | System | C | 2 \| 3/1/2 | — | A model that outputs a continuous value, like estimating a house's price. | What would you want an AI to predict for you, if it could? |
 | Recommender | System | C | 2 \| 3/1/2 | — | A model that suggests items based on what similar users liked. | Has a recommendation ever felt "too accurate"? Why might that happen? |
@@ -60,8 +60,8 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Transformer | System | R | 4 \| 4/2/3 | **Attention.** Whenever this System Runs a Task, look at the top 2 cards of your deck; put one into your hand. | A neural network design that weighs which parts of the input matter most — the architecture behind most modern LLMs. | Why might "paying attention" to the right words matter for a good answer? |
 | GPT | System | U | 3 \| 3/2/2 | Whenever this System Runs a Task, draw a card, then discard a card. | An LLM pre-trained on huge amounts of text. | GPT means Generative Pre-trained Transformer. Why pre-train? |
 | GPU | Tool | U | 3 | {E} — A System you deployed this turn can Run a Task or Run an Audit this turn. | A graphics processing unit: a chip that does thousands of calculations at once, which makes training AI much faster. | Why would a chip built for video games end up powering AI? |
-| CPU | Tool | C | 1 | {E} — Draw a card, then discard a card. | A computer's central processing unit: the general-purpose chip that runs a program's steps one after another. | Why might a general-purpose chip be slower for AI than a specialized one? |
-| RAM | Tool | C | 2 | {E} — Put an Action card from your discard pile on top of your deck. | A computer's short-term memory, holding the data a program is working with right now. | What happens to what's in a computer's memory when the power goes off? |
+| CPU | Tool | C | 1 | 💾 **Legacy.** {E} — Draw a card, then discard a card. | A computer's central processing unit: the general-purpose chip that runs a program's steps one after another. | Why might a general-purpose chip be slower for AI than a specialized one? |
+| RAM | Tool | C | 2 | 💾 **Legacy.** {E} — Put an Action card from your discard pile on top of your deck. | A computer's short-term memory, holding the data a program is working with right now. | What happens to what's in a computer's memory when the power goes off? |
 
 ## Ethical AI System Design and Programming (white) — 9 cards
 
@@ -77,7 +77,7 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Compliance Review | Action | C | 2 | Target opponent's System can't Run a Task next turn. | A formal check to confirm an AI system meets required standards before it keeps operating. | Should a company have to pause an AI system while it's being investigated for bias? |
 | Mandatory Recall | Action | R | 4 | None of your opponent's Systems can Run a Task next turn (including ones they deploy that turn). | When an AI system is found unsafe, regulators can require it be pulled from use until it's fixed. | Should the government be able to shut down an unsafe AI product? |
 
-## Societal Impacts of AI (red) — 9 cards
+## Societal Impacts of AI (red) — 10 cards
 
 | Card | Type | Rarity | Cost \| Cap/Trust/Tokens | Ability | Definition | Discussion question |
 |---|---|---|---|---|---|---|
@@ -90,16 +90,18 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Digital Divide | System | R | 3 \| 1/3/3 | This System's Tokens can't be reduced by opponents' abilities. | Unequal access to AI tools and AI education across different communities. | If AI tools cost money, who might get left behind? |
 | Cognitive Offload | Action | C | 1 | Draw a card, then discard a card. | Relying on AI to think, remember, or decide for you — convenient, but a skill you may stop practicing. | What's something you'd lose if you let AI always do it for you? |
 | Data Center | System | U | 3 \| 2/3/3 | Whenever this System Runs a Task, discard the top card of your Training Set. | A building full of computers that run AI. | Should towns welcome data centers that use lots of water? |
+| Obsolete | Action | U | 2 | Discard target Tool. If it's a 💾 Legacy Tool, draw a card. | Technology that's been replaced by something newer and is no longer supported. | What's a gadget your family used to use that's now obsolete? |
 
 ## Deck totals
 
-- Humans and AI (14, including the Chase card) + Representation & Reasoning (8) + Machine Learning (20) + Ethical AI Design (9) + Societal Impacts (9) = **60 cards total**.
+- Humans and AI (14, including the Chase card) + Representation & Reasoning (8) + Machine Learning (20) + Ethical AI Design (9) + Societal Impacts (10) = **61 cards total**.
 - The 4 tempo-denial Actions (Manual Override, Ambiguous Input, Retraining Pause, Compliance Review) give every suit a single-target answer; **Mandatory Recall** (White, Rare) is the board-wide version — see the playtest log in GAME_CONCEPT.md for why single-target denial alone wasn't enough.
-- By type: 35 Systems, 11 Tools, 12 Actions, 2 Datasets (counted from the cards themselves).
-- By rarity: 33 Common, 16 Uncommon, 10 Rare, 1 Chase.
+- By type: 35 Systems, 11 Tools (3 of them 💾 Legacy), 13 Actions, 2 Datasets (counted from the cards themselves).
+- By rarity: 33 Common, 17 Uncommon, 10 Rare, 1 Chase.
 - **v0.7 changes**: the five real-company cards got generic names (OpenAI → Fast-Moving Lab, Anthropic → Safety Lab, Claude → AI Assistant, ChatGPT → Viral App, Gemini → Built-in AI), since brand names date quickly and can read as endorsements; real examples live in the appendix below. Five new cards added: GPT, GPU, CPU, RAM (Machine Learning) and Data Center (Societal Impacts).
+- **v0.8 changes**: added **Obsolete** (Societal Impacts Action), the first card that can remove a Tool — before it, a deployed Tool stayed in play all game. Feature Vector, CPU, and RAM became **💾 Legacy** Tools (a floppy-disk icon in the type line); Obsolete draws a card when it discards one. See GAME_CONCEPT.md, Round 12, for the simulation check.
 - **Duplicates avoided**: Supervised Learning and Reinforcement Learning were both already in the deck before this pass — flagging rather than re-adding them as a second copy under a new name.
-- **Trainable status**: set for all 60 cards using the simplest version of the Lorcana-style default — every Common and Uncommon card is Trainable, every Rare and the Chase card are not. This was needed to actually render the full print sheet; it's a first pass; a real pass would vary it card-by-card (e.g. a few Uncommons held back, a couple of weak Commons excluded) rather than a blanket rarity cutoff, but this gets the pilot playable.
+- **Trainable status**: set for all 61 cards using the simplest version of the Lorcana-style default — every Common and Uncommon card is Trainable, every Rare and the Chase card are not. This was needed to actually render the full print sheet; it's a first pass; a real pass would vary it card-by-card (e.g. a few Uncommons held back, a couple of weak Commons excluded) rather than a blanket rarity cutoff, but this gets the pilot playable.
 
 ---
 
@@ -167,3 +169,4 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Digital Divide | p.33 (Equity Issues) |
 | Cognitive Offload | Table 2 (Choice to Use AI) / Table 6 (Individual Impacts) |
 | Data Center | Table 6 (environmental effects) |
+| Obsolete | *General computing reference, not report-specific.* Ties to e-waste (Table 6, environmental effects). |

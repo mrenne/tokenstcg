@@ -71,3 +71,4 @@ To rebuild every card after adding art: `node design/frame-v2/build-card.js --al
 | 58 | Digital Divide | `digital-divide` |
 | 59 | Cognitive Offload | `cognitive-offload` |
 | 60 | Data Center | `data-center` |
+| 61 | Obsolete | `obsolete` |

@@ -75,6 +75,8 @@
   .v2-type{ position:absolute; left:34px; right:30px; top:408px; height:46px; display:flex; align-items:center; gap:18px; color:var(--typeInk); }
   .v2-type .chip{ width:40px; height:40px; flex:none; border:3px solid currentColor; border-radius:9px; display:grid; place-items:center;
     font:700 22px/1 'JetBrains Mono',monospace; }
+  .v2-type .floppy-chip{ width:40px; height:40px; flex:none; margin-left:-6px; filter:drop-shadow(0 2px 2px rgba(0,0,0,.45)); }
+  .floppy-inline{ width:1.05em; height:1.05em; vertical-align:-.16em; }
   .v2-type .tt{ font:700 27px/1 'JetBrains Mono',monospace; letter-spacing:.09em; text-transform:uppercase; white-space:nowrap; }
   .v2-type .circuit{ margin-left:auto; color:var(--circuit); opacity:.75; flex:none; }
   /* panels with corner brackets */
@@ -133,12 +135,12 @@
   </defs><polygon points="70,5 135,70 70,135 5,70" fill="url(#gAml)" stroke="#efe6ff" stroke-width="3" filter="url(#glowml)"/><polygon points="70,27 113,70 70,113 27,70" fill="#211933" stroke="#b99bff" stroke-width="2"/><g stroke="#ffffff" stroke-opacity=".35" stroke-width="1.5"><line x1="70" y1="5" x2="70" y2="27"/><line x1="135" y1="70" x2="113" y2="70"/><line x1="70" y1="135" x2="70" y2="113"/><line x1="5" y1="70" x2="27" y2="70"/></g><g fill="none" stroke="#b99bff" stroke-width="2" stroke-linecap="round" opacity=".85"><polyline points="18,44 26,40 23,34 31,29"/><polyline points="122,96 114,100 117,106 109,111"/><polyline points="96,18 100,26 106,23 111,31"/><polyline points="44,122 40,114 34,117 29,109"/></g></svg><span>1</span></div>
     
     <div class="v2-ledge"></div><div class="v2-kind"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.4 2.4-2.6-.4-.4-2.6z"/></svg><span>Tool</span></div>
-    <div class="v2-type"><span class="chip">C</span><span class="tt">Tool · Machine Learning</span><svg class="circuit" viewBox="0 0 210 40" width="210" height="40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <div class="v2-type"><span class="chip">C</span><svg class="floppy-chip" viewBox="0 0 14 14" shape-rendering="crispEdges" role="img" aria-label="Legacy"><path fill="#141a3a" d="M0 0h12l2 2v12H0z"/><path fill="#3f55c4" d="M1 1h10.6l1.4 1.4V13H1z"/><rect x="4" y="1" width="6" height="4" fill="#c9cfdb"/><rect x="8" y="2" width="1" height="2" fill="#3f55c4"/><rect x="3" y="7" width="8" height="6" fill="#f5f5f2"/><rect x="4" y="9" width="6" height="1" fill="#7f9be0"/><rect x="4" y="11" width="6" height="1" fill="#7f9be0"/></svg><span class="tt">Tool · Machine Learning</span><svg class="circuit" viewBox="0 0 210 40" width="210" height="40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
   <path d="M8 20h58l10-10h54"/><path d="M40 20l10 10h70l8-8h60"/><path d="M130 10h36"/></g>
   <g fill="currentColor"><circle cx="8" cy="20" r="4"/><circle cx="130" cy="10" r="3.5"/><circle cx="166" cy="10" r="3.5"/><circle cx="188" cy="22" r="3.5"/></g></svg></div>
     <div class="v2-panel v2-text brk"><div class="ln"><b>Ability</b><p>{E} — Draw a card, then discard a card.</p></div><div class="ln"><b>Definition</b><p>A computer's central processing unit: the general-purpose chip that runs a program's steps one after another.</p></div></div>
     <div class="v2-panel v2-discuss brk"><div class="tag">◈ DISCUSS ◈</div><p class="q">Why might a general-purpose chip be slower for AI than a specialized one?</p></div>
-    <div class="v2-num">41/60</div>
+    <div class="v2-num">41/61</div>
   </div>
 </div></div><script>
 // Measure the text itself (children + gaps + padding), not scrollHeight: the corner

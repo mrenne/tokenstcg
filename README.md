@@ -10,7 +10,7 @@ Students collect and trade cards representing real AI concepts, organized into f
 - **How to play** (visual guide for new players): [how_to_play/index.html](how_to_play/index.html) — live at [tokenstcg.com/how_to_play](https://tokenstcg.com/how_to_play/)
 - **Terms and definitions** (for teachers to use with students): [teacher/terms-and-definitions.md](teacher/terms-and-definitions.md)
 - **New card frame (v2, in progress)**: proofs in `design/frame-v2/`; build any card with `node design/frame-v2/build-card.js "Card Name"` or every card with `--all`. PNG renders are kept local (not committed): open a card's HTML in Chrome, or see the render command at the top of `build-card.js`
-- **Print-and-play sheets**: `design/design-v1/tokens-print-page-*.png` (v1 card design, 7 pages, all 60 cards, sized for home printing at true 300 DPI — print at Actual Size / 100%)
+- **Print-and-play sheets**: `design/design-v1/tokens-print-page-*.png` (v1 card design, 7 pages, all 61 cards, sized for home printing at true 300 DPI — print at Actual Size / 100%)
 
 ## Status
 

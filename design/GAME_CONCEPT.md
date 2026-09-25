@@ -151,7 +151,7 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
    - **AI deck:** shuffle every Black (Machine Learning) and Red (Societal Impacts) card together, then deal **8 cards face-down** as the **Launch pile**. The rest go back in the box. The game plays this pile by itself.
    - **Player decks:** each player builds a deck from White, Green, and Blue cards (1-2 suits, normal deckbuilding rules), draws 5, and may take the usual free mulligan.
    - **Drift meter:** a d6 starting at 1. If Drift would push it past 6, the team loses.
-   - **Team Tokens:** each player tracks their own Tokens as usual. The team wins when the two totals **add up to 40**.
+   - **Team Tokens:** each player tracks their own Tokens as usual. The team wins when the two totals **add up to 45**.
    - **Groups of 3-4:** play as 2 pairs, each pair sharing one deck and deciding its moves together. The numbers were tuned for 2 players; larger teams made the game an "always Audit" puzzle with no real dilemma.
 
    **Each round**
@@ -164,7 +164,7 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
         - Human-in-the-Loop: exert to lower the meter by 2.
         - Model Card: once per round, lower the meter by 1.
    2. **AI phase.** Flip the top card of the Launch pile.
-      - **If it's a System**, it joins the AI zone and stays. Then **every AI System with Capability higher than its Trust drifts: +1 on the meter.** Aligned AI Systems (Sensor, Neuron, Supervised Learning, AI in Daily Life, Digital Divide, Data Center) never drift. AI Systems ignore their ability text, except GAN (hits back +1 when Audited) and Reinforcement Learning (+1 on the meter when it's Deprecated — even shutting it down has a cost, a ready-made example of reward hacking).
+      - **If it's a System**, it joins the AI zone and stays. Then **every AI System with Capability higher than its Trust drifts: +1 on the meter.** Aligned AI Systems (Sensor, Neuron, Supervised Learning, Embedding, Fine-Tuning, AI in Daily Life, Digital Divide, Data Center) never drift. AI Systems ignore their ability text, except GAN (hits back +1 when Audited) and Reinforcement Learning (+1 on the meter when it's Deprecated — even shutting it down has a cost, a ready-made example of reward hacking).
       - **If it's an Action or Tool**, it happens right away, aimed at the team:
 
         | AI card | What it does to the team |
@@ -178,7 +178,7 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
         | Regulation Debate | Good news: each player may train an extra card next turn |
         | Obsolete | The team discards 1 Tool of its choice (if it has any) |
         | Tensor | Nothing |
-   3. **Check.** Team Tokens reach 40 → everyone wins. The meter goes past 6 → everyone loses. **The Launch pile is empty at the start of an AI phase → launch day arrived and the team wasn't ready: everyone loses.**
+   3. **Check.** Team Tokens reach 45 → everyone wins. The meter goes past 6 → everyone loses. **The Launch pile is empty at the start of an AI phase → launch day arrived and the team wasn't ready: everyone loses.**
 
    **Why it's interesting to play:** every turn is a choice between scoring and safety. Should your AI Assistant Run a Task for 2 Tokens, or Audit the Neural Network that's adding +1 to the meter every round? The launch deadline makes over-caution lose too, so "just Audit everything" isn't safe either. Students argue about it out loud — that argument is the lesson.
 
@@ -199,7 +199,7 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
 
 ## Pilot scope (this phase)
 
-- 61 cards across the 5 suits (1 of which is the Chase card), mostly Systems with a handful of Tools/Actions/a Dataset woven in (see pilot-deck-60-cards.md for the full, type-tagged list).
+- 65 cards across the 5 suits (1 of which is the Chase card), mostly Systems with a handful of Tools/Actions/a Dataset woven in (see pilot-deck-60-cards.md for the full, type-tagged list).
 - Print-and-play: card fronts only, standard poker-card size, designed for a home/office color printer.
 - One class, one unit, playtested and iterated before any larger print run.
 
@@ -237,6 +237,11 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
      - **Obsolete is situational.** Only 0.05 plays per Red-deck game: Tools are on the table less often than Systems, and the simulated players usually train Obsolete for Data early, before the opponent has a Tool. Even a player who never trains it only plays it 0.07 times a game. When it is played, it most often hits Model Card or Python (about 37% each); it hits a Legacy Tool about 15% of the time.
      - **Launch Day**: Obsolete joins the AI deck (the team discards 1 Tool of its choice). Balanced play won 69% → 71%, greedy 32% → 33%, safety-first 59% → 61% — within noise.
      - Open question for a real playtest: whether students hold Obsolete as an answer to a Tool or train it early like the simulated players. If it turns out to be a dead card, a fallback like "if there's no Tool in play, draw a card instead" would make it always useful.
+   - **Round 13 — four new Systems to even out the colors (v0.9)**: on the 61-card pool, Black and White were the weakest colors (each averaging 47% wins across its four two-color decks) and Green the strongest (55%); Black+White won only 40%. White had only 4 Systems, none of them good at scoring, and most Black Systems have only 2 Trust. Candidates were simulated one at a time and in sets of four (Content Filter, Heuristic, Expert System, Spam Filter, a Checkpoint Tool, and others); cards for Blue or Red mostly reshuffled the middle, and Checkpoint strengthened the already-strong Green+Black. The chosen set, checked at 1,500 games per matchup:
+     - **Embedding** (Black, C, 2 | 2/3/2), **Fine-Tuning** (Black, U, 3 | 2/3/3), **Informed Consent** (White, U, 3 | 2/3/3), **Red Teaming** (White, U, 3 | 2/4/2, Adversarial). All four are plain Systems apart from Red Teaming's keyword.
+     - **The gap between the best and worst two-color deck fell from 16 to 7 points.** Black+White went from 40% to 46%, Green+Blue from 56% to 53%, and every color now averages 48–52%. First player 47%, games still 6.9 rounds.
+     - Red Teaming tested the same with Highly Trusted or Adversarial; Adversarial was kept because it matches what a red team does. It costs 1 more than Accountability (2 | 2/4/2) for the keyword.
+     - **Launch Day got easier.** Embedding and Fine-Tuning join the AI deck as aligned Systems that never drift, and the new White cards make player decks stronger. At the 40-Token target: balanced 71% → 76%, safety-first 61% → 67%, greedy 33% → 39%. (The simulator already had balanced at 71% before these cards, above the 63% recorded after v0.7.) Raising the target restores the old numbers: **45 Tokens gives 66% / 57% / 34%, 46 gives 64% / 55% / 32%.** **The target is now 45**, the round number closest to the tuned balance.
 2. ~~Art direction~~ — settled, now rarity-differentiated:
    - **Common/Uncommon**: a small windowed art box near the top (like a traditional trading card), the rest of the card a solid suit-colored body.
    - **Rare/Chase**: true full-art — the background photo fills the entire card edge to edge, and even the Discuss banner turns translucent so the art shows through it too. The rarity itself is part of what makes a card feel special, not just its stats.

@@ -1,4 +1,4 @@
-# Tokens — Pilot Deck, 61 Cards (v0.8)
+undefined | undefined |undefined | undefined |undefined | undefined |undefined | undefined |# Tokens — Pilot Deck, 65 Cards (v0.9)
 
 Stats shown as `Cost | Capability / Trust / Tokens` for Systems. Tools, Actions, and Datasets show `Cost` and their effect only — they have no combat stats. Rarity: C = Common, U = Uncommon, R = Rare, **Ch = Chase** (see GAME_CONCEPT.md's classroom distribution note — Chase cards aren't part of the base set every student receives). **💾 Legacy** marks old-tech Tools: the card shows a floppy-disk icon in its type line, and the Obsolete Action rewards discarding one.
 
@@ -38,7 +38,7 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Search Tree | System | R | 3 \| 3/3/3 | Whenever this System Runs a Task, look at the top 3 cards of your deck; put one into your hand. | A branching map of possible moves an AI explores to find the best one, like in tic-tac-toe. | Why might exploring every possible move become impossible for a more complex game? |
 | Ambiguous Input | Action | C | 1 | Target opponent's System can't Run a Task next turn. | Poorly represented or unclear data makes it hard for an AI system to act reliably. | Why might unclear instructions make an AI "freeze up" or give a bad answer? |
 
-## Machine Learning (black) — 20 cards
+## Machine Learning (black) — 22 cards
 
 | Card | Type | Rarity | Cost \| Cap/Trust/Tokens | Ability | Definition | Discussion question |
 |---|---|---|---|---|---|---|
@@ -62,8 +62,10 @@ No source citations here on the student-facing content — see the **Teacher ref
 | GPU | Tool | U | 3 | {E} — A System you deployed this turn can Run a Task or Run an Audit this turn. | A graphics processing unit: a chip that does thousands of calculations at once, which makes training AI much faster. | Why would a chip built for video games end up powering AI? |
 | CPU | Tool | C | 1 | 💾 **Legacy.** {E} — Draw a card, then discard a card. | A computer's central processing unit: the general-purpose chip that runs a program's steps one after another. | Why might a general-purpose chip be slower for AI than a specialized one? |
 | RAM | Tool | C | 2 | 💾 **Legacy.** {E} — Put an Action card from your discard pile on top of your deck. | A computer's short-term memory, holding the data a program is working with right now. | What happens to what's in a computer's memory when the power goes off? |
+| Embedding | System | C | 2 \| 2/3/2 | — | Turning words or images into numbers so similar things end up close together. | Which words would an AI place close to "dog"? |
+| Fine-Tuning | System | U | 3 \| 2/3/3 | — | Training an existing model a little more on a smaller set of examples to make it a specialist. | What would you fine-tune an AI to be really good at? |
 
-## Ethical AI System Design and Programming (white) — 9 cards
+## Ethical AI System Design and Programming (white) — 11 cards
 
 | Card | Type | Rarity | Cost \| Cap/Trust/Tokens | Ability | Definition | Discussion question |
 |---|---|---|---|---|---|---|
@@ -76,6 +78,8 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Ethical Framework | System | R | 4 \| 2/5/3 | **Highly Trusted.** | A structured set of criteria (fairness, safety, transparency...) used to evaluate an AI system. | Pick one value (fairness, privacy, safety) — which matters most to you, and why? |
 | Compliance Review | Action | C | 2 | Target opponent's System can't Run a Task next turn. | A formal check to confirm an AI system meets required standards before it keeps operating. | Should a company have to pause an AI system while it's being investigated for bias? |
 | Mandatory Recall | Action | R | 4 | None of your opponent's Systems can Run a Task next turn (including ones they deploy that turn). | When an AI system is found unsafe, regulators can require it be pulled from use until it's fixed. | Should the government be able to shut down an unsafe AI product? |
+| Informed Consent | System | U | 3 \| 2/3/3 | — | Asking people for clear permission before their data is used to train or run an AI. | Would you let an app train AI on your photos? What would you need to know? |
+| Red Teaming | System | U | 3 \| 2/4/2 | **Adversarial.** | Testers who try on purpose to make an AI fail, so problems get fixed before release. | If you were testing a chatbot, how would you try to trick it? |
 
 ## Societal Impacts of AI (red) — 10 cards
 
@@ -94,14 +98,15 @@ No source citations here on the student-facing content — see the **Teacher ref
 
 ## Deck totals
 
-- Humans and AI (14, including the Chase card) + Representation & Reasoning (8) + Machine Learning (20) + Ethical AI Design (9) + Societal Impacts (10) = **61 cards total**.
+- Humans and AI (14, including the Chase card) + Representation & Reasoning (8) + Machine Learning (22) + Ethical AI Design (11) + Societal Impacts (10) = **65 cards total**.
 - The 4 tempo-denial Actions (Manual Override, Ambiguous Input, Retraining Pause, Compliance Review) give every suit a single-target answer; **Mandatory Recall** (White, Rare) is the board-wide version — see the playtest log in GAME_CONCEPT.md for why single-target denial alone wasn't enough.
-- By type: 35 Systems, 11 Tools (3 of them 💾 Legacy), 13 Actions, 2 Datasets (counted from the cards themselves).
-- By rarity: 33 Common, 17 Uncommon, 10 Rare, 1 Chase.
+- By type: 39 Systems, 11 Tools (3 of them 💾 Legacy), 13 Actions, 2 Datasets (counted from the cards themselves).
+- By rarity: 34 Common, 20 Uncommon, 10 Rare, 1 Chase.
 - **v0.7 changes**: the five real-company cards got generic names (OpenAI → Fast-Moving Lab, Anthropic → Safety Lab, Claude → AI Assistant, ChatGPT → Viral App, Gemini → Built-in AI), since brand names date quickly and can read as endorsements; real examples live in the appendix below. Five new cards added: GPT, GPU, CPU, RAM (Machine Learning) and Data Center (Societal Impacts).
 - **v0.8 changes**: added **Obsolete** (Societal Impacts Action), the first card that can remove a Tool — before it, a deployed Tool stayed in play all game. Feature Vector, CPU, and RAM became **💾 Legacy** Tools (a floppy-disk icon in the type line); Obsolete draws a card when it discards one. See GAME_CONCEPT.md, Round 12, for the simulation check.
+- **v0.9 changes**: four Systems added to lift the two weakest colors, chosen by simulation (see GAME_CONCEPT.md, Round 13): **Embedding** and **Fine-Tuning** (Machine Learning), **Informed Consent** and **Red Teaming** (Ethical AI Design). The gap between the best and worst two-color deck dropped from 16 to 7 points.
 - **Duplicates avoided**: Supervised Learning and Reinforcement Learning were both already in the deck before this pass — flagging rather than re-adding them as a second copy under a new name.
-- **Trainable status**: set for all 61 cards using the simplest version of the Lorcana-style default — every Common and Uncommon card is Trainable, every Rare and the Chase card are not. This was needed to actually render the full print sheet; it's a first pass; a real pass would vary it card-by-card (e.g. a few Uncommons held back, a couple of weak Commons excluded) rather than a blanket rarity cutoff, but this gets the pilot playable.
+- **Trainable status**: set for all 65 cards using the simplest version of the Lorcana-style default — every Common and Uncommon card is Trainable, every Rare and the Chase card are not. This was needed to actually render the full print sheet; it's a first pass; a real pass would vary it card-by-card (e.g. a few Uncommons held back, a couple of weak Commons excluded) rather than a blanket rarity cutoff, but this gets the pilot playable.
 
 ---
 
@@ -151,6 +156,8 @@ No source citations here on the student-facing content — see the **Teacher ref
 | GPU | *General computing reference, not report-specific.* |
 | CPU | *General computing reference, not report-specific.* |
 | RAM | *General computing reference, not report-specific.* |
+| Embedding | *General machine learning reference, not report-specific.* Related to Feature Vector. |
+| Fine-Tuning | *General machine learning reference, not report-specific.* |
 | Fairness Check | Table 5 |
 | Bias Audit | Table 5 |
 | Model Card | Appendix B (Dungan) / Appendix E |
@@ -160,6 +167,8 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Ethical Framework | Table 5 |
 | Compliance Review | Table 5 (Ethical Evaluation of AI Systems) |
 | Mandatory Recall | p.31 (Big Idea #5, future regulation) |
+| Informed Consent | *Needs verification: likely the report's data-privacy rows (Table 5).* |
+| Red Teaming | *Needs verification: likely the report's testing and safety rows (Table 5).* |
 | AI in Daily Life | Table 6 |
 | Deepfake | Table 6 |
 | Job Disruption | Table 6 / p.32 |

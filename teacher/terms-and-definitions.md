@@ -111,6 +111,8 @@ How computers learn from data, and the hardware and models that make it work.
 | **CPU** | Tool | A computer's central processing unit: the general-purpose chip that runs a program's steps one after another. |
 | **CUDA** | Tool | A platform that lets AI models run on graphics chips (GPUs), training far faster than on a regular computer. |
 | **Diffusion Model** | System | A model that generates images by starting with noise and gradually refining it into a picture. |
+| **Embedding** | System | Turning words or images into numbers so similar things end up close together. |
+| **Fine-Tuning** | System | Training an existing model a little more on a smaller set of examples to make it a specialist. |
 | **GAN** | System | Two networks compete: one makes fakes, the other tries to catch them. |
 | **GPT** | System | An LLM pre-trained on huge amounts of text. |
 | **GPU** | Tool | A graphics processing unit: a chip that does thousands of calculations at once, which makes training AI much faster. |
@@ -140,9 +142,11 @@ How people make AI fair, safe, and accountable.
 | **Ethical Framework** | System | A structured set of criteria (fairness, safety, transparency...) used to evaluate an AI system. |
 | **Explainability** | System | An AI's ability to justify its decision by pointing to the features that led to it. |
 | **Fairness Check** | Tool | Evaluating whether an AI system's decisions are fair to everyone affected. |
+| **Informed Consent** | System | Asking people for clear permission before their data is used to train or run an AI. |
 | **Mandatory Recall** | Action | When an AI system is found unsafe, regulators can require it be pulled from use until it's fixed. |
 | **Model Card** | Tool | A document describing an AI model's training, performance, and limitations — like a nutrition label. |
 | **Privacy Shield** | Tool | Design practices that protect personal data used to train or run an AI system. |
+| **Red Teaming** | System | Testers who try on purpose to make an AI fail, so problems get fixed before release. |
 
 ### Societal Impacts (Red)
 
@@ -176,7 +180,7 @@ Background for teachers, not student-facing. The first two sources are what the 
 | Material | Use it for |
 |---|---|
 | [How to Play](https://tokenstcg.com/how_to_play/) | A picture-first guide to hand a new player. |
-| [Sample cards](https://tokenstcg.com/sample_cards/) | All 61 cards on screen, filterable by color and type. |
+| [Sample cards](https://tokenstcg.com/sample_cards/) | All 65 cards on screen, filterable by color and type. |
 | `design/pilot-deck-60-cards.md` | Every card's stats, ability, definition, and question, plus the appendix mapping cards to report sources. |
 | `design/GAME_CONCEPT.md` | Full rules, the three classroom modes, and the playtest history. |
 | `design/design-v1/tokens-print-page-*.png` | Print-and-play sheets, 7 pages at 300 DPI. Print at Actual Size / 100%. |

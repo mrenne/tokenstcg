@@ -53,22 +53,26 @@ To rebuild every card after adding art: `node design/frame-v2/build-card.js --al
 | 40 | GPU | `gpu` |
 | 41 | CPU | `cpu` |
 | 42 | RAM | `ram` |
-| 43 | Fairness Check | `fairness-check` |
-| 44 | Bias Audit | `bias-audit` |
-| 45 | Model Card | `model-card` |
-| 46 | Explainability | `explainability` |
-| 47 | Privacy Shield | `privacy-shield` |
-| 48 | Accountability | `accountability` |
-| 49 | Ethical Framework | `ethical-framework` |
-| 50 | Compliance Review | `compliance-review` |
-| 51 | Mandatory Recall | `mandatory-recall` |
-| 52 | AI in Daily Life | `ai-in-daily-life` |
-| 53 | Deepfake | `deepfake` |
-| 54 | Job Disruption | `job-disruption` |
-| 55 | Environmental Footprint | `environmental-footprint` |
-| 56 | Data Privacy Trade-off | `data-privacy-trade-off` |
-| 57 | Regulation Debate | `regulation-debate` |
-| 58 | Digital Divide | `digital-divide` |
-| 59 | Cognitive Offload | `cognitive-offload` |
-| 60 | Data Center | `data-center` |
-| 61 | Obsolete | `obsolete` |
+| 43 | Embedding | `embedding` |
+| 44 | Fine-Tuning | `fine-tuning` |
+| 45 | Fairness Check | `fairness-check` |
+| 46 | Bias Audit | `bias-audit` |
+| 47 | Model Card | `model-card` |
+| 48 | Explainability | `explainability` |
+| 49 | Privacy Shield | `privacy-shield` |
+| 50 | Accountability | `accountability` |
+| 51 | Ethical Framework | `ethical-framework` |
+| 52 | Compliance Review | `compliance-review` |
+| 53 | Mandatory Recall | `mandatory-recall` |
+| 54 | Informed Consent | `informed-consent` |
+| 55 | Red Teaming | `red-teaming` |
+| 56 | AI in Daily Life | `ai-in-daily-life` |
+| 57 | Deepfake | `deepfake` |
+| 58 | Job Disruption | `job-disruption` |
+| 59 | Environmental Footprint | `environmental-footprint` |
+| 60 | Data Privacy Trade-off | `data-privacy-trade-off` |
+| 61 | Regulation Debate | `regulation-debate` |
+| 62 | Digital Divide | `digital-divide` |
+| 63 | Cognitive Offload | `cognitive-offload` |
+| 64 | Data Center | `data-center` |
+| 65 | Obsolete | `obsolete` |

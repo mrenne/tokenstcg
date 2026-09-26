@@ -21,13 +21,13 @@
   html,body{ height:100%; }
   body{
     margin:0;
-    /* the card-back photo is brightest and busiest at dead center — exactly
-       where this centered layout puts the text — so the overlay is a vignette
-       that's darkest in the middle and eases off toward the edges, instead of
-       a flat scrim, to counter the image's own brightness where it matters */
+    /* the blue flower photo is brightest at the center, exactly where this
+       centered layout puts the text, so the overlay is a navy vignette that's
+       darkest in the middle and eases off toward the edges, letting the petals
+       show around the text instead of dimming the whole photo evenly */
     background-image:
-      radial-gradient(60% 60% at 50% 50%, rgba(4,6,12,.88), rgba(4,6,12,.58) 60%, rgba(4,6,12,.32) 100%),
-      url('assets/tokens_card_back.png');
+      radial-gradient(60% 60% at 50% 50%, rgba(4,8,22,.80), rgba(4,8,22,.62) 60%, rgba(4,8,22,.42) 100%),
+      url('assets/home-background.jpg');
     background-size: cover, cover;
     background-position: center, center;
     background-repeat: no-repeat, no-repeat;

@@ -112,6 +112,11 @@
   .v2.full .v2-body{ background:
       linear-gradient(180deg, transparent 0%, transparent 34%, color-mix(in srgb, var(--body2) 45%, transparent) 58%, color-mix(in srgb, var(--body2) 72%, transparent) 100%),
       var(--art) center/cover; }
+  /* White's background is a plain cream blur, so its Rares add a faint gold network on top of it */
+  .v2.full.gold-net .v2-body{ background:
+      linear-gradient(180deg, transparent 0%, transparent 34%, color-mix(in srgb, var(--body2) 45%, transparent) 58%, color-mix(in srgb, var(--body2) 72%, transparent) 100%),
+      url('../backgrounds/selected/ethics-goldnet.svg') center/cover,
+      var(--art) center/cover; }
   .v2.full .v2-art, .v2.full .v2-ledge{ display:none; }
   .v2.full .v2-head{ background:color-mix(in srgb, var(--head) 55%, transparent); }
   .v2.full .v2-type{ left:26px; right:26px; padding:0 10px; box-sizing:border-box; border-radius:14px;

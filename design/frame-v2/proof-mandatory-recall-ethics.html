@@ -112,6 +112,11 @@
   .v2.full .v2-body{ background:
       linear-gradient(180deg, transparent 0%, transparent 34%, color-mix(in srgb, var(--body2) 45%, transparent) 58%, color-mix(in srgb, var(--body2) 72%, transparent) 100%),
       var(--art) center/cover; }
+  /* White's background is a plain cream blur, so its Rares add a faint gold network on top of it */
+  .v2.full.gold-net .v2-body{ background:
+      linear-gradient(180deg, transparent 0%, transparent 34%, color-mix(in srgb, var(--body2) 45%, transparent) 58%, color-mix(in srgb, var(--body2) 72%, transparent) 100%),
+      url('../backgrounds/selected/ethics-goldnet.svg') center/cover,
+      var(--art) center/cover; }
   .v2.full .v2-art, .v2.full .v2-ledge{ display:none; }
   .v2.full .v2-head{ background:color-mix(in srgb, var(--head) 55%, transparent); }
   .v2.full .v2-type{ left:26px; right:26px; padding:0 10px; box-sizing:border-box; border-radius:14px;
@@ -124,7 +129,7 @@
   .v2-discuss .q{ margin:0; color:var(--discussInk); font-family:'Baloo 2',sans-serif; font-weight:800; font-size:46px; line-height:1.18;
     text-shadow:var(--discussShadow); }
 </style></head>
-<body><div class="stage"><div class="v2 full nostats" style="--edge:#e2c06a;--outerA:#efe5cb;--outerB:#d3c292;--body1:#f8f2e2;--body2:#e1d3ae;--head:#3a3224;--panel1:rgba(255,255,255,.72);--panel2:rgba(228,214,176,.85);--label:#8a6a22;--bracket:#b8913a;--circuit:#b8913a;--statA:#f4ead0;--statB:#cdb680;--statBorder:#7a5a1c;--ledgeA:#cdb884;--ledgeB:#a88f55;--discussBg:linear-gradient(115deg,#f4eedf 0%,#e2ecf4 32%,#efe3f6 58%,#e1f2ea 82%,#f4e7d6 100%);--discussBorder:rgba(184,145,58,.9);--discussBracket:#b8913a;--discussTag:#7a5a1c;--discussInk:#2b2418;--discussShadow:none;--ink:#2b2418;--typeInk:#3a3224;--headInk:#ffffff;--statInk:#2b2418;--typeGlass:rgba(255,250,236,.72);--iconHalo:rgba(255,255,255,.75);--art:url('../backgrounds/selected/ethics.jpg')">
+<body><div class="stage"><div class="v2 full gold-net nostats" style="--edge:#e2c06a;--outerA:#efe5cb;--outerB:#d3c292;--body1:#f8f2e2;--body2:#e1d3ae;--head:#3a3224;--panel1:rgba(255,255,255,.72);--panel2:rgba(228,214,176,.85);--label:#8a6a22;--bracket:#b8913a;--circuit:#b8913a;--statA:#f4ead0;--statB:#cdb680;--statBorder:#7a5a1c;--ledgeA:#cdb884;--ledgeB:#a88f55;--discussBg:linear-gradient(115deg,#f4eedf 0%,#e2ecf4 32%,#efe3f6 58%,#e1f2ea 82%,#f4e7d6 100%);--discussBorder:rgba(184,145,58,.9);--discussBracket:#b8913a;--discussTag:#7a5a1c;--discussInk:#2b2418;--discussShadow:none;--ink:#2b2418;--typeInk:#3a3224;--headInk:#ffffff;--statInk:#2b2418;--typeGlass:rgba(255,250,236,.72);--iconHalo:rgba(255,255,255,.75);--art:url('../backgrounds/selected/ethics.jpg')">
   <div class="v2-body">
     <div class="v2-art"></div>
     

@@ -152,7 +152,7 @@ function cardHtml(c, suit = c.suit, icon = null, number = '') {
   const typeText = c.typeText.replace(/·.*$/, '· ' + SUIT_LABEL[suit]);
   const full = c.rarity === 'rare' || c.rarity === 'chase';
   const kind = c.typeText.split('·')[0].trim();
-  return `<div class="v2${full ? ' full' : ''}${isSystem ? '' : ' nostats'}${isSystem && c.tokens > 2 ? ' tall-tray' : ''}" style="${style}">
+  return `<div class="v2${full ? ' full' : ''}${full && suit === 'ethics' ? ' gold-net' : ''}${isSystem ? '' : ' nostats'}${isSystem && c.tokens > 2 ? ' tall-tray' : ''}" style="${style}">
   <div class="v2-body">
     <div class="v2-art"></div>
     ${icon ? `<div class="v2-icon${iconIsPhoto(icon) ? ' photo' : iconIsWide(icon) ? ' wide' : ''}"><img src="../icons/${icon}" alt=""></div>` : ''}
@@ -279,6 +279,11 @@ const CSS = `
      the bottom keeps the text readable. */
   .v2.full .v2-body{ background:
       linear-gradient(180deg, transparent 0%, transparent 34%, color-mix(in srgb, var(--body2) 45%, transparent) 58%, color-mix(in srgb, var(--body2) 72%, transparent) 100%),
+      var(--art) center/cover; }
+  /* White's background is a plain cream blur, so its Rares add a faint gold network on top of it */
+  .v2.full.gold-net .v2-body{ background:
+      linear-gradient(180deg, transparent 0%, transparent 34%, color-mix(in srgb, var(--body2) 45%, transparent) 58%, color-mix(in srgb, var(--body2) 72%, transparent) 100%),
+      url('../backgrounds/selected/ethics-goldnet.svg') center/cover,
       var(--art) center/cover; }
   .v2.full .v2-art, .v2.full .v2-ledge{ display:none; }
   .v2.full .v2-head{ background:color-mix(in srgb, var(--head) 55%, transparent); }

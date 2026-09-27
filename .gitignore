@@ -22,3 +22,6 @@ design/frame-v2/preview-*.html
 /design/icons/*
 !/design/icons/README.md
 !/design/icons/icons.json
+
+# Print-and-play: only the PDF is committed; the single-page JPGs stay local
+/design/print/*.jpg

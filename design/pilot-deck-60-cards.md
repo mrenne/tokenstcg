@@ -1,12 +1,12 @@
-undefined | undefined |undefined | undefined |undefined | undefined |undefined | undefined |# Tokens — Pilot Deck, 65 Cards (v0.9)
+undefined | undefined |undefined | undefined |undefined | undefined |undefined | undefined |# Tokens — Pilot Deck, 70 Cards (v0.11)
 
-Stats shown as `Cost | Capability / Trust / Tokens` for Systems. Tools, Actions, and Datasets show `Cost` and their effect only — they have no combat stats. Rarity: C = Common, U = Uncommon, R = Rare, **Ch = Chase** (see GAME_CONCEPT.md's classroom distribution note — Chase cards aren't part of the base set every student receives). **💾 Legacy** marks old-tech Tools: the card shows a floppy-disk icon in its type line, and the Obsolete Action rewards discarding one.
+Stats shown as `Cost | Capability / Trust / Tokens` for Systems. Tools, Actions, and Datasets show `Cost` and their effect only — they have no combat stats. Rarity: C = Common, U = Uncommon, R = Rare, **Ch = Chase** (see GAME_CONCEPT.md's classroom distribution note — Chase cards aren't part of the base set every student receives). **💾 Legacy** marks old-tech Tools: the card shows a floppy-disk icon in its type line, and the Obsolete-style Actions reward discarding one.
 
 No source citations here on the student-facing content — see the **Teacher reference appendix** at the bottom of this file for where each card's content is grounded: most trace back to the AI Priorities report, a few (company/product types and computing hardware) to general accuracy instead, since the report is a content-accuracy grounding document, not the sole source for this project (see GAME_CONCEPT.md's Sources section). That mapping migrates into its own teacher's guide in a later phase.
 
 **House style — discussion questions:** one short sentence, aim for **under ~85 characters**. The card face has a fixed physical size; the mockup auto-shrinks text that runs long, but that's a safety net, not a substitute for writing tight in the first place — a question that needs shrinking to fit is a sign to rewrite it, not just an acceptable outcome.
 
-## Humans and AI (green) — 14 cards
+## Humans and AI (green) — 16 cards
 
 | Card | Type | Rarity | Cost \| Cap/Trust/Tokens | Ability | Definition | Discussion question |
 |---|---|---|---|---|---|---|
@@ -18,14 +18,16 @@ No source citations here on the student-facing content — see the **Teacher ref
 | AI Career Path | Action | U | 1 | Draw a card. | People work on AI as data labelers, model trainers, ethicists, and more — not just "programmers." | Which AI-related job sounds most interesting to you, and why? |
 | Manual Override | Action | C | 2 | Target opponent's System can't Run a Task next turn. | A person steps in to pause an automated process before it can act again. | When should a person be allowed to override an AI's decision? |
 | **AI Isn't Magic** | Action | **Ch** | 2 (any Data Type) | Choose target System. It can't use abilities until its controller's next turn. | *Wildcard.* Ties to the report's most-repeated refrain: AI isn't sentient or magical — it's a tool built by people. | What's something people assume AI can do that it actually can't? |
+| **Alignment** | System | **Ch** | 3 (any Data Type) \| 2/5/3 | Whenever this System Runs a Task, remove 1 Flag from another System you control. | *Wildcard.* Making sure an AI system's goals match what people actually want it to do. | If you built an AI helper, what rules would you give it first? |
 | Python | Tool | C | 1 | {E} — Draw a card. | A programming language popular for building AI models because it's readable and has huge community support. | Why might a beginner-friendly language end up being what experts use too? |
 | Fast-Moving Lab | System | R | 3 \| 3/2/2 | **Fast-Tracked.** | An AI research company that races to release powerful new tools to the public quickly. | What's a tradeoff of a company releasing powerful AI tools quickly? |
 | Safety Lab | System | R | 3 \| 2/4/2 | **Highly Trusted.** | An AI company that makes safety research a core part of how it builds AI systems. | Should a company that builds AI also be the one checking it's safe? |
 | AI Assistant | System | U | 3 \| 2/3/2 | **Highly Trusted.** | A conversational AI built to help people with writing, questions, and analysis. | What would you want to double-check before trusting a chatbot's answer? |
 | Viral App | System | C | 3 \| 3/2/2 | **Fast-Tracked.** | An AI chatbot app that spread to millions of people faster than almost any app before it. | Why might a chatbot become popular faster than almost any app before it? |
 | Built-in AI | System | C | 2 \| 2/2/2 | — | An AI assistant built right into search, email, and other apps people already use every day. | What's different about an AI built into apps you already use daily? |
+| Defunct | Action | U | 2 | Discard target Tool. If it's a 💾 Legacy Tool, draw a card. | A company, product, or service that has shut down and no longer exists. | What happens to your data when an app you use shuts down? |
 
-## Representation and Reasoning (blue) — 8 cards
+## Representation and Reasoning (blue) — 9 cards
 
 | Card | Type | Rarity | Cost \| Cap/Trust/Tokens | Ability | Definition | Discussion question |
 |---|---|---|---|---|---|---|
@@ -37,8 +39,9 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Decision Tree | System | U | 3 \| 2/4/2 | **Highly Trusted.** | A series of yes/no tests that leads to a decision — explainable step by step. | Sketch a 3-question decision tree for "what should I eat for lunch?" |
 | Search Tree | System | R | 3 \| 3/3/3 | Whenever this System Runs a Task, look at the top 3 cards of your deck; put one into your hand. | A branching map of possible moves an AI explores to find the best one, like in tic-tac-toe. | Why might exploring every possible move become impossible for a more complex game? |
 | Ambiguous Input | Action | C | 1 | Target opponent's System can't Run a Task next turn. | Poorly represented or unclear data makes it hard for an AI system to act reliably. | Why might unclear instructions make an AI "freeze up" or give a bad answer? |
+| Discontinued | Action | U | 2 | Discard target Tool. If it's a 💾 Legacy Tool, draw a card. | A product or service that is no longer made or supported, even if some people still use it. | Why might a company warn people before it stops supporting a feature? |
 
-## Machine Learning (black) — 22 cards
+## Machine Learning (black) — 23 cards
 
 | Card | Type | Rarity | Cost \| Cap/Trust/Tokens | Ability | Definition | Discussion question |
 |---|---|---|---|---|---|---|
@@ -64,12 +67,13 @@ No source citations here on the student-facing content — see the **Teacher ref
 | RAM | Tool | C | 2 | 💾 **Legacy.** {E} — Put an Action card from your discard pile on top of your deck. | A computer's short-term memory, holding the data a program is working with right now. | What happens to what's in a computer's memory when the power goes off? |
 | Embedding | System | C | 2 \| 2/3/2 | — | Turning words or images into numbers so similar things end up close together. | Which words would an AI place close to "dog"? |
 | Fine-Tuning | System | U | 3 \| 2/3/3 | — | Training an existing model a little more on a smaller set of examples to make it a specialist. | What would you fine-tune an AI to be really good at? |
+| Outdated | Action | U | 2 | Discard target Tool. If it's a 💾 Legacy Tool, draw a card. | A model trained on old data that no longer reflects how things are now. | Why might an AI trained years ago give wrong answers about today? |
 
-## Ethical AI System Design and Programming (white) — 11 cards
+## Ethical AI System Design and Programming (white) — 12 cards
 
 | Card | Type | Rarity | Cost \| Cap/Trust/Tokens | Ability | Definition | Discussion question |
 |---|---|---|---|---|---|---|
-| Fairness Check | Tool | C | 1 | {E} — Look at target System's Capability and Trust. | Evaluating whether an AI system's decisions are fair to everyone affected. | Whose idea of "fair" should count when people disagree? |
+| Fairness Check | Tool | C | 2 | {E} — Put 1 Flag on target System whose Capability is higher than its Trust. | Evaluating whether an AI system's decisions are fair to everyone affected. | Whose idea of "fair" should count when people disagree? |
 | Bias Audit | System | C | 2 \| 1/4/1 | **Highly Trusted.** | A deliberate review of a dataset or model to find and reduce unfair skew. | If you found bias in a model, what's the first thing you'd check? |
 | Model Card | Tool | C | 1 | Once per game, you may remove all Flags from a System you control instead of it being Deprecated. | A document describing an AI model's training, performance, and limitations — like a nutrition label. | Why might a company be reluctant to publish a model card? |
 | Explainability | System | C | 2 \| 1/3/2 | — | An AI's ability to justify its decision by pointing to the features that led to it. | Should self-driving cars be required to explain every decision? Why? |
@@ -80,6 +84,7 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Mandatory Recall | Action | R | 4 | None of your opponent's Systems can Run a Task next turn (including ones they deploy that turn). | When an AI system is found unsafe, regulators can require it be pulled from use until it's fixed. | Should the government be able to shut down an unsafe AI product? |
 | Informed Consent | System | U | 3 \| 2/3/3 | — | Asking people for clear permission before their data is used to train or run an AI. | Would you let an app train AI on your photos? What would you need to know? |
 | Red Teaming | System | U | 3 \| 2/4/2 | **Adversarial.** | Testers who try on purpose to make an AI fail, so problems get fixed before release. | If you were testing a chatbot, how would you try to trick it? |
+| Expired | Action | U | 2 | Discard target Tool. If it's a 💾 Legacy Tool, draw a card. | Permission or approval that has run out and must be renewed before it counts again. | Should permission to use your data run out after a while? Why? |
 
 ## Societal Impacts of AI (red) — 10 cards
 
@@ -98,15 +103,18 @@ No source citations here on the student-facing content — see the **Teacher ref
 
 ## Deck totals
 
-- Humans and AI (14, including the Chase card) + Representation & Reasoning (8) + Machine Learning (22) + Ethical AI Design (11) + Societal Impacts (10) = **65 cards total**.
+- Humans and AI (16, including both Chase cards) + Representation & Reasoning (9) + Machine Learning (23) + Ethical AI Design (12) + Societal Impacts (10) = **70 cards total**.
 - The 4 tempo-denial Actions (Manual Override, Ambiguous Input, Retraining Pause, Compliance Review) give every suit a single-target answer; **Mandatory Recall** (White, Rare) is the board-wide version — see the playtest log in GAME_CONCEPT.md for why single-target denial alone wasn't enough.
-- By type: 39 Systems, 11 Tools (3 of them 💾 Legacy), 13 Actions, 2 Datasets (counted from the cards themselves).
-- By rarity: 34 Common, 20 Uncommon, 10 Rare, 1 Chase.
+- By type: 40 Systems, 11 Tools (3 of them 💾 Legacy), 17 Actions, 2 Datasets (counted from the cards themselves).
+- By rarity: 36 Common, 24 Uncommon, 8 Rare, 2 Chase.
 - **v0.7 changes**: the five real-company cards got generic names (OpenAI → Fast-Moving Lab, Anthropic → Safety Lab, Claude → AI Assistant, ChatGPT → Viral App, Gemini → Built-in AI), since brand names date quickly and can read as endorsements; real examples live in the appendix below. Five new cards added: GPT, GPU, CPU, RAM (Machine Learning) and Data Center (Societal Impacts).
 - **v0.8 changes**: added **Obsolete** (Societal Impacts Action), the first card that can remove a Tool — before it, a deployed Tool stayed in play all game. Feature Vector, CPU, and RAM became **💾 Legacy** Tools (a floppy-disk icon in the type line); Obsolete draws a card when it discards one. See GAME_CONCEPT.md, Round 12, for the simulation check.
 - **v0.9 changes**: four Systems added to lift the two weakest colors, chosen by simulation (see GAME_CONCEPT.md, Round 13): **Embedding** and **Fine-Tuning** (Machine Learning), **Informed Consent** and **Red Teaming** (Ethical AI Design). The gap between the best and worst two-color deck dropped from 16 to 7 points.
+- **Fairness Check rework**: its old ability ("look at target System's Capability and Trust") did nothing, since those numbers are printed face-up. It now costs 2 and puts 1 Flag on a System whose Capability is higher than its Trust (see GAME_CONCEPT.md, Round 14).
+- **v0.10 changes**: four more Tool-removal Actions with Obsolete's exact effect, one per remaining color, so every color can answer a Tool: **Defunct** (Humans and AI), **Discontinued** (Representation & Reasoning), **Outdated** (Machine Learning), **Expired** (Ethical AI Design). See GAME_CONCEPT.md, Round 15.
+- **v0.11 changes**: a second Chase card, **Alignment** (Wildcard System, 3 | 2/5/3), card 70. See GAME_CONCEPT.md, Round 16.
 - **Duplicates avoided**: Supervised Learning and Reinforcement Learning were both already in the deck before this pass — flagging rather than re-adding them as a second copy under a new name.
-- **Trainable status**: set for all 65 cards using the simplest version of the Lorcana-style default — every Common and Uncommon card is Trainable, every Rare and the Chase card are not. This was needed to actually render the full print sheet; it's a first pass; a real pass would vary it card-by-card (e.g. a few Uncommons held back, a couple of weak Commons excluded) rather than a blanket rarity cutoff, but this gets the pilot playable.
+- **Trainable status**: set for all 70 cards using the simplest version of the Lorcana-style default — every Common and Uncommon card is Trainable, every Rare and the Chase card are not. This was needed to actually render the full print sheet; it's a first pass; a real pass would vary it card-by-card (e.g. a few Uncommons held back, a couple of weak Commons excluded) rather than a blanket rarity cutoff, but this gets the pilot playable.
 
 ---
 
@@ -121,6 +129,7 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Agent | Appendix E |
 | AI Career Path | Appendix C (Career Exploration) |
 | AI Isn't Magic | p.7, p.36 (key refrain) |
+| Alignment | *Needs verification: the report's rows on AI goals and human values.* Ties to the Launch Day mode. |
 | Python | Table 2 (Human Role in Creating AI) — general tool reference, not report-specific |
 | Fast-Moving Lab | *No direct report citation — vendor-neutral standards document doesn't name companies. Generic stand-in for real AI labs that release quickly (e.g. OpenAI); bring real examples into discussion.* |
 | Safety Lab | *No direct report citation — same as Fast-Moving Lab. Real-world example: Anthropic.* |
@@ -179,3 +188,7 @@ No source citations here on the student-facing content — see the **Teacher ref
 | Cognitive Offload | Table 2 (Choice to Use AI) / Table 6 (Individual Impacts) |
 | Data Center | Table 6 (environmental effects) |
 | Obsolete | *General computing reference, not report-specific.* Ties to e-waste (Table 6, environmental effects). |
+| Defunct | *General reference, not report-specific.* Same effect as Obsolete. |
+| Discontinued | *General reference, not report-specific.* Same effect as Obsolete. |
+| Outdated | *General reference, not report-specific.* Same effect as Obsolete. |
+| Expired | *General reference, not report-specific.* Same effect as Obsolete. |

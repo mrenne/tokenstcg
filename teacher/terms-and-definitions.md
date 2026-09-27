@@ -46,7 +46,7 @@ A vocabulary guide for teachers to use with students. It covers the words used t
 | **Highly Trusted** | A keyword: this System can't be Audited by a System with lower Trust than its own. | — |
 | **Adversarial** | A keyword: when this System is Audited, it deals 1 extra Flag back to the System that Audited it. | In AI, **adversarial** means working against another system, like two networks competing in a GAN. |
 | **Attention** | A keyword on the Transformer card. The card explains what it does. | **Attention** lets a model focus on the most important parts of its input. It is the key idea behind modern chatbots. |
-| **Legacy** | A floppy-disk icon (💾) on the type bar of an old-tech Tool. The Obsolete card can discard any Tool, and draws you a card if it was a Legacy Tool. | A **legacy** system is older technology that is still in use but no longer the newest way of doing things. The floppy disk is the classic example: it used to be how everyone saved files, and today it survives mostly as the "Save" icon. |
+| **Legacy** | A floppy-disk icon (💾) on the type bar of an old-tech Tool. Five cards (Obsolete, Defunct, Discontinued, Outdated, Expired) can discard any Tool, and draw you a card if it was a Legacy Tool. | A **legacy** system is older technology that is still in use but no longer the newest way of doing things. The floppy disk is the classic example: it used to be how everyone saved files, and today it survives mostly as the "Save" icon. |
 | **Discuss** | The question at the bottom of every card. Your teacher may pause the game so you can talk about it. | — |
 
 ### Launch Day terms
@@ -75,8 +75,10 @@ How people and AI differ, who builds AI, and when to use it.
 | **AI Assistant** | System | A conversational AI built to help people with writing, questions, and analysis. |
 | **AI Career Path** | Action | People work on AI as data labelers, model trainers, ethicists, and more — not just "programmers." |
 | **AI Isn't Magic** (Chase) | Action | AI isn't sentient or magical — it's a tool built by people. |
+| **Alignment** (Chase) | System | Making sure an AI system's goals match what people actually want it to do. |
 | **Built-in AI** | System | An AI assistant built right into search, email, and other apps people already use every day. |
 | **Chatbot** | System | A conversational agent that talks with people via text or voice. |
+| **Defunct** | Action | A company, product, or service that has shut down and no longer exists. |
 | **Fast-Moving Lab** | System | An AI research company that races to release powerful new tools to the public quickly. |
 | **Human-in-the-Loop** | Tool | A design where a human reviews or overrides an automated decision before it takes effect. |
 | **Manual Override** | Action | A person steps in to pause an automated process before it can act again. |
@@ -96,6 +98,7 @@ How AI stores information about the world and uses it to make decisions.
 | **Ambiguous Input** | Action | Poorly represented or unclear data makes it hard for an AI system to act reliably. |
 | **Classifier** | System | A model that sorts input into categories, like spam vs. not-spam. |
 | **Decision Tree** | System | A series of yes/no tests that leads to a decision — explainable step by step. |
+| **Discontinued** | Action | A product or service that is no longer made or supported, even if some people still use it. |
 | **Feature Vector** | Tool | A list of numbers encoding an object's key traits so an algorithm can use them. |
 | **Predictor** | System | A model that outputs a continuous value, like estimating a house's price. |
 | **Recommender** | System | A model that suggests items based on what similar users liked. |
@@ -120,6 +123,7 @@ How computers learn from data, and the hardware and models that make it work.
 | **Large Language Model** | System | A neural network trained on massive text data, used for chat, writing, and more. |
 | **Neural Network** | System | Many simple processing units organized to jointly solve a complex problem. |
 | **Neuron** | System | The smallest processing unit in a neural network — many of them together form the whole model. |
+| **Outdated** | Action | A model trained on old data that no longer reflects how things are now. |
 | **RAM** | Tool | A computer's short-term memory, holding the data a program is working with right now. |
 | **Reinforcement Learning** | System | A model learns by trial and error, guided by a reward signal instead of labeled answers. |
 | **Retraining Pause** | Action | A model taken offline for retraining can't be used again until the update finishes. |
@@ -140,6 +144,7 @@ How people make AI fair, safe, and accountable.
 | **Bias Audit** | System | A deliberate review of a dataset or model to find and reduce unfair skew. |
 | **Compliance Review** | Action | A formal check to confirm an AI system meets required standards before it keeps operating. |
 | **Ethical Framework** | System | A structured set of criteria (fairness, safety, transparency...) used to evaluate an AI system. |
+| **Expired** | Action | Permission or approval that has run out and must be renewed before it counts again. |
 | **Explainability** | System | An AI's ability to justify its decision by pointing to the features that led to it. |
 | **Fairness Check** | Tool | Evaluating whether an AI system's decisions are fair to everyone affected. |
 | **Informed Consent** | System | Asking people for clear permission before their data is used to train or run an AI. |
@@ -180,7 +185,7 @@ Background for teachers, not student-facing. The first two sources are what the 
 | Material | Use it for |
 |---|---|
 | [How to Play](https://tokenstcg.com/how_to_play/) | A picture-first guide to hand a new player. |
-| [Sample cards](https://tokenstcg.com/sample_cards/) | All 65 cards on screen, filterable by color and type. |
+| [Sample cards](https://tokenstcg.com/sample_cards/) | All 70 cards on screen, filterable by color and type. |
 | `design/pilot-deck-60-cards.md` | Every card's stats, ability, definition, and question, plus the appendix mapping cards to report sources. |
 | `design/GAME_CONCEPT.md` | Full rules, the three classroom modes, and the playtest history. |
 | `design/design-v1/tokens-print-page-*.png` | Print-and-play sheets, 7 pages at 300 DPI. Print at Actual Size / 100%. |

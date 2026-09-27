@@ -46,7 +46,7 @@ A deck draws from 1-2 Data Types, same as Lorcana restricts a deck to 1-2 inks �
 ## Card types
 
 - **Systems** (≈ Characters): the AI concepts that do the work. Have Cost, Capability, Trust, and Tokens. Deployed face-up; can Run a Task or Run an Audit starting the turn *after* they're deployed (they need a turn to "finish training") unless they have the **Fast-Tracked** keyword.
-- **Tools** (≈ Items): stay in play once deployed (until an effect discards them — so far only the **Obsolete** Action can) and usable immediately. No combat stats — just an ability, often a repeatable one paid for by exerting the Tool itself. E.g., a Model Card tool, a Bias Audit tool.
+- **Tools** (≈ Items): stay in play once deployed (until an effect discards them — five Actions can, one per color: **Obsolete**, **Defunct**, **Discontinued**, **Outdated**, and **Expired**) and usable immediately. No combat stats — just an ability, often a repeatable one paid for by exerting the Tool itself. E.g., a Model Card tool, a Bias Audit tool.
 - **Actions**: a one-time effect, then discarded. Quick disruptive or helpful events — a regulation passing, a data breach, a viral deepfake.
 - **Datasets** (≈ Songs, a subtype of Action): can be paid for normally with Data, *or* "processed for free" by exerting an already-deployed System with Cost 3 or higher instead. This rewards having a big System in play — mechanically, only a sufficiently large model can ingest a big dataset without extra cost.
 
@@ -116,7 +116,7 @@ First player to reach a target Token count wins. Suggested target for the pilot'
 - **Fast-Tracked** — this System can Run a Task or Run an Audit the same turn it's deployed. (Machine Learning flavor: an agent that acts autonomously from the start.)
 - **Adversarial** — whenever this System is Audited, it deals 1 Flag back to the Auditing System, on top of the normal damage exchange. (Machine Learning flavor: a GAN is trained by fighting back.)
 - **Highly Trusted** — this System can't be Audited by a System with lower Trust than its own. (Renamed from "Audited" so the keyword isn't confused with the Run an Audit action. It's a keyword, not the same as having a Trust stat — every System has Trust, but only cards that say "Highly Trusted" get this rule.) (Ethical AI Design flavor: a well-vetted system is hard to challenge unfairly.)
-- **💾 Legacy** — marks an old-tech Tool with a floppy-disk icon in its type line. It does nothing by itself; the **Obsolete** Action (Discard target Tool) draws its player a card when it discards a Legacy Tool. Legacy Tools so far: Feature Vector, CPU, RAM. (Flavor: technology goes out of date fast, and old tech is the first thing replaced.)
+- **💾 Legacy** — marks an old-tech Tool with a floppy-disk icon in its type line. It does nothing by itself; the five Tool-removal Actions (Obsolete, Defunct, Discontinued, Outdated, Expired: "Discard target Tool") draw their player a card when they discard a Legacy Tool. Legacy Tools so far: Feature Vector, CPU, RAM. (Flavor: technology goes out of date fast, and old tech is the first thing replaced.)
 - **Transparent** — when this System would be Deprecated, its controller may first look at the top card of their deck and draw it if it's a Tool. (Societal Impacts flavor: openness about failure still has value.)
 
 ## Rarity & trading
@@ -176,7 +176,7 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
         | Training Data, ImageNet, CPU, RAM | The AI speeds up: flip another card now (which also brings launch closer) |
         | CUDA, GPU | All AI Systems get +1 Capability for the rest of the game |
         | Regulation Debate | Good news: each player may train an extra card next turn |
-        | Obsolete | The team discards 1 Tool of its choice (if it has any) |
+        | Obsolete, Outdated | The team discards 1 Tool of its choice (if it has any) |
         | Tensor | Nothing |
    3. **Check.** Team Tokens reach 45 → everyone wins. The meter goes past 6 → everyone loses. **The Launch pile is empty at the start of an AI phase → launch day arrived and the team wasn't ready: everyone loses.**
 
@@ -199,7 +199,7 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
 
 ## Pilot scope (this phase)
 
-- 65 cards across the 5 suits (1 of which is the Chase card), mostly Systems with a handful of Tools/Actions/a Dataset woven in (see pilot-deck-60-cards.md for the full, type-tagged list).
+- 70 cards across the 5 suits (2 of which are Chase cards), mostly Systems with a handful of Tools/Actions/a Dataset woven in (see pilot-deck-60-cards.md for the full, type-tagged list).
 - Print-and-play: card fronts only, standard poker-card size, designed for a home/office color printer.
 - One class, one unit, playtested and iterated before any larger print run.
 
@@ -242,6 +242,17 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
      - **The gap between the best and worst two-color deck fell from 16 to 7 points.** Black+White went from 40% to 46%, Green+Blue from 56% to 53%, and every color now averages 48–52%. First player 47%, games still 6.9 rounds.
      - Red Teaming tested the same with Highly Trusted or Adversarial; Adversarial was kept because it matches what a red team does. It costs 1 more than Accountability (2 | 2/4/2) for the keyword.
      - **Launch Day got easier.** Embedding and Fine-Tuning join the AI deck as aligned Systems that never drift, and the new White cards make player decks stronger. At the 40-Token target: balanced 71% → 76%, safety-first 61% → 67%, greedy 33% → 39%. (The simulator already had balanced at 71% before these cards, above the 63% recorded after v0.7.) Raising the target restores the old numbers: **45 Tokens gives 66% / 57% / 34%, 46 gives 64% / 55% / 32%.** **The target is now 45**, the round number closest to the tuned balance.
+   - **Round 14 — Fairness Check gets a real effect**: its old ability ("{E} — Look at target System's Capability and Trust") did nothing, because Capability and Trust are printed face-up on every System. New text: **"{E} — Put 1 Flag on target System whose Capability is higher than its Trust"** — the same "more powerful than trustworthy" test that Launch Day uses for drift. Checked with players who deploy it whenever they draw it (1,000 games per Quick Play matchup, 5,000 Launch Day games per strategy):
+     - **At cost 1 it was too strong**: the gap between the best and worst two-color deck grew from 7 to 10 points, and in Launch Day the greedy strategy won 42% (up from 34%).
+     - **At cost 2 (chosen)**: the gap stays at 7 points, White's average goes from 48% to 49%, and Fairness Check puts 0.6 Flags per White-deck game, knocking out about one System every three games. Launch Day greedy rises from 34% to 40% (balanced 66%, safety-first 55%), because the team can keep flagging drifting AI Systems.
+     - A once-per-game version (cost 1) was the gentlest (Launch Day greedy 36%) but left White where it was. If Launch Day playtests show greedy play paying off too often, that's the fallback.
+   - **Round 15 — a Tool answer in every color (v0.10)**: four more Actions with Obsolete's exact effect ("Discard target Tool. If it's a 💾 Legacy Tool, draw a card.", Uncommon, 2 Data), one for each color that didn't have one: **Defunct** (Humans and AI), **Discontinued** (Representation & Reasoning), **Outdated** (Machine Learning), **Expired** (Ethical AI Design). 1,000 games per Quick Play matchup, 5,000 Launch Day games per strategy:
+     - **Quick Play moved slightly**: the gap between the best and worst two-color deck went from 8 to 10 points (other color spreads tested — no Blue card, two Black, two Black + two White — came out between 9 and 14, so one per color was kept). Tools removed per game rose from 0.04 to 0.13, and first player and game length didn't change.
+     - **These cards are often dead in hand**: Tools reach the table only about once every three games, so a Tool-removal Action usually has no target. Blue, the smallest color, feels that most (Blue+Red 52% → 46%). If playtests confirm it, the fallback from Round 12 still applies: "if there's no Tool in play, draw a card instead."
+     - **Launch Day**: Outdated joins Obsolete in the AI deck (the team discards a Tool). Balanced 66% → 68%, safety-first 57% → 56%, greedy 34% → 31% — within noise.
+   - **Round 16 — a second Chase card (v0.11)**: **Alignment**, a Wildcard System, card 70: "Whenever this System Runs a Task, remove 1 Flag from another System you control." Alignment is the big idea behind Launch Day and had no card of its own. Chase cards stay out of the base decks, so it was checked by adding it to each two-color deck in turn (1,000 games per matchup):
+     - **At 4 | 2/5/3 it was a slight step down** (average deck 49.9% → 48.5%): a 4-cost System, plus the deploy tax, arrives too late to score much (1.5 Tokens per deploy).
+     - **At 3 | 2/5/3 (chosen)** a deck with it wins about 54% — noticeably better, as a prize card should be, but not overwhelming. It scores 2.35 Tokens per deploy, below the best regular Systems (3.0–3.7).
 2. ~~Art direction~~ — settled, now rarity-differentiated:
    - **Common/Uncommon**: a small windowed art box near the top (like a traditional trading card), the rest of the card a solid suit-colored body.
    - **Rare/Chase**: true full-art — the background photo fills the entire card edge to edge, and even the Discuss banner turns translucent so the art shows through it too. The rarity itself is part of what makes a card feel special, not just its stats.

@@ -25,54 +25,59 @@ To rebuild every card after adding art: `node design/frame-v2/build-card.js --al
 | 12 | AI Assistant | `ai-assistant` |
 | 13 | Viral App | `viral-app` |
 | 14 | Built-in AI | `built-in-ai` |
-| 15 | Abstraction | `abstraction` |
-| 16 | Feature Vector | `feature-vector` |
-| 17 | Classifier | `classifier` |
-| 18 | Predictor | `predictor` |
-| 19 | Recommender | `recommender` |
-| 20 | Decision Tree | `decision-tree` |
-| 21 | Search Tree | `search-tree` |
-| 22 | Ambiguous Input | `ambiguous-input` |
-| 23 | Sensor | `sensor` |
-| 24 | Training Data | `training-data` |
-| 25 | Bias in Data | `bias-in-data` |
-| 26 | Supervised Learning | `supervised-learning` |
-| 27 | Neural Network | `neural-network` |
-| 28 | Large Language Model | `large-language-model` |
-| 29 | Reinforcement Learning | `reinforcement-learning` |
-| 30 | Retraining Pause | `retraining-pause` |
-| 31 | Neuron | `neuron` |
-| 32 | Tensor | `tensor` |
-| 33 | CUDA | `cuda` |
-| 34 | ImageNet | `imagenet` |
-| 35 | GAN | `gan` |
-| 36 | Diffusion Model | `diffusion-model` |
-| 37 | Unsupervised Learning | `unsupervised-learning` |
-| 38 | Transformer | `transformer` |
-| 39 | GPT | `gpt` |
-| 40 | GPU | `gpu` |
-| 41 | CPU | `cpu` |
-| 42 | RAM | `ram` |
-| 43 | Embedding | `embedding` |
-| 44 | Fine-Tuning | `fine-tuning` |
-| 45 | Fairness Check | `fairness-check` |
-| 46 | Bias Audit | `bias-audit` |
-| 47 | Model Card | `model-card` |
-| 48 | Explainability | `explainability` |
-| 49 | Privacy Shield | `privacy-shield` |
-| 50 | Accountability | `accountability` |
-| 51 | Ethical Framework | `ethical-framework` |
-| 52 | Compliance Review | `compliance-review` |
-| 53 | Mandatory Recall | `mandatory-recall` |
-| 54 | Informed Consent | `informed-consent` |
-| 55 | Red Teaming | `red-teaming` |
-| 56 | AI in Daily Life | `ai-in-daily-life` |
-| 57 | Deepfake | `deepfake` |
-| 58 | Job Disruption | `job-disruption` |
-| 59 | Environmental Footprint | `environmental-footprint` |
-| 60 | Data Privacy Trade-off | `data-privacy-trade-off` |
-| 61 | Regulation Debate | `regulation-debate` |
-| 62 | Digital Divide | `digital-divide` |
-| 63 | Cognitive Offload | `cognitive-offload` |
-| 64 | Data Center | `data-center` |
-| 65 | Obsolete | `obsolete` |
+| 15 | Defunct | `defunct` |
+| 16 | Abstraction | `abstraction` |
+| 17 | Feature Vector | `feature-vector` |
+| 18 | Classifier | `classifier` |
+| 19 | Predictor | `predictor` |
+| 20 | Recommender | `recommender` |
+| 21 | Decision Tree | `decision-tree` |
+| 22 | Search Tree | `search-tree` |
+| 23 | Ambiguous Input | `ambiguous-input` |
+| 24 | Discontinued | `discontinued` |
+| 25 | Sensor | `sensor` |
+| 26 | Training Data | `training-data` |
+| 27 | Bias in Data | `bias-in-data` |
+| 28 | Supervised Learning | `supervised-learning` |
+| 29 | Neural Network | `neural-network` |
+| 30 | Large Language Model | `large-language-model` |
+| 31 | Reinforcement Learning | `reinforcement-learning` |
+| 32 | Retraining Pause | `retraining-pause` |
+| 33 | Neuron | `neuron` |
+| 34 | Tensor | `tensor` |
+| 35 | CUDA | `cuda` |
+| 36 | ImageNet | `imagenet` |
+| 37 | GAN | `gan` |
+| 38 | Diffusion Model | `diffusion-model` |
+| 39 | Unsupervised Learning | `unsupervised-learning` |
+| 40 | Transformer | `transformer` |
+| 41 | GPT | `gpt` |
+| 42 | GPU | `gpu` |
+| 43 | CPU | `cpu` |
+| 44 | RAM | `ram` |
+| 45 | Embedding | `embedding` |
+| 46 | Fine-Tuning | `fine-tuning` |
+| 47 | Outdated | `outdated` |
+| 48 | Fairness Check | `fairness-check` |
+| 49 | Bias Audit | `bias-audit` |
+| 50 | Model Card | `model-card` |
+| 51 | Explainability | `explainability` |
+| 52 | Privacy Shield | `privacy-shield` |
+| 53 | Accountability | `accountability` |
+| 54 | Ethical Framework | `ethical-framework` |
+| 55 | Compliance Review | `compliance-review` |
+| 56 | Mandatory Recall | `mandatory-recall` |
+| 57 | Informed Consent | `informed-consent` |
+| 58 | Red Teaming | `red-teaming` |
+| 59 | Expired | `expired` |
+| 60 | AI in Daily Life | `ai-in-daily-life` |
+| 61 | Deepfake | `deepfake` |
+| 62 | Job Disruption | `job-disruption` |
+| 63 | Environmental Footprint | `environmental-footprint` |
+| 64 | Data Privacy Trade-off | `data-privacy-trade-off` |
+| 65 | Regulation Debate | `regulation-debate` |
+| 66 | Digital Divide | `digital-divide` |
+| 67 | Cognitive Offload | `cognitive-offload` |
+| 68 | Data Center | `data-center` |
+| 69 | Obsolete | `obsolete` |
+| 70 | Alignment | `alignment` |

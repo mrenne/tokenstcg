@@ -185,7 +185,7 @@ Background for teachers, not student-facing. The first two sources are what the 
 | Material | Use it for |
 |---|---|
 | [How to Play](https://tokenstcg.com/how_to_play/) | A picture-first guide to hand a new player. |
-| [Sample cards](https://tokenstcg.com/sample_cards/) | All 70 cards on screen, filterable by color and type. |
+| [Alpha Set](https://tokenstcg.com/sample_cards/) | All 70 cards of the Alpha Set on screen, filterable by color and type. |
 | `design/pilot-deck-60-cards.md` | Every card's stats, ability, definition, and question, plus the appendix mapping cards to report sources. |
 | `design/GAME_CONCEPT.md` | Full rules, the three classroom modes, and the playtest history. |
 | `design/design-v1/tokens-print-page-*.png` | Print-and-play sheets, 7 pages at 300 DPI. Print at Actual Size / 100%. |

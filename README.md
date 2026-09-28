@@ -4,7 +4,8 @@
 
 Students collect and trade cards representing real AI concepts, organized into five suits grounded in the CSTA/AI4K12 "AI Learning Priorities for All K-12 Students" report. Mechanics are adapted from Disney Lorcana's quickstart rules. No screens required to play — the "unplugged" part is the point.
 
-- **Website**: [tokenstcg.com](https://tokenstcg.com/) — coming soon
+- **Website**: [tokenstcg.com](https://tokenstcg.com/), linking to How to Play and the Alpha Set
+- **Alpha Set** (the first set of cards, all 70 on one page): [sample_cards/index.html](sample_cards/index.html) — live at [tokenstcg.com/sample_cards](https://tokenstcg.com/sample_cards/)
 - **Game design**: [design/GAME_CONCEPT.md](design/GAME_CONCEPT.md)
 - **Full card list**: [design/pilot-deck-60-cards.md](design/pilot-deck-60-cards.md)
 - **How to play** (visual guide for new players): [how_to_play/index.html](how_to_play/index.html) — live at [tokenstcg.com/how_to_play](https://tokenstcg.com/how_to_play/)

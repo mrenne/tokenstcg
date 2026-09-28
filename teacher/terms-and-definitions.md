@@ -188,7 +188,7 @@ Background for teachers, not student-facing. The first two sources are what the 
 | [Alpha Set](https://tokenstcg.com/sample_cards/) | All 70 cards of the Alpha Set on screen, filterable by color and type. |
 | `design/pilot-deck-60-cards.md` | Every card's stats, ability, definition, and question, plus the appendix mapping cards to report sources. |
 | `design/GAME_CONCEPT.md` | Full rules, the three classroom modes, and the playtest history. |
-| `design/design-v1/tokens-print-page-*.png` | Print-and-play sheets, 7 pages at 300 DPI. Print at Actual Size / 100%. |
+| [Print-and-play PDF](https://tokenstcg.com/design/print/tokens-print-and-play.pdf) | Every Alpha Set card, 9 per US Letter page with cut marks (8 pages, 300 DPI). Print at Actual Size / 100% and slide the cards into standard sleeves. |
 
 ### Three ways to run it
 

@@ -20,10 +20,10 @@
     padding-inline:clamp(16px,4vw,48px); padding-block:0 72px; }
   .wrap{ max-width:1080px; margin:0 auto; }
   .crumbs ol{ display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; margin:0; padding:0; list-style:none;
-    font-family:'JetBrains Mono',ui-monospace,monospace; font-size:13px; letter-spacing:.08em; }
+    font-family:'JetBrains Mono',ui-monospace,monospace; font-size:16px; letter-spacing:.06em; }
   .crumbs li{ display:flex; align-items:center; gap:10px; color:var(--muted); }
-  .crumbs li + li::before{ content:"›"; color:var(--muted); font-size:15px; }
-  .crumbs a{ color:var(--accent); text-decoration:none; padding:6px 0; }
+  .crumbs li + li::before{ content:"›"; color:var(--muted); font-size:18px; }
+  .crumbs a{ display:inline-flex; align-items:center; min-height:44px; padding:0 10px; margin-left:-10px; color:var(--accent); font-weight:700; text-decoration:none; }   /* 44px-tall tap target */
   .crumbs a:hover{ text-decoration:underline; }
   .crumbs a:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:3px; }
   .crumbs [aria-current="page"]{ color:var(--text); }

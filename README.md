@@ -20,3 +20,7 @@ Early design/pilot phase — not yet playtested with real students. See the "Ope
 ## Repo notes
 
 `design/backgrounds/` holds 254 raw source images used to pick card art; it's excluded from this repo for size (~130MB) and kept local-only. The small processed subset actually used by the print sheet (`design/backgrounds/selected/`) is included.
+
+## License
+
+The Tokens TCG Alpha Set is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/): share and adapt it for non-commercial use, with credit, under the same license. Third-party material (stock background photos, web fonts) keeps its own terms. See [LICENSE](LICENSE).

@@ -19,8 +19,14 @@
   body{ margin:0; background:var(--ground); color:var(--text); font-family:'Manrope',system-ui,sans-serif; font-size:16px; line-height:1.45;
     padding-inline:clamp(16px,4vw,48px); padding-block:0 72px; }
   .wrap{ max-width:1080px; margin:0 auto; }
-  .eyebrow{ font-family:'JetBrains Mono',ui-monospace,monospace; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); }
-  .eyebrow a{ color:inherit; }
+  .crumbs ol{ display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; margin:0; padding:0; list-style:none;
+    font-family:'JetBrains Mono',ui-monospace,monospace; font-size:13px; letter-spacing:.08em; }
+  .crumbs li{ display:flex; align-items:center; gap:10px; color:var(--muted); }
+  .crumbs li + li::before{ content:"›"; color:var(--muted); font-size:15px; }
+  .crumbs a{ color:var(--accent); text-decoration:none; padding:6px 0; }
+  .crumbs a:hover{ text-decoration:underline; }
+  .crumbs a:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:3px; }
+  .crumbs [aria-current="page"]{ color:var(--text); }
   h1{ margin:.15em 0 0; font-family:'Baloo 2',system-ui,sans-serif; font-weight:800; font-size:clamp(42px,8vw,86px); line-height:.95; }
   h2{ margin:0; font-family:'Baloo 2',system-ui,sans-serif; font-weight:700; font-size:clamp(26px,4vw,38px); line-height:1.05; }
   header.top{ padding-block:clamp(28px,5vw,56px) 8px; }
@@ -125,7 +131,7 @@
 <body>
 <div class="wrap">
 <header class="top">
-  <div class="eyebrow"><a href="../">Tokens TCG</a></div>
+  <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../">Home</a></li><li><span aria-current="page">How to Play</span></li></ol></nav>
   <h1>How to Play</h1>
   <div class="goal">First to 15 <span class="pips"><i></i><i></i><i></i><i></i></span> Tokens wins</div>
 </header>

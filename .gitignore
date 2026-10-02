@@ -25,3 +25,6 @@ design/frame-v2/preview-*.html
 
 # Print-and-play: only the PDF is committed; the single-page JPGs stay local
 /design/print/*.jpg
+
+# Build tools: renders and temporary pages
+/tools/.cache/

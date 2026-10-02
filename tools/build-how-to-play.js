@@ -1,0 +1,324 @@
+// Builds the visual How to Play guide in two flavors:
+//   site     -> <repo>/how_to_play/index.html (images from the repo)
+//   artifact -> tools/.cache/tokens-how-to-play.html (a single file with every image embedded)
+// Cards are the v2 renders in assets/cards/<card-slug>.webp (made by render-card-images.js).
+//   node tools/build-how-to-play.js
+const fs = require('fs');
+const path = require('path');
+const { REPO, CACHE } = require('./common');
+const src = fs.readFileSync(path.join(REPO, 'design/design-v1/print-sheet-source.html'), 'utf8');
+
+const slugOf = n => n.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+let MODE = 'site';
+function cardSrc(name) {
+  if (src.search(new RegExp(`<h2[^>]*>${name}</h2>`)) < 0) throw new Error('card not found: ' + name);
+  const file = path.join(REPO, 'assets/cards', slugOf(name) + '.webp');
+  if (!fs.existsSync(file)) throw new Error('no card image for ' + name + ' (run tools/render-card-images.js)');
+  return MODE === 'artifact' ? 'data:image/webp;base64,' + fs.readFileSync(file).toString('base64') : '../assets/cards/' + slugOf(name) + '.webp';
+}
+// card at a given on-screen width (5:7)
+const card = (name, w, extra = '') =>
+  `<div class="cardframe" style="--w:${w}px">${extra}<img class="cardimg" src="${cardSrc(name)}" width="${w}" height="${Math.round(w * 1.4)}" alt="${name} card"></div>`;
+
+const CALLOUTS = [
+  ['Cost', 'Data to deploy it. A diamond means you can also train it.', -7, 5],
+  ['Tokens', 'Points you score each Task.', 107, 5],
+  ['Name', 'The AI idea on the card.', 107, 13],
+  ['Capability / Trust', 'Hits this hard · survives this much.', -7, 33],
+  ['Type & rarity', 'What it is, its color, and C / U / R.', 107, 43],
+  ['Ability', 'What it does in the game.', -7, 52],
+  ['Definition', 'What it means in real life.', 107, 62],
+  ['Discuss', 'A question to talk about.', -7, 85],
+];
+
+function build(mode) {
+  MODE = mode;
+  const dataUri = (file, type) => `data:${type};base64,${fs.readFileSync(path.join(REPO, file)).toString('base64')}`;
+  // card back: the same blue flower photo as the home page background
+  const back = mode === 'artifact' ? dataUri('assets/home-background.jpg', 'image/jpeg') : '../assets/home-background.jpg';
+
+
+  const head = `<title>How to Play Tokens</title>
+<meta name="description" content="A picture-first guide to playing Tokens TCG: card anatomy, a turn, scoring, and combat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+  :root{
+    --ground:#060913; --panel:#0f1426; --panel-2:#161c33; --rule:#232b47;
+    --text:#eef2fb; --muted:#9aa6c4; --accent:#5ec8ff; --warm:#f0913f; --gold-pip:#e8b955;
+    --chase-a:#ffd76a; --chase-b:#ff7ad1; --chase-c:#7ad9ff; }
+  html{ background:var(--ground); }
+  body{ margin:0; background:var(--ground); color:var(--text); font-family:'Manrope',system-ui,sans-serif; font-size:16px; line-height:1.45;
+    padding-inline:clamp(16px,4vw,48px); padding-block:0 72px; }
+  .wrap{ max-width:1080px; margin:0 auto; }
+  .crumbs ol{ display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; margin:0; padding:0; list-style:none;
+    font-family:'JetBrains Mono',ui-monospace,monospace; font-size:16px; letter-spacing:.06em; }
+  .crumbs li{ display:flex; align-items:center; gap:10px; color:var(--muted); }
+  .crumbs li + li::before{ content:"›"; color:var(--muted); font-size:18px; }
+  .crumbs a{ display:inline-flex; align-items:center; min-height:44px; padding:0 10px; margin-left:-10px; color:var(--accent); font-weight:700; text-decoration:none; }   /* 44px-tall tap target */
+  .crumbs a:hover{ text-decoration:underline; }
+  .crumbs a:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:3px; }
+  .crumbs [aria-current="page"]{ color:var(--text); }
+  h1{ margin:.15em 0 0; font-family:'Baloo 2',system-ui,sans-serif; font-weight:800; font-size:clamp(42px,8vw,86px); line-height:.95; }
+  h2{ margin:0; font-family:'Baloo 2',system-ui,sans-serif; font-weight:700; font-size:clamp(26px,4vw,38px); line-height:1.05; }
+  header.top{ padding-block:clamp(28px,5vw,56px) 8px; }
+  .goal{ display:inline-flex; align-items:center; gap:14px; margin-top:18px; padding:14px 22px; border-radius:16px;
+    background:linear-gradient(120deg,#15233d,#101a2e); border:1px solid var(--accent);
+    font-family:'Baloo 2',system-ui,sans-serif; font-weight:700; font-size:clamp(20px,3.2vw,28px); }
+  .goal .pips{ display:flex; gap:5px; }
+  .goal .pips i{ width:12px; height:12px; border-radius:50%; background:var(--gold-pip); display:block; }
+  section{ margin-top:clamp(40px,6vw,72px); }
+  .shead{ display:flex; align-items:baseline; gap:14px; margin-bottom:20px; flex-wrap:wrap; }
+  .step{ width:42px; height:42px; flex:none; border-radius:12px; background:var(--accent); color:#04121f;
+    display:grid; place-items:center; font-family:'Baloo 2',sans-serif; font-weight:800; font-size:24px; }
+  .sub{ color:var(--muted); font-size:15px; }
+  /* cards */
+  .cardframe{ position:relative; width:var(--w); height:calc(var(--w) * 1.4); flex:none; }
+  .cardframe .cardimg{ display:block; width:100%; height:100%; }
+  .row{ display:flex; flex-wrap:wrap; gap:clamp(16px,3vw,32px); align-items:flex-start; }
+  /* anatomy */
+  .anatomy{ display:grid; grid-template-columns:1fr auto 1fr; gap:clamp(12px,2vw,28px); align-items:center; }
+  .anatomy .middle{ padding-inline:24px; }
+  .anatomy .col{ display:flex; flex-direction:column; gap:14px; }
+  .anatomy .col.left{ align-items:flex-end; text-align:right; }
+  .note{ display:flex; align-items:flex-start; gap:10px; max-width:30ch; }
+  .anatomy .col.left .note{ flex-direction:row-reverse; }
+  .badge{ width:26px; height:26px; flex:none; border-radius:50%; background:var(--accent); color:#04121f;
+    display:grid; place-items:center; font:700 14px/1 'JetBrains Mono',monospace; }
+  .note b{ display:block; font-size:15px; }
+  .note span{ color:var(--muted); font-size:13.5px; }
+  .pin{ position:absolute; z-index:9; transform:translate(-50%,-50%); box-shadow:0 0 0 3px rgba(6,9,19,.85); }
+  /* anatomy v2: aligned labels with leader lines */
+  .anat2{ position:relative; height:var(--ah); max-width:760px; margin-inline:auto; }
+  .anat2 > .cardframe{ position:absolute; left:0; top:0; }
+  .anat2 .alines{ position:absolute; left:0; top:0; pointer-events:none; overflow:visible; }
+  .anat2 .alabels{ position:absolute; left:calc(var(--aw) + 44px); right:0; top:0; height:100%; }
+  .alabel{ position:absolute; left:0; right:0; transform:translateY(-50%); max-width:44ch; }
+  .alabel b{ display:block; font-family:'Baloo 2',sans-serif; font-size:19px; line-height:1.15; }
+  .alabel span{ display:block; color:var(--muted); font-size:14.5px; line-height:1.4; }
+  .alabel i{ font-style:normal; color:var(--text); font-weight:700; }
+  @media (max-width:700px){
+    .anat2{ height:auto; display:flex; flex-direction:column; align-items:center; gap:20px; }
+    .anat2 > .cardframe, .anat2 .alabels{ position:static; }
+    .anat2 .alines{ display:none; }
+    .anat2 .alabels{ display:flex; flex-direction:column; gap:14px; width:100%; }
+    .alabel{ position:static; transform:none; padding-left:14px; border-left:3px solid var(--accent); }
+  }
+  /* face-down cards */
+  .backcard{ width:var(--w,120px); aspect-ratio:5/7; border-radius:10px; background-size:cover; background-position:center;
+    box-shadow:0 6px 14px rgba(0,0,0,.45); }
+  .stack{ position:relative; width:160px; height:224px; }
+  .stack .backcard{ position:absolute; width:120px; left:0; top:0; }
+  .stack .backcard:nth-child(2){ left:14px; top:12px; }
+  .stack .backcard:nth-child(3){ left:28px; top:24px; }
+  .tile{ background:var(--panel); border:1px solid var(--rule); border-radius:18px; padding:20px; display:flex; flex-direction:column; gap:12px; align-items:center; text-align:center; flex:1 1 220px; }
+  .tile h3{ margin:0; font-family:'Baloo 2',sans-serif; font-size:20px; }
+  .tile p{ margin:0; color:var(--muted); font-size:14px; }
+  .big{ font-family:'Baloo 2',sans-serif; font-weight:800; font-size:44px; line-height:1; }
+  .turn{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
+  .turnstep{ background:var(--panel); border:1px solid var(--rule); border-radius:18px; padding:18px; display:flex; gap:14px; align-items:flex-start; }
+  .turnstep b{ display:block; font-size:17px; font-family:'Baloo 2',sans-serif; }
+  .turnstep span{ color:var(--muted); font-size:14px; }
+  .duel{ display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:clamp(12px,3vw,28px); }
+  .exertbox{ position:relative; width:calc(var(--w) * 1.4); height:var(--w); flex:none; }
+  .exertbox .cardframe{ position:absolute; top:50%; left:50%; margin:calc(var(--w) * -0.7) 0 0 calc(var(--w) * -0.5); transform:rotate(90deg); transform-origin:center; }
+  .vs{ display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--muted); font-family:'JetBrains Mono',monospace; font-size:13px; }
+  .arrowrow{ display:flex; align-items:center; gap:10px; }
+  .flagchip{ padding:6px 12px; border-radius:999px; font:700 14px 'Manrope',sans-serif; }
+  .flagchip.out{ background:#3a1620; color:#ffb3c1; border:1px solid #7a2436; }
+  .flagchip.ok{ background:#12281c; color:#9be8b6; border:1px solid #1f5c38; }
+  .caption{ color:var(--muted); font-size:14px; text-align:center; max-width:34ch; }
+  .kw{ display:flex; flex-direction:column; align-items:center; gap:10px; }
+  .kwname{ font-family:'Baloo 2',sans-serif; font-weight:700; font-size:19px; }
+  .kwtext{ color:var(--muted); font-size:14px; text-align:center; max-width:26ch; }
+  .rarity{ display:flex; flex-wrap:wrap; gap:10px; }
+  .rchip{ display:inline-flex; align-items:center; gap:9px; padding:8px 14px; border-radius:999px; background:var(--panel); border:1px solid var(--rule); font-size:14.5px; }
+  .gemdemo{ width:30px; height:30px; border-radius:8px; display:grid; place-items:center; font:700 15px/1 'JetBrains Mono',monospace;
+    border:2px solid rgba(255,255,255,.85); color:#fff; }
+  .gemdemo.u{ background:rgba(255,255,255,.3); }
+  .gemdemo.r{ background:#fff; color:#181425; }
+  .gemdemo.ch{ background:conic-gradient(from 90deg,var(--chase-a),var(--chase-b),var(--chase-c),var(--chase-a)); color:#181425; }
+  /* easy to miss */
+  .missgrid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; }
+  .miss{ background:var(--panel); border:1px solid var(--rule); border-radius:18px; padding:18px; display:flex; gap:14px; align-items:flex-start; }
+  .miss svg{ flex:none; }
+  .miss b{ display:block; font-family:'Baloo 2',sans-serif; font-size:17px; margin-bottom:2px; }
+  .miss span{ color:var(--muted); font-size:14px; }
+  .taxladder{ display:flex; flex-wrap:wrap; gap:clamp(10px,2vw,22px); align-items:flex-end; justify-content:center; margin-bottom:22px; }
+  .taxstep{ display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .taxstep .which{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--muted); letter-spacing:.08em; }
+  .taxchip{ padding:5px 13px; border-radius:999px; font:700 15px 'Baloo 2',sans-serif; background:#15233d; border:1px solid var(--rule); color:var(--muted); }
+  .taxchip.up{ background:#3a2a12; border-color:#7a5a24; color:var(--warm); }
+  footer{ margin-top:56px; padding-top:20px; border-top:1px solid var(--rule); color:var(--muted); font-size:14px; }
+  footer a{ color:var(--accent); }
+  @media (max-width:760px){
+    .anatomy{ grid-template-columns:1fr; }
+    .anatomy .col.left{ align-items:flex-start; text-align:left; }
+    .anatomy .col.left .note{ flex-direction:row; }
+    .anatomy .middle{ order:-1; justify-self:center; }
+    .note{ max-width:none; }
+  }
+</style>`;
+
+  const pins = CALLOUTS.map(([, , x, y], i) =>
+    `<div class="badge pin" style="left:${x}%; top:${y}%">${i + 1}</div>`).join('');
+  const note = i => `<div class="note"><div class="badge">${i + 1}</div><div><b>${CALLOUTS[i][0]}</b><span>${CALLOUTS[i][1]}</span></div></div>`;
+
+  // Card on the left, one label per band of the card on the right, joined by leader lines.
+  const AW = 340, AH = 476;                       // card size on screen (5:7)
+  const BANDS = [                                 // [title, body, band centre as % of card height]
+    ['Top of the card', '<i>Cost</i> (left): Data to play it. A diamond means you can train it.<br><i>Name</i> in the middle. <i>Tokens</i> (right): points each Task.', 6],
+    ['Capability / Trust', 'How hard it hits · how many Flags it can take.', 31],
+    ['Type bar', 'What kind of card, its color, and its rarity letter.', 43],
+    ['Ability & Definition', 'What it does in the game · what it means in real life.', 56],
+    ['Discuss', 'A question to talk about.', 83],
+  ];
+  const labelY = [];
+  BANDS.forEach(([, , pct], i) => {
+    const want = AH * pct / 100;
+    labelY.push(i === 0 ? Math.max(want, 34) : Math.max(want, labelY[i - 1] + 78));
+  });
+  const LX = AW + 44;
+  const lines = BANDS.map(([, , pct], i) => {
+    const y1 = AH * pct / 100, y2 = labelY[i];
+    return `<path d="M${AW - 10} ${y1.toFixed(1)} L${AW + 14} ${y1.toFixed(1)} L${LX - 8} ${y2.toFixed(1)}" fill="none" stroke="#5ec8ff" stroke-width="2"/>` +
+      `<circle cx="${AW - 10}" cy="${y1.toFixed(1)}" r="5.5" fill="#5ec8ff" stroke="#060913" stroke-width="2.5"/>`;
+  }).join('');
+  const labels = BANDS.map(([t, b], i) =>
+    `<div class="alabel" style="top:${labelY[i].toFixed(1)}px"><b>${t}</b><span>${b}</span></div>`).join('');
+  const anatomy = `<div class="anat2" style="--aw:${AW}px; --ah:${AH}px">
+    ${card('Diffusion Model', AW)}
+    <svg class="alines" width="${LX}" height="${AH}" viewBox="0 0 ${LX} ${AH}" aria-hidden="true">${lines}</svg>
+    <div class="alabels">${labels}</div>
+  </div>`;
+
+  const body = `<div class="wrap">
+<header class="top">
+  <nav class="crumbs" aria-label="Breadcrumb"><ol><li>${mode === 'site' ? '<a href="../">Home</a>' : 'Home'}</li><li><span aria-current="page">How to Play</span></li></ol></nav>
+  <h1>How to Play</h1>
+  <div class="goal">First to 15 <span class="pips"><i></i><i></i><i></i><i></i></span> Tokens wins</div>
+</header>
+
+<section>
+  <div class="shead"><div class="step">1</div><h2>Read a card</h2></div>
+  ${anatomy}
+</section>
+
+<section>
+  <div class="shead"><div class="step">2</div><h2>Four kinds of card</h2></div>
+  <div class="row">
+    <div class="tile">${card('Chatbot', 180)}<h3>System</h3><p>Scores points and fights. Only Systems have stats.</p></div>
+    <div class="tile">${card('Python', 180)}<h3>Tool</h3><p>Stays out until a card discards it. Use it again each turn.</p></div>
+    <div class="tile">${card('Manual Override', 180)}<h3>Action</h3><p>Happens once, then it's discarded.</p></div>
+    <div class="tile">${card('Training Data', 180)}<h3>Dataset</h3><p>Pay Data, or exert a big System instead.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><div class="step">3</div><h2>Set up</h2></div>
+  <div class="row">
+    <div class="tile"><div class="stack"><div class="backcard" style="background-image:url('${back}')"></div><div class="backcard" style="background-image:url('${back}')"></div><div class="backcard" style="background-image:url('${back}')"></div></div><h3>20+ card deck</h3><p>1 or 2 colors. Max 2 of any card.</p></div>
+    <div class="tile"><div class="big">5 &nbsp;/&nbsp; 6</div><h3>Opening hand</h3><p>First player 5, second player 6. One free redraw.</p></div>
+    <div class="tile"><div class="big">0</div><h3>Token tracker</h3><p>A die or paper. Everyone starts at zero.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><div class="step">4</div><h2>Take a turn</h2><span class="sub">in this order</span></div>
+  <div class="turn">
+    <div class="turnstep"><div class="badge">1</div><div><b>Reboot</b><span>Turn all your cards upright.</span></div></div>
+    <div class="turnstep"><div class="badge">2</div><div><b>Draw</b><span>Take 1 card.</span></div></div>
+    <div class="turnstep"><div class="badge">3</div><div><b>Train</b><span>Put 1 card face-down for Data.</span></div></div>
+    <div class="turnstep"><div class="badge">4</div><div><b>Play</b><span>Deploy cards. Task or Audit with Systems.</span></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><div class="step">5</div><h2>Score: Run a Task</h2></div>
+  <div class="duel">
+    ${card('AI in Daily Life', 200)}
+    <div class="vs"><div class="arrowrow"><svg width="86" height="26" viewBox="0 0 86 26" aria-hidden="true"><path d="M2 13h70" stroke="#5ec8ff" stroke-width="3" fill="none"/><path d="M72 5l12 8-12 8z" fill="#5ec8ff"/></svg></div><div>turn it sideways</div></div>
+    <div class="exertbox" style="--w:200px">${card('AI in Daily Life', 200)}</div>
+    <div class="tile" style="max-width:210px"><div class="big" style="color:var(--gold-pip)">+2</div><h3>Tokens</h3><p>Score the pips in the corner, every turn.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><div class="step">6</div><h2>Fight: Run an Audit</h2><span class="sub">you can only Audit a card that is already sideways</span></div>
+  <div class="duel">
+    <div class="kw">${card('Neural Network', 220)}<div class="flagchip ok">takes 1 Flag · survives</div></div>
+    <div class="vs">
+      <svg width="120" height="80" viewBox="0 0 120 80" aria-hidden="true">
+        <path d="M6 26h96" stroke="#ff7a90" stroke-width="3" fill="none"/><path d="M102 18l14 8-14 8z" fill="#ff7a90"/>
+        <text x="58" y="18" fill="#ff7a90" font-family="monospace" font-size="14" text-anchor="middle">4 Flags</text>
+        <path d="M114 58H18" stroke="#9aa6c4" stroke-width="3" fill="none"/><path d="M18 50L4 58l14 8z" fill="#9aa6c4"/>
+        <text x="64" y="76" fill="#9aa6c4" font-family="monospace" font-size="14" text-anchor="middle">1 Flag</text>
+      </svg>
+    </div>
+    <div class="kw">${card('Explainability', 220)}<div class="flagchip out">takes 4 Flags · Deprecated</div></div>
+  </div>
+  <p class="caption" style="margin:18px auto 0">Both sides hit at the same time. Flags equal to Trust = the card is knocked out.</p>
+</section>
+
+<section>
+  <div class="shead"><div class="step">7</div><h2>Words on some cards</h2></div>
+  <div class="row">
+    <div class="tile"><div class="kw">${card('Viral App', 170)}<div class="kwname">Fast-Tracked</div><div class="kwtext">Can act the turn you deploy it.</div></div></div>
+    <div class="tile"><div class="kw">${card('Safety Lab', 170)}<div class="kwname">Highly Trusted</div><div class="kwtext">Cards with lower Trust can't Audit it.</div></div></div>
+    <div class="tile"><div class="kw">${card('GAN', 170)}<div class="kwname">Adversarial</div><div class="kwtext">Hits back 1 extra Flag when Audited.</div></div></div>
+    <div class="tile"><div class="kw">${card('CPU', 170)}<div class="kwname">💾 Legacy</div><div class="kwtext">Old tech. If a card like Obsolete discards it, that player draws a card.</div></div></div>
+  </div>
+  <div class="rarity" style="margin-top:18px">
+    <span class="rchip"><span class="gemdemo">C</span> Common</span>
+    <span class="rchip"><span class="gemdemo u">U</span> Uncommon</span>
+    <span class="rchip"><span class="gemdemo r">R</span> Rare</span>
+    <span class="rchip"><span class="gemdemo ch">★</span> Chase</span>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><div class="step">8</div><h2>Easy to miss</h2></div>
+  <div class="taxladder">
+    <div class="taxstep"><div class="which">1ST SYSTEM</div>${card('Chatbot', 96)}<div class="taxchip">+0</div></div>
+    <div class="taxstep"><div class="which">2ND</div>${card('Classifier', 96)}<div class="taxchip">+0</div></div>
+    <div class="taxstep"><div class="which">3RD</div>${card('GPT', 96)}<div class="taxchip up">+1 Data</div></div>
+    <div class="taxstep"><div class="which">4TH</div>${card('Transformer', 96)}<div class="taxchip up">+2 Data</div></div>
+  </div>
+  <p class="caption" style="margin:0 auto 26px">More Systems out = each new one costs more. Lose one and the price drops back.</p>
+  <div class="missgrid">
+    <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5ec8ff" stroke-width="2" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg><div><b>Data comes back</b><span>Your Training Set refreshes every turn. It is never used up.</span></div></div>
+    <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ff7a90" stroke-width="2"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.2"/></svg><div><b>Scoring exposes you</b><span>Only sideways Systems can be Audited. Tasking turns yours sideways.</span></div></div>
+    <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ff7a90" stroke-width="2" stroke-linecap="round"><path d="M6 21V4"/><path d="M6 5h11l-2.2 3.5L17 12H6" fill="#ff7a90" fill-opacity=".25"/></svg><div><b>Flags never heal</b><span>Damage stays all game unless a card removes it.</span></div></div>
+    <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5ec8ff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><div><b>Tools act right away</b><span>New Systems wait a turn. Tools don't.</span></div></div>
+    <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#e8b955" stroke-width="2" stroke-linejoin="round"><rect x="4" y="7.5" width="9" height="12" rx="2"/><path d="M15.5 5.5l3.5 3.5-3.5 3.5"/><path d="M19 9h-6"/></svg><div><b>Free Datasets cost a turn</b><span>Exerting a big System to pay means it can't Task, and it can be Audited.</span></div></div>
+    <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ff7a90" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5l4 4-9 9H5.5v-4z"/><path d="M4 4l16 16"/></svg><div><b>Tools can be removed</b><span>Each color has one Action that discards a Tool.</span></div></div>
+  </div>
+</section>
+
+<footer>See all 70 cards in the ${mode === 'site' ? '<a href="../sample_cards/">Alpha Set</a>' : 'Alpha Set (tokenstcg.com/sample_cards)'} · Ask your teacher about Discussion Mode and the team game, Launch Day.</footer>
+</div>
+`;
+
+  if (mode === 'artifact') return head + '\n' + body + '\n';
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%83%8F%3C/text%3E%3C/svg%3E">
+${head}
+</head>
+<body>
+${body}
+</body>
+</html>
+`;
+}
+
+fs.mkdirSync(path.join(REPO, 'how_to_play'), { recursive: true });
+fs.writeFileSync(path.join(REPO, 'how_to_play/index.html'), build('site'));
+fs.writeFileSync(path.join(CACHE, 'tokens-how-to-play.html'), build('artifact'));
+console.log('site KB', Math.round(fs.statSync(path.join(REPO, 'how_to_play/index.html')).size / 1024),
+  '| artifact KB', Math.round(fs.statSync(path.join(CACHE, 'tokens-how-to-play.html')).size / 1024));

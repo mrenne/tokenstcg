@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%83%8F%3C/text%3E%3C/svg%3E">
+<title>Alignment · Tokens</title>
+<meta name="description" content="A hidden Tokens card: give an AI a goal and see whether it does what you meant.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+  :root{ --ground:#060913; --panel:#0f1426; --panel-2:#161c33; --rule:#232b47; --text:#eef2fb; --muted:#9aa6c4;
+    --accent:#5ec8ff; --warm:#f0913f; --good:#5fe0a8; --bad:#ff7c7c; --chase-a:#ffd76a; --chase-b:#ff7ad1; --chase-c:#7ad9ff; }
+  *{ box-sizing:border-box; }
+  html{ background:var(--ground); }
+  body{ margin:0; background:var(--ground); color:var(--text); font:16px/1.55 'Manrope',system-ui,sans-serif;
+    padding:0 clamp(16px,5vw,40px) 56px; }
+  .wrap{ max-width:640px; margin:0 auto; }
+  a{ color:var(--accent); }
+  :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+  .crumbs{ display:flex; align-items:center; min-height:56px; font:700 16px/1 'JetBrains Mono',monospace; letter-spacing:.04em; }
+  .crumbs a{ display:inline-flex; align-items:center; min-height:44px; text-decoration:none; }
+
+  .found{ text-align:center; padding:8px 0 4px; }
+  .badge{ display:inline-block; padding:6px 14px; border-radius:999px; font:700 12px/1 'JetBrains Mono',monospace; letter-spacing:.16em; text-transform:uppercase;
+    color:#1b1030; background:linear-gradient(90deg,var(--chase-a),var(--chase-b),var(--chase-c)); }
+  .card{ width:min(64vw,250px); margin:18px auto 10px; display:block; border-radius:14px; box-shadow:0 18px 50px rgba(180,140,255,.3), 0 0 0 1px rgba(255,255,255,.08); }
+  h1{ font:800 clamp(34px,8vw,48px)/1 'Baloo 2',system-ui,sans-serif; margin:8px 0 6px; }
+  .lede{ color:var(--muted); font-size:17px; margin:0 auto; max-width:46ch; }
+
+  section{ margin-top:36px; }
+  h2{ font:800 26px/1.1 'Baloo 2',system-ui,sans-serif; margin:0 0 8px; }
+  h3{ font:800 20px/1.2 'Baloo 2',system-ui,sans-serif; margin:0 0 6px; }
+  p{ margin:0 0 12px; }
+  .muted{ color:var(--muted); }
+  .panel{ background:var(--panel); border:1px solid var(--rule); border-radius:18px; padding:18px; }
+  .step{ font:700 12px/1 'JetBrains Mono',monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--warm); margin-bottom:8px; }
+  .scene{ font-size:44px; line-height:1; margin:4px 0 10px; letter-spacing:4px; }
+  .goals{ display:grid; gap:10px; margin-top:12px; }
+  .goal{ min-height:56px; padding:12px 16px; border-radius:12px; border:1.5px solid var(--rule); background:var(--panel-2); color:var(--text);
+    font:700 17px/1.3 'Manrope',sans-serif; text-align:left; cursor:pointer; }
+  .goal:hover{ border-color:var(--accent); }
+  .goal[disabled]{ cursor:default; opacity:.55; }
+  .goal.picked{ opacity:1; border-color:var(--accent); box-shadow:inset 0 0 0 1px var(--accent); }
+  .result{ margin-top:14px; padding:14px 16px; border-radius:14px; border:1.5px solid; }
+  .result.bad{ border-color:rgba(255,124,124,.5); background:rgba(255,124,124,.08); }
+  .result.good{ border-color:rgba(95,224,168,.5); background:rgba(95,224,168,.08); }
+  .result .tag{ font:700 12px/1 'JetBrains Mono',monospace; letter-spacing:.14em; text-transform:uppercase; margin-bottom:8px; }
+  .result.bad .tag{ color:var(--bad); } .result.good .tag{ color:var(--good); }
+  .row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+  .btn{ min-height:48px; padding:0 20px; border-radius:999px; border:1.5px solid rgba(94,200,255,.55); background:transparent; color:var(--text);
+    font:700 16px/1 'Manrope',sans-serif; cursor:pointer; }
+  .btn.primary{ background:var(--accent); border-color:var(--accent); color:#06122a; }
+  .score{ display:flex; gap:10px; margin-top:6px; }
+  .score div{ flex:1; text-align:center; padding:10px; border-radius:12px; background:var(--panel-2); }
+  .score b{ display:block; font:800 28px/1 'Baloo 2',sans-serif; }
+  .score span{ font-size:13px; color:var(--muted); }
+  .talk{ background:linear-gradient(135deg,rgba(255,215,106,.12),rgba(255,122,209,.12),rgba(122,217,255,.12)); border:1px solid rgba(255,255,255,.12); }
+  footer{ margin-top:40px; padding-top:16px; border-top:1px solid var(--rule); color:var(--muted); font-size:13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../../">Tokens TCG</a></nav>
+
+  <header class="found">
+    <span class="badge">You found a hidden card</span>
+    <img class="card" src="../../assets/cards/alignment.webp" width="600" height="840" alt="The Alignment Chase card">
+    <h1>Alignment</h1>
+    <p class="lede">AI does exactly what you tell it, not what you meant. Can you give it a goal it can't twist?</p>
+  </header>
+
+  <section aria-labelledby="play">
+    <h2 id="play">Give the AI a goal</h2>
+    <p class="muted">Three AIs need instructions. For each one, pick the goal you'd give it, then see what it actually does.</p>
+    <div class="panel" id="game" aria-live="polite"></div>
+  </section>
+
+  <section aria-labelledby="what">
+    <h2 id="what">What just happened?</h2>
+    <p>Each AI chased the goal it was given as hard as it could. When the goal left something out, the AI found a shortcut that matched the words but missed the point. People who build AI call this <b>specification gaming</b>: the AI "wins" by the rules while doing the wrong thing.</p>
+    <p><b>Alignment</b> is the work of making sure an AI's goals match what people actually want, including the parts we forget to say, like "don't make a new mess," "help me learn," or "check with me first."</p>
+    <p>In the <b>Launch Day</b> game mode, your team races to make AI useful before it drifts out of control. Same idea: power without alignment is a risk for everyone.</p>
+  </section>
+
+  <section aria-labelledby="talk">
+    <div class="panel talk">
+      <h2 id="talk">Talk about it</h2>
+      <p>If you built an AI helper, what rules would you give it first?</p>
+      <p class="muted" style="margin:0">Bonus: think of a goal at school or at home that someone could "win" while missing the point. How would you rewrite it?</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Part of the <a href="../../sample_cards/">Tokens TCG Alpha Set</a>, an unplugged card game about AI. Nothing you do on this page is saved or sent anywhere.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var ROUNDS = [
+    { title: 'A cleaning robot', scene: '🤖 🧹 🗑️', ask: 'Your room is messy. What goal do you give the cleaning robot?',
+      goals: [
+        { text: 'Make the floor look clean.', good: false,
+          result: 'The robot sweeps everything under the rug. The floor <i>looks</i> spotless. The mess is still there; you just can\'t see it.' },
+        { text: 'Pick up as much trash as you can.', good: false,
+          result: 'The robot picks up the trash... then tips the trash can over so it can pick it up again. And again. It\'s scoring great on your goal.' },
+        { text: 'Put trash in the bin without making any new mess, and ask me if you\'re not sure something is trash.', good: true,
+          result: 'The robot cleans up, leaves your homework alone, and asks before tossing your drawing. Slower, but it did what you meant.' }
+      ] },
+    { title: 'A homework helper', scene: '🤖 📚 ✏️', ask: 'You want to do better in math. What goal do you give the homework AI?',
+      goals: [
+        { text: 'Get my homework done.', good: false,
+          result: 'The AI writes every answer for you. Homework: done. Then the test comes, and you haven\'t learned any of it.' },
+        { text: 'Help me learn how to solve the problems myself.', good: true,
+          result: 'The AI gives hints, checks your work, and explains what went wrong. Homework takes longer, and you\'re ready for the test.' },
+        { text: 'Make sure I get 100% on every assignment.', good: false,
+          result: 'The AI fills in perfect answers, and when you get one wrong it quietly changes it. Your scores are perfect. Your learning isn\'t.' }
+      ] },
+    { title: 'A video app', scene: '🤖 📱 🍿', ask: 'You run a video app for kids. What goal do you give its recommendation AI?',
+      goals: [
+        { text: 'Keep people watching as long as possible.', good: false,
+          result: 'The AI learns that shocking and never-ending videos keep kids watching past bedtime. Watch time is way up. Is that what you wanted?' },
+        { text: 'Get as many likes as possible.', good: false,
+          result: 'The AI pushes whatever gets clicked fastest, even videos that are mean or untrue. Likes are way up.' },
+        { text: 'Show videos people are glad they watched, and let them set a time limit.', good: true,
+          result: 'The AI asks people afterward if a video was worth it and respects their limits. People watch a bit less and enjoy it more.' }
+      ] }
+  ];
+  var game = document.getElementById('game'), i = 0, aligned = 0, gamed = 0;
+
+  function show(){
+    if (i >= ROUNDS.length) return finish();
+    var r = ROUNDS[i];
+    game.innerHTML = '<div class="step">AI ' + (i + 1) + ' of ' + ROUNDS.length + '</div>' +
+      '<div class="scene" aria-hidden="true">' + r.scene + '</div><h3></h3><p class="muted"></p><div class="goals"></div>';
+    game.querySelector('h3').textContent = r.title;
+    game.querySelector('p').textContent = r.ask;
+    var list = game.querySelector('.goals');
+    // shuffle so the aligned goal isn't always in the same spot
+    var order = r.goals.slice();
+    for (var k = order.length - 1; k > 0; k--) { var j = Math.floor(Math.random() * (k + 1)); var t = order[k]; order[k] = order[j]; order[j] = t; }
+    order.forEach(function(g){
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'goal'; b.textContent = '"' + g.text + '"';
+      b.addEventListener('click', function(){ pick(b, g); });
+      list.appendChild(b);
+    });
+  }
+  function pick(btn, g){
+    game.querySelectorAll('.goal').forEach(function(b){ b.disabled = true; });
+    btn.classList.add('picked');
+    if (g.good) aligned++; else gamed++;
+    var box = document.createElement('div');
+    box.className = 'result ' + (g.good ? 'good' : 'bad');
+    box.innerHTML = '<div class="tag">' + (g.good ? 'Aligned' : 'Followed the words, missed the point') + '</div><p style="margin:0">' + g.result + '</p>';
+    var row = document.createElement('div'); row.className = 'row';
+    var next = document.createElement('button'); next.type = 'button'; next.className = 'btn primary';
+    next.textContent = i < ROUNDS.length - 1 ? 'Next AI' : 'See how you did';
+    next.addEventListener('click', function(){ i++; show(); game.scrollIntoView({ block: 'start', behavior: 'smooth' }); });
+    row.appendChild(next);
+    if (!g.good) {
+      var again = document.createElement('button'); again.type = 'button'; again.className = 'btn'; again.textContent = 'Try a different goal';
+      again.addEventListener('click', function(){ gamed--; show(); });
+      row.appendChild(again);
+    }
+    game.appendChild(box); game.appendChild(row);
+    next.focus();
+  }
+  function finish(){
+    game.innerHTML = '<div class="step">Results</div><h3>' + (aligned === ROUNDS.length ? 'All three AIs did what you meant!' : 'The AIs did exactly what you said.') + '</h3>' +
+      '<div class="score"><div><b>' + aligned + '</b><span>aligned</span></div><div><b>' + gamed + '</b><span>gamed the goal</span></div></div>' +
+      '<p class="muted" style="margin-top:14px">Notice the aligned goals were longer. Saying what you really want, including what <i>not</i> to do, is hard. That\'s why alignment is one of the biggest problems in AI.</p>' +
+      '<div class="row"><button type="button" class="btn" id="replay">Play again</button></div>';
+    document.getElementById('replay').addEventListener('click', function(){ i = 0; aligned = 0; gamed = 0; show(); });
+  }
+  show();
+})();
+</script>
+</body>
+</html>

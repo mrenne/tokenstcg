@@ -14,11 +14,28 @@ rules in [GAME_CONCEPT.md](GAME_CONCEPT.md).
 | Question | Suggestion | Decided? |
 |---|---|---|
 | How big is the Beta Set? | About **35–40 new cards**, for a pool of roughly 105–110. Enough to feel new without doubling the art workload. | ☐ |
-| Do Alpha cards stay legal? | **Yes.** Beta adds to Alpha instead of replacing it, so printed Alpha sets stay useful. | ☐ |
+| Do Alpha cards stay legal? | **Yes.** Beta adds to Alpha instead of replacing it, so printed Alpha sets stay useful. | ☑ **Yes** (2026-10-03) |
 | Deck rules | The 20-card minimum and 2-copy limit were set for a small pool. With ~110 cards, consider a **30-card** minimum. Decide after playtesting. | ☐ |
-| Set theme | **Generative AI and how people use it**: prompts, hallucinations, creative tools. It's what students actually meet, and Alpha covers it lightly. | ☐ |
+| Set theme | **Generative AI and how people use it**: prompts, hallucinations, creative tools. It's what students actually meet, and Alpha covers it lightly. | ☑ **Generative AI** (2026-10-03) |
 | New keyword | **Transparent** is already in the rules (GAME_CONCEPT.md, Keyword abilities) but no card uses it. Beta could introduce it. | ☐ |
 | Chase cards | 1–2 new Chase cards, earned the same way as Alpha's. | ☐ |
+
+## Theme: Generative AI
+
+Beta is about the AI students actually use: tools that write, draw, and talk. Every color shows a
+different side of it, so any deck can lean into the theme:
+
+| Color | Its angle on generative AI | Core concepts (marked ★ in the lists below) |
+|---|---|---|
+| Green | How people use it well | Prompt, Hallucination, Fact-Check, AI Tutor |
+| Blue | How it "thinks" (or doesn't) | Probability, Pattern Recognition, Algorithm |
+| Black | How it's built | Generative AI, Foundation Model, RLHF, Synthetic Data |
+| White | How to make it trustworthy | Watermarking, Content Moderation, Transparency |
+| Red | What it does to the world | Misinformation, Copyright, Media Literacy |
+
+Concepts outside the theme (Knowledge Graph, Clustering, Facial Recognition...) can still fill gaps,
+especially in Blue, but the theme cards come first. Because Alpha cards stay legal, every Beta card has
+to work alongside them, and the simulators should test the two sets together.
 
 ## Gaps in the Alpha Set
 
@@ -40,44 +57,44 @@ rules in [GAME_CONCEPT.md](GAME_CONCEPT.md).
 
 ## Candidate concepts
 
-Pick about 35. Type is a first guess; it can change once abilities are designed.
+Pick about 35. ★ = core to the generative AI theme. Type is a first guess; it can change once abilities are designed.
 
 ### Green: Humans and AI
 
 | Concept | Likely type | Notes |
 |---|---|---|
-| Prompt | Action | Glossary term. How people ask generative AI for things. |
+| ★ Prompt | Action | Glossary term. How people ask generative AI for things. |
 | Prompt Engineer | System | A newer AI job; pairs with AI Career Path. |
 | Turing Test | Tool or Chase | Can you tell a person from a machine? Was a Chase idea for Alpha. |
-| AI Tutor | System | AI that helps people learn; good classroom discussion. |
-| Fact-Check | Action | Checking what an AI says before trusting it. |
-| Hallucination | Action | Glossary term. AI confidently making things up. Could be Black instead. |
+| ★ AI Tutor | System | AI that helps people learn; good classroom discussion. |
+| ★ Fact-Check | Action | Checking what an AI says before trusting it. |
+| ★ Hallucination | Action | Glossary term. AI confidently making things up. Could be Black instead. |
 | AI Literacy | Tool | Knowing how AI works and when to trust it; the point of the whole game. |
 
 ### Blue: Representation & Reasoning (needs the most cards)
 
 | Concept | Likely type | Notes |
 |---|---|---|
-| Algorithm | System | Glossary term. A step-by-step set of instructions. |
+| ★ Algorithm | System | Glossary term. A step-by-step set of instructions. |
 | Knowledge Graph | System | Facts stored as connected ideas. |
 | Rule-Based System | System | "If this, then that" AI, the opposite of learned AI. |
 | Heuristic | Tool | A rule of thumb that's fast but not always right. |
 | Planning | Action | Choosing a sequence of steps toward a goal. |
-| Probability | Tool | AI reasons with likelihoods, not certainties. |
-| Pattern Recognition | System | Spotting regularities in data. |
+| ★ Probability | Tool | AI reasons with likelihoods, not certainties. |
+| ★ Pattern Recognition | System | Spotting regularities in data. |
 | Encyclopedia (or Knowledge Base) | Dataset | Blue's first Dataset. |
 
 ### Black: Machine Learning
 
 | Concept | Likely type | Notes |
 |---|---|---|
-| Generative AI | System | Glossary term. AI that makes new text, images, or sound. |
-| Foundation Model | System | Glossary term. One big model adapted to many tasks. |
-| RLHF | System or Action | Glossary term. Training AI with human feedback. |
+| ★ Generative AI | System | Glossary term. AI that makes new text, images, or sound. |
+| ★ Foundation Model | System | Glossary term. One big model adapted to many tasks. |
+| ★ RLHF | System or Action | Glossary term. Training AI with human feedback. |
 | Overfitting | Action | Memorizing the training data instead of learning; good "gotcha" effect. |
 | Test Set | Dataset | Data held back to check a model honestly. |
 | Clustering | System | Grouping similar things without labels. |
-| Synthetic Data | Dataset | Data made by AI to train AI. |
+| ★ Synthetic Data | Dataset | Data made by AI to train AI. |
 | Computer Vision | System | Perception: AI that sees. |
 | Speech Recognition | System | Perception / natural interaction: AI that hears. |
 
@@ -85,10 +102,10 @@ Pick about 35. Type is a first guess; it can change once abilities are designed.
 
 | Concept | Likely type | Notes |
 |---|---|---|
-| Transparency | System | A natural home for the Transparent keyword. |
-| Watermarking | Tool | Marking AI-made content so people can tell. |
+| ★ Transparency | System | A natural home for the Transparent keyword. |
+| ★ Watermarking | Tool | Marking AI-made content so people can tell. |
 | Data Minimization | Tool | Collecting only the data you need. |
-| Content Moderation | Action | Deciding what AI should and shouldn't produce. |
+| ★ Content Moderation | Action | Deciding what AI should and shouldn't produce. |
 | Opt-Out | Action | Letting people say no to their data being used. |
 | Audit Trail | Tool | Keeping a record of what an AI decided and why. |
 
@@ -96,15 +113,15 @@ Pick about 35. Type is a first guess; it can change once abilities are designed.
 
 | Concept | Likely type | Notes |
 |---|---|---|
-| Misinformation | Action | False information spread at scale. |
+| ★ Misinformation | Action | False information spread at scale. |
 | Filter Bubble | System | Recommendations that only show you what you already like. |
 | Facial Recognition | System | Useful and controversial; strong discussion card. |
 | Accessibility | System | A positive impact: AI that helps people with disabilities. |
-| Copyright | Action | Who owns AI-made art and the art it learned from? |
+| ★ Copyright | Action | Who owns AI-made art and the art it learned from? |
 | Automation | System | Machines taking over tasks; pairs with Job Disruption. |
 | Open Source | Tool | AI anyone can inspect and use. |
 | Fact-Checker | Tool | Red's first Tool. |
-| Media Literacy | Tool | Spotting fakes and judging sources. |
+| ★ Media Literacy | Tool | Spotting fakes and judging sources. |
 
 ### Chase (1–2)
 

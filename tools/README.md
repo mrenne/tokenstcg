@@ -38,6 +38,12 @@ published).
 `node tools/make-goldnet.js` redraws the gold network behind White Rare cards
 (`design/backgrounds/selected/ethics-goldnet.svg`). It only needs running if the pattern changes.
 
+## Playtest handouts
+
+Printed rules and playtest forms are on hold until the Alpha Set has been playtested, since the rules
+are likely to change. Drafts are kept outside the repo for now; their PDF output folder,
+`design/print/playtest/`, is ignored by git.
+
 ## Balance simulators (`tools/sim/`)
 
 ```bash

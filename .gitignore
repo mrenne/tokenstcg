@@ -28,3 +28,6 @@ design/frame-v2/preview-*.html
 
 # Build tools: renders and temporary pages
 /tools/.cache/
+
+# Playtest kit PDFs stay local while playtesting
+/design/print/playtest/

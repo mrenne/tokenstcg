@@ -31,3 +31,6 @@ design/frame-v2/preview-*.html
 
 # Playtest kit PDFs stay local while playtesting
 /design/print/playtest/
+
+# NFC "hidden card" pages: kept locally until cards get NFC stickers
+/scan/

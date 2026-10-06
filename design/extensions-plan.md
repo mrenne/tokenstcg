@@ -22,9 +22,9 @@ Students are in grades 6–8, and many are under 13.
 
 ### 1. "Look up your card" pages ★ top pick
 
-**Status: built locally 2026-10-06, not published.** `node tools/build-learn.js` makes `learn/` (a lookup page plus a
+**Status: live 2026-10-06 at tokenstcg.com/learn/, hidden** (not linked from the homepage, noindex). `node tools/build-learn.js` makes `learn/` (a lookup page plus a
 page for each card). The "In real life" and "Try it" text for every card is in `design/learn-content.json`.
-It will be linked from the Educator Resources page when that goes live, not from the homepage.
+Link it from the Educator Resources page when that goes live, not from the homepage.
 
 - A page such as `tokenstcg.com/learn` where a student types a card's number (it's printed on every
   card, e.g. 24/70) or its name, and lands on that card's own page.
@@ -106,6 +106,6 @@ policies (accounts, data, age limits) before linking.*
 
 ## Suggested order
 
-1. After playtesting: #1 card lookup pages, linked from Educator Resources (#9) when it launches.
+1. After playtesting: link the live #1 card lookup pages from Educator Resources (#9) when it launches.
 2. Then the remaining color labs (#2) and the Passport (#3).
 3. With the Beta Set: Beta card pages, the deck builder (#6), and design-a-card (#5).

@@ -1,0 +1,283 @@
+{
+  "_about": "Extra 'learn more' text for each card's page at tokenstcg.com/learn/<card>/. Keys are card file names (as in design/icons/README.md). Rebuild with: node tools/build-learn.js",
+  "not-alive": {
+    "example": "A chatbot can write \"I'm so happy to help!\" but it doesn't feel happy. It picked words that usually come next in friendly messages.",
+    "try": "List three things you did today that need being alive: feeling hungry, being tired, missing someone. Could an AI really do any of them?"
+  },
+  "the-human-trainer": {
+    "example": "Before a photo app can find \"dogs\" in your pictures, people somewhere labeled thousands of photos as dog or not-dog.",
+    "try": "Sort the snacks in your lunch into \"healthy\" and \"treat.\" Did a classmate sort them the same way? An AI learns whatever labels its trainers choose."
+  },
+  "human-in-the-loop": {
+    "example": "A bank's AI may flag a purchase as fraud, but a person checks before your card is actually blocked.",
+    "try": "Name one decision you'd let an AI make alone and one you'd always want a person to check. What makes them different?"
+  },
+  "chatbot": {
+    "example": "The help bubble on a store's website that answers \"Where's my order?\" is often a chatbot.",
+    "try": "Write one question a chatbot would answer well and one it would probably get wrong. Why the difference?"
+  },
+  "agent": {
+    "example": "A robot vacuum senses walls, decides where to go next, and moves on its own. That's an agent.",
+    "try": "Pick a robot or app you know. What does it sense? What does it decide? What action does it take?"
+  },
+  "ai-career-path": {
+    "example": "AI teams include people who label data, test for problems, design how the app looks, write rules for safety, and explain AI to the public.",
+    "try": "Pick something you're already good at, like drawing, arguing, organizing, or helping friends. How could that skill help build better AI?"
+  },
+  "manual-override": {
+    "example": "Self-driving test cars have a safety driver who can grab the wheel and take over at any moment.",
+    "try": "Think of a machine with an off switch or an \"undo\" button. Why did its designers add one?"
+  },
+  "ai-isn-t-magic": {
+    "example": "When a chatbot answers a question, it isn't thinking it over. It's predicting likely words, very quickly, using patterns from text it read.",
+    "try": "Write down something people say AI can do. Then ask: who built it, and what did it learn from?"
+  },
+  "python": {
+    "example": "Many AI projects, from school robotics clubs to big research labs, are written in the Python programming language.",
+    "try": "Write the steps for making a sandwich so exactly that a robot could follow them. That's what programming feels like."
+  },
+  "fast-moving-lab": {
+    "example": "Some AI companies release new tools every few months, racing to be first.",
+    "try": "List one good thing and one risky thing about releasing a new AI tool to everyone very quickly."
+  },
+  "safety-lab": {
+    "example": "Some AI teams spend time testing for harmful answers and fixing them before a tool is released.",
+    "try": "If you were testing a new AI homework helper before release, what are three things you'd check first?"
+  },
+  "ai-assistant": {
+    "example": "AI assistants can draft an email, explain a hard paragraph, or brainstorm ideas for a project.",
+    "try": "Name one way an assistant could help you learn, and one way it could stop you from learning. Where's the line?"
+  },
+  "viral-app": {
+    "example": "Some AI chatbot apps gained millions of users within weeks of launching, faster than almost any app before them.",
+    "try": "Why do some apps spread so fast? List three reasons, then decide whether fast is good, bad, or both."
+  },
+  "built-in-ai": {
+    "example": "Autocomplete in a search bar and suggested replies in email are AI built into tools you already use.",
+    "try": "Look at one app on a phone or computer. Find one feature that's probably AI. How can you tell?"
+  },
+  "defunct": {
+    "example": "When an app shuts down, the photos, messages, or progress you kept there can disappear with it.",
+    "try": "Think of an app or game you used that's gone or changed a lot. What happened to your stuff?"
+  },
+  "abstraction": {
+    "example": "A subway map leaves out streets and buildings so you can focus on the stops. AI models simplify the world in the same way.",
+    "try": "Draw a map from your home to school using only five things. What did you leave out, and why?"
+  },
+  "feature-vector": {
+    "example": "To a computer, a song might be a list of numbers: how fast it is, how loud it is, how much singing it has.",
+    "try": "Describe your favorite animal using only three numbers from 1 to 10, like size, speed, and fluffiness. Can a friend guess it?"
+  },
+  "classifier": {
+    "example": "Email spam filters sort each message into \"spam\" or \"not spam.\"",
+    "try": "Make two piles of objects on your desk using one rule. Have a friend guess the rule. That's what a classifier learns."
+  },
+  "predictor": {
+    "example": "A maps app predicts how many minutes your trip will take. That's a number, not a category.",
+    "try": "Predict how many minutes the walk home will take today. What clues did you use? A predictor uses clues the same way."
+  },
+  "recommender": {
+    "example": "\"Because you watched…\" rows on video apps come from a recommender.",
+    "try": "Recommend a book or show to a friend. How did you decide? Was it what they liked before, or what people like them liked?"
+  },
+  "decision-tree": {
+    "example": "\"Is it raining? Yes → take an umbrella. No → is it cold? Yes → take a jacket\" is a tiny decision tree.",
+    "try": "Make a three-question yes/no tree that decides what to eat for lunch. Can a friend follow it and get the same answer?"
+  },
+  "search-tree": {
+    "example": "Game-playing AIs look ahead at possible moves, like \"if I go here, they'll go there,\" to pick the best one.",
+    "try": "Play tic-tac-toe and say your thinking out loud: \"If I go here, they could…\" You're searching a tree."
+  },
+  "ambiguous-input": {
+    "example": "A voice assistant might mishear \"write\" as \"right\" when there's background noise.",
+    "try": "Say a sentence with a word that has two meanings, like \"bat\" or \"bark.\" How did your listener know which one you meant?"
+  },
+  "discontinued": {
+    "example": "When a company stops supporting a gadget, it may stop getting updates and safety fixes, even though it still turns on.",
+    "try": "Why might a company warn people before it stops supporting something? Write the warning message you'd send."
+  },
+  "sensor": {
+    "example": "Phones have cameras, microphones, touch screens, and motion sensors that all turn the real world into data.",
+    "try": "Name every sensor you can think of in a phone or a car. What does each one sense?"
+  },
+  "training-data": {
+    "example": "A photo app learns what cats look like from thousands of example cat photos.",
+    "try": "If you had to teach an AI what a \"good drawing\" is, what ten examples would you show it? Would everyone pick the same ten?"
+  },
+  "bias-in-data": {
+    "example": "If face photos used for training are mostly of one group of people, a face-recognition system may work worse for others.",
+    "try": "Imagine an AI that learned what a \"teacher\" looks like only from your school. Who might it wrongly decide isn't a teacher?"
+  },
+  "supervised-learning": {
+    "example": "Showing an AI thousands of emails already labeled \"spam\" or \"not spam\" until it learns the difference.",
+    "try": "Teach a friend a made-up rule using examples only: show items labeled \"blip\" or \"not blip\" until they can guess."
+  },
+  "neural-network": {
+    "example": "Image and speech recognition in many apps run on neural networks with millions of tiny connected parts.",
+    "try": "Line up five classmates. Each one passes a message along, changing it a little. A neural network passes numbers through layers like that."
+  },
+  "large-language-model": {
+    "example": "Chatbots that can write stories or explain homework are usually built on large language models.",
+    "try": "Start a sentence and let classmates add one word at a time. You're predicting the next word, the way an LLM does."
+  },
+  "reinforcement-learning": {
+    "example": "An AI can learn to play a video game by trying moves over and over and getting points when it does well.",
+    "try": "Teach a friend to find a hidden object using only \"warmer\" and \"colder.\" That's learning from rewards."
+  },
+  "retraining-pause": {
+    "example": "Apps sometimes switch off an AI feature for a while to fix problems and update it.",
+    "try": "Why might a company pause an AI tool instead of fixing it while people keep using it?"
+  },
+  "neuron": {
+    "example": "One artificial neuron just adds up some numbers and decides how strongly to pass a signal on. The power comes from millions working together.",
+    "try": "Be a neuron: a friend holds up fingers on each hand. Add them up, and if the total is more than 5, clap. That's one neuron's job."
+  },
+  "tensor": {
+    "example": "A color photo is stored as a grid of numbers for every pixel, three layers deep for red, green, and blue. That's a tensor.",
+    "try": "Draw a 4×4 grid and fill it with 0s and 1s to make a smiley face. You just stored an image as numbers."
+  },
+  "cuda": {
+    "example": "Tools that let AI run on graphics chips are a big reason training that once took weeks can take days.",
+    "try": "Time how long it takes one person to sort a deck of cards, then four people splitting it. Why is splitting the work faster?"
+  },
+  "imagenet": {
+    "example": "A huge collection of labeled photos, used in a famous image-recognition contest, helped spark today's AI boom.",
+    "try": "If you built a photo collection to teach AI about food, what foods might you forget to include? Who would that leave out?"
+  },
+  "gan": {
+    "example": "Some realistic fake faces online were made by two AIs competing: one makes fakes, the other tries to catch them.",
+    "try": "Play \"forger and detective\": one person draws a fake signature, another tries to spot it. Both get better each round."
+  },
+  "diffusion-model": {
+    "example": "Many AI image tools start with random static and clean it up, step by step, into a picture.",
+    "try": "Start with a page of random scribbles and slowly turn them into a drawing. That's roughly how a diffusion model works."
+  },
+  "unsupervised-learning": {
+    "example": "A store's AI might notice groups of shoppers who buy similar things, without anyone telling it what the groups are.",
+    "try": "Dump a pile of mixed objects and sort them into groups without being given any rules. What groups did you invent?"
+  },
+  "transformer": {
+    "example": "Transformers help chatbots figure out which earlier words matter. In \"The dog chased the ball until it was tired,\" what is \"it\"?",
+    "try": "Read a sentence and underline the words that matter most for its meaning. That's what attention does."
+  },
+  "gpt": {
+    "example": "GPT stands for Generative Pre-trained Transformer: an AI that read a huge amount of text first, then learned to generate new text.",
+    "try": "Explain \"pre-trained\" to a friend using sports practice as an example. Why practice before the real game?"
+  },
+  "gpu": {
+    "example": "Chips first built for video-game graphics turned out to be great at the math AI needs, because they do thousands of small calculations at once.",
+    "try": "Have one person add up ten numbers while ten people each add one pair at the same time. Which finishes first?"
+  },
+  "cpu": {
+    "example": "The CPU runs your computer's programs step by step: opening apps, saving files, following instructions in order.",
+    "try": "Follow a recipe one step at a time, in order. That's how a CPU works. What steps could two people do at the same time?"
+  },
+  "ram": {
+    "example": "RAM holds whatever the computer is working on right now, and it's wiped when the power goes off.",
+    "try": "Remember a 7-digit number for 30 seconds without writing it down. Your short-term memory is like RAM."
+  },
+  "embedding": {
+    "example": "In an AI's number map of words, \"dog\" ends up close to \"puppy\" and far from \"airplane.\"",
+    "try": "Place these words on a line from \"tiny\" to \"huge\": ant, cat, horse, whale, mouse. You just made a simple embedding."
+  },
+  "fine-tuning": {
+    "example": "A general chatbot can be trained a bit more on medical questions to become a better health-info helper.",
+    "try": "You already know how to read. What extra practice would make you an expert at reading maps? That's fine-tuning."
+  },
+  "outdated": {
+    "example": "An AI trained a few years ago might not know about new games, events, or the latest phones.",
+    "try": "Write three things that changed in the last year. Would an AI trained before then know about them?"
+  },
+  "fairness-check": {
+    "example": "Before using an AI to help choose who gets a loan, testers check whether it treats different groups of people equally.",
+    "try": "Is it fair if everyone gets the same thing, or if everyone gets what they need? Argue both sides for one minute each."
+  },
+  "bias-audit": {
+    "example": "Reviewers test a hiring AI with matching résumés that differ only in the name, to see if it treats them differently.",
+    "try": "Design a quick test to check whether a school-photo AI recognizes everyone in your class equally well."
+  },
+  "model-card": {
+    "example": "A model card is like a nutrition label for AI. It tells what the model is for, what data it learned from, and where it doesn't work well.",
+    "try": "Write a mini \"model card\" for yourself as a helper: what you're good at, what you're not, and what you shouldn't be asked to do."
+  },
+  "explainability": {
+    "example": "If an AI says a photo shows a wolf, an explainable system can show it looked at the snow in the background, which is a clue that it may be wrong.",
+    "try": "Make a decision, like what to eat, and explain it in three reasons. Would a friend trust your choice more after hearing them?"
+  },
+  "privacy-shield": {
+    "example": "Some AI systems remove names and blur faces before using data, so people can't be identified.",
+    "try": "List three pieces of information about you that you'd never want used to train an AI. Why those?"
+  },
+  "accountability": {
+    "example": "When an automated system makes a harmful mistake, people argue over who's responsible: the company, the designer, or the user.",
+    "try": "A self-driving bus misses a stop. Who should fix it, and who should apologize? Are those the same person?"
+  },
+  "ethical-framework": {
+    "example": "Many organizations publish AI principles, such as fairness, safety, privacy, and transparency, to guide what they build.",
+    "try": "Write three rules every AI at your school must follow. Rank them: which matters most?"
+  },
+  "compliance-review": {
+    "example": "Before some AI tools can be used in schools or hospitals, they're checked against privacy and safety rules.",
+    "try": "Make a five-item checklist an AI homework app must pass before your school allows it."
+  },
+  "mandatory-recall": {
+    "example": "Cars and toys can be recalled when they're found unsafe. Some people think AI products should work the same way.",
+    "try": "What would an AI app have to do before you'd want it recalled? Draw your line."
+  },
+  "informed-consent": {
+    "example": "Some apps ask before using your photos or recordings to improve their AI, and some don't ask clearly at all.",
+    "try": "Rewrite a confusing permission pop-up so a 10-year-old would understand exactly what they're agreeing to."
+  },
+  "red-teaming": {
+    "example": "Companies hire testers to try to trick a chatbot into breaking its own rules, so the holes get fixed before release.",
+    "try": "Think like a tester: how might someone trick a homework chatbot into just giving the answers? How would you block that?"
+  },
+  "expired": {
+    "example": "Some permissions, like sharing your location, can be set to end after a while instead of lasting forever.",
+    "try": "Should permission to use your data run out? Pick a time limit for photos, location, and messages, and explain your choices."
+  },
+  "ai-in-daily-life": {
+    "example": "Autocorrect, music suggestions, spam filters, and photo search are AI you may use every day without noticing.",
+    "try": "Keep a tally for one day: every time you notice AI, write it down. How many did you find?"
+  },
+  "deepfake": {
+    "example": "AI can make realistic videos or voice clips of people saying things they never said.",
+    "try": "Before sharing a surprising video, what three checks would you do? Write your own \"pause before posting\" checklist."
+  },
+  "job-disruption": {
+    "example": "AI can now do some tasks, like sorting documents or writing simple reports, that used to take people hours.",
+    "try": "Pick a job you might want. Which parts could AI help with, and which parts need a person?"
+  },
+  "environmental-footprint": {
+    "example": "Running large AI models uses a lot of electricity, and the computers often need water for cooling.",
+    "try": "List three times you used AI this week. Which ones were worth the energy, and which weren't?"
+  },
+  "data-privacy-trade-off": {
+    "example": "Many free apps are paid for with data about what you do, which can be used to target ads or train AI.",
+    "try": "Pick a free app you use. What do you think it learns about you? Would you pay a dollar a month to keep that private?"
+  },
+  "regulation-debate": {
+    "example": "Governments around the world are debating laws about AI, like labeling AI-made images or limiting facial recognition.",
+    "try": "Write one AI law you'd pass for kids your age. Who would agree with it, and who might argue against it?"
+  },
+  "digital-divide": {
+    "example": "Students without fast internet or a computer at home can't use AI learning tools the way others can.",
+    "try": "What would a school need to do so every student gets the same chance to learn about AI? List three steps."
+  },
+  "cognitive-offload": {
+    "example": "If you always let a map app give directions, you may never learn your way around your own town.",
+    "try": "Pick one skill you'd never want AI to do for you, and one you're happy to hand off. What's the difference?"
+  },
+  "data-center": {
+    "example": "Huge buildings full of computers run the AI apps people use. They need lots of power and cooling.",
+    "try": "A company wants to build a data center in your town. List one benefit and one concern."
+  },
+  "obsolete": {
+    "example": "Floppy disks once saved everyone's files. Today they mostly survive as the \"Save\" icon.",
+    "try": "Ask an adult about a gadget they used that's now obsolete. What replaced it, and why?"
+  },
+  "alignment": {
+    "example": "An AI told to \"keep people watching\" might show videos that keep kids up too late. It did what it was told, not what people wanted.",
+    "try": "Write a goal for a cleaning robot. Then try to find a sneaky way it could follow your words but miss your point."
+  }
+}

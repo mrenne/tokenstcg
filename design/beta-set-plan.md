@@ -5,7 +5,7 @@ stats and abilities wait for playtest results, so new cards are built on rules t
 students.
 
 The Alpha Set (70 cards) is described in [pilot-deck-60-cards.md](pilot-deck-60-cards.md) and the
-rules in [GAME_CONCEPT.md](GAME_CONCEPT.md).
+rules in [GAME_CONCEPT.md](GAME_CONCEPT.md). Website and game extensions are in [extensions-plan.md](extensions-plan.md).
 
 ---
 

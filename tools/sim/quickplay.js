@@ -28,7 +28,7 @@ const CARDS = [
   S('Supervised Learning', 'K', 'C', 3, 3, 3, 2), S('Neural Network', 'K', 'U', 3, 4, 2, 2),
   S('Large Language Model', 'K', 'R', 5, 5, 2, 4, ['FT']), S('Reinforcement Learning', 'K', 'U', 4, 3, 2, 3),
   A('Retraining Pause', 'K', 'C', 2), S('Neuron', 'K', 'C', 1, 1, 2, 1), T('Tensor', 'K', 'C', 1), T('CUDA', 'K', 'C', 2),
-  { ...A('ImageNet', 'K', 'U', 2), bigData: 4 }, S('GAN', 'K', 'U', 3, 3, 1, 2, ['ADV']), S('Diffusion Model', 'K', 'U', 3, 3, 2, 2),
+  { ...A('ImageNet', 'K', 'U', 2), bigData: 3 }, S('GAN', 'K', 'U', 3, 3, 1, 2, ['ADV']), S('Diffusion Model', 'K', 'U', 3, 3, 2, 2),
   S('Unsupervised Learning', 'K', 'U', 3, 3, 2, 2), S('Transformer', 'K', 'R', 4, 4, 2, 3),
   // White
   T('Fairness Check', 'W', 'C', 1), S('Bias Audit', 'W', 'C', 2, 1, 4, 1, ['AUD']), T('Model Card', 'W', 'C', 1),

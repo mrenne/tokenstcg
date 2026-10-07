@@ -24,11 +24,11 @@ const CARDS = [
   S('Predictor', 'B', 'C', 2, 3, 1, 2), S('Recommender', 'B', 'C', 2, 3, 1, 2), S('Decision Tree', 'B', 'U', 3, 2, 4, 2, ['AUD']),
   S('Search Tree', 'B', 'R', 4, 3, 3, 3), A('Ambiguous Input', 'B', 'C', 1),
   // Black (K)
-  S('Sensor', 'K', 'C', 1, 1, 2, 1), A('Training Data', 'K', 'C', 2, 'Dataset'), A('Bias in Data', 'K', 'C', 1),
+  S('Sensor', 'K', 'C', 1, 1, 2, 1), { ...A('Training Data', 'K', 'C', 2), bigData: 2 }, A('Bias in Data', 'K', 'C', 1),
   S('Supervised Learning', 'K', 'C', 3, 3, 3, 2), S('Neural Network', 'K', 'U', 3, 4, 2, 2),
   S('Large Language Model', 'K', 'R', 5, 5, 2, 4, ['FT']), S('Reinforcement Learning', 'K', 'U', 4, 3, 2, 3),
   A('Retraining Pause', 'K', 'C', 2), S('Neuron', 'K', 'C', 1, 1, 2, 1), T('Tensor', 'K', 'C', 1), T('CUDA', 'K', 'C', 2),
-  A('ImageNet', 'K', 'U', 2, 'Dataset'), S('GAN', 'K', 'U', 3, 3, 1, 2, ['ADV']), S('Diffusion Model', 'K', 'U', 3, 3, 2, 2),
+  { ...A('ImageNet', 'K', 'U', 2), bigData: 4 }, S('GAN', 'K', 'U', 3, 3, 1, 2, ['ADV']), S('Diffusion Model', 'K', 'U', 3, 3, 2, 2),
   S('Unsupervised Learning', 'K', 'U', 3, 3, 2, 2), S('Transformer', 'K', 'R', 4, 4, 2, 3),
   // White
   T('Fairness Check', 'W', 'C', 1), S('Bias Audit', 'W', 'C', 2, 1, 4, 1, ['AUD']), T('Model Card', 'W', 'C', 1),
@@ -68,7 +68,7 @@ function play(deckA, deckB, align, firstIdx, log) {
     if (c.name === 'Mandatory Recall') return 5;
     if (TOOLKILL.has(c.name)) return 3;
     if (DENY.has(c.name)) return 3;
-    if (c.type === 'Dataset') return 2.5;
+    if (c.bigData) return 2.5;
     return 1.5;
   }
 
@@ -105,25 +105,34 @@ function play(deckA, deckB, align, firstIdx, log) {
       const tax = Math.max(0, p.sys.length - 1);
       const opts = p.hand.map(c => {
         const cost = c.cost + (c.type === 'System' ? tax : 0);
-        if (cost > avail()) return null;
+        // Big Data N: pay by turning a ready System with Cost N+ sideways instead. The bot does that when it
+        // can't afford the card, or when the System couldn't Task anyway (blocked) or would only score 1.
+        let payer = null;
+        if (c.bigData && !process.env.NO_BIGDATA) {
+          payer = p.sys.filter(s => !s.ex && (!s.fresh || s.card.kw.includes('FT')) && s.card.cost >= c.bigData)
+            .sort((a, b) => (b.blocked - a.blocked) || (a.card.tok - b.card.tok))[0] || null;
+          if (payer && !(cost > avail() || payer.blocked || payer.card.tok <= 1)) payer = null;
+        }
+        if (!payer && cost > avail()) return null;
         let pr = -1;
         if (c.type === 'System') pr = 100 + value(c);
         else if (c.type === 'Tool') { if (!p.tools.some(t => t.card.name === c.name) && !['Tensor'].includes(c.name)) pr = 80 + value(c); }
-        else if (c.type === 'Dataset') { if (p.ts < 9) pr = 90; }
+        else if (c.bigData) { if (p.ts < 9) pr = 90; }
         else if (c.name === 'Mandatory Recall') { if (o.sys.filter(s => !s.blocked).length >= 2) pr = 70; }
         else if (DENY.has(c.name)) { if (opp() && o.sys.some(s => !s.blocked && s.card.tok >= 2)) pr = 60; }
         else if (c.name === 'Bias in Data') { if (opp() && o.sys.length) pr = 55; }
         else if (TOOLKILL.has(c.name)) { if (o.tools.some(t => value(t.card) >= 2 || t.card.kw.includes('LEG'))) pr = 58; }
         else if (c.name === 'Environmental Footprint') { if (o.ts > p.ts) pr = 40; }
         else if (['AI Career Path', 'Cognitive Offload'].includes(c.name)) pr = 30;
-        return pr > 0 ? { c, cost, pr } : null;
+        return pr > 0 ? { c, cost: payer ? 0 : cost, pr, payer } : null;
       }).filter(Boolean).sort((a, b) => b.pr - a.pr);
       if (!opts.length) break;
-      const { c, cost } = opts[0];
+      const { c, cost, payer } = opts[0];
+      if (payer) { payer.ex = true; st.bigData = (st.bigData || 0) + 1; L(`  turns ${payer.card.name} sideways to pay for ${c.name}`); }
       p.hand.splice(p.hand.indexOf(c), 1); p.spent += cost; acted = true;
       if (c.type === 'System') { p.sys.push({ card: c, flags: 0, ex: false, fresh: true, blocked: p.recall, boost: 0 }); L(`  deploys ${c.name} (cost ${cost})`); }
       else if (c.type === 'Tool') { p.tools.push({ card: c, ex: false }); L(`  deploys tool ${c.name}`); }
-      else if (c.type === 'Dataset') { const n = c.name === 'ImageNet' ? 3 : 2; for (let i = 0; i < n && p.deck.length; i++) { p.deck.shift(); p.ts++; p.spent++; } L(`  plays ${c.name}`); }
+      else if (c.bigData) { const n = c.name === 'ImageNet' ? 3 : 2; for (let i = 0; i < n && p.deck.length; i++) { p.deck.shift(); p.ts++; p.spent++; } L(`  plays ${c.name}`); }
       else if (c.name === 'Mandatory Recall') { o.sys.forEach(s => s.blocked = true); o.recall = true; L(`  plays Mandatory Recall`); }
       else if (DENY.has(c.name)) { const t = o.sys.filter(s => !s.blocked).sort((a, b) => b.card.tok - a.card.tok)[0]; t.blocked = true; L(`  plays ${c.name} on ${t.card.name}`); }
       else if (c.name === 'Bias in Data') {

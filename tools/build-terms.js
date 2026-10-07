@@ -36,7 +36,6 @@ const GAME = [
   ['System', 'A card for an AI program, model, or organization. Systems do the work: they Run Tasks and Audits.', 'An **AI system** is any program or product that uses AI to do a job.'],
   ['Tool', 'A card that stays in play and gives you an ability you can use again.', ''],
   ['Action', 'A card with a one-time effect. After you play it, it goes to your discard pile.', ''],
-  ['Dataset', 'A kind of Action. You can pay its Cost, or play it free by exerting one of your Systems that costs 3 or more.', 'A **dataset** is an organized collection of data, like thousands of labeled photos.'],
   ['Cost', 'The number in the top-left corner: how much Data it takes to deploy the card.', ''],
   ['Capability', 'How strong a System is in an Audit. It deals this many Flags.', 'What an AI system is able to do, and how well.'],
   ['Trust', 'How many Flags a System can take before it is Deprecated.', 'How much people can rely on an AI system to be accurate, fair, and safe.'],
@@ -59,6 +58,7 @@ const GAME = [
   ['Adversarial', 'A keyword: when this System is Audited, it deals 1 extra Flag back to the System that Audited it.', 'In AI, **adversarial** means working against another system, like two networks competing in a GAN.'],
   ['Attention', 'A keyword on the Transformer card. The card explains what it does.', '**Attention** lets a model focus on the most important parts of its input. It is the key idea behind modern chatbots.'],
   ['Legacy', 'A floppy-disk icon (💾) on the type bar of an old-tech Tool. Five cards (Obsolete, Defunct, Discontinued, Outdated, Expired) can discard any Tool, and draw you a card if it was a Legacy Tool.', 'A **legacy** system is older technology that is still in use but no longer the newest way of doing things. The floppy disk is the classic example: it used to be how everyone saved files, and today it survives mostly as the "Save" icon.'],
+  ['Big Data', 'A keyword: **Big Data 2** means you may pay for the card by exerting one of your Systems that costs 2 or more, instead of paying Data.', '**Big data** means huge collections of data, too large to handle without powerful computers. A **dataset** is an organized collection of data, like thousands of labeled photos.'],
   ['Discuss', 'The question at the bottom of every card. Your teacher may pause the game so you can talk about it.', ''],
 ];
 const LAUNCH = [

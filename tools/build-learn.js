@@ -32,6 +32,7 @@ const KEYWORDS = {
   'Attention.': 'Attention:',
 };
 const plainRules = s => s.replace(/(Fast-Tracked|Highly Trusted|Adversarial|Attention)\./g, k => KEYWORDS[k])
+  .replace(/Big Data (\d+) \(or pay by turning a Cost \d+\+ System sideways\)\./g, (m, n) => `Big Data ${n}: instead of paying Data, you may turn one of your Systems that costs ${n} or more sideways.`)
   .replace(/\{E\}\s*—\s*/g, 'Turn this card sideways to ').replace(/💾\s*/g, '').replace(/Turn this card sideways to (\w)/, (m, c) => 'Turn this card sideways to ' + c.toLowerCase());
 
 // ---- read every card, in card-number order ----

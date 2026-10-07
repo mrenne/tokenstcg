@@ -51,7 +51,7 @@ const SUITS = [
   ['impacts', 'Societal Impacts', 'var(--red)'],
   ['any', 'Wildcard', 'conic-gradient(from 90deg,var(--chase-a),var(--chase-b),var(--chase-c),var(--chase-a))'],
 ];
-const TYPES = ['System', 'Tool', 'Action', 'Dataset'];
+const TYPES = ['System', 'Tool', 'Action'];
 const RARITY = { common: 'Common', uncommon: 'Uncommon', rare: 'Rare', chase: 'Chase' };
 const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 const count = f => cards.filter(f).length;

@@ -206,12 +206,11 @@ function build(mode) {
 </section>
 
 <section>
-  <div class="shead"><div class="step">2</div><h2>Four kinds of card</h2></div>
+  <div class="shead"><div class="step">2</div><h2>Three kinds of card</h2></div>
   <div class="row">
     <div class="tile">${card('Chatbot', 180)}<h3>System</h3><p>Scores points and fights. Only Systems have stats.</p></div>
     <div class="tile">${card('Python', 180)}<h3>Tool</h3><p>Stays out until a card discards it. Use it again each turn.</p></div>
     <div class="tile">${card('Manual Override', 180)}<h3>Action</h3><p>Happens once, then it's discarded.</p></div>
-    <div class="tile">${card('Training Data', 180)}<h3>Dataset</h3><p>Pay Data, or exert a big System instead.</p></div>
   </div>
 </section>
 
@@ -268,6 +267,7 @@ function build(mode) {
     <div class="tile"><div class="kw">${card('Safety Lab', 170)}<div class="kwname">Highly Trusted</div><div class="kwtext">Cards with lower Trust can't Audit it.</div></div></div>
     <div class="tile"><div class="kw">${card('GAN', 170)}<div class="kwname">Adversarial</div><div class="kwtext">Hits back 1 extra Flag when Audited.</div></div></div>
     <div class="tile"><div class="kw">${card('CPU', 170)}<div class="kwname">💾 Legacy</div><div class="kwtext">Old tech. If a card like Obsolete discards it, that player draws a card.</div></div></div>
+    <div class="tile"><div class="kw">${card('Training Data', 170)}<div class="kwname">Big Data 2</div><div class="kwtext">Instead of paying Data, you may turn one of your Systems that costs 2 or more sideways.</div></div></div>
   </div>
   <div class="rarity" style="margin-top:18px">
     <span class="rchip"><span class="gemdemo">C</span> Common</span>
@@ -291,7 +291,7 @@ function build(mode) {
     <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ff7a90" stroke-width="2"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.2"/></svg><div><b>Scoring exposes you</b><span>Only sideways Systems can be Audited. Tasking turns yours sideways.</span></div></div>
     <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ff7a90" stroke-width="2" stroke-linecap="round"><path d="M6 21V4"/><path d="M6 5h11l-2.2 3.5L17 12H6" fill="#ff7a90" fill-opacity=".25"/></svg><div><b>Flags never heal</b><span>Damage stays all game unless a card removes it.</span></div></div>
     <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5ec8ff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><div><b>Tools act right away</b><span>New Systems wait a turn. Tools don't.</span></div></div>
-    <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#e8b955" stroke-width="2" stroke-linejoin="round"><rect x="4" y="7.5" width="9" height="12" rx="2"/><path d="M15.5 5.5l3.5 3.5-3.5 3.5"/><path d="M19 9h-6"/></svg><div><b>Free Datasets cost a turn</b><span>Exerting a big System to pay means it can't Task, and it can be Audited.</span></div></div>
+    <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#e8b955" stroke-width="2" stroke-linejoin="round"><rect x="4" y="7.5" width="9" height="12" rx="2"/><path d="M15.5 5.5l3.5 3.5-3.5 3.5"/><path d="M19 9h-6"/></svg><div><b>Big Data still costs a turn</b><span>A System you turn sideways to pay can't Task, and it can be Audited.</span></div></div>
     <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ff7a90" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5l4 4-9 9H5.5v-4z"/><path d="M4 4l16 16"/></svg><div><b>Tools can be removed</b><span>Each color has one Action that discards a Tool.</span></div></div>
   </div>
 </section>

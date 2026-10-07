@@ -24,7 +24,6 @@ A vocabulary guide for teachers to use with students. It covers the words used t
 | **System** | A card for an AI program, model, or organization. Systems do the work: they Run Tasks and Audits. | An **AI system** is any program or product that uses AI to do a job. |
 | **Tool** | A card that stays in play and gives you an ability you can use again. | — |
 | **Action** | A card with a one-time effect. After you play it, it goes to your discard pile. | — |
-| **Dataset** | A kind of Action. You can pay its Cost, or play it free by exerting one of your Systems that costs 3 or more. | A **dataset** is an organized collection of data, like thousands of labeled photos. |
 | **Cost** | The number in the top-left corner: how much Data it takes to deploy the card. | — |
 | **Capability** | How strong a System is in an Audit. It deals this many Flags. | What an AI system is able to do, and how well. |
 | **Trust** | How many Flags a System can take before it is Deprecated. | How much people can rely on an AI system to be accurate, fair, and safe. |
@@ -47,6 +46,7 @@ A vocabulary guide for teachers to use with students. It covers the words used t
 | **Adversarial** | A keyword: when this System is Audited, it deals 1 extra Flag back to the System that Audited it. | In AI, **adversarial** means working against another system, like two networks competing in a GAN. |
 | **Attention** | A keyword on the Transformer card. The card explains what it does. | **Attention** lets a model focus on the most important parts of its input. It is the key idea behind modern chatbots. |
 | **Legacy** | A floppy-disk icon (💾) on the type bar of an old-tech Tool. Five cards (Obsolete, Defunct, Discontinued, Outdated, Expired) can discard any Tool, and draw you a card if it was a Legacy Tool. | A **legacy** system is older technology that is still in use but no longer the newest way of doing things. The floppy disk is the classic example: it used to be how everyone saved files, and today it survives mostly as the "Save" icon. |
+| **Big Data** | A keyword: **Big Data 2** means you may pay for the card by exerting one of your Systems that costs 2 or more, instead of paying Data. | **Big data** means huge collections of data, too large to handle without powerful computers. A **dataset** is an organized collection of data, like thousands of labeled photos. |
 | **Discuss** | The question at the bottom of every card. Your teacher may pause the game so you can talk about it. | — |
 
 ### Launch Day terms
@@ -119,7 +119,7 @@ How computers learn from data, and the hardware and models that make it work.
 | **GAN** | System | Two networks compete: one makes fakes, the other tries to catch them. |
 | **GPT** | System | An LLM pre-trained on huge amounts of text. |
 | **GPU** | Tool | A graphics processing unit: a chip that does thousands of calculations at once, which makes training AI much faster. |
-| **ImageNet** | Dataset | A massive labeled image dataset that helped launch the modern boom in computer vision. |
+| **ImageNet** | Action | A massive labeled image dataset that helped launch the modern boom in computer vision. |
 | **Large Language Model** | System | A neural network trained on massive text data, used for chat, writing, and more. |
 | **Neural Network** | System | Many simple processing units organized to jointly solve a complex problem. |
 | **Neuron** | System | The smallest processing unit in a neural network — many of them together form the whole model. |
@@ -130,7 +130,7 @@ How computers learn from data, and the hardware and models that make it work.
 | **Sensor** | System | Hardware that turns a physical signal (light, sound) into data a computer can use. |
 | **Supervised Learning** | System | Training a model on labeled examples so it learns to match inputs to known answers. |
 | **Tensor** | Tool | A multi-dimensional grid of numbers — the basic data structure nearly every AI model computes with. |
-| **Training Data** | Dataset | The examples a model learns from before it's used. |
+| **Training Data** | Action | The examples a model learns from before it's used. |
 | **Transformer** | System | A neural network design that weighs which parts of the input matter most — the architecture behind most modern LLMs. |
 | **Unsupervised Learning** | System | Training a model to find patterns in data with no labels. |
 

@@ -48,14 +48,14 @@ A deck draws from 1-2 Data Types, same as Lorcana restricts a deck to 1-2 inks �
 - **Systems** (≈ Characters): the AI concepts that do the work. Have Cost, Capability, Trust, and Tokens. Deployed face-up; can Run a Task or Run an Audit starting the turn *after* they're deployed (they need a turn to "finish training") unless they have the **Fast-Tracked** keyword.
 - **Tools** (≈ Items): stay in play once deployed (until an effect discards them — five Actions can, one per color: **Obsolete**, **Defunct**, **Discontinued**, **Outdated**, and **Expired**) and usable immediately. No combat stats — just an ability, often a repeatable one paid for by exerting the Tool itself. E.g., a Model Card tool, a Bias Audit tool.
 - **Actions**: a one-time effect, then discarded. Quick disruptive or helpful events — a regulation passing, a data breach, a viral deepfake.
-- **Datasets** (≈ Songs, a subtype of Action): can be paid for normally with Data, *or* "processed for free" by exerting an already-deployed System with Cost 3 or higher instead. This rewards having a big System in play — mechanically, only a sufficiently large model can ingest a big dataset without extra cost.
+- *(Datasets were a fourth type until v0.12; see Round 17. The two Dataset cards are now Actions with the **Big Data** keyword.)*
 
 ## Card anatomy (student-facing)
 
 - **Data Type band** (color + icon)
 - **Cost** (top-left flap, how much Data to deploy)
 - **Tokens** (top-right flap, mirrored — Systems only; shown as a pip count — one dot per Token scored on a Task — rather than a numeral, so it never reads as a second Cost). **Hard rule: no System's Tokens stat may exceed 4** — this is what makes the pip display work at all, and it's a permanent card-design constraint, not just true of the current pilot pool. Keep it in mind for every future card.
-- **Name**, centered at the top between the two flaps, and **card type** (System / Tool / Action / Dataset)
+- **Name**, centered at the top between the two flaps, and **card type** (System / Tool / Action)
 - **Classification tags** (small category words referenced by some abilities, e.g. "Model," "Human Role," "Consequence")
 - **Rarity gem**: a small square at the left of the type bar with a letter in it: **C** (Common, outlined), **U** (Uncommon, lightly filled), **R** (Rare, solid white with a glow), **★** (Chase, rainbow). The letter makes rarity readable even on a home printer, where brightness alone was hard to tell apart. Rare and Chase cards are also full-art.
 - **Stats** (Systems only): Capability and Trust sit in a stat row over the art; Tokens moved up to the top-right flap so it reads at a glance, the same way Cost does at top-left
@@ -87,13 +87,13 @@ The player going first draws a **5-card opening hand**; the player going second 
 
 **Main phase** — any of the following, any number of times, in any order:
 - Once per turn: train a card into your Training Set.
-- Deploy a card (System, Tool, Action, or Dataset) by paying its Data cost.
+- Deploy a card (System, Tool, or Action) by paying its Data cost (or, for a **Big Data** card, by turning a big enough System sideways).
 - With a System that's been in play since your last Reboot: **Run a Task** or **Run an Audit** (see below).
 - Activate a Tool's ability.
 
 ### Escalating deploy costs
 
-Your 1st and 2nd **System** deploy at printed Cost. Starting with your 3rd, each one costs 1 additional Data for every System you control beyond your 2nd — Tools, Actions, and Datasets are unaffected. So your 3rd System costs +1, your 4th costs +2, your 5th costs +3, and so on. This is the fix for the board-snowball problem found in playtesting (see below): a deck built to flood the board with many cheap Systems pays an increasing tax once it's past a small starting core, while a deck built around a few sturdier Systems barely notices it. Deprecated Systems no longer count once they leave play, so the tax can go back down over the course of a game, not just up.
+Your 1st and 2nd **System** deploy at printed Cost. Starting with your 3rd, each one costs 1 additional Data for every System you control beyond your 2nd — Tools and Actions are unaffected. So your 3rd System costs +1, your 4th costs +2, your 5th costs +3, and so on. This is the fix for the board-snowball problem found in playtesting (see below): a deck built to flood the board with many cheap Systems pays an increasing tax once it's past a small starting core, while a deck built around a few sturdier Systems barely notices it. Deprecated Systems no longer count once they leave play, so the tax can go back down over the course of a game, not just up.
 
 ## Scoring: Run a Task
 
@@ -117,6 +117,7 @@ First player to reach a target Token count wins. Suggested target for the pilot'
 - **Adversarial** — whenever this System is Audited, it deals 1 Flag back to the Auditing System, on top of the normal damage exchange. (Machine Learning flavor: a GAN is trained by fighting back.)
 - **Highly Trusted** — this System can't be Audited by a System with lower Trust than its own. (Renamed from "Audited" so the keyword isn't confused with the Run an Audit action. It's a keyword, not the same as having a Trust stat — every System has Trust, but only cards that say "Highly Trusted" get this rule.) (Ethical AI Design flavor: a well-vetted system is hard to challenge unfairly.)
 - **💾 Legacy** — marks an old-tech Tool with a floppy-disk icon in its type line. It does nothing by itself; the five Tool-removal Actions (Obsolete, Defunct, Discontinued, Outdated, Expired: "Discard target Tool") draw their player a card when they discard a Legacy Tool. Legacy Tools so far: Feature Vector, CPU, RAM. (Flavor: technology goes out of date fast, and old tech is the first thing replaced.)
+- **Big Data N** — you may pay for this card by turning one of your Systems with Cost N or more sideways, instead of paying its Data cost. The System must be ready to act, the same as for Run a Task (in play since your last Reboot, or Fast-Tracked), and only one System pays. Turning it sideways means it can't Task this turn and can be Audited. Training Data is Big Data 2, ImageNet Big Data 4. (Machine Learning flavor: only a big enough model can take in a huge dataset without extra cost.)
 - **Transparent** — when this System would be Deprecated, its controller may first look at the top card of their deck and draw it if it's a Tool. (Societal Impacts flavor: openness about failure still has value.)
 
 ## Rarity & trading
@@ -188,7 +189,7 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
 
    **Playtest (Round 9, simulated):** a scripted co-op simulator compared three team strategies — **greedy** (always score, ignore the AI), **safety-first** (Audit whenever possible), and **balanced** (score, but deal with the AI when the meter gets dangerous). A good tuning makes balanced clearly beat both extremes.
    - First draft (meter 10, targets 20-30, no deadline) was far too easy: balanced won 92-96%, and safety-first won just as often, so caution had no cost.
-   - Adding a deadline fixed the dilemma. A fixed round limit worked, but the **Launch pile** does the same job with no extra counter, and Datasets flipping an extra card makes training data literally speed up the launch.
+   - Adding a deadline fixed the dilemma. A fixed round limit worked, but the **Launch pile** does the same job with no extra counter, and Datasets (now Big Data cards) flipping an extra card makes training data literally speed up the launch.
    - 9% of games were lost by round 4, before players could really act. Letting **players go first** cut that to 1%.
    - **Final numbers (8-card pile, d6 meter, target 40), 5,000 games per strategy:** balanced wins **68%**, safety-first **59%**, greedy **23%**; about 7.5 rounds.
    - **3-4 players as individuals didn't work:** the AI had to flip 2 cards a round to keep up, and at that pressure always Auditing was best (safety ≈ balanced) — hence the "play as 2 pairs" rule.
@@ -199,7 +200,7 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
 
 ## Pilot scope (this phase)
 
-- 70 cards across the 5 suits (2 of which are Chase cards), mostly Systems with a handful of Tools/Actions/a Dataset woven in (see pilot-deck-60-cards.md for the full, type-tagged list).
+- 70 cards across the 5 suits (2 of which are Chase cards), mostly Systems with a handful of Tools and Actions woven in (see pilot-deck-60-cards.md for the full, type-tagged list).
 - Print-and-play: card fronts only, standard poker-card size, designed for a home/office color printer.
 - One class, one unit, playtested and iterated before any larger print run.
 
@@ -224,7 +225,7 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
      - **Outlier cards:** ChatGPT (2 Data, 3/2/2, Fast-Tracked) scores 4.35 Tokens per deploy, the best in the game and much better than OpenAI, which has the same stats for 3 Data. Deepfake (2 Data, 3/1/1) scores 0.51, the worst by far.
      - **Tested fixes** (500 games per pairing each), worst-to-best deck spread in brackets: baseline 33-74% (42 pts) · ChatGPT cost 3: 36 pts · Black's 3-cost Systems cost 2: 36 pts · those Systems at 3 Tokens: 33 pts · **ChatGPT cost 3 + Black's 3-cost Systems (Supervised Learning, Unsupervised Learning, Diffusion Model, Neural Network, GAN) at cost 2: 30 pts**, the best result. Black decks average 39% → 49%, Green 66% → 61%, and Black+Red goes 36% → 49%. Adding Deepfake +1 Token on top changed nothing measurable.
      - **Applied** (card list, print source, and all 7 print pages updated): ChatGPT cost 2 → 3; Supervised Learning, Unsupervised Learning, Diffusion Model, Neural Network, and GAN cost 3 → 2. Deepfake is weak but thematically fine as a "cheap, flashy, fragile" card; leave it for now. Blue+White (36%) is still the weakest deck after the fix — a smaller follow-up.
-     - **Side effect to watch:** Datasets (Training Data, ImageNet) can be processed for free by exerting a Cost-3+ System. After this change Black has only three such Systems left (Reinforcement Learning, Transformer, Large Language Model), so Black's own Datasets get the free option less often — while ChatGPT, now Cost 3, newly qualifies for Green. The simulator didn't model the free option, so check it in real play.
+     - **Side effect to watch** *(superseded by Round 17's Big Data keyword)*: Datasets (Training Data, ImageNet) can be processed for free by exerting a Cost-3+ System. After this change Black has only three such Systems left (Reinforcement Learning, Transformer, Large Language Model), so Black's own Datasets get the free option less often — while ChatGPT, now Cost 3, newly qualifies for Green. The simulator didn't model the free option, so check it in real play.
      - **v0.7 card changes, checked the same way:** the five real-company cards were renamed to generic names (stats unchanged) and five new cards were added: GPT (Black System, 3 | 3/2/2, loots on Task), GPU (Black Tool, lets a just-deployed System act), CPU (Black Tool, loot), RAM (Black Tool, recycles an Action), and Data Center (Red System, 3 | 2/3/3, costs a Training Set card per Task). Re-running the Round 10 round-robin with them: deck spread 30 → 29 points, game length unchanged (~7 rounds), Red decks up slightly (Data Center), Black flat. No balance problem introduced; RAM and GPT were only approximated in the simulator, so watch them in real play.
      - **Caveat:** Round 7's hand-played Black+Red win and this simulation disagree. The simulation plays many more games but with simple bots that don't plan combos (like Round 7's double Fast-Tracked finish), so it may undervalue Black's burst turns. A real two-person game with the proposed costs is still the best check.
    - **Round 11 — Quick Play on the 60-card pool** (5 logged games plus a 22,500-game round-robin, legal 20+ card decks): game length held at 7 rounds, but three problems showed up and all three were fixed.
@@ -253,6 +254,11 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
    - **Round 16 — a second Chase card (v0.11)**: **Alignment**, a Wildcard System, card 70: "Whenever this System Runs a Task, remove 1 Flag from another System you control." Alignment is the big idea behind Launch Day and had no card of its own. Chase cards stay out of the base decks, so it was checked by adding it to each two-color deck in turn (1,000 games per matchup):
      - **At 4 | 2/5/3 it was a slight step down** (average deck 49.9% → 48.5%): a 4-cost System, plus the deploy tax, arrives too late to score much (1.5 Tokens per deploy).
      - **At 3 | 2/5/3 (chosen)** a deck with it wins about 54% — noticeably better, as a prize card should be, but not overwhelming. It scores 2.35 Tokens per deploy, below the best regular Systems (3.0–3.7).
+   - **Round 17 — the Dataset type becomes the Big Data keyword (v0.12)**: playtesters found Datasets confusing. The free payment ("exert a Cost-3+ System") was in the rules but not printed on the cards, a Dataset otherwise behaved exactly like an Action, and "Dataset" was easy to mix up with Training Set, Training Data, and Data.
+     - **Change:** Training Data and ImageNet are now **Actions** with **Big Data N** printed in their Effect with reminder text: "Big Data 2 (or pay by turning a Cost 2+ System sideways)." The number sets which Systems can pay, so each card can be tuned on its own: **Training Data is Big Data 2** (more decks can use it), **ImageNet is Big Data 4** (it gives the most Data).
+     - **Simulated** (the simulator now models the payment; the bot uses it when it can't afford the card, or when the paying System is blocked or would only score 1 Token): Quick Play deck win rates moved by at most 1 point (Blue+White 48% → 47%); Launch Day unchanged (balanced 67%, safety-first 57%, greedy 32%).
+     - **How often it's used** (18,000 games): Training Data is paid with Big Data about 60% of the times it's played. ImageNet only about 4%, because just four Systems cost 4+ (Reinforcement Learning, Transformer, Large Language Model, Ethical Framework); at Big Data 3 that rises to about 20%. Watch whether ImageNet's Big Data ever comes up in real games.
+     - Big Data can go on any color's cards in later sets (see the Beta plan).
 2. ~~Art direction~~ — settled, now rarity-differentiated:
    - **Common/Uncommon**: a small windowed art box near the top (like a traditional trading card), the rest of the card a solid suit-colored body.
    - **Rare/Chase**: true full-art — the background photo fills the entire card edge to edge, and even the Discuss banner turns translucent so the art shows through it too. The rarity itself is part of what makes a card feel special, not just its stats.

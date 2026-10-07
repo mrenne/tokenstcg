@@ -39,16 +39,16 @@ to work alongside them, and the simulators should test the two sets together.
 
 ## Gaps in the Alpha Set
 
-- **Uneven colors.** Blue has 9 cards against Black's 23. Red has no Tools; only Black has Datasets.
+- **Uneven colors.** Blue has 9 cards against Black's 23. Red has no Tools; only Black has Big Data cards.
 
-  | Color | Cards | Systems | Tools | Actions | Datasets |
-  |---|---|---|---|---|---|
-  | Green (Humans and AI) | 14 | 9 | 2 | 3 | 0 |
-  | Blue (Representation & Reasoning) | 9 | 6 | 1 | 2 | 0 |
-  | Black (Machine Learning) | 23 | 13 | 5 | 3 | 2 |
-  | White (Ethical AI Design) | 12 | 6 | 3 | 3 | 0 |
-  | Red (Societal Impacts) | 10 | 5 | 0 | 5 | 0 |
-  | Chase (any color) | 2 | 1 | 0 | 1 | 0 |
+  | Color | Cards | Systems | Tools | Actions (Big Data) |
+  |---|---|---|---|---|
+  | Green (Humans and AI) | 14 | 9 | 2 | 3 |
+  | Blue (Representation & Reasoning) | 9 | 6 | 1 | 2 |
+  | Black (Machine Learning) | 23 | 13 | 5 | 5 (2) |
+  | White (Ethical AI Design) | 12 | 6 | 3 | 3 |
+  | Red (Societal Impacts) | 10 | 5 | 0 | 5 |
+  | Chase (any color) | 2 | 1 | 0 | 1 |
 
 - **Glossary terms with no card.** The AI Pedagogy Project Key Terms glossary (a listed content
   source) has six terms the game doesn't cover: **Algorithm, Generative AI, Foundation Model,
@@ -82,7 +82,7 @@ Pick about 35. ★ = core to the generative AI theme. Type is a first guess; it 
 | Planning | Action | Choosing a sequence of steps toward a goal. |
 | ★ Probability | Tool | AI reasons with likelihoods, not certainties. |
 | ★ Pattern Recognition | System | Spotting regularities in data. |
-| Encyclopedia (or Knowledge Base) | Dataset | Blue's first Dataset. |
+| Encyclopedia (or Knowledge Base) | Action, Big Data | Blue's first Big Data card. |
 
 ### Black: Machine Learning
 
@@ -92,9 +92,9 @@ Pick about 35. ★ = core to the generative AI theme. Type is a first guess; it 
 | ★ Foundation Model | System | Glossary term. One big model adapted to many tasks. |
 | ★ RLHF | System or Action | Glossary term. Training AI with human feedback. |
 | Overfitting | Action | Memorizing the training data instead of learning; good "gotcha" effect. |
-| Test Set | Dataset | Data held back to check a model honestly. |
+| Test Set | Action, Big Data | Data held back to check a model honestly. |
 | Clustering | System | Grouping similar things without labels. |
-| ★ Synthetic Data | Dataset | Data made by AI to train AI. |
+| ★ Synthetic Data | Action, Big Data | Data made by AI to train AI. |
 | Computer Vision | System | Perception: AI that sees. |
 | Speech Recognition | System | Perception / natural interaction: AI that hears. |
 

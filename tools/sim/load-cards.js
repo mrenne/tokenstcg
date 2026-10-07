@@ -27,7 +27,9 @@ function load() {
     if (/\*\*Legacy\.\*\*/.test(ability)) kw.push('LEG');
     const m = stats.match(/^(\d+)(?:\s*\\\|\s*(\d+)\/(\d+)\/(\d+))?/);
     if (!m) throw new Error('stats: ' + line);
-    const card = { name, suit, type: type === 'Dataset' ? 'Dataset' : type, rar, cost: +m[1], kw, trainable: rar === 'C' || rar === 'U' };
+    const card = { name, suit, type, rar, cost: +m[1], kw, trainable: rar === 'C' || rar === 'U' };
+    const bd = ability.match(/\*\*Big Data (\d+)\.\*\*/);
+    if (bd) card.bigData = +bd[1];
     if (type === 'System') { card.cap = +m[2]; card.trust = +m[3]; card.tok = +m[4]; }
     out.push(card);
   }
@@ -42,4 +44,5 @@ if (require.main === module) {
   const by = k => c.filter(x => x.suit === k).length;
   console.log('G', by('G'), 'B', by('B'), 'K', by('K'), 'W', by('W'), 'R', by('R'));
   console.log('keywords:', c.filter(x => x.kw.length).map(x => x.name + '[' + x.kw + ']').join(', '));
+  console.log('Big Data:', c.filter(x => x.bigData).map(x => x.name + ' ' + x.bigData).join(', '));
 }

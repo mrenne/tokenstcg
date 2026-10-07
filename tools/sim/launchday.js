@@ -57,7 +57,7 @@ function play({ players = 2, meterMax = 10, target = 15, policy = 'balanced', fl
     else if (c.name === 'Retraining Pause' || c.name === 'Job Disruption') { const t = topTeam(); if (t && !shield()) t.s.blocked = true; }
     else if (c.name === 'Environmental Footprint') P.forEach(p => p.ts = Math.max(0, p.ts - 1));
     else if (c.name === 'Cognitive Offload') P.forEach(p => { if (p.hand.length) p.hand.splice(p.hand.indexOf(p.hand.slice().sort((a, b) => val(a) - val(b))[0]), 1); });
-    else if (c.type === 'Dataset' || (!process.env.NO_HWFLIP && (c.name === 'CPU' || c.name === 'RAM'))) flip(round);
+    else if (c.bigData || (!process.env.NO_HWFLIP && (c.name === 'CPU' || c.name === 'RAM'))) flip(round);
     else if (c.name === 'CUDA' || c.name === 'GPU') ai.capBonus++;
     else if (c.name === 'Regulation Debate') P.forEach(p => p.extraTrain++);
     else if (['Obsolete', 'Outdated', 'Defunct', 'Discontinued', 'Expired'].includes(c.name)) { const all = P.flatMap(p => p.tools.map(t => ({ p, t }))).sort((x, y) => val(x.t.card) - val(y.t.card)); if (all.length) { all[0].p.tools.splice(all[0].p.tools.indexOf(all[0].t), 1); L(`  ${c.name}: team discards ${all[0].t.card.name}`); } }

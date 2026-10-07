@@ -14,16 +14,29 @@ const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.f
 const bySuit = s => CARDS.filter(c => s.includes(c.suit) && c.rar !== 'Ch');
 const SUPPRESS = new Set(['Manual Override', 'Compliance Review', 'Ambiguous Input']);
 const PAIRS = [['G', 'W'], ['G', 'B'], ['B', 'W']];
+// A player's deck: every card of both colors, topped up to the 25-card minimum with second copies of cheap Commons.
+const MIN = +(process.env.MIN_DECK || 25);
+const playerDeck = pair => { const d = bySuit(pair); const cm = d.filter(c => c.rar === 'C').sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)); for (let i = 0; d.length < MIN && i < cm.length; i++) d.push(cm[i]); return d; };
 
 function play({ players = 2, meterMax = 10, target = 15, policy = 'balanced', flips = 1, deadline = 99, deckClock = false, aiDeckSize = 99, playersFirst = false, log = null }) {
   const L = log ? m => log.push(m) : () => {};
   const ai = { deck: shuffle(bySuit(['K', 'R']).slice()).slice(0, aiDeckSize), sys: [], capBonus: 0 };
   const team = { tokens: 0, meter: 0 };
   const st = { auditsAI: 0, aiKilled: 0, suppress: 0, lowered: 0, ownDrift: 0, lostBy: null };
+  // Out of fresh data: needing a card from an empty deck shuffles that player's discard pile into a new deck,
+  // and the team loses 1 Token.
+  const top = p => {
+    if (!p.deck.length && p.disc.length && !process.env.NO_REFRESH) {
+      p.deck = shuffle(p.disc); p.disc = []; team.tokens = Math.max(0, team.tokens - 1);
+      st.refresh = (st.refresh || 0) + 1; L(`  ${p.name} is out of fresh data: reshuffles, team -1 Token`);
+    }
+    return p.deck.length ? p.deck.shift() : null;
+  };
+  const drawP = p => { const c = top(p); if (c) p.hand.push(c); };
   const P = [];
   for (let i = 0; i < players; i++) {
     const pair = PAIRS[Math.floor(rng() * PAIRS.length)];
-    const p = { name: 'P' + (i + 1), deck: shuffle(bySuit(pair).slice()), hand: [], ts: 0, spent: 0, sys: [], tools: [], extraTrain: 0 };
+    const p = { name: 'P' + (i + 1), deck: shuffle(playerDeck(pair)), hand: [], ts: 0, spent: 0, sys: [], tools: [], extraTrain: 0, disc: [] };
     for (let k = 0; k < 5; k++) p.hand.push(p.deck.shift());
     if (!(p.hand.some(c => c.type === 'System' && c.cost <= 3) && p.hand.filter(c => c.trainable).length >= 2)) {
       p.deck.push(...p.hand); p.hand = []; shuffle(p.deck); for (let k = 0; k < 5; k++) p.hand.push(p.deck.shift());
@@ -39,7 +52,7 @@ function play({ players = 2, meterMax = 10, target = 15, policy = 'balanced', fl
   const lost = () => team.meter >= meterMax;
   const won = () => team.tokens >= target;
 
-  function killTeam(p, s) { if (s.flags >= s.card.trust) { p.sys.splice(p.sys.indexOf(s), 1); L(`   ${s.card.name} (${p.name}) Deprecated`); } }
+  function killTeam(p, s) { if (s.flags >= s.card.trust) { p.sys.splice(p.sys.indexOf(s), 1); p.disc.push(s.card); L(`   ${s.card.name} (${p.name}) Deprecated`); } }
   function killAI(s) {
     if (s.flags >= s.card.trust) {
       ai.sys.splice(ai.sys.indexOf(s), 1); st.aiKilled++; L(`   AI ${s.card.name} Deprecated`);
@@ -56,11 +69,11 @@ function play({ players = 2, meterMax = 10, target = 15, policy = 'balanced', fl
     else if (c.name === 'Bias in Data') { const t = topTeam(); if (t && !shield()) { t.s.flags++; killTeam(t.p, t.s); } }
     else if (c.name === 'Retraining Pause' || c.name === 'Job Disruption') { const t = topTeam(); if (t && !shield()) t.s.blocked = true; }
     else if (c.name === 'Environmental Footprint') P.forEach(p => p.ts = Math.max(0, p.ts - 1));
-    else if (c.name === 'Cognitive Offload') P.forEach(p => { if (p.hand.length) p.hand.splice(p.hand.indexOf(p.hand.slice().sort((a, b) => val(a) - val(b))[0]), 1); });
+    else if (c.name === 'Cognitive Offload') P.forEach(p => { if (p.hand.length) p.disc.push(...p.hand.splice(p.hand.indexOf(p.hand.slice().sort((a, b) => val(a) - val(b))[0]), 1)); });
     else if (c.bigData || (!process.env.NO_HWFLIP && (c.name === 'CPU' || c.name === 'RAM'))) flip(round);
     else if (c.name === 'CUDA' || c.name === 'GPU') ai.capBonus++;
     else if (c.name === 'Regulation Debate') P.forEach(p => p.extraTrain++);
-    else if (['Obsolete', 'Outdated', 'Defunct', 'Discontinued', 'Expired'].includes(c.name)) { const all = P.flatMap(p => p.tools.map(t => ({ p, t }))).sort((x, y) => val(x.t.card) - val(y.t.card)); if (all.length) { all[0].p.tools.splice(all[0].p.tools.indexOf(all[0].t), 1); L(`  ${c.name}: team discards ${all[0].t.card.name}`); } }
+    else if (['Obsolete', 'Outdated', 'Defunct', 'Discontinued', 'Expired'].includes(c.name)) { const all = P.flatMap(p => p.tools.map(t => ({ p, t }))).sort((x, y) => val(x.t.card) - val(y.t.card)); if (all.length) { all[0].p.tools.splice(all[0].p.tools.indexOf(all[0].t), 1); all[0].p.disc.push(all[0].t.card); L(`  ${c.name}: team discards ${all[0].t.card.name}`); } }
   }
 
   function val(c) {
@@ -75,7 +88,7 @@ function play({ players = 2, meterMax = 10, target = 15, policy = 'balanced', fl
 
   function playerTurn(p, round) {
     p.sys.forEach(s => { s.ex = false; s.fresh = false; }); p.tools.forEach(t => t.ex = false); p.spent = 0;
-    if (round > 1 && p.deck.length) p.hand.push(p.deck.shift());
+    if (round > 1) drawP(p);
     const avail = () => p.ts - p.spent;
     let trains = 1 + p.extraTrain; p.extraTrain = 0;
     while (trains-- > 0) {
@@ -100,14 +113,15 @@ function play({ players = 2, meterMax = 10, target = 15, policy = 'balanced', fl
       if (!opts.length) break;
       const { c, cost } = opts[0];
       p.hand.splice(p.hand.indexOf(c), 1); p.spent += cost;
+      if (c.type === 'Action') p.disc.push(c);
       if (c.type === 'System') { p.sys.push({ card: c, flags: 0, fresh: true }); L(`  ${p.name} deploys ${c.name}`); }
       else if (c.type === 'Tool') p.tools.push({ card: c, ex: false });
       else if (c.name === 'Mandatory Recall') { ai.sys.forEach(s => s.suppressed = true); st.suppress++; L(`  ${p.name} Mandatory Recall`); }
       else if (SUPPRESS.has(c.name)) { const t = drifters().sort((a, b) => aiCap(b) - aiCap(a))[0]; t.suppressed = true; st.suppress++; L(`  ${p.name} ${c.name} on AI ${t.card.name}`); }
-      else if (c.name === 'AI Career Path' && p.deck.length) p.hand.push(p.deck.shift());
+      else if (c.name === 'AI Career Path') drawP(p);
     }
     for (const t of p.tools) {
-      if ((t.card.name === 'Python' || t.card.name === 'Feature Vector') && p.deck.length) p.hand.push(p.deck.shift());
+      if (t.card.name === 'Python' || t.card.name === 'Feature Vector') drawP(p);
       if (t.card.name === 'Human-in-the-Loop' && team.meter > 0) { const n = Math.min(2, team.meter); team.meter -= n; st.lowered += n; L(`  ${p.name} Human-in-the-Loop: meter -${n} -> ${team.meter}`); }
       if (t.card.name === 'Fairness Check' && !(process.env.FC_ONCE && t.used)) { const d = ai.sys.filter(s => aiCap(s) > s.card.trust).sort((a, b) => (b.flags - a.flags) || (aiCap(b) - aiCap(a)))[0]; if (d) { t.used = true; d.flags++; L(`  ${p.name} Fairness Check flags AI ${d.card.name}`); killAI(d); } }
       if (t.card.name === 'Model Card' && team.meter > 0) { team.meter--; st.lowered++; L(`  ${p.name} Model Card: meter -1 -> ${team.meter}`); }
@@ -134,8 +148,8 @@ function play({ players = 2, meterMax = 10, target = 15, policy = 'balanced', fl
         killAI(tgt); killTeam(p, s);
       } else if (canTask) {
         team.tokens += s.card.tok; L(`  ${p.name} ${s.card.name} Task +${s.card.tok} -> ${team.tokens}`);
-        if (s.card.name === 'The Human Trainer' && p.deck.length && p.ts < 9) { p.deck.shift(); p.ts++; }
-        if (s.card.name === 'Search Tree' && p.deck.length) p.hand.push(p.deck.shift());
+        if (s.card.name === 'The Human Trainer' && p.ts < 9 && top(p)) p.ts++;
+        if (s.card.name === 'Search Tree') drawP(p);
         if (misTask) { st.ownDrift++; bump(1, `${s.card.name} drift`); }
       }
       if (won()) return; if (lost()) return;

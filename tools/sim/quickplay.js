@@ -51,11 +51,20 @@ const deckFor = suits => CARDS.filter(c => suits.includes(c.suit));
 
 function play(deckA, deckB, align, firstIdx, log) {
   const L = log ? (...m) => log.push(m.join(' ')) : () => {};
-  const mk = (deck, label) => ({ label, deck: shuffle(deck.slice()), hand: [], ts: 0, spent: 0, sys: [], tools: [], tokens: 0, recall: false, mcTurn: -1 });
+  const mk = (deck, label) => ({ label, deck: shuffle(deck.slice()), hand: [], ts: 0, spent: 0, sys: [], tools: [], tokens: 0, recall: false, mcTurn: -1, disc: [] });
   const P = [mk(deckA, 'A'), mk(deckB, 'B')];
   const st = { obsolete: 0, obsoleteLegacy: 0, driftKills: 0, auditKills: 0, actionKills: 0, saves: 0, hitl: 0, tokAligned: 0, tokMis: 0 };
   let turn = 0;
-  const draw = p => { if (p.deck.length) p.hand.push(p.deck.shift()); };
+  // Out of fresh data: needing a card from an empty deck shuffles the discard pile into a new deck, for 1 Token.
+  // (Cards discarded from the Training Set aren't tracked, so they never come back here.)
+  const top = p => {
+    if (!p.deck.length && p.disc.length && !process.env.NO_REFRESH) {
+      p.deck = shuffle(p.disc); p.disc = []; p.tokens = Math.max(0, p.tokens - 1);
+      st.refresh = (st.refresh || 0) + 1; L(`  ${p.label} is out of fresh data: reshuffles the discard pile, -1 Token`);
+    }
+    return p.deck.length ? p.deck.shift() : null;
+  };
+  const draw = p => { const c = top(p); if (c) p.hand.push(c); else st.emptyDraw = (st.emptyDraw || 0) + 1; };
   const drift = s => { if (!align) return 0; const d = Math.max(0, s.card.cap + (s.boost || 0) - s.card.trust); return process.env.ALIGN === 'flat' ? Math.min(1, d) : d; };
 
   function value(c, p) {
@@ -77,7 +86,7 @@ function play(deckA, deckB, align, firstIdx, log) {
     if (owner.tools.some(t => t.card.name === 'Model Card') && !owner.mcUsed) {
       owner.mcUsed = true; s.flags = 0; st.saves++; L(`   Model Card saves ${s.card.name}`); return;
     }
-    owner.sys.splice(owner.sys.indexOf(s), 1);
+    owner.sys.splice(owner.sys.indexOf(s), 1); owner.disc.push(s.card);
     st[cause + 'Kills']++;
     L(`   ${s.card.name} (${owner.label}) Deprecated by ${cause}`);
     if (s.card.name === 'Reinforcement Learning') { owner.tokens++; L(`   Reinforcement Learning: +1 Token on Deprecation`); }
@@ -130,9 +139,10 @@ function play(deckA, deckB, align, firstIdx, log) {
       const { c, cost, payer } = opts[0];
       if (payer) { payer.ex = true; st.bigData = (st.bigData || 0) + 1; L(`  turns ${payer.card.name} sideways to pay for ${c.name}`); }
       p.hand.splice(p.hand.indexOf(c), 1); p.spent += cost; acted = true;
+      if (c.type === 'Action') p.disc.push(c);
       if (c.type === 'System') { p.sys.push({ card: c, flags: 0, ex: false, fresh: true, blocked: p.recall, boost: 0 }); L(`  deploys ${c.name} (cost ${cost})`); }
       else if (c.type === 'Tool') { p.tools.push({ card: c, ex: false }); L(`  deploys tool ${c.name}`); }
-      else if (c.bigData) { const n = c.name === 'ImageNet' ? 3 : 2; for (let i = 0; i < n && p.deck.length; i++) { p.deck.shift(); p.ts++; p.spent++; } L(`  plays ${c.name}`); }
+      else if (c.bigData) { const n = c.name === 'ImageNet' ? 3 : 2; for (let i = 0; i < n && top(p); i++) { p.ts++; p.spent++; } L(`  plays ${c.name}`); }
       else if (c.name === 'Mandatory Recall') { o.sys.forEach(s => s.blocked = true); o.recall = true; L(`  plays Mandatory Recall`); }
       else if (DENY.has(c.name)) { const t = o.sys.filter(s => !s.blocked).sort((a, b) => b.card.tok - a.card.tok)[0]; t.blocked = true; L(`  plays ${c.name} on ${t.card.name}`); }
       else if (c.name === 'Bias in Data') {
@@ -141,17 +151,17 @@ function play(deckA, deckB, align, firstIdx, log) {
       }
       else if (TOOLKILL.has(c.name)) {
         const t = o.tools.slice().sort((a, b) => (value(b.card) + (b.card.kw.includes('LEG') ? 1.5 : 0)) - (value(a.card) + (a.card.kw.includes('LEG') ? 1.5 : 0)))[0];
-        o.tools.splice(o.tools.indexOf(t), 1); st.obsolete++; L(`  plays ${c.name} on ${t.card.name}`);
+        o.tools.splice(o.tools.indexOf(t), 1); o.disc.push(t.card); st.obsolete++; L(`  plays ${c.name} on ${t.card.name}`);
         if (t.card.kw.includes('LEG')) { draw(p); st.obsoleteLegacy++; }
       }
       else if (c.name === 'Environmental Footprint') { p.ts = Math.max(0, p.ts - 1); o.ts = Math.max(0, o.ts - 1); p.spent = Math.min(p.spent, p.ts); }
       else if (c.name === 'AI Career Path') draw(p);
-      else if (c.name === 'Cognitive Offload') { draw(p); if (p.hand.length) { const d = p.hand.slice().sort((a, b) => value(a) - value(b))[0]; p.hand.splice(p.hand.indexOf(d), 1); } }
+      else if (c.name === 'Cognitive Offload') { draw(p); if (p.hand.length) { const d = p.hand.slice().sort((a, b) => value(a) - value(b))[0]; p.hand.splice(p.hand.indexOf(d), 1); p.disc.push(d); } }
     }
 
     for (const t of p.tools) {
       if (t.card.name === 'Python' || t.card.name === 'Feature Vector') { t.ex = true; draw(p); }
-      if (t.card.name === 'CPU' && p.hand.length) { t.ex = true; draw(p); const dd = p.hand.slice().sort((a, b) => value(a) - value(b))[0]; p.hand.splice(p.hand.indexOf(dd), 1); }
+      if (t.card.name === 'CPU' && p.hand.length) { t.ex = true; draw(p); const dd = p.hand.slice().sort((a, b) => value(a) - value(b))[0]; p.hand.splice(p.hand.indexOf(dd), 1); p.disc.push(dd); }
       if (t.card.name === 'Expert System' && p.hand.length) { t.ex = true; draw(p); const dd = p.hand.slice().sort((a, b) => value(a) - value(b))[0]; p.hand.splice(p.hand.indexOf(dd), 1); p.deck.push(dd); }
       if (t.card.name === 'Fairness Check' && !t.ex && !(process.env.FC_ONCE && t.used)) {
         const risky = o.sys.filter(s => s.card.cap > s.card.trust).sort((a, b) => ((b.flags + 1 >= b.card.trust) * 10 + b.card.tok) - ((a.flags + 1 >= a.card.trust) * 10 + a.card.tok))[0];
@@ -194,10 +204,10 @@ function play(deckA, deckB, align, firstIdx, log) {
         if (!p.sys.includes(s)) continue;
         if (s.card.name === 'Diffusion Model' && s.flags) s.flags--;
         if (s.card.name === 'Alignment') { const t = p.sys.filter(x => x !== s && x.flags).sort((x, y) => (y.flags / y.card.trust) - (x.flags / x.card.trust))[0]; if (t) t.flags--; }
-        if (s.card.name === 'The Human Trainer' && p.deck.length && p.ts < 9) { p.deck.shift(); p.ts++; p.spent++; }
+        if (s.card.name === 'The Human Trainer' && p.ts < 9 && top(p)) { p.ts++; p.spent++; }
         if (s.card.name === 'Data Center') { p.ts = Math.max(0, p.ts - 1); p.spent = Math.min(p.spent, p.ts); }
         if (['Search Tree', 'Transformer'].includes(s.card.name)) draw(p);
-        if (s.card.name === 'GPT') { draw(p); if (p.hand.length) { const d = p.hand.slice().sort((a, b) => value(a) - value(b))[0]; p.hand.splice(p.hand.indexOf(d), 1); } }
+        if (s.card.name === 'GPT') { draw(p); if (p.hand.length) { const d = p.hand.slice().sort((a, b) => value(a) - value(b))[0]; p.hand.splice(p.hand.indexOf(d), 1); p.disc.push(d); } }
       }
     }
 

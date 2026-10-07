@@ -78,7 +78,7 @@ considered for a future set (with permission).
 
 ### 6. Online deck builder
 
-Pick cards from the Alpha Set, check the deck is legal (20+ cards, 1–2 colors, no more than 2 copies),
+Pick cards from the Alpha Set, check the deck is legal (25+ cards, 1–2 colors, no more than 2 copies),
 and print a deck list. It could also run the balance simulator (`tools/sim/`) in the browser:
 "Your deck wins 54% against Black+Red."
 

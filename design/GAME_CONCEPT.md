@@ -76,6 +76,8 @@ Once per turn, a player may take a card from their hand — only cards marked **
 
 ## Game setup
 
+**Who goes first — Benchmark:** each player shuffles their deck and flips over the top card. Whoever flipped the higher **Cost** goes first (the bigger model trains first); on a tie, both flip again. Shuffle the flipped cards back into your decks, then draw opening hands. (*AI connection:* AI models are compared on **benchmarks**, shared tests that show which one scores higher. In a rematch, the loser of the last game may choose to go first instead.)
+
 The player going first draws a **5-card opening hand**; the player going second draws **6**. (The extra card pays the second player back for the first player's head start — see Round 11 below.) Before the first turn, each player may take a **free mulligan**: shuffle your opening hand back into your deck and draw a fresh hand of the same size — no cost, no card-count penalty, once only. (Confirmed via Round 7's real shuffled-deck playtest, which had been running on this as an untested assumption.)
 
 ## Turn structure
@@ -94,6 +96,12 @@ The player going first draws a **5-card opening hand**; the player going second 
 ### Escalating deploy costs
 
 Your 1st and 2nd **System** deploy at printed Cost. Starting with your 3rd, each one costs 1 additional Data for every System you control beyond your 2nd — Tools and Actions are unaffected. So your 3rd System costs +1, your 4th costs +2, your 5th costs +3, and so on. This is the fix for the board-snowball problem found in playtesting (see below): a deck built to flood the board with many cheap Systems pays an increasing tax once it's past a small starting core, while a deck built around a few sturdier Systems barely notices it. Deprecated Systems no longer count once they leave play, so the tax can go back down over the course of a game, not just up.
+
+### Out of fresh data
+
+Whenever you need a card from your deck (to draw, or for an effect like Training Data's) and your deck is empty, you're **out of fresh data**: shuffle your discard pile to make a new deck, then lose 1 Token (never below 0). Keep going with the effect. If your discard pile is empty too, skip it. In Launch Day the team loses the Token.
+
+*AI connection:* an AI that runs out of new, real data and retrains on what it has already seen gets worse. When models learn mostly from recycled or AI-made data, researchers call the decline **model collapse**. The Token you lose is that cost.
 
 ## Scoring: Run a Task
 
@@ -136,7 +144,7 @@ Every student gets the same **base set** — every Common, Uncommon, and Rare in
 ## Deckbuilding (scaled down for the pilot)
 
 Lorcana requires 60+ cards, max 4 copies of any card, from 1-2 inks. With only 60 unique cards in the pilot pool, that ratio doesn't work yet — so for now:
-- **Deck size:** 20 cards minimum, built from your own collection plus trades.
+- **Deck size:** 25 cards minimum, built from your own collection plus trades. Bigger decks are allowed. (Raised from 20 in v0.12; see Round 19.)
 - **Copy limit:** max 2 copies of any single card.
 - **Data Types:** cards from 1-2 suits only.
 
@@ -259,6 +267,14 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
      - **Simulated** (the simulator now models the payment; the bot uses it when it can't afford the card, or when the paying System is blocked or would only score 1 Token): Quick Play deck win rates moved by at most 1 point (Blue+White 48% → 47%); Launch Day unchanged (balanced 67%, safety-first 57%, greedy 32%).
      - **How often it's used** (18,000 games): Training Data is paid with Big Data about 60% of the times it's played. ImageNet was first set at **Big Data 4**, but only four Systems cost 4+ (Reinforcement Learning, Transformer, Large Language Model, Ethical Framework), so it was paid that way just 4% of the time. **Changed to Big Data 3**: 17 Systems qualify, ImageNet is paid with Big Data about 21% of the time, and deck win rates and Launch Day are unchanged.
      - Big Data can go on any color's cards in later sets (see the Beta plan).
+   - **Round 18 — an empty deck (v0.12)**: the rules didn't say what happens when a player's deck runs out. Simulated Quick Play (9,000 games, legal 20+ card decks) found it rare: about 0.1% of games, never before round 8, and only with the smallest (20–24 card) decks. Students play slower than the bots, so it may come up more in class.
+     - **Rule chosen: "Out of fresh data"** (see Turn structure): shuffle your discard pile into a new deck and lose 1 Token. It keeps the game going, and it teaches model collapse, a natural lead-in to the Beta Set's generative AI theme. (Considered: skipping the draw, the simplest; and losing the game, as in Lorcana, which is harsh and teaches nothing about AI.)
+     - **Simulated** (the simulators now track discard piles): decks ran out in 13 of 18,000 Quick Play games (0.07%); deck win rates moved by 1–2 points, the size of the noise from the extra shuffles. Launch Day unchanged (players use whole two-color decks there, so they never ran out). Cards discarded from a Training Set aren't tracked, so the simulated discard pile is slightly smaller than a real one.
+   - **Round 19 — 25-card minimum deck (v0.12)**: raised from 20 so decks rarely run out and play has more variety; players may still build bigger decks.
+     - **Quick Play** (22,500 games, decks topped up to 25 with second copies of cheap Commons): game length unchanged (7.0 rounds). Deck win rates 45–57% (was 45–55%); Green+Red rises to 57%, since its padding is Green's cheap Systems. First-player wins 48% → 46%. Decks ran out in 1 of 18,000 games (was 13 at 20 cards).
+     - **Launch Day** (player decks now padded to 25 too): balanced 65%, safety-first 53%, greedy 33% (was 67 / 57 / 32). The gap between balanced and safety-first widened from 10 to 12 points, which is good: careful play still needs to score.
+     - **Opening hands re-checked at 25 cards:** the current rule (first player 5 cards and skips their first draw, second player 6) gives the first player 46%. Both players drawing 5 was tried and rejected: 58% for the first player, the same edge Round 11 fixed. Letting the first player also draw on turn 1 is worse still (64% with 5 vs 6, 75% with 5 vs 5).
+     - **Watch:** with one base set each, five color pairs have fewer than 25 different cards (Blue+Red 19, Blue+White 21, White+Red 22, Green+Blue 23, Green+Red 24), so those players need second copies from trades or the teacher. One-color decks need 2 copies of most cards: only Green (28 with doubles) and Black qualify; White (24), Red (20), and Blue (18) can't reach 25 alone.
 2. ~~Art direction~~ — settled, now rarity-differentiated:
    - **Common/Uncommon**: a small windowed art box near the top (like a traditional trading card), the rest of the card a solid suit-colored body.
    - **Rare/Chase**: true full-art — the background photo fills the entire card edge to edge, and even the Discuss banner turns translucent so the art shows through it too. The rarity itself is part of what makes a card feel special, not just its stats.

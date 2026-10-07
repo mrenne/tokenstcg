@@ -15,7 +15,7 @@ rules in [GAME_CONCEPT.md](GAME_CONCEPT.md). Website and game extensions are in 
 |---|---|---|
 | How big is the Beta Set? | About **35–40 new cards**, for a pool of roughly 105–110. Enough to feel new without doubling the art workload. | ☐ |
 | Do Alpha cards stay legal? | **Yes.** Beta adds to Alpha instead of replacing it, so printed Alpha sets stay useful. | ☑ **Yes** (2026-10-03) |
-| Deck rules | The 20-card minimum and 2-copy limit were set for a small pool. With ~110 cards, consider a **30-card** minimum. Decide after playtesting. | ☐ |
+| Deck rules | The 25-card minimum (raised from 20 in v0.12) and 2-copy limit were set for a small pool. With ~110 cards, consider a **30-card** minimum. Decide after playtesting. | ☐ |
 | Set theme | **Generative AI and how people use it**: prompts, hallucinations, creative tools. It's what students actually meet, and Alpha covers it lightly. | ☑ **Generative AI** (2026-10-03) |
 | New keyword | **Transparent** is already in the rules (GAME_CONCEPT.md, Keyword abilities) but no card uses it. Beta could introduce it. | ☐ |
 | Chase cards | 1–2 new Chase cards, earned the same way as Alpha's. | ☐ |

@@ -217,7 +217,8 @@ function build(mode) {
 <section>
   <div class="shead"><div class="step">3</div><h2>Set up</h2></div>
   <div class="row">
-    <div class="tile"><div class="stack"><div class="backcard" style="background-image:url('${back}')"></div><div class="backcard" style="background-image:url('${back}')"></div><div class="backcard" style="background-image:url('${back}')"></div></div><h3>20+ card deck</h3><p>1 or 2 colors. Max 2 of any card.</p></div>
+    <div class="tile"><div class="stack"><div class="backcard" style="background-image:url('${back}')"></div><div class="backcard" style="background-image:url('${back}')"></div><div class="backcard" style="background-image:url('${back}')"></div></div><h3>25+ card deck</h3><p>1 or 2 colors. Max 2 of any card. Bigger is fine.</p></div>
+    <div class="tile">${card('Large Language Model', 180)}<h3>Who goes first: Benchmark</h3><p>Each player flips their top card. Higher Cost goes first. Tie? Flip again. Shuffle them back.</p></div>
     <div class="tile"><div class="big">5 &nbsp;/&nbsp; 6</div><h3>Opening hand</h3><p>First player 5, second player 6. One free redraw.</p></div>
     <div class="tile"><div class="big">0</div><h3>Token tracker</h3><p>A die or paper. Everyone starts at zero.</p></div>
   </div>
@@ -293,6 +294,7 @@ function build(mode) {
     <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5ec8ff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><div><b>Tools act right away</b><span>New Systems wait a turn. Tools don't.</span></div></div>
     <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#e8b955" stroke-width="2" stroke-linejoin="round"><rect x="4" y="7.5" width="9" height="12" rx="2"/><path d="M15.5 5.5l3.5 3.5-3.5 3.5"/><path d="M19 9h-6"/></svg><div><b>Big Data still costs a turn</b><span>A System you turn sideways to pay can't Task, and it can be Audited.</span></div></div>
     <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ff7a90" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5l4 4-9 9H5.5v-4z"/><path d="M4 4l16 16"/></svg><div><b>Tools can be removed</b><span>Each color has one Action that discards a Tool.</span></div></div>
+    <div class="miss"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#e8b955" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h11l-3-3"/><path d="M20 17H9l3 3"/><path d="M20 7v4"/><path d="M4 17v-4"/></svg><div><b>Out of fresh data</b><span>Deck empty when you need a card? Shuffle your discard pile into a new deck and lose 1 Token.</span></div></div>
   </div>
 </section>
 

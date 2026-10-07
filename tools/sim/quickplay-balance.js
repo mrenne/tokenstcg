@@ -1,11 +1,12 @@
-// Quick Play balance check: every two-color deck (made legal at 20+ cards) plays every other,
+// Quick Play balance check: every two-color deck (made legal at 25+ cards) plays every other,
 // 500 games per matchup, on the live card pool. Prints first-player and deck win rates and
 // Tokens per deploy for each System.
 //   node tools/sim/quickplay-balance.js
 const { load } = require('./load-cards.js');
 const { play, deckFor, seedRng, SUITNAME, CARDS } = require('./quickplay.js');
 load();
-const legalDeck = s => { const d = deckFor(s); const cm = d.filter(c => c.rar === 'C').sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)); for (let i = 0; d.length < 20 && i < cm.length; i++) d.push(cm[i]); return d; };
+const MIN = +(process.env.MIN_DECK || 25);  // minimum deck size
+const legalDeck = s => { const d = deckFor(s); const cm = d.filter(c => c.rar === 'C').sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)); for (let i = 0; d.length < MIN && i < cm.length; i++) d.push(cm[i]); return d; };
 const su = ['G', 'B', 'K', 'W', 'R']; const pairs = [];
 for (let i = 0; i < 5; i++) for (let j = i + 1; j < 5; j++) pairs.push([su[i], su[j]]);
 seedRng(31337);

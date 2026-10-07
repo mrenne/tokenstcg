@@ -31,6 +31,7 @@ const GAME = [
   ['Training Set', 'Your face-down pile of cards that gives you Data. It gets bigger as you train cards into it.', 'The collection of examples used to teach an AI model.'],
   ['Train (a card)', 'Once per turn, put a Trainable card from your hand face-down into your Training Set.', '**Training** is how a model learns: it studies many examples and adjusts itself.'],
   ['Trainable', 'A card with a **diamond around its Cost** can be trained. No diamond means it can\'t.', ''],
+  ['Benchmark', 'How to pick who goes first: each player flips the top card of their deck, and the higher Cost goes first.', 'A **benchmark** is a shared test used to compare AI models and see which one scores higher.'],
   ['Deploy', 'Put a card into play by paying its Cost in Data.', 'To **deploy** an AI system is to release it so people can actually use it.'],
   ['Deploy tax', 'Your first two Systems cost their printed Cost. Your 3rd costs +1 Data, your 4th +2, and so on.', ''],
   ['System', 'A card for an AI program, model, or organization. Systems do the work: they Run Tasks and Audits.', 'An **AI system** is any program or product that uses AI to do a job.'],
@@ -59,6 +60,7 @@ const GAME = [
   ['Attention', 'A keyword on the Transformer card. The card explains what it does.', '**Attention** lets a model focus on the most important parts of its input. It is the key idea behind modern chatbots.'],
   ['Legacy', 'A floppy-disk icon (💾) on the type bar of an old-tech Tool. Five cards (Obsolete, Defunct, Discontinued, Outdated, Expired) can discard any Tool, and draw you a card if it was a Legacy Tool.', 'A **legacy** system is older technology that is still in use but no longer the newest way of doing things. The floppy disk is the classic example: it used to be how everyone saved files, and today it survives mostly as the "Save" icon.'],
   ['Big Data', 'A keyword: **Big Data 2** means you may pay for the card by exerting one of your Systems that costs 2 or more, instead of paying Data.', '**Big data** means huge collections of data, too large to handle without powerful computers. A **dataset** is an organized collection of data, like thousands of labeled photos.'],
+  ['Out of fresh data', 'If you need a card from your deck and it\'s empty, shuffle your discard pile to make a new deck and lose 1 Token.', 'When AI models are trained again and again on recycled or AI-made data instead of new, real data, they slowly get worse. Researchers call this **model collapse**.'],
   ['Discuss', 'The question at the bottom of every card. Your teacher may pause the game so you can talk about it.', ''],
 ];
 const LAUNCH = [

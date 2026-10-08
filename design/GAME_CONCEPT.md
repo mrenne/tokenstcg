@@ -153,7 +153,8 @@ Revisit these numbers once the full card pool (multiple grade bands, both Common
 ## Classroom use modes
 
 1. **Quick Play** (10-20 min): the full mechanic above, playable in one class period once a few turns are demoed.
-2. **Discussion Mode** (GAMERS-style, 15-30 min): teacher pulls cards by suit, reads the definition and discussion question aloud, no deck or match involved at all.
+2. **Discussion Mode — Draw the Line** (20-30 min, whole class, no decks or winner): groups place 8-12 cards on a five-step line (**Totally Fine, Mostly OK, Not Really Sure, Feels Sketchy, Crosses a Line**) for one setting, such as "helping with your homework" or "in your town." Each student places the cards alone first, partners compare the card they disagree on most (its Discuss question is the prompt), and the class agrees where its line is. Rerun with a new setting and ask which cards moved. There are no right answers; the goal is hearing why people draw lines in different places. A printable teacher handout (settings, three card sets, variations, cut-out line headers) is drafted and will be published with the Educator Resources page. Adapted from *Align on the Line* by Beck Tench & Emily Weinstein (Center for Digital Thriving, AI Pedagogy Project), CC BY-NC-SA 4.0.
+   *Quick version* (5-10 min): the teacher reads a few cards' definitions and Discuss questions aloud and the class talks it through.
 3. **Launch Day** (co-op, teaches AI alignment, 2 players or 2 teams, ~25-30 min): the players are the safety team at an AI company that's launching new AI as fast as it can. They win together by making AI **useful to people** (earning Tokens) before it **drifts out of control** or the launch happens without them. Students feel the AI alignment problem — capability racing ahead of oversight — instead of hearing it explained.
 
    **Setup**

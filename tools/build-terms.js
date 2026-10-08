@@ -141,7 +141,7 @@ Background for teachers, not student-facing. The first two sources are what the 
 ### Three ways to run it
 
 - **Quick Play** (10-20 min): the two-player game. Best after students know a few terms.
-- **Discussion Mode** (15-30 min): read cards' definitions and questions aloud. No decks, no winner.
+- **Discussion Mode: Draw the Line** (20-30 min): place cards on a line from Totally Fine to Crosses a Line, compare, and agree on a class line. No decks, no winner.
 - **Launch Day** (25-30 min): a co-op game about the AI alignment problem. Players keep AI useful before it drifts out of control.
 
 ## Acronyms

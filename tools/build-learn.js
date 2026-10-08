@@ -82,7 +82,7 @@ const head = (title, desc, depth) => `<!doctype html>
 const crumbs = items => `<nav class="crumbs" aria-label="Breadcrumb"><ol>${items.map((it, i) =>
   i === items.length - 1 ? `<li><span aria-current="page">${esc(it[0])}</span></li>` : `<li><a href="${it[1]}">${esc(it[0])}</a></li>`).join('')}</ol></nav>`;
 
-const footer = depth => `<footer><p>Part of the <a href="${depth}../sample_cards/">Tokens TCG Alpha Set</a>, an unplugged card game about AI. The Alpha Set is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a>. Nothing you do on these pages is saved or sent anywhere.</p></footer>
+const footer = depth => `<footer><p>Part of the <a href="${depth}../sample_cards/">Tokens TCG Alpha Set</a>, an unplugged card game about AI. The Alpha Set is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a>.</p></footer>
 </div>`;
 
 // ---- shared stylesheet ----

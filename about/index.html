@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About · Tokens TCG</title>
+<meta name="description" content="About Tokens TCG, a print-and-play trading card game that teaches AI literacy in the classroom without devices.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%83%8F%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#050710;
+    --ink:#f3f6fc;
+    --ink-soft:#aebbd6;
+    --muted:#8b97b3;
+    --accent:#5ec8ff;
+    --accent-warm:#f0913f;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ height:100%; }
+  body{
+    margin:0;
+    /* same photo and vignette as the homepage */
+    background-image:
+      radial-gradient(60% 60% at 50% 50%, rgba(4,8,22,.80), rgba(4,8,22,.62) 60%, rgba(4,8,22,.42) 100%),
+      url('../assets/home-background.jpg');
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed, fixed;
+    background-color: var(--bg);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    min-height:100%;
+    display:flex;
+    flex-direction:column;
+    padding:clamp(16px,4vw,40px) clamp(16px,6vw,64px) clamp(24px,6vw,64px);
+    overflow-x:hidden;
+  }
+
+  .crumbs ol{ display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; margin:0; padding:0; list-style:none;
+    font-family:'JetBrains Mono',ui-monospace,monospace; font-size:16px; letter-spacing:.06em; }
+  .crumbs li{ display:flex; align-items:center; gap:10px; color:var(--muted); }
+  .crumbs li + li::before{ content:"›"; color:var(--muted); font-size:18px; }
+  .crumbs a{ display:inline-flex; align-items:center; min-height:44px; padding:0 10px; margin-left:-10px; color:var(--accent); font-weight:700; text-decoration:none; }   /* 44px-tall tap target */
+  .crumbs a:hover{ text-decoration:underline; }
+  .crumbs a:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:3px; }
+  .crumbs [aria-current="page"]{ color:var(--ink); }
+
+  main{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding-top:clamp(16px,4vw,32px);
+  }
+  .stage{
+    width:100%;
+    max-width:720px;
+    min-width:0;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:clamp(16px,3vw,24px);
+  }
+  h1{
+    font-family:'Baloo 2',sans-serif;
+    font-weight:800;
+    font-size:clamp(52px,11vw,104px);
+    line-height:.95;
+    margin:0;
+    text-shadow:0 4px 32px rgba(0,0,0,.55);
+  }
+  .divider{
+    width:72px;
+    height:3px;
+    border-radius:2px;
+    background:linear-gradient(90deg, var(--accent), var(--accent-warm));
+  }
+  .byline{
+    margin:0;
+    font-family:'JetBrains Mono',monospace;
+    font-size:clamp(13px,2.2vw,15px);
+    font-weight:600;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent-warm);
+    text-shadow:0 2px 14px rgba(0,0,0,.6);
+  }
+  .byline a{ color:inherit; text-decoration:underline; text-decoration-thickness:1.5px; text-underline-offset:4px; }
+  .byline a:hover{ color:#ffb27a; }
+  .byline a:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:3px; }
+  .about p.body{
+    margin:0;
+    max-width:40ch;
+    font-size:clamp(18px,2.8vw,23px);
+    font-weight:500;
+    line-height:1.55;
+    color:var(--ink);
+    text-wrap:pretty;
+    text-shadow:0 2px 18px rgba(0,0,0,.6);
+  }
+  .about p.body + p.body{ margin-top:clamp(12px,2vw,18px); }
+</style>
+</head>
+<body>
+  <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../">Home</a></li><li><span aria-current="page">About</span></li></ol></nav>
+  <main>
+    <div class="stage">
+      <h1>About</h1>
+      <div class="divider"></div>
+      <p class="byline">A project by <a href="https://www.mikerenne.com">Mike Renne</a></p>
+      <div class="about">
+        <p class="body">Tokens TCG is a “print-and-play” physical trading card game for the classroom. Educators print out the cards and use them in their classrooms to teach about generative AI (and related technologies) without students having to use a device.</p>
+        <p class="body">Extension activities can move the game into the digital world. Learn more on the Educator Resources page.</p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -22,11 +22,11 @@ Students are in grades 6–8, and many are under 13.
 
 ### 1. "Look up your card" pages ★ top pick
 
-**Status: live 2026-10-06 at tokenstcg.com/learn/, hidden** (not linked from the homepage, noindex). `node tools/build-learn.js` makes `learn/` (a lookup page plus a
-page for each card). The "In real life" and "Try it" text for every card is in `design/learn-content.json`.
+**Status: live 2026-10-06 at tokenstcg.com/look-up/, hidden (moved from /learn/ on 2026-10-13)** (not linked from the homepage, noindex). `node tools/build-lookup.js` makes `look-up/` (a lookup page plus a
+page for each card). The "In real life" and "Try it" text for every card is in `design/lookup-content.json`.
 Link it from the Educator Resources page when that goes live, not from the homepage.
 
-- A page such as `tokenstcg.com/learn` where a student types a card's number (it's printed on every
+- A page such as `tokenstcg.com/look-up` where a student types a card's number (it's printed on every
   card, e.g. 24/70) or its name, and lands on that card's own page.
 - Each card page: a plain-language explanation, a real-world example, a 2-minute activity, the Discuss
   question, and (later) a link to the matching mini lab (#2).
@@ -50,7 +50,7 @@ Short hands-on activities that run entirely on the page.
 The two built pages were first made as NFC "hidden card" pages, taken down on 2026-10-04, and deleted
 locally on 2026-10-06 while card scanning is worked out. To bring one back:
 `git show a342ace:scan/alignment/index.html`. Once labs exist, add a `"lab"` path to a card in
-`design/learn-content.json` and the card page shows a lab button.
+`design/lookup-content.json` and the card page shows a lab button.
 
 ### 3. AI Literacy Passport
 

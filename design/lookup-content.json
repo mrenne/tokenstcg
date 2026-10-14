@@ -1,5 +1,5 @@
 {
-  "_about": "Extra 'learn more' text for each card's page at tokenstcg.com/learn/<card>/. Keys are card file names (as in design/icons/README.md). Rebuild with: node tools/build-learn.js",
+  "_about": "Extra 'learn more' text for each card's page at tokenstcg.com/look-up/<card>/. Keys are card file names (as in design/icons/README.md). Rebuild with: node tools/build-lookup.js",
   "not-alive": {
     "example": "A chatbot can write \"I'm so happy to help!\" but it doesn't feel happy. It picked words that usually come next in friendly messages.",
     "try": "List three things you did today that need being alive: feeling hungry, being tired, missing someone. Could an AI really do any of them?"

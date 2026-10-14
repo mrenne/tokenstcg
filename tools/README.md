@@ -28,7 +28,7 @@ node tools/build-alpha-set.js              # 4. Alpha Set page (sample_cards/ind
 node tools/build-how-to-play.js            # 5. How to Play page (how_to_play/index.html)
 node tools/build-terms.js                  # 6. teacher/terms-and-definitions.md
 node tools/build-print-pdf.js              # 7. design/print/tokens-print-and-play.pdf
-node tools/build-learn.js                  # 8. card lookup pages (learn/)
+node tools/build-lookup.js                 # 8. card lookup pages (look-up/)
 ```
 
 Step 7 uses the full-size card renders that step 3 leaves in `tools/.cache/cards/`. Run it only
@@ -37,7 +37,7 @@ when the printed cards should change; it rewrites the 12 MB PDF even when nothin
 published).
 
 Step 8 builds the "Look up your card" pages from the card data plus the "In real life" and "Try it"
-text in `design/learn-content.json`. They're live at tokenstcg.com/learn/ but hidden: no link from
+text in `design/lookup-content.json`. They're live at tokenstcg.com/look-up/ but hidden: no link from
 the homepage, and every page is tagged noindex so search engines leave them out.
 
 `node tools/make-goldnet.js` redraws the gold network behind White Rare cards

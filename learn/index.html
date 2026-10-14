@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Learn · Tokens TCG</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%83%8F%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#050710;
+    --ink:#f3f6fc;
+    --accent:#5ec8ff;
+    --accent-warm:#f0913f;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ height:100%; }
+  body{
+    margin:0;
+    /* same photo and vignette as the homepage */
+    background-image:
+      radial-gradient(60% 60% at 50% 50%, rgba(4,8,22,.80), rgba(4,8,22,.62) 60%, rgba(4,8,22,.42) 100%),
+      url('../assets/home-background.jpg');
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+    background-color: var(--bg);
+    color:var(--ink);
+    min-height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:clamp(24px,6vw,64px);
+    overflow-x:hidden;
+  }
+  .stage{
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:clamp(16px,3vw,24px);
+  }
+  .kicker{
+    margin:0;
+    font-family:'JetBrains Mono',monospace;
+    font-size:clamp(13px,2.2vw,15px);
+    font-weight:600;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--accent-warm);
+    text-shadow:0 2px 14px rgba(0,0,0,.6);
+  }
+  h1{
+    font-family:'Baloo 2',sans-serif;
+    font-weight:800;
+    font-size:clamp(56px,13vw,140px);
+    line-height:.95;
+    margin:0;
+    text-wrap:balance;
+    text-shadow:0 4px 32px rgba(0,0,0,.55);
+  }
+  .divider{
+    width:72px;
+    height:3px;
+    border-radius:2px;
+    background:linear-gradient(90deg, var(--accent), var(--accent-warm));
+  }
+</style>
+</head>
+<body>
+  <main class="stage">
+    <p class="kicker">Tokens TCG · Learn</p>
+    <h1>Coming Soon!</h1>
+    <div class="divider"></div>
+  </main>
+</body>
+</html>

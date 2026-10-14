@@ -1,16 +1,16 @@
 // Builds the "Look up your card" pages:
-//   learn/index.html          type a card's number (printed on it, e.g. 24/70) or name to find its page
-//   learn/<card-slug>/        one page per card: what it means, in real life, try it, Discuss, in the game
+//   look-up/index.html        type a card's number (printed on it, e.g. 24/70) or name to find its page
+//   look-up/<card-slug>/      one page per card: what it means, in real life, try it, Discuss, in the game
 // Card data comes from design/design-v1/print-sheet-source.html; the extra "In real life" and "Try it"
-// text comes from design/learn-content.json. Card images are assets/cards/<card-slug>.webp.
-//   node tools/build-learn.js
+// text comes from design/lookup-content.json. Card images are assets/cards/<card-slug>.webp.
+//   node tools/build-lookup.js
 const fs = require('fs');
 const path = require('path');
 const { REPO, cardOrder } = require('./common');
 
 const src = fs.readFileSync(path.join(REPO, 'design/design-v1/print-sheet-source.html'), 'utf8');
-const content = JSON.parse(fs.readFileSync(path.join(REPO, 'design/learn-content.json'), 'utf8'));
-const OUT = path.join(REPO, 'learn');
+const content = JSON.parse(fs.readFileSync(path.join(REPO, 'design/lookup-content.json'), 'utf8'));
+const OUT = path.join(REPO, 'look-up');
 
 const COLORS = {
   humans:  { name: 'Green', idea: 'Humans and AI', about: 'how people and AI work together, and who builds AI', sw: '#45e3cf' },
@@ -44,7 +44,7 @@ const cards = blocks.map((b, i) => {
   const stat = l => (b.match(new RegExp(`<div class="n">(\\d+)</div><div class="l">${l}`)) || [])[1];
   const lines = [...b.matchAll(/<div class="tline"><b>([^<]+)<\/b>([\s\S]*?)<\/div>/g)].map(m => ({ label: m[1], text: text(m[2]) }));
   const extra = content[o.slug];
-  if (!extra) throw new Error(`no learn content for ${o.name} (add "${o.slug}" to design/learn-content.json)`);
+  if (!extra) throw new Error(`no lookup content for ${o.name} (add "${o.slug}" to design/lookup-content.json)`);
   return {
     n: i + 1, name: o.name, slug: o.slug, suit: o.suit,
     type: text(typebar[2]).split('·')[0].trim(),
@@ -74,7 +74,7 @@ const head = (title, desc, depth) => `<!doctype html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
-<link rel="stylesheet" href="${depth}learn.css">
+<link rel="stylesheet" href="${depth}lookup.css">
 </head>
 <body>
 <div class="wrap">`;
@@ -252,7 +252,7 @@ ${footer('../')}
 
 // ---- write everything ----
 fs.mkdirSync(OUT, { recursive: true });
-fs.writeFileSync(path.join(OUT, 'learn.css'), css);
+fs.writeFileSync(path.join(OUT, 'lookup.css'), css);
 fs.writeFileSync(path.join(OUT, 'index.html'), lookupPage());
 // remove pages for cards that no longer exist
 for (const d of fs.readdirSync(OUT)) {
@@ -264,4 +264,4 @@ cards.forEach((c, i) => {
   fs.writeFileSync(path.join(OUT, c.slug, 'index.html'), cardPage(c, i));
 });
 const labs = cards.filter(c => c.lab && fs.existsSync(path.join(OUT, c.slug, c.lab, 'index.html'))).length;
-console.log(`learn/: lookup page + ${cards.length} card pages (${labs} with a lab link)`);
+console.log(`look-up/: lookup page + ${cards.length} card pages (${labs} with a lab link)`);

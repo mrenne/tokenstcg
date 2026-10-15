@@ -220,7 +220,7 @@ function build(mode) {
     <div class="tile"><div class="stack"><div class="backcard" style="background-image:url('${back}')"></div><div class="backcard" style="background-image:url('${back}')"></div><div class="backcard" style="background-image:url('${back}')"></div></div><h3>25+ card deck</h3><p>1 or 2 colors. Max 2 of any card. Bigger is fine.</p></div>
     <div class="tile">${card('Large Language Model', 180)}<h3>Who goes first: Benchmark</h3><p>Each player flips their top card. Higher Cost goes first. Tie? Flip again. Shuffle them back.</p></div>
     <div class="tile"><div class="big">5 &nbsp;/&nbsp; 6</div><h3>Opening hand</h3><p>First player 5, second player 6. One free redraw.</p></div>
-    <div class="tile"><div class="big">0</div><h3>Token tracker</h3><p>A die or paper. Everyone starts at zero.</p></div>
+    <div class="tile"><div class="big">0</div><h3>Token tracker</h3><p>A 20-sided die (d20) or paper. Everyone starts at zero.</p></div>
   </div>
 </section>
 

@@ -234,10 +234,10 @@ const CSS = `
   .v2:has(.v2-icon.photo) .v2-art{ visibility:hidden; }   /* the card body shows around the rounded art, not the abstract background */
   .v2-icon.photo::before{ display:none; }
   .v2-icon.photo img{ object-fit:cover; object-position:center; filter:none; }
-  /* collector number: bottom-right, inside the Discuss box's bottom padding (the question
-     never reaches it) and inside the 1/8" print safe zone */
+  /* collector number: bottom-right, inside the Discuss box's bottom padding (40px, so the question
+     never reaches it) and inside the 1/8" print safe zone; enlarged from 17px after the first playtest */
   .v2-num{ position:absolute; right:48px; bottom:28px; z-index:4; pointer-events:none;
-    font:700 17px/1 'JetBrains Mono',monospace; letter-spacing:.04em; font-variant-numeric:tabular-nums;
+    font:700 25px/1 'JetBrains Mono',monospace; letter-spacing:.04em; font-variant-numeric:tabular-nums;
     color:var(--discussTag); text-shadow:var(--discussShadow); opacity:.9; }
   /* type bar */
   .v2-type{ position:absolute; left:34px; right:30px; top:408px; height:46px; display:flex; align-items:center; gap:18px; color:var(--typeInk); }
@@ -267,7 +267,7 @@ const CSS = `
   .v2-text .ln b{ display:block; font:700 24px/1 'JetBrains Mono',monospace; letter-spacing:.1em; text-transform:uppercase; color:var(--label); margin-bottom:6px; }
   .v2-text .ln p{ margin:0; color:var(--ink); font-size:28px; line-height:1.34; }
   .v2-text .kw{ font-family:'Baloo 2',sans-serif; font-weight:700; font-style:italic; }
-  .v2-discuss{ left:24px; right:24px; top:774px; bottom:22px; --r:34px; padding:26px 44px 30px; border-radius:var(--r); --bk:var(--discussBracket);
+  .v2-discuss{ left:24px; right:24px; top:774px; bottom:22px; --r:34px; padding:26px 44px 40px; border-radius:var(--r); --bk:var(--discussBracket);
     background:
       radial-gradient(120% 90% at 20% 0%, rgba(255,255,255,.35), transparent 55%),
       var(--discussBg);

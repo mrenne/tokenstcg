@@ -32,6 +32,13 @@ document.fonts.ready.then(function(){ setTimeout(function(){
     if (need(tp) > tp.clientHeight + 1) over.push('ability');
     if (need(box) > box.clientHeight + 1) over.push('discuss');
     var body=c.querySelector('.v2-body'); if (box.offsetTop + box.offsetHeight > body.clientHeight) over.push('discuss-off-card');
+    // the collector number (e.g. 18/70) must not overlap the Discuss question's line boxes
+    // (line boxes include the font's spacing, so the visible letters sit a little higher still)
+    var num=c.querySelector('.v2-num');
+    if (num) { var nr=num.getBoundingClientRect(), rg=document.createRange(); rg.selectNodeContents(q);
+      var lines=rg.getClientRects();
+      for (var li=0; li<lines.length; li++) { var r=lines[li];
+        if (r.right > nr.left && r.left < nr.right && r.bottom > nr.top && r.top < nr.bottom) { over.push('number-touches-question'); break; } } }
     rows.push([st.dataset.file, 'name='+ns, 'ability='+ab, 'question='+qs, over.length ? 'OVERFLOW:'+over.join('+') : 'ok'].join(' | '));
   });
   var pre=document.createElement('pre'); pre.id='probe-out'; pre.textContent=rows.join('\\n'); document.body.appendChild(pre);

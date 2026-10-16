@@ -1,4 +1,4 @@
-// Builds the Alpha Set page, <repo>/sample_cards/index.html. Card data comes from
+// Builds the Alpha Set page, <repo>/alpha_set/index.html. Card data comes from
 // design/design-v1/print-sheet-source.html; each card is shown as its v2 render,
 // assets/cards/<card-slug>.webp (made by render-card-images.js).
 //   node tools/build-alpha-set.js
@@ -249,7 +249,7 @@ ${body}
 `;
 }
 
-fs.mkdirSync(path.join(REPO, 'sample_cards'), { recursive: true });
-fs.writeFileSync(path.join(REPO, 'sample_cards/index.html'), build());
+fs.mkdirSync(path.join(REPO, 'alpha_set'), { recursive: true });
+fs.writeFileSync(path.join(REPO, 'alpha_set/index.html'), build());
 console.log('cards', cards.length, 'types', TYPES.map(t => t + ':' + count(c => c.type === t)).join(' '),
   'suits', SUITS.map(([k]) => k + ':' + count(c => c.suit === k)).join(' '));

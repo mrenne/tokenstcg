@@ -24,7 +24,7 @@ Run these in order:
 node design/frame-v2/build-card.js --all   # 1. card proofs (design/frame-v2/proof-*.html)
 node tools/check-card-fit.js               # 2. confirm every card's text fits
 node tools/render-card-images.js           # 3. card images for the site (assets/cards/*.webp)
-node tools/build-alpha-set.js              # 4. Alpha Set page (sample_cards/index.html)
+node tools/build-alpha-set.js              # 4. Alpha Set page (alpha_set/index.html)
 node tools/build-how-to-play.js            # 5. How to Play page (how_to_play/index.html)
 node tools/build-terms.js                  # 6. teacher/terms-and-definitions.md
 node tools/build-print-pdf.js              # 7. design/print/tokens-print-and-play.pdf

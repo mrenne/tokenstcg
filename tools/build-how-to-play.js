@@ -298,7 +298,7 @@ function build(mode) {
   </div>
 </section>
 
-<footer>See all 70 cards in the ${mode === 'site' ? '<a href="../sample_cards/">Alpha Set</a>' : 'Alpha Set (tokenstcg.com/sample_cards)'} · Ask your teacher about Discussion Mode and the team game, Launch Day.</footer>
+<footer>See all 70 cards in the ${mode === 'site' ? '<a href="../alpha_set/">Alpha Set</a>' : 'Alpha Set (tokenstcg.com/alpha_set)'} · Ask your teacher about Discussion Mode and the team game, Launch Day.</footer>
 </div>
 `;
 

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Tokens Draw the Line</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@700&display=swap">
+<link rel="stylesheet" href="../kit.css">
+<style>
+  .meta { display: flex; flex-wrap: wrap; gap: 6pt; margin: 2pt 0 8pt; }
+  .meta span { border: 1pt solid #c9cfdb; border-radius: 99pt; padding: 2pt 8pt; font-size: 9pt; font-weight: 700; }
+  .scale { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5pt; margin: 4pt 0 2pt; }
+  .scale .slot { border-radius: 7pt; padding: 5pt 4pt 6pt; text-align: center; border: 1.2pt solid; }
+  .scale .slot b { display: block; font: 800 10.5pt/1.1 'Baloo 2', sans-serif; margin-bottom: 4pt; }
+  .scale img { width: 0.95in; border-radius: 5pt; display: block; margin: 0 auto; }
+  .s1 { background: #e3f7ec; border-color: #49b37a; } .s2 { background: #eef8dc; border-color: #8ab83f; }
+  .s3 { background: #fbf4d8; border-color: #d1a92a; } .s4 { background: #fdeadb; border-color: #e0843c; }
+  .s5 { background: #fbe2e2; border-color: #d24c4c; }
+  .arrow { font: 700 8pt/1 'JetBrains Mono', monospace; letter-spacing: .08em; color: #5a6478; display: flex; justify-content: space-between; margin-bottom: 8pt; }
+  ol.big > li { margin-bottom: 4pt; }
+  .say { font-style: italic; color: #3d4559; }
+  .sets td:first-child { width: 1.35in; font-weight: 800; }
+  .credit { font-size: 8pt; color: #5a6478; line-height: 1.35; margin-top: 8pt; }
+  /* header strips */
+  .strips { display: grid; grid-template-rows: repeat(5, 1fr); height: 9.6in; }
+  .strip { border: 1pt dashed #9aa3b5; margin: -.5pt; display: grid; grid-template-columns: 0.9in 1fr; align-items: center; padding: 0 22pt 0 14pt; }
+  .strip .n { width: 0.62in; height: 0.62in; border-radius: 50%; display: grid; place-items: center; font: 800 24pt/1 'Baloo 2', sans-serif; color: #fff; }
+  .strip h3 { font: 800 34pt/1 'Baloo 2', sans-serif; margin: 0 0 6pt; }
+  .strip p { font-size: 14pt; color: #3d4559; margin: 0; }
+  .strip.s1 .n { background: #49b37a; } .strip.s2 .n { background: #8ab83f; } .strip.s3 .n { background: #d1a92a; }
+  .strip.s4 .n { background: #e0843c; } .strip.s5 .n { background: #d24c4c; }
+</style><meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  @media screen {
+    html { background: #060913; }
+    body { background: #060913; margin: 0; padding: 16px 16px 48px; }
+    .paper { background: #fff; max-width: 8.5in; margin: 0 auto; padding: 0.5in; border-radius: 10px; box-shadow: 0 18px 50px rgba(0,0,0,.5); }
+    .page-break { border-top: 2px dashed #c9cfdb; margin: 0.45in -0.5in; }
+    .foot { position: static; margin-top: 0.3in; }
+    .toolbar { max-width: 8.5in; margin: 0 auto 14px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;
+      font: 700 15px/1.3 'Manrope', system-ui, sans-serif; color: #c9d3ea; }
+    .toolbar a { color: #5ec8ff; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+    .toolbar a:hover { text-decoration: underline; }
+    .toolbar .right { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+    .toolbar small { font-weight: 600; color: #8b97b3; }
+    .toolbar button { min-height: 44px; padding: 0 22px; border-radius: 999px; border: 0; background: #5ec8ff; color: #06122a; font: 800 15px/1 'Manrope', sans-serif; cursor: pointer; }
+    .toolbar a:focus-visible, .toolbar button:focus-visible { outline: 3px solid #f0913f; outline-offset: 2px; }
+  }
+  @media screen and (max-width: 8.6in) {
+    .paper { padding: 18px; }
+    .page-break { margin: 28px -18px; }
+    .cols, .readcard { grid-template-columns: 1fr !important; }
+    .steps { grid-template-columns: 1fr 1fr !important; }
+    .sheet { width: auto !important; height: auto !important; grid-template-columns: 1fr !important; grid-template-rows: none !important; }
+    .sheet > *:not(:first-child) { display: none; }
+    .strips { height: auto !important; }
+    .strip { min-height: 1.3in; padding: 10px 14px !important; }
+    .strip h3 { font-size: 26pt !important; }
+    .scale img { width: 100% !important; }
+    .scale { gap: 4px !important; }
+    .scale .slot { padding: 4px 3px !important; }
+    .scale .slot b { font-size: 8.5pt !important; }
+    .arrow { font-size: 6.5pt !important; gap: 8px; }
+    table { display: block; overflow-x: auto; }
+  }
+  @media print { .toolbar { display: none !important; } }
+</style>
+</head>
+<body>
+<nav class="toolbar" aria-label="Handout">
+  <a href="../../">← Educator Resources</a>
+  <span class="right"><small>Print on US Letter at 100%</small><button type="button" onclick="window.print()">Print</button></span>
+</nav>
+<main class="paper">
+<div class="kicker">Tokens TCG · Alpha Set · Discussion activity</div>
+<h1>Draw the Line</h1>
+<p class="lede">Students place Tokens cards on a five-step line, from <b>Totally Fine</b> to <b>Crosses a Line</b>, then compare where they put them and agree on a class line. There are no right answers. The point is to hear <i>why</i> people draw their lines in different places.</p>
+<div class="meta"><span>20–30 minutes</span><span>Grades 6–8</span><span>Pairs or groups of 3–4</span><span>No game rules needed</span></div>
+
+<div class="scale">
+  <div class="slot s1"><b>Totally Fine</b><img src="../../../assets/cards/human-in-the-loop.webp" alt="Human-in-the-Loop card"></div>
+  <div class="slot s2"><b>Mostly OK</b><img src="../../../assets/cards/ai-assistant.webp" alt="AI Assistant card"></div>
+  <div class="slot s3"><b>Not Really Sure</b><img src="../../../assets/cards/recommender.webp" alt="Recommender card"></div>
+  <div class="slot s4"><b>Feels Sketchy</b><img src="../../../assets/cards/data-privacy-trade-off.webp" alt="Data Privacy Trade-off card"></div>
+  <div class="slot s5"><b>Crosses a Line</b><img src="../../../assets/cards/deepfake.webp" alt="Deepfake card"></div>
+</div>
+<div class="arrow"><span>← I'd use this without a second thought</span><span>Not OK here →</span></div>
+
+<div class="cols">
+<div>
+<h2><span class="num">1</span>Get ready</h2>
+<ul>
+  <li>Print the five <b>line headers</b> (page 3), one set per group, and lay them in a row.</li>
+  <li>Pick <b>8–12 cards</b> that cover the whole line (see the card sets on page 2). Each group gets the same cards.</li>
+  <li>Choose <b>one setting</b> and write it on the board: <span class="say">"Using this to help with your homework."</span> The setting matters: the same card can land in a different place somewhere else.</li>
+</ul>
+
+<h2><span class="num">2</span>Place the cards alone</h2>
+<p>Each student places every card on their own line, <b>without talking</b>. Ask them to read the card's definition first. Students can jot their line down or photograph it.</p>
+
+<h2><span class="num">3</span>Compare with a partner</h2>
+<p>Partners find the card they disagree on most, and each explains their choice. If they're stuck, they read that card's <b>Discuss</b> question out loud.</p>
+<div class="tip"><b>Sentence starters</b><br>"I put ___ on <i>Feels Sketchy</i> because ___."<br>"I'd move it to ___ if ___."</div>
+</div>
+<div>
+<h2><span class="num">4</span>Draw the class line</h2>
+<p>As a whole class, go card by card. Start with the cards where groups disagreed most. Agree where each card goes <b>for this setting</b>, and where the class draws its line: which cards are on the OK side, and which are past it.</p>
+<p>Decide up front how the class will decide: a vote, agreement, or the teacher's call. If you overrule a choice, explain your thinking.</p>
+
+<h2><span class="num">5</span>Keep the line</h2>
+<p>Photograph the final line and post it. Next time, change the setting and run it again: <b>which cards move, and why?</b></p>
+
+<h2><span class="num">6</span>Wrap up</h2>
+<p>Ask: <span class="say">"Which card was hardest to place? What would make it feel more OK?"</span> Answers often name the ideas on other cards: a human checking the AI, privacy protection, being open about how it works.</p>
+
+<div class="box dark"><b>Keep it judgment-free.</b> Frame each card as something someone <i>could</i> do, not something students have done. Different lines are expected; reasons are what count.</div>
+</div>
+</div>
+
+<div class="page-break"></div>
+
+<h2><span class="num">7</span>Settings to try</h2>
+<table>
+  <tr><th>Setting</th><th>A card that tends to move</th></tr>
+  <tr><td>Helping with your homework</td><td><b>AI Assistant</b>: explaining a math step vs. writing the whole essay</td></tr>
+  <tr><td>Used by our school</td><td><b>Predictor</b>: guessing which students need extra help</td></tr>
+  <tr><td>In your town</td><td><b>Data Center</b>: new jobs vs. the water and power it uses</td></tr>
+  <tr><td>For a 10-year-old</td><td><b>Chatbot</b>: a friendly helper, or a stand-in for real friends?</td></tr>
+  <tr><td>Making a video for social media</td><td><b>Deepfake</b>: a funny face swap with permission vs. without it</td></tr>
+  <tr><td>At a doctor's office</td><td><b>Human-in-the-Loop</b>: does a person check every AI decision?</td></tr>
+</table>
+
+<h2><span class="num">8</span>Card sets</h2>
+<table class="sets">
+  <tr><td>AI in your life<br><span class="kicker">start here</span></td><td>Human-in-the-Loop, AI Assistant, Built-in AI, Chatbot, Recommender, Predictor, Agent, Cognitive Offload, Data Privacy Trade-off, Deepfake</td></tr>
+  <tr><td>AI in the world</td><td>Safety Lab, Red Teaming, Large Language Model, Viral App, Fast-Moving Lab, Data Center, Job Disruption, Environmental Footprint, Digital Divide, Regulation Debate</td></tr>
+  <tr><td>Fair and safe</td><td>Bias Audit, Explainability, Informed Consent, Model Card, Privacy Shield, Bias in Data, Training Data, Classifier, Sensor, Manual Override</td></tr>
+</table>
+<p>Cards that describe a <b>use</b> of AI (Chatbot, Recommender, Deepfake) work best. Read a card as <span class="say">"Using a ___ for this setting."</span> For safeguard cards like Bias Audit, read <span class="say">"Skipping the ___."</span></p>
+
+<h2><span class="num">9</span>Variations</h2>
+<div class="cols">
+<div>
+  <div class="box"><b>Helps or harms?</b> For the "AI in the world" set, relabel the line from <i>Helps people a lot</i> to <i>Harms people a lot</i>. Where do most Red (Societal Impacts) cards land?</div>
+  <div class="box"><b>What's its job?</b> Before placing a card, name the role the AI plays: tutor, helper, decision-maker, creator, or watcher. Do some roles feel less OK?</div>
+</div>
+<div>
+  <div class="box"><b>After a game.</b> Once a Quick Play match ends, each player places the Systems they deployed. In Launch Day, the team places the AI cards that flipped.</div>
+  <div class="box"><b>Exit ticket.</b> Students pick the card closest to something they really do with AI, and write how it helped and where they'd draw their own line.</div>
+</div>
+</div>
+
+<p class="credit">Adapted from <b>"Align on the Line: Making Ethical Lines Visible"</b> by Beck Tench &amp; Emily Weinstein, created by the Center for Digital Thriving at the Harvard Graduate School of Education and published by the AI Pedagogy Project (aipedagogy.org/assignment/align-on-the-line-making-ethical-lines-visible), licensed CC BY-NC-SA 4.0. Changes: Tokens cards replace the brainstormed AI uses; settings, card sets, and game variations added. This adaptation is also licensed CC BY-NC-SA 4.0.</p>
+
+<div class="page-break"></div>
+<div class="strips">
+  <div class="strip s1"><div class="n">1</div><div><h3>Totally Fine</h3><p>I'd use this without a second thought.</p></div></div>
+  <div class="strip s2"><div class="n">2</div><div><h3>Mostly OK</h3><p>Fine, with a little care.</p></div></div>
+  <div class="strip s3"><div class="n">3</div><div><h3>Not Really Sure</h3><p>It depends. I'd want to know more.</p></div></div>
+  <div class="strip s4"><div class="n">4</div><div><h3>Feels Sketchy</h3><p>Something about this seems off.</p></div></div>
+  <div class="strip s5"><div class="n">5</div><div><h3>Crosses a Line</h3><p>Not OK in this setting.</p></div></div>
+</div>
+
+<div class="foot"><span>Tokens TCG Alpha Set · CC BY-NC-SA 4.0</span><span>Draw the Line · tokenstcg.com</span></div>
+</main>
+</body></html>

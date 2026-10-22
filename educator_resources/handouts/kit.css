@@ -1,0 +1,33 @@
+/* Shared print styles for the playtest kit: US Letter, white paper, light on ink. */
+@page { size: 8.5in 11in; margin: 0.5in; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #fff; color: #1b1f2a; }
+body { font: 11pt/1.4 'Manrope', system-ui, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+h1 { font: 800 26pt/1 'Baloo 2', system-ui, sans-serif; margin: 0 0 4pt; }
+h2 { font: 800 15pt/1.15 'Baloo 2', system-ui, sans-serif; margin: 14pt 0 5pt; display: flex; align-items: center; gap: 7pt; }
+h3 { font: 700 12pt/1.2 'Baloo 2', system-ui, sans-serif; margin: 8pt 0 3pt; }
+p { margin: 0 0 5pt; }
+ul, ol { margin: 0 0 6pt; padding-left: 16pt; }
+li { margin-bottom: 2.5pt; }
+b, strong { font-weight: 800; }
+.kicker { font: 700 8.5pt/1 'JetBrains Mono', monospace; letter-spacing: .14em; text-transform: uppercase; color: #5a6478; }
+.lede { color: #3d4559; margin-bottom: 8pt; }
+.num { width: 20pt; height: 20pt; flex: none; border-radius: 5pt; background: #1b1f2a; color: #fff; display: inline-grid; place-items: center;
+  font: 800 11pt/1 'Baloo 2', sans-serif; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18pt; }
+.box { border: 1.2pt solid #c9cfdb; border-radius: 8pt; padding: 7pt 10pt; margin-bottom: 7pt; break-inside: avoid; }
+.box.dark { border-color: #1b1f2a; }
+.tip { background: #f2f4f8; border-radius: 8pt; padding: 6pt 10pt; margin-bottom: 7pt; break-inside: avoid; }
+table { width: 100%; border-collapse: collapse; font-size: 9.5pt; margin-bottom: 6pt; }
+th, td { text-align: left; padding: 4pt 6pt; border-bottom: .8pt solid #d5dae4; vertical-align: top; }
+th { font: 700 8pt/1.2 'JetBrains Mono', monospace; letter-spacing: .08em; text-transform: uppercase; color: #5a6478; }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6pt; margin-bottom: 6pt; }
+.step { border: 1.2pt solid #1b1f2a; border-radius: 8pt; padding: 6pt 8pt; }
+.step > b:first-child { display: block; font: 800 12pt/1.1 'Baloo 2', sans-serif; }
+.page-break { break-before: page; }
+.foot { position: fixed; bottom: 0; left: 0; right: 0; font: 7.5pt/1 'JetBrains Mono', monospace; color: #8a93a6; display: flex; justify-content: space-between; }
+.line { border-bottom: .8pt solid #9aa3b5; height: 20pt; }
+.cut { border: 1pt dashed #9aa3b5; }
+.card-img { width: 1.55in; border-radius: 6pt; display: block; }
+.swatch { display: inline-block; width: 9pt; height: 9pt; border-radius: 2pt; vertical-align: -1pt; margin-right: 4pt; border: .6pt solid rgba(0,0,0,.25); }
+.g { background: #45e3cf; } .bl { background: #5cb8ff; } .k { background: #b48cff; } .w { background: #e2c06a; } .r { background: #ff7c5e; }

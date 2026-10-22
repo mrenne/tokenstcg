@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%83%8F%3C/text%3E%3C/svg%3E">
+<title>Tokens Educator Resources</title>
+<meta name="description" content="Everything a teacher needs to run Tokens TCG with grades 6-8: printable cards, four ways to play, the standards behind the cards, and background reading.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+  :root{
+    --ground:#060913; --panel:#0f1426; --panel-2:#161c33; --rule:#232b47;
+    --text:#eef2fb; --muted:#9aa6c4; --accent:#5ec8ff; --warm:#f0913f; --gold-pip:#e8b955;
+    --green:#45e3cf; --blue:#5cb8ff; --black:#b48cff; --white:#e2c06a; --red:#ff7c5e;   /* v2 card edge colors */
+  }
+  html{ background:var(--ground); }
+  body{ margin:0; background:var(--ground); color:var(--text); font-family:'Manrope',system-ui,sans-serif; font-size:16px; line-height:1.55;
+    padding-inline:clamp(16px,4vw,48px); padding-block:0 72px; }
+  .wrap{ max-width:1080px; margin:0 auto; }
+  a{ color:var(--accent); }
+  a:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:3px; }
+
+  /* breadcrumb (same as How to Play and Alpha Set) */
+  .crumbs ol{ display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; margin:0; padding:0; list-style:none;
+    font-family:'JetBrains Mono',ui-monospace,monospace; font-size:16px; letter-spacing:.06em; }
+  .crumbs li{ display:flex; align-items:center; gap:10px; color:var(--muted); }
+  .crumbs li + li::before{ content:"›"; color:var(--muted); font-size:18px; }
+  .crumbs a{ display:inline-flex; align-items:center; min-height:44px; padding:0 10px; margin-left:-10px; color:var(--accent); font-weight:700; text-decoration:none; }
+  .crumbs a:hover{ text-decoration:underline; }
+  .crumbs [aria-current="page"]{ color:var(--text); }
+
+  header.top{ padding-block:clamp(28px,5vw,56px) 8px; }
+  h1{ margin:4px 0 12px; font-family:'Baloo 2',system-ui,sans-serif; font-weight:800; font-size:clamp(40px,7vw,72px); line-height:.95; text-wrap:balance; }
+  .lede{ margin:0; max-width:62ch; color:var(--muted); font-size:18px; text-wrap:pretty; }
+
+  section{ margin-top:clamp(40px,6vw,64px); }
+  .shead{ display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+  .step{ width:38px; height:38px; flex:none; border-radius:10px; display:grid; place-items:center; background:var(--accent); color:#06122a;
+    font:800 18px/1 'Baloo 2',system-ui,sans-serif; }
+  h2{ margin:0; font-family:'Baloo 2',system-ui,sans-serif; font-weight:800; font-size:clamp(26px,3.6vw,34px); line-height:1.1; }
+  h3{ margin:0 0 6px; font-family:'Baloo 2',system-ui,sans-serif; font-weight:700; font-size:21px; line-height:1.2; }
+  p{ margin:0 0 10px; }
+  .muted{ color:var(--muted); }
+
+  .grid{ display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); }
+  .tile{ background:var(--panel); border:1px solid var(--rule); border-radius:16px; padding:20px 22px; }
+  .tile p:last-child{ margin-bottom:0; }
+  .glance{ display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr)); }
+  .glance .tile{ text-align:center; padding:16px; }
+  .glance b{ display:block; font:800 30px/1.1 'Baloo 2',system-ui,sans-serif; color:var(--text); }
+  .glance span{ color:var(--muted); font-size:14px; }
+
+  .btn{ display:inline-flex; align-items:center; gap:10px; min-height:48px; padding:12px 24px; border-radius:999px; background:var(--accent); color:#06122a;
+    font:700 17px/1 'Manrope',sans-serif; text-decoration:none; margin:6px 0 14px; }
+  .btn:hover{ background:#8ad8ff; }
+  .btn.ghost{ background:transparent; color:var(--text); border:1.5px solid rgba(94,200,255,.55); }
+  .btn.ghost:hover{ background:var(--panel-2); }
+  .supplies{ list-style:none; margin:0; padding:0; display:grid; gap:14px; }
+  .supplies li{ display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:start; }
+  .supplies .ico{ font-size:26px; line-height:1.1; }
+  .supplies b{ display:block; }
+  .printlabel{ margin:16px 0 6px; font:700 12px/1 'JetBrains Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+  .printlinks{ list-style:none; margin:0; padding:0; display:grid; gap:6px; }
+  .printlinks li{ display:flex; flex-direction:column; padding:8px 12px; border-radius:10px; background:var(--panel-2); border:1px solid var(--rule); }
+  .printlinks a{ color:var(--accent); font-weight:800; text-decoration:none; }
+  .printlinks a::before{ content:"🖨️ "; }
+  .printlinks a:hover{ text-decoration:underline; }
+  .printlinks span{ font-size:13px; color:var(--muted); }
+  ul.plain{ margin:0; padding-left:1.2em; }
+  ul.plain li{ margin-bottom:6px; }
+
+  .mode .time{ display:inline-block; margin-bottom:8px; font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:.08em; color:var(--warm); }
+  details{ margin-top:12px; background:var(--panel-2); border-radius:12px; padding:0 16px; }
+  summary{ cursor:pointer; min-height:44px; display:flex; align-items:center; font-weight:700; color:var(--accent); }
+  details[open]{ padding-bottom:14px; }
+
+  table{ width:100%; border-collapse:collapse; font-size:15px; }
+  th, td{ text-align:left; padding:12px 14px; border-bottom:1px solid var(--rule); vertical-align:top; }
+  th{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:700; }
+  .mode.wide{ margin-top:16px; }
+  .ideas{ display:flex; flex-wrap:wrap; gap:8px; margin:4px 0 12px; padding:0; list-style:none; }
+  .ideas li{ display:inline-flex; align-items:center; min-height:32px; padding:0 12px; border-radius:999px; background:var(--panel-2, rgba(255,255,255,.04)); border:1px solid var(--rule); font-size:14px; font-weight:700; }
+  .ideas .sw{ margin-right:8px; }
+  .quest{ display:grid; grid-template-columns:1fr auto; gap:12px 20px; align-items:center; margin:4px 0 12px; padding:16px 18px; border-radius:14px; background:var(--panel-2); border:1px solid var(--green); }
+  .quest h3{ margin:2px 0 6px; }
+  .quest .sw{ margin-right:6px; }
+  @media (max-width:640px){ .quest{ grid-template-columns:1fr; } }
+  .sw{ display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:8px; vertical-align:-1px; }
+  .tablewrap{ overflow-x:auto; background:var(--panel); border:1px solid var(--rule); border-radius:16px; }
+
+  footer{ margin-top:56px; padding-top:20px; border-top:1px solid var(--rule); color:var(--muted); font-size:13px; max-width:75ch; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../">Home</a></li><li><span aria-current="page">Educator Resources</span></li></ol></nav>
+  <h1>Educator Resources</h1>
+  <p class="lede">Everything you need to run Tokens TCG with grades 6–8: printable cards, the supplies to gather, four ways to play, the standards behind the cards, a card lookup for students, and background reading.</p>
+</header>
+
+<section aria-labelledby="glance">
+  <h2 id="glance" class="muted" style="font-size:14px;font-family:'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px">At a glance</h2>
+  <div class="glance">
+    <div class="tile"><b>6–8</b><span>Grade band</span></div>
+    <div class="tile"><b>70</b><span>Cards in the Alpha Set</span></div>
+    <div class="tile"><b>2</b><span>Players (or two teams)</span></div>
+    <div class="tile"><b>10–30</b><span>Minutes per game</span></div>
+    <div class="tile"><b>0</b><span>Screens needed</span></div>
+  </div>
+</section>
+
+<section aria-labelledby="s1">
+  <div class="shead"><div class="step">1</div><h2 id="s1">Get the cards</h2></div>
+  <div class="grid">
+    <div class="tile">
+      <h3>Print and cut</h3>
+      <p>The print-and-play file has every Alpha Set card, 9 per US Letter page, with cut marks.</p>
+      <p><b>Free to print and use in any classroom.</b> No cost, no sign-up.</p>
+      <a class="btn" href="../design/print/tokens-print-and-play.pdf" download>Download the PDF (8 pages)</a>
+      <ul class="plain muted">
+        <li>Print at <b>Actual Size / 100%</b>, not "fit to page," so cards come out at the real 2.5 × 3.5 in.</li>
+        <li>No card backs needed. Optional: slide each card into a sleeve (see <a href="#s2">What else you'll need</a>).</li>
+        <li>One print is one full set of 70 cards.</li>
+      </ul>
+    </div>
+    <div class="tile">
+      <h3>Who gets what</h3>
+      <p>Every student gets the same <b>base set</b>: all the Common, Uncommon, and Rare cards. Nobody starts behind on the content.</p>
+      <p>The two <b>Chase cards</b> (AI Isn't Magic and Alignment) are not in the base set. How students earn one is up to you: a class challenge, a quiz, a raffle, or finishing an assignment.</p>
+      <p class="muted">Rarity is the letter on each card's type bar: C, U, R, or ★ for Chase.</p>
+    </div>
+    <div class="tile">
+      <h3>Building a deck</h3>
+      <ul class="plain">
+        <li>At least <b>25 cards</b>.</li>
+        <li>No more than <b>2 copies</b> of any card.</li>
+        <li>Cards from <b>1 or 2 colors</b> only.</li>
+      </ul>
+      <p class="muted" style="margin-top:10px">Choosing two colors is itself a small lesson in how the five big ideas of AI connect.</p>
+      <a class="btn ghost" href="../alpha_set/">Browse the Alpha Set</a>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="s2">
+  <div class="shead"><div class="step">2</div><h2 id="s2">What else you'll need</h2></div>
+  <div class="grid">
+    <div class="tile">
+      <h3>Needed</h3>
+      <ul class="supplies">
+        <li><span class="ico" aria-hidden="true">✏️</span><div><b>A way to track Tokens</b>A pencil and a sticky note for each player work well, or a 20-sided die (d20) turned to the player's score. Players add up their Tokens as they score; first to 15 wins.</div></li>
+        <li><span class="ico" aria-hidden="true">🔴</span><div><b>Flag counters</b>Small markers to put on Systems when they take Flags. Math manipulatives you already have (counting cubes, chips, or bears) are perfect, or the small plastic tokens from many board games. About 10 per player.</div></li>
+        <li><span class="ico" aria-hidden="true">🎲</span><div><b>One six-sided die <span class="muted" style="font-weight:600">(Launch Day only)</span></b>The team's Drift meter, counting how far the AI has drifted.</div></li>
+      </ul>
+    </div>
+    <div class="tile">
+      <h3>Nice to have</h3>
+      <ul class="supplies">
+        <li><span class="ico" aria-hidden="true">🛡️</span><div><b>Card sleeves</b>Standard trading-card sleeves with a clear front and a solid colored back keep printed cards from tearing and make them easier to shuffle. <b>Give everyone the same color</b>, so no one can tell cards apart from the back.</div></li>
+        <li><span class="ico" aria-hidden="true">🃏</span><div><b>Old trading cards as backing</b>Printer paper is thin. Slip an old baseball or Pokémon card into each sleeve behind the printed card, and it will feel and shuffle like a real card. The colored sleeve back hides the old card. Ask students to bring in extras they don't want.</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="s3">
+  <div class="shead"><div class="step">3</div><h2 id="s3">Four ways to play</h2></div>
+  <div class="grid">
+    <div class="tile mode">
+      <span class="time">10–20 MIN · 2 PLAYERS</span>
+      <h3>Quick Play</h3>
+      <p>The full two-player game. Deploy AI Systems, Run Tasks to earn Tokens, and Audit your opponent's Systems. First to 15 Tokens wins.</p>
+      <p class="muted">Best once students know a few terms. Demo a few turns first.</p>
+      <a class="btn ghost" href="../how_to_play/">How to Play guide</a>
+      <p class="printlabel">Printables</p>
+      <ul class="printlinks">
+        <li><a href="handouts/quick-play-rules/">Quick Play Rules</a><span>2 pages · one per table</span></li>
+        <li><a href="handouts/player-reference/">Player Reference cards</a><span>1 page · 4 cards per sheet</span></li>
+      </ul>
+    </div>
+    <div class="tile mode">
+      <span class="time">20–30 MIN · WHOLE CLASS</span>
+      <h3>Discussion Mode: Draw the Line</h3>
+      <p>No decks and no winner. Groups place 8–12 cards on a five-step line, from <b>Totally Fine</b> to <b>Crosses a Line</b>, for one setting like "helping with your homework." Then they compare and agree on a class line.</p>
+      <p class="muted">No right answers: the point is hearing why people draw their lines in different places. A good first lesson before anyone learns the rules.</p>
+      <details>
+        <summary>Steps in brief</summary>
+        <ul class="plain">
+          <li>Lay out five headers: Totally Fine, Mostly OK, Not Really Sure, Feels Sketchy, Crosses a Line.</li>
+          <li>Pick 8–12 cards that cover the line, and one setting.</li>
+          <li>Each student places the cards alone, without talking.</li>
+          <li>Partners compare the card they disagree on most, using its Discuss question.</li>
+          <li>The class agrees where each card goes and where its line is, then photographs it.</li>
+          <li>Next time, change the setting: which cards move, and why?</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Settings and card sets</summary>
+        <ul class="plain">
+          <li><b>Settings:</b> helping with your homework, used by our school, in your town, for a 10-year-old, making a video for social media, at a doctor's office.</li>
+          <li><b>Start with:</b> Human-in-the-Loop, AI Assistant, Built-in AI, Chatbot, Recommender, Predictor, Agent, Cognitive Offload, Data Privacy Trade-off, Deepfake.</li>
+        </ul>
+      </details>
+      <p class="printlabel">Printables</p>
+      <ul class="printlinks">
+        <li><a href="handouts/draw-the-line/">Draw the Line teacher guide and line headers</a><span>3 pages · headers: one set per group</span></li>
+      </ul>
+      <p class="muted" style="font-size:13px;margin-top:10px">Adapted from <a href="https://aipedagogy.org/assignment/align-on-the-line-making-ethical-lines-visible/">Align on the Line</a> by Beck Tench &amp; Emily Weinstein (Center for Digital Thriving, AI Pedagogy Project), <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
+    </div>
+    <div class="tile mode">
+      <span class="time">25–30 MIN · CO-OP</span>
+      <h3>Launch Day</h3>
+      <p>Players work together as the safety team at an AI company racing to launch. They win by making AI useful (45 Tokens between them) before it drifts out of control or launch day arrives.</p>
+      <p class="muted">Students feel the AI alignment problem instead of hearing it explained.</p>
+      <details>
+        <summary>Debrief questions (2–3 min)</summary>
+        <ul class="plain">
+          <li>When did you choose safety over scoring? Was it worth it?</li>
+          <li>Which AI card was the hardest to handle, and why?</li>
+          <li>Did anyone take a shortcut that hurt the team?</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Setup in brief</summary>
+        <ul class="plain">
+          <li>Shuffle every Black and Red card; deal 8 face-down as the Launch pile. The game plays it by itself.</li>
+          <li>Players build decks from White, Green, and Blue cards.</li>
+          <li>Use a six-sided die as the Drift meter, starting at 1. Past 6, the team loses.</li>
+          <li>Groups of 3–4 play as two pairs, each pair sharing a deck.</li>
+        </ul>
+        <p class="muted" style="margin-top:8px">Full rules: <a href="https://github.com/mrenne/tokenstcg/blob/main/design/GAME_CONCEPT.md#classroom-use-modes">Game Concept, Classroom use modes</a>.</p>
+      </details>
+    </div>
+  </div>
+  <div class="tile mode wide">
+      <span class="time">EXTENSION · DIGITAL</span>
+      <h3>Side Quests</h3>
+      <p>Optional, for after the game. Side Quests are short digital activities that extend what students learn at the table, with quests for each of the five big ideas in the CSTA/AI4K12 <i>AI Learning Priorities for All K-12 Students</i>.</p>
+      <ul class="ideas">
+        <li><span class="sw" style="background:var(--green)"></span>Humans and AI</li>
+        <li><span class="sw" style="background:var(--blue)"></span>Representation &amp; Reasoning</li>
+        <li><span class="sw" style="background:var(--black)"></span>Machine Learning</li>
+        <li><span class="sw" style="background:var(--white)"></span>Ethical AI Design</li>
+        <li><span class="sw" style="background:var(--red)"></span>Societal Impacts of AI</li>
+      </ul>
+      <p class="muted">Coming soon.</p>
+  </div>
+</section>
+
+<section aria-labelledby="s4">
+  <div class="shead"><div class="step">4</div><h2 id="s4">What students learn</h2></div>
+  <p class="lede" style="font-size:16px;margin-bottom:16px">The five card colors are the five categories of the CSTA/AI4K12 <i>AI Learning Priorities for All K-12 Students</i>. Most cards trace to a row in its Grades 6–8 tables. Every card also has a plain-language definition and a Discuss question.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th scope="col">Color</th><th scope="col">Big idea</th><th scope="col">What the cards cover</th><th scope="col">Report</th></tr></thead>
+      <tbody>
+        <tr><td><span class="sw" style="background:var(--green)"></span>Green</td><td>Humans and AI</td><td>How humans and AI differ, who builds AI, and when to use it</td><td>Table 2</td></tr>
+        <tr><td><span class="sw" style="background:var(--blue)"></span>Blue</td><td>Representation &amp; Reasoning</td><td>How AI encodes the world and reasons about it</td><td>Table 3</td></tr>
+        <tr><td><span class="sw" style="background:var(--black)"></span>Black</td><td>Machine Learning</td><td>Sensors, data, training, and models</td><td>Table 4</td></tr>
+        <tr><td><span class="sw" style="background:var(--white)"></span>White</td><td>Ethical AI Design</td><td>Fairness, bias, model cards, and accountability</td><td>Table 5</td></tr>
+        <tr><td><span class="sw" style="background:var(--red)"></span>Red</td><td>Societal Impacts of AI</td><td>Effects on people, society, and the environment</td><td>Table 6</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted" style="margin-top:12px">A few cards about kinds of AI companies and computer hardware (like Fast-Moving Lab, GPU, and CPU) are grounded in general accuracy rather than the report. The full card-by-card mapping is in the <a href="https://github.com/mrenne/tokenstcg/blob/main/design/pilot-deck-60-cards.md#teacher-reference-appendix-not-on-student-facing-cards">card list's teacher appendix</a>.</p>
+</section>
+
+<section aria-labelledby="s5">
+  <div class="shead"><div class="step">5</div><h2 id="s5">Look up your card</h2></div>
+  <div class="tile">
+    <p>Every card has a number in its bottom-right corner, like <b>24/70</b>. On the <b>Look up your card</b> page, students type that number or the card's name to open a short page about the AI idea on it:</p>
+    <ul class="plain">
+      <li><b>In real life:</b> an everyday example.</li>
+      <li><b>Try it:</b> a 2-minute activity, no screen needed.</li>
+      <li><b>Talk about it:</b> the card's Discuss question.</li>
+      <li><b>In the game:</b> what the card does, in plain words.</li>
+    </ul>
+    <p class="muted">Optional, for students who want to learn more after class. The pages are phone-friendly, need no account, and aren't listed in search engines, so share the address with your students: <b>tokenstcg.com/look-up</b>.</p>
+    <a class="btn ghost" href="../look-up/">Open Look up your card</a>
+  </div>
+</section>
+
+<section aria-labelledby="s6">
+  <div class="shead"><div class="step">6</div><h2 id="s6">Vocabulary</h2></div>
+  <div class="tile">
+    <p>The <b>Terms and Definitions</b> guide explains every game word (Training Set, Audit, Flag, Deprecated…) and every AI term on the cards, in plain language students can use.</p>
+    <a class="btn ghost" href="https://github.com/mrenne/tokenstcg/blob/main/teacher/terms-and-definitions.md">Open the Terms and Definitions guide</a>
+  </div>
+</section>
+
+<section aria-labelledby="s7">
+  <div class="shead"><div class="step">7</div><h2 id="s7">Background reading</h2></div>
+  <div class="grid">
+    <div class="tile">
+      <h3><a href="https://ai4k12.org/">AI4K12: AI Learning Priorities</a></h3>
+      <p class="muted">CSTA/AI4K12. The five big ideas behind the card colors, with grade-band learning outcomes.</p>
+    </div>
+    <div class="tile">
+      <h3><a href="https://aipedagogy.org/guide/key-terms/">AI Pedagogy Project: Key Terms</a></h3>
+      <p class="muted">Harvard metaLAB. Plain-language definitions of common AI vocabulary.</p>
+    </div>
+    <div class="tile">
+      <h3><a href="https://aiandeducation.mit.edu/report/">MIT: AI and Education</a></h3>
+      <p class="muted">Principles like "put humanity first" and "augmentation, not automation." It covers generative AI in higher education, so use it for the why rather than for K-12 lesson content.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>The Alpha Set is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a>: share and adapt it for non-commercial use, with credit, under the same license.</p>
+</footer>
+
+</div>
+</body>
+</html>

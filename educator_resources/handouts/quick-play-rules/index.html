@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Tokens Quick Play Rules</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@700&display=swap">
+<link rel="stylesheet" href="../kit.css">
+<style>
+  .readcard { display: grid; grid-template-columns: 1.3in 1fr; gap: 10pt; align-items: start; }
+  .readcard dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 2pt 8pt; font-size: 9.5pt; line-height: 1.3; }
+  .card-img { width: 1.3in; }
+  .readcard dt { font-weight: 800; }
+  .readcard dd { margin: 0; }
+  .cols .box { padding: 5pt 9pt; margin-bottom: 4pt; line-height: 1.3; }
+</style><meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  @media screen {
+    html { background: #060913; }
+    body { background: #060913; margin: 0; padding: 16px 16px 48px; }
+    .paper { background: #fff; max-width: 8.5in; margin: 0 auto; padding: 0.5in; border-radius: 10px; box-shadow: 0 18px 50px rgba(0,0,0,.5); }
+    .page-break { border-top: 2px dashed #c9cfdb; margin: 0.45in -0.5in; }
+    .foot { position: static; margin-top: 0.3in; }
+    .toolbar { max-width: 8.5in; margin: 0 auto 14px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;
+      font: 700 15px/1.3 'Manrope', system-ui, sans-serif; color: #c9d3ea; }
+    .toolbar a { color: #5ec8ff; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+    .toolbar a:hover { text-decoration: underline; }
+    .toolbar .right { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+    .toolbar small { font-weight: 600; color: #8b97b3; }
+    .toolbar button { min-height: 44px; padding: 0 22px; border-radius: 999px; border: 0; background: #5ec8ff; color: #06122a; font: 800 15px/1 'Manrope', sans-serif; cursor: pointer; }
+    .toolbar a:focus-visible, .toolbar button:focus-visible { outline: 3px solid #f0913f; outline-offset: 2px; }
+  }
+  @media screen and (max-width: 8.6in) {
+    .paper { padding: 18px; }
+    .page-break { margin: 28px -18px; }
+    .cols, .readcard { grid-template-columns: 1fr !important; }
+    .steps { grid-template-columns: 1fr 1fr !important; }
+    .sheet { width: auto !important; height: auto !important; grid-template-columns: 1fr !important; grid-template-rows: none !important; }
+    .sheet > *:not(:first-child) { display: none; }
+    .strips { height: auto !important; }
+    .strip { min-height: 1.3in; padding: 10px 14px !important; }
+    .strip h3 { font-size: 26pt !important; }
+    .scale img { width: 100% !important; }
+    .scale { gap: 4px !important; }
+    .scale .slot { padding: 4px 3px !important; }
+    .scale .slot b { font-size: 8.5pt !important; }
+    .arrow { font-size: 6.5pt !important; gap: 8px; }
+    table { display: block; overflow-x: auto; }
+  }
+  @media print { .toolbar { display: none !important; } }
+</style>
+</head>
+<body>
+<nav class="toolbar" aria-label="Handout">
+  <a href="../../">← Educator Resources</a>
+  <span class="right"><small>Print on US Letter at 100%</small><button type="button" onclick="window.print()">Print</button></span>
+</nav>
+<main class="paper">
+<div class="kicker">Tokens TCG · Alpha Set</div>
+<h1>Quick Play Rules</h1>
+<p class="lede">Two players. Each of you runs an AI company. Deploy AI <b>Systems</b>, use them to earn <b>Tokens</b>, and Audit your opponent's Systems to knock them out. <b>First to 15 Tokens wins.</b></p>
+
+<h2><span class="num">1</span>Read a card</h2>
+<div class="readcard">
+  <img class="card-img" src="../../../assets/cards/diffusion-model.webp" alt="Diffusion Model card">
+  <dl>
+    <dt>Cost</dt><dd>Top left. Data you pay to play it. A <b>diamond</b> around the number means you can also train it (see step 4).</dd>
+    <dt>Tokens</dt><dd>Top right. Coins = points you score each time it Runs a Task.</dd>
+    <dt>CAP / TRU</dt><dd>Capability (how hard it hits) and Trust (how many Flags it can take). Only Systems have these.</dd>
+    <dt>Type bar</dt><dd>The kind of card, its color, and its rarity letter: C, U, R, or ★.</dd>
+    <dt>Ability</dt><dd>What it does in the game. <b>{E}</b> means "turn this card sideways to use it," once per turn.</dd>
+    <dt>Definition</dt><dd>What the idea means in real life.</dd>
+    <dt>Discuss</dt><dd>A question to talk about.</dd>
+  </dl>
+</div>
+
+<h2><span class="num">2</span>Three kinds of card</h2>
+<table>
+  <tr><th>Type</th><th>What it does</th></tr>
+  <tr><td><b>System</b></td><td>Stays out. Scores Tokens and fights. A new System must wait until your next turn to act, unless it's <b>Fast-Tracked</b>.</td></tr>
+  <tr><td><b>Tool</b></td><td>Stays out until a card discards it. Use its ability right away, then again each turn.</td></tr>
+  <tr><td><b>Action</b></td><td>Do what it says once, then put it in your discard pile.</td></tr>
+</table>
+
+<h2><span class="num">3</span>Set up</h2>
+<ul>
+  <li>Each player has a deck of <b>25+ cards</b> from <b>1 or 2 colors</b>, no more than <b>2 copies</b> of any card. Shuffle it.</li>
+  <li><b>Roll a die</b> to see who goes first. The higher roll <b>chooses</b> to go first or second (tie: roll again).</li>
+  <li>The first player draws <b>5</b> cards; the second player draws <b>6</b>. Once, before the game starts, you may shuffle your hand back and draw a new one of the same size.</li>
+  <li>Each player keeps a <b>Token tracker</b> at 0, and a pile of small counters (beads, paper clips, coins) for <b>Flags</b>.</li>
+</ul>
+
+<h2><span class="num">4</span>Take a turn in this order</h2>
+<div class="steps">
+  <div class="step"><b>1. Reboot</b>Turn all your cards upright, including your Training Set.</div>
+  <div class="step"><b>2. Draw</b>Take 1 card. (The first player skips this on the very first turn.)</div>
+  <div class="step"><b>3. Train</b>Once per turn, put 1 card with a diamond cost face-down in your <b>Training Set</b>.</div>
+  <div class="step"><b>4. Play</b>Deploy cards, Run Tasks and Audits, and use Tools, in any order.</div>
+</div>
+<p><b>Paying Data:</b> each face-down card in your Training Set is worth 1 Data. To deploy a card, turn that many Training Set cards sideways. They come back at your next Reboot, so your Data refreshes every turn.</p>
+
+<div class="page-break"></div>
+
+<h2><span class="num">5</span>Score: Run a Task</h2>
+<p>Turn one of your Systems sideways. Add its Tokens (the coins in the top right) to your tracker. <b>First to 15 Tokens wins.</b></p>
+
+<h2><span class="num">6</span>Fight: Run an Audit</h2>
+<p>Turn one of your Systems sideways and pick one of your opponent's Systems that is <b>already sideways</b>. You can't Audit a System that's upright.</p>
+<ul>
+  <li>Both Systems hit each other <b>at the same time</b>. Each puts Flags on the other equal to its own <b>Capability</b>.</li>
+  <li>When a System's Flags reach its <b>Trust</b>, it is <b>Deprecated</b>: knocked out and put in the discard pile.</li>
+  <li>Flags stay on a System for the whole game unless a card removes them.</li>
+</ul>
+<div class="tip"><b>Example:</b> Neural Network (CAP 4, TRU 2) Audits Explainability (CAP 1, TRU 3). Explainability takes 4 Flags and is Deprecated. Neural Network takes 1 Flag and survives.</div>
+
+<h2><span class="num">7</span>Words on some cards</h2>
+<table>
+  <tr><td style="width:1.3in"><b>Fast-Tracked</b></td><td>This System can act the same turn you deploy it.</td></tr>
+  <tr><td><b>Highly Trusted</b></td><td>A System with lower Trust than this one can't Audit it.</td></tr>
+  <tr><td><b>Adversarial</b></td><td>When this System is Audited, it hits back with 1 extra Flag.</td></tr>
+  <tr><td><b>💾 Legacy</b></td><td>Old-tech Tool. If a card like Obsolete discards it, that player also draws a card.</td></tr>
+  <tr><td><b>Big Data 2</b></td><td>You may pay by turning sideways a System with Cost 2+ (Big Data 3: Cost 3+).</td></tr>
+</table>
+
+<h2><span class="num">8</span>Easy to miss</h2>
+<div class="cols">
+  <div>
+    <div class="box"><b>Systems get more expensive.</b> Your 3rd System costs +1 Data, your 4th +2, and so on. If one is Deprecated, the price drops back.</div>
+    <div class="box"><b>Scoring exposes you.</b> Running a Task turns your System sideways, and only sideways Systems can be Audited.</div>
+    <div class="box"><b>Data comes back.</b> Your Training Set is never used up; it refreshes at every Reboot.</div>
+    <div class="box"><b>Out of fresh data.</b> Deck empty when you need a card? Shuffle your discard pile into a new deck and lose 1 Token.</div>
+  </div>
+  <div>
+    <div class="box"><b>New Systems wait a turn.</b> Tools and Actions work right away.</div>
+    <div class="box"><b>Big Data still costs a turn.</b> A System turned sideways to pay can't Task, and it can be Audited.</div>
+    <div class="box"><b>Tools can be removed.</b> Each color has one Action that discards a Tool.</div>
+  </div>
+</div>
+
+<div class="tip"><b>Discuss!</b> Anyone can read a played card's Discuss question out loud. Your teacher may pause to talk.</div>
+
+<div class="foot"><span>Tokens TCG Alpha Set · CC BY-NC-SA 4.0</span><span>Quick Play Rules · tokenstcg.com/how_to_play</span></div>
+</main>
+</body></html>

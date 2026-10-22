@@ -218,7 +218,7 @@ function build(mode) {
   <div class="shead"><div class="step">3</div><h2>Set up</h2></div>
   <div class="row">
     <div class="tile"><div class="stack"><div class="backcard" style="background-image:url('${back}')"></div><div class="backcard" style="background-image:url('${back}')"></div><div class="backcard" style="background-image:url('${back}')"></div></div><h3>25+ card deck</h3><p>1 or 2 colors. Max 2 of any card. Bigger is fine.</p></div>
-    <div class="tile">${card('Large Language Model', 180)}<h3>Who goes first: Benchmark</h3><p>Each player flips their top card. Higher Cost goes first. Tie? Flip again. Shuffle them back.</p></div>
+    <div class="tile"><div class="big">🎲</div><h3>Who goes first</h3><p>Each player rolls a die. The higher roll chooses to go first or second. Tie? Roll again.</p></div>
     <div class="tile"><div class="big">5 &nbsp;/&nbsp; 6</div><h3>Opening hand</h3><p>First player 5, second player 6. One free redraw.</p></div>
     <div class="tile"><div class="big">0</div><h3>Token tracker</h3><p>A 20-sided die (d20) or paper. Everyone starts at zero.</p></div>
   </div>
@@ -228,7 +228,7 @@ function build(mode) {
   <div class="shead"><div class="step">4</div><h2>Take a turn</h2><span class="sub">in this order</span></div>
   <div class="turn">
     <div class="turnstep"><div class="badge">1</div><div><b>Reboot</b><span>Turn all your cards upright.</span></div></div>
-    <div class="turnstep"><div class="badge">2</div><div><b>Draw</b><span>Take 1 card.</span></div></div>
+    <div class="turnstep"><div class="badge">2</div><div><b>Draw</b><span>Take 1 card. The first player skips this on the very first turn.</span></div></div>
     <div class="turnstep"><div class="badge">3</div><div><b>Train</b><span>Put 1 card face-down for Data.</span></div></div>
     <div class="turnstep"><div class="badge">4</div><div><b>Play</b><span>Deploy cards. Task or Audit with Systems.</span></div></div>
   </div>

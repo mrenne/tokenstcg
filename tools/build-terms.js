@@ -31,7 +31,6 @@ const GAME = [
   ['Training Set', 'Your face-down pile of cards that gives you Data. It gets bigger as you train cards into it.', 'The collection of examples used to teach an AI model.'],
   ['Train (a card)', 'Once per turn, put a Trainable card from your hand face-down into your Training Set.', '**Training** is how a model learns: it studies many examples and adjusts itself.'],
   ['Trainable', 'A card with a **diamond around its Cost** can be trained. No diamond means it can\'t.', ''],
-  ['Benchmark', 'How to pick who goes first: each player flips the top card of their deck, and the higher Cost goes first.', 'A **benchmark** is a shared test used to compare AI models and see which one scores higher.'],
   ['Deploy', 'Put a card into play by paying its Cost in Data.', 'To **deploy** an AI system is to release it so people can actually use it.'],
   ['Deploy tax', 'Your first two Systems cost their printed Cost. Your 3rd costs +1 Data, your 4th +2, and so on.', ''],
   ['System', 'A card for an AI program, model, or organization. Systems do the work: they Run Tasks and Audits.', 'An **AI system** is any program or product that uses AI to do a job.'],
